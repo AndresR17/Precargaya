@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start(); 
+    require_once('./config/main.php')
+?>
 <!doctype html>
 <html lang="en">
 
@@ -13,6 +15,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 
@@ -434,64 +437,62 @@
                 </div>
             </div>
 
+            <?php 
+            if(isset($_SESSION['correo']))
+            ?>
+
             <div class="row m-0">
                 <div class="col-md-12 p-0 pt-4 pb-4">
-                    <?php
-
-                    if(isset($_SESSION['error'])){
-                        echo '<p>' . $_SESSION['error']['datos'] . '</p>';
-                    
-                    }
-                    ?>
-                    <form action="registro.php" method="post" class="bg-dark p-4 m-auto" id="form">
+                    <form class="bg-dark p-4 m-auto" action="./config/registro.php" method="POST" id="formClientes">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="name" class="text-white">Nombre: </label>
-                                    <input type="text" name="name" class="form-control" placeholder="Nombre">
-                                    <?php if(isset($_SESSION['error'])){
-                        echo '<p class="text-white">' . $_SESSION['error']['datos'] . '</p>';
-                    
-                    } ?>
+                                    <input type="text" name="name" class="form-control" id="name">
+                                    <div id="resName"></div>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="lastname" class="text-white">Apellidos:</label>
-                                    <input type="text" name="lastname" class="form-control" placeholder="Apellidos">
+                                    <input type="text" name="lastname" class="form-control" id="lastname">
+                                    <div id="resLastName"></div>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="date" class="text-white">Fecha de nacimiento:</label>
-                                    <input type="date" name="date" class="form-control"
-                                        placeholder="Fecha de nacimento">
+                                    <input type="date" name="date" class="form-control" id="date">
+                                    <div id="resDate"></div>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="email" class="text-white">Correo:</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Correo">
+                                    <input type="email" name="email" class="form-control" id="email">
+                                    <div id="resEmail"></div>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="phone" class="text-white">Telefono:</label>
-                                    <input type="text" name="phone" class="form-control" placeholder="Telefono">
+                                    <input type="text" name="phone" class="form-control" id="phone">
+                                    <div id="resPhone"></div>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <textarea class="form-control" name="text" placeholder="Mensaje"
-                                        rows="3"></textarea>
+                                    <textarea class="form-control" name="text" placeholder="Deja tu comentario"
+                                        rows="3" id="text"></textarea>
+                                        <div id="resText"></div>
                                 </div>
                             </div>
-                            <input type="submit" class="btn btn-primary btn-lg btn-block" name="register"
+                            <input type="submit" class="btn btn-primary btn-lg btn-block" 
                                 value="Enviar">
                         </div>
                     </form>
@@ -525,7 +526,9 @@
             </div>
         </div>
     </footer>
-    <?php session_unset() ?>
+    
+    <script src="./js/formClientes.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
