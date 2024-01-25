@@ -22,22 +22,34 @@ function validarCampos(e) {
         return
     }
 
-    if (date.trim() == "") {
-        mostrarAlerta('Seleccione una fecha', 'resDate')
+    if(date === ""){
+        mostrarAlerta('Define una fecha de nacimiento', 'resDate')
         return
     }
 
-    if (email.trim() == "") {
-        mostrarAlerta('Define tu correo', 'resEmail')
+    if (!validarFecha(date)) {
+        mostrarAlerta('La fecha ingresada no es valida.','resDate');
         return
-    }
+    } 
 
-    if (phone.trim() !== '' && isNaN(phone)) {
-        mostrarAlerta('Este campo es numérico', 'resPhone');
+    if (email.trim() === "") {
+        mostrarAlerta('Define tu correo', 'resEmail');
+        return;
+
+    } else if (!validarCorreo(email)) {
+        mostrarAlerta('El formato del correo es inválido', 'resEmail');
         return;
     }
 
-    if (text.trim() == "") {
+    if (phone.trim() === '' ) {
+        mostrarAlerta('Define tu numero de contacto', 'resPhone');
+        return;
+    }else if(isNaN(phone)){
+        mostrarAlerta('Este campo es numérico', 'resPhone');
+        return
+    }
+
+    if (text.trim() === "") {
         mostrarAlerta('Dejanos tu comentario', 'resText')
         return
     }
@@ -56,7 +68,7 @@ function validarCampos(e) {
 }
 
 function guardarRegistro(datos) {
-    
+
     axios.post('./config/registro.php', datos, {
         headers: {
             'Content-Type': 'application/json'
@@ -66,26 +78,26 @@ function guardarRegistro(datos) {
 
             const respuesta = response.data;
 
-            if(respuesta === 1){
+            if (respuesta === 1) {
 
                 Swal.fire({
-                title: "Hubo un error!",
-                text: "Este correo ya fue usado anteriormente.",
-                icon: "error"
-            });
-        }
+                    title: "Hubo un error!",
+                    text: "Este correo ya fue usado anteriormente.",
+                    icon: "error"
+                });
+            }
 
-            if(respuesta === 2){
+            if (respuesta === 2) {
 
                 formulario.reset();
 
-                    Swal.fire({
+                Swal.fire({
                     title: "Registro exitoso!",
                     text: "Los datos se han guardado correctamente.",
                     icon: "success"
                 });
             }
-            
+
         })
         .catch(function (error) {
             console.log(error);
@@ -112,4 +124,18 @@ function mostrarAlerta(mensaje, id) {
             alerta.remove();
         }, 3000);
     }
+}
+
+function validarCorreo(email) {
+    // Expresión regular para validar un correo electrónico
+    const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regexCorreo.test(email);
+}
+
+function validarFecha(fecha) {
+    var fechaActual = new Date();
+
+    var fechaIngresada = new Date(fecha);
+
+    return fechaIngresada < fechaActual;
 }
