@@ -8,6 +8,7 @@ CREATE TABLE clientes(
     lastname varchar(30) not null,
     fechaDeNacimiento date not null,
     correo varchar(30) not null,
+    phone varchar(15) not null,
     comentarios TEXT,
     CONSTRAINT pk_usuario PRIMARY KEY (id)
 )ENGINE=InnoDB;

@@ -3,36 +3,36 @@
 require_once('./conexion.php');
 require_once('./main.php');
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    $data = json_decode(file_get_contents("php://input"), true);
+}
 
-
-$name = limpiar_cadena($_POST['name']);
-$lastname = limpiar_cadena($_POST['lastname']);
-$fechaN = limpiar_cadena($_POST['date']);
-$correo = limpiar_cadena($_POST['email']);
-$phone = limpiar_cadena($_POST['phone']);
-$texto = limpiar_cadena($_POST['text']);
+$name = limpiar_cadena($data['name']);
+$lastname = limpiar_cadena($data['lastname']);
+$date = limpiar_cadena($data['date']);
+$correo = limpiar_cadena($data['email']);
+$phone = limpiar_cadena($data['phone']);
+$texto = limpiar_cadena($data['text']);
 
 //validar campos
 
+if (filter_var($correo, FILTER_VALIDATE_EMAIL)) {
 
-if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
-    
     $sql_email = "SELECT * FROM clientes WHERE correo = '$correo'; ";
     $check_email = mysqli_query($conexion, $sql_email);
 
-    if($check_email && mysqli_num_rows($check_email)==1){
-        $_SESSION['correo'] = true;
+    if ($check_email && mysqli_num_rows($check_email) == 1) {
+        echo 1;
+        die();
     }
-    
 }
 
-    $sql = "INSERT INTO clientes VALUES ('$name', '$lastname', '$fechaN', '$correo', '$phone', '$texto')";
-    $save = mysqli_query($conexion, $sql) ;
+$sql = "INSERT INTO clientes VALUES (null,'$name', '$lastname', '$date', '$correo', '$phone', '$texto')";
+$save = mysqli_query($conexion, $sql);
 
-    if($save){
-        $_SESSION['guardado'] = true;
-        header('location:../index.php#formClientes');
-    }
+if ($save) {
+    echo 2;
+}
 
-    mysqli_close($conexion);
-?>
+

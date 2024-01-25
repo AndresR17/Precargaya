@@ -48,8 +48,12 @@ function mostrarAlerta($errores,$parametro){
 
 function BorrarErrores(){
 
-	if(isset($_SESSION['errores'])){
-		$_SESSION['errores']=null;
+	if(isset($_SESSION['guardado'])){
+		$_SESSION['guardado']=null;
+	}
+
+    if(isset($_SESSION['correo'])){
+		$_SESSION['correo']=null;
 	}
 
 }

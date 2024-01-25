@@ -15,6 +15,8 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
 
@@ -437,13 +439,10 @@
                 </div>
             </div>
 
-            <?php 
-            if(isset($_SESSION['correo']))
-            ?>
-
+        
             <div class="row m-0">
                 <div class="col-md-12 p-0 pt-4 pb-4">
-                    <form class="bg-dark p-4 m-auto" action="./config/registro.php" method="POST" id="formClientes">
+                    <form class="bg-dark p-4 m-auto"  method="POST" id="formClientes">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mb-3">
@@ -526,7 +525,7 @@
             </div>
         </div>
     </footer>
-    
+    <?php BorrarErrores(); ?>
     <script src="./js/formClientes.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
