@@ -47,7 +47,12 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link">login</a>
+                        <a href="https://wa.link/xtfpkd" class="nav-link" >Contacto</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="#"< class="bi bi-person-square text-white ">admiistrar</a>
                     </li>
             </div>
         </div>

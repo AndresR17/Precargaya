@@ -32,9 +32,7 @@
             </button>
             <div class="collapse navbar-collapse " id="navbarS">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Inicio</a>
-                    </li>
+                    
 
                     <li class="nav-item">
                         <a href="#servicios" class="nav-link">Servicios</a>
@@ -48,9 +46,7 @@
                         <a href="https://wa.link/xtfpkd" target="_blank" class="nav-link">Contacto</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="https://wa.link/xtfpkd" class="nav-link" target="_blank">Ayuda</a>
-                    </li>
+                
                 </ul>
             </div>
         </div>

@@ -78,7 +78,7 @@
                             </div>
                             <h3>1XBET</h3>
                             <p>¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
-                            <a href=""
+                            <a href="https://affpa.top/L?tag=d_1838183m_97c_&site=1838183&ad=97"
                                 target="_blank"><button class="btn bg-primary text-white">Registrarme!</button></a>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                             </div>
                             <h3>BETWINNER</h3>
                             <p>¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
-                            <a href="https://betwinner-189796.top/es?btag=d_91983m_510625c_bw_MrjngF7MW7aJqBMLP3Kpj6"
+                            <a href="https://mqzegh.top/28PT?p=%2Fregistration%2F"
                                 target="_blank"><button class="btn bg-primary text-white">Registrame!</button></a>
                         </div>
                     </div>
@@ -237,3 +237,32 @@
             </div>
         </div>
     </section>
+    </body>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>© 2024 RecargaYA</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <div class="footer-links">
+                        <a href="#">Inicio</a>
+                        <a href="#aliados">Aliados</a>
+                        <a href="#servicios">Servicios</a>
+                        <a href="https://wa.link/xtfpkd">Contacto</a>
+                    </div>
+                    <div class="footer-social">
+                        <a href="https://web.facebook.com/profile.php?id=100094769269248" target="_blank">Facebook</a>
+                        <a href="https://wa.link/xtfpkd" target="_blank">Whatsapp</a>
+                        <a href="https://www.instagram.com/recargaya_col/" target="_blank">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <?php BorrarErrores(); ?>
+    <script src="./js/formClientes.js"></script>
+
+</html>
+
