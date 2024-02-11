@@ -6,6 +6,9 @@
             <a href="https://wa.link/xtfpkd" target="_blank"><img src="./img/footer/whatsapp.png" class="w-6 h-6"></a>
         </div>
     </footer>
+
     <script src="./src/js/app.js"></script>
+    <script src="./src/js/slide.js"></script>
+    
 </body>
 </html>

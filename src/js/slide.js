@@ -7,7 +7,8 @@ window.addEventListener('load', ()=> {
         const splide = new Splide(element, {
             perPage: 1,
             rewind: true,
-            
+            autoplay: true, 
+            interval: 3000,
         });
     
         splide.mount();
