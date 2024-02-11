@@ -9,6 +9,7 @@
 
     <script src="./src/js/app.js"></script>
     <script src="./src/js/slide.js"></script>
+    <script src="./src/js/formLogin.js"></script>
     
 </body>
 </html>

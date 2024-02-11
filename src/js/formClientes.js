@@ -6,7 +6,6 @@ function validarCampos(e) {
     e.preventDefault();
 
     const name = document.getElementById('name').value;
-    const lastname = document.getElementById('lastname').value;
     const date = document.getElementById('date').value;
     const phone = document.getElementById('phone').value;
     const email = document.getElementById('email').value;
@@ -17,10 +16,6 @@ function validarCampos(e) {
         return
     }
 
-    if (lastname.trim() == "") {
-        mostrarAlerta('El apellido es obligatorio', 'resLastName')
-        return
-    }
 
     if(date === ""){
         mostrarAlerta('Define una fecha de nacimiento', 'resDate')

@@ -28,7 +28,7 @@ if (filter_var($correo, FILTER_VALIDATE_EMAIL)) {
     }
 }
 
-$sql = "INSERT INTO clientes VALUES (null,'$name', '$lastname', '$date', '$correo', '$phone', '$texto')";
+$sql = "INSERT INTO clientes VALUES (null,'$name', , '$date', '$correo', '$phone', '$texto')";
 $save = mysqli_query($conexion, $sql);
 
 if ($save) {
