@@ -5,16 +5,17 @@
             <span class="self-center text-2xl font-bold whitespace-nowrap text-white tracking-wide">RECARGAYA!</span>
         </a>
         <div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
-            <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" type="button">
-                <div class="flex">
-                    <?php if(isset($_SESSION['usuario'])){ ?>
-                        <p class="text-white">Hola </p>
-                    <?php } ?>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                    </svg>
-                </div>
-            </button>
+            <?php if (isset($_SESSION['user'])) : $datos = $_SESSION['user']  ?>
+                <p class="text-white font-semibold">Bienvenido: <span class="font-normal"><?= $datos['usuario'] ?> </span> </p>
+            <?php else : ?>
+                <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" type="button">
+                    <div class="flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                    </div>
+                </button>
+            <?php endif; ?>
             <button data-collapse-toggle="mega-menu-icons" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-icons" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -31,6 +32,14 @@
                 <li>
                     <a href="#" class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">contactos</a>
                 </li>
+                <?php if (isset($_SESSION['user'])) :  ?>
+                    <li>
+                        <a href="registros.php" class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Registros</a>
+                    </li>
+                    <li>
+                        <a href="./config/logout.php" class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Cerrar Sesion</a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>
@@ -57,7 +66,7 @@
                     <form class="space-y-4" id="formLogin">
                         <div class="mostrarAlerta mt-2"></div>
                         <div>
-                            <label for="user" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">user o usuario</label>
+                            <label for="user" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email o usuario</label>
                             <input type="text" name="user" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                         </div>
                         <div>

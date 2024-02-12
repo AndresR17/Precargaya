@@ -24,39 +24,33 @@ function ValidarDatos(e) {
         password
     }
 
-
+    IniciarSesion(datos)
 
 }
 
 function IniciarSesion(datos) {
 
-    axios.post('./config/registro.php', datos, {
+    axios.post('./config/login.php', datos, {
         headers: {
             'Content-Type': 'application/json'
         }
     })
         .then(function (response) {
 
-            const respuesta = response.data;
+            const  respuesta  = response.data;
+            console.log(response);
 
             if (respuesta === 1) {
 
-                Swal.fire({
-                    title: "Hubo un error!",
-                    text: "Este correo ya fue usado anteriormente.",
-                    icon: "error"
-                });
+                formLogin.reset();
+                window.location.href = 'index.php';
+                
             }
 
             if (respuesta === 2) {
 
-                formulario.reset();
-
-                Swal.fire({
-                    title: "Registro exitoso!",
-                    text: "Los datos se han guardado correctamente.",
-                    icon: "success"
-                });
+                mostrarAlerta('No existe este usuario!')
+                return
             }
 
         })
@@ -73,7 +67,7 @@ function mostrarAlerta(mensaje) {
         
         const alerta = document.createElement('div');
         alerta.innerHTML = `
-            <span class="alerta block text-center w-full text-sm text-red-800 border border-red-400 rounded bg-red-200 px-4 py-2">${mensaje}</span>
+            <span class="alerta block text-center w-full text-sm text-red-800 border border-red-400 font-semibold rounded bg-red-200 px-4 py-2">${mensaje}</span>
         `;
 
         divAlerta.appendChild(alerta);
