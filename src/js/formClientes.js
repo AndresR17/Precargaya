@@ -5,57 +5,58 @@ formulario.addEventListener('submit', validarCampos);
 function validarCampos(e) {
     e.preventDefault();
 
+    const documento = document.getElementById('documento').value;
     const name = document.getElementById('name').value;
-    const date = document.getElementById('date').value;
     const phone = document.getElementById('phone').value;
     const email = document.getElementById('email').value;
-    const text = document.getElementById('text').value;
+    const message = document.getElementById('message').value;
+    const aceptoCheck = document.getElementById('acepto');
+
+
+    if (documento.trim() === '' ) {
+        
+        mostrarError('Define tu numero de documento', 'resDoc');
+        return;
+
+    }else if(isNaN(documento)){
+        mostrarError('Este campo es numérico', 'resDoc');
+        return
+    }
 
     if (name.trim() == "") {
-        mostrarAlerta('El nombre es obligatorio', 'resName')
+        mostrarError('El nombre es obligatorio', 'resName')
         return
     }
-
-
-    if(date === ""){
-        mostrarAlerta('Define una fecha de nacimiento', 'resDate')
-        return
-    }
-
-    if (!validarFecha(date)) {
-        mostrarAlerta('La fecha ingresada no es valida.','resDate');
-        return
-    } 
 
     if (email.trim() === "") {
-        mostrarAlerta('Define tu correo', 'resEmail');
+        mostrarError('Define tu correo', 'resEmail');
         return;
 
     } else if (!validarCorreo(email)) {
-        mostrarAlerta('El formato del correo es inválido', 'resEmail');
+        mostrarError('El formato del correo es inválido', 'resEmail');
         return;
     }
 
     if (phone.trim() === '' ) {
-        mostrarAlerta('Define tu numero de contacto', 'resPhone');
+        mostrarError('Define tu numero de contacto', 'resPhone');
         return;
     }else if(isNaN(phone)){
-        mostrarAlerta('Este campo es numérico', 'resPhone');
+        mostrarError('Este campo es numérico', 'resPhone');
         return
     }
 
-    if (text.trim() === "") {
-        mostrarAlerta('Dejanos tu comentario', 'resText')
+    if(aceptoCheck.checked === false){
+        mostrarError('Debes aceptar los terminos y condiciones', 'resCheck');
         return
     }
 
     const datos = {
+        documento,
         name,
-        lastname,
-        date,
         email,
         phone,
-        text
+        message,
+        check : 'Acepto terminos'
     }
 
     guardarRegistro(datos)
@@ -72,6 +73,7 @@ function guardarRegistro(datos) {
         .then(function (response) {
 
             const respuesta = response.data;
+            console.log(response)
 
             if (respuesta === 1) {
 
@@ -102,7 +104,7 @@ function guardarRegistro(datos) {
 
 
 
-function mostrarAlerta(mensaje, id) {
+function mostrarError(mensaje, id) {
 
     const alerta = document.querySelector(`.${id}`);
 
@@ -111,7 +113,7 @@ function mostrarAlerta(mensaje, id) {
         const container = document.getElementById(id)
 
         alerta.innerHTML = `
-            <span class="${id} text-white bg-danger rounded p-2 mt-4">${mensaje}</span>
+            <span class="${id} block p-2 mt-2 text-sm text-red-800 border border-red-600 rounded-lg bg-red-50">${mensaje}</span>
         `;
 
         container.appendChild(alerta);
@@ -127,10 +129,3 @@ function validarCorreo(email) {
     return regexCorreo.test(email);
 }
 
-function validarFecha(fecha) {
-    var fechaActual = new Date();
-
-    var fechaIngresada = new Date(fecha);
-
-    return fechaIngresada < fechaActual;
-}

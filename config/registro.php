@@ -8,31 +8,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $data = json_decode(file_get_contents("php://input"), true);
 }
 
+$documento = limpiar_cadena($data['documento']);
 $name = limpiar_cadena($data['name']);
-$lastname = limpiar_cadena($data['lastname']);
-$date = limpiar_cadena($data['date']);
 $correo = limpiar_cadena($data['email']);
 $phone = limpiar_cadena($data['phone']);
-$texto = limpiar_cadena($data['text']);
+$message = limpiar_cadena($data['message']);
+$check = limpiar_cadena($data['check']);
 
 //validar campos
 
-if (filter_var($correo, FILTER_VALIDATE_EMAIL)) {
 
-    $sql_email = "SELECT * FROM clientes WHERE correo = '$correo'; ";
-    $check_email = mysqli_query($conexion, $sql_email);
+    // if (filter_var($correo, FILTER_VALIDATE_EMAIL)) {
 
-    if ($check_email && mysqli_num_rows($check_email) == 1) {
-        echo 1;
-        die();
-    }
-}
+    //     $sql_email = "SELECT * FROM clientes WHERE correo = '$correo'; ";
+    //     $check_email = mysqli_query($conexion, $sql_email);
 
-$sql = "INSERT INTO clientes VALUES (null,'$name', , '$date', '$correo', '$phone', '$texto')";
-$save = mysqli_query($conexion, $sql);
+    //     if ($check_email && mysqli_num_rows($check_email) == 1) {
+    //         echo 1;
+    //         die();
+    //     }
+    // }
 
-if ($save) {
-    echo 2;
-}
+    // $sql = "INSERT INTO clientes  VALUES (null, $documento, '$name', '$correo', '$phone', '$message', '$check')";
+    // $save = mysqli_query($conexion, $sql);
 
+    // if ($save) {
+    //     echo 2;
+    // }
 
+echo 3;

@@ -13,8 +13,8 @@
                 <img src="./img/img.1.jpg" alt="">
                 <div class="overlay"></div>
                 <div class="slide-content">
-                    <div class="slide-title text-center text-white text-4xl font-bold tracking-wide">RECARGA TU CUENTA</div>
-                    <div class="slide-description text-white text-center text-xl">¿Qué es RecargaYA? RecargaYA es una de las plataformas de recarga y retiros de premios nacional más usada en Colombia.</div>
+                    <div class="slide-title text-center text-white sm:text-2xl md:text-4xl sm:block font-bold tracking-wide">RECARGA TU CUENTA</div>
+                    <div class="slide-description text-white text-center sm:text-sm lg:text-xl">¿Qué es RecargaYA? RecargaYA es una de las plataformas de recarga y retiros de premios nacional más usada en Colombia.</div>
                 </div>
             </li>
 
@@ -22,8 +22,8 @@
                 <img src="./img/img.2.jpg" alt="">
                 <div class="overlay"></div>
                 <div class="slide-content">
-                    <div class="slide-title text-center text-white text-4xl font-bold tracking-wide">RETIRAR AHORA</div>
-                    <div class="slide-description text-white text-center text-xl">Con la confianza de mas de 1000 personas en toda colombia solo basta tener conexión a internet y podrás utilizar nuestros servicios de recargas y retiros. Hemos realizado miles de transferencias en línea desde 2022</div>
+                    <div class="slide-title text-center text-white sm:text-2xl md:text-4xl sm:block font-bold tracking-wide">RETIRAR AHORA</div>
+                    <div class="slide-description text-white text-center sm:text-sm lg:text-xl">Podras realizar tus retiros, sin tener que preocuparte. Hemos realizado miles de transferencias en línea desde 2022</div>
                 </div>
             </li>
 
@@ -31,8 +31,8 @@
             <img src="./img/img.3.jpg" alt="">
                 <div class="overlay"></div>
                 <div class="slide-content">
-                    <div class="slide-title text-center text-white text-4xl font-bold tracking-wide">DEPOSITA AHORA</div>
-                    <div class="slide-description text-white text-center text-xl">El 99% de los depositos y retiros realizados con RecargaYA son procesados entre 1 a 5 minutos y con 0% de comisiones</div>
+                    <div class="slide-title text-center text-white sm:text-2xl md:text-4xl sm:block font-bold tracking-wide">DEPOSITA AHORA</div>
+                    <div class="slide-description text-white text-center sm:text-sm lg:text-xl">El 99% de los depositos y retiros realizados con RecargaYA son procesados entre 1 a 5 minutos y con 0% de comisiones</div>
                 </div>
             </li>
             

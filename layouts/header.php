@@ -20,6 +20,9 @@
     <!-- libreria AXIOS  -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+    <!-- Libreria para mostrar alertas  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     <title>RecargaYa</title>
     <link rel="shortcut icon" href="img/logo-antes.jpg" type="image/x-icon">

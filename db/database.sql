@@ -4,13 +4,13 @@ USE precargaya;
 
 CREATE TABLE clientes(
     id int(50) auto_increment not null,
-    name varchar(30) not null,
-    lastname varchar(30) not null,
-    fechaDeNacimiento date not null,
-    correo varchar(30) not null,
+    documento int(15) not null,
+    name varchar(60) not null,
+    email varchar(60) not null,
     phone varchar(15) not null,
     comentarios TEXT,
-    CONSTRAINT pk_usuario PRIMARY KEY (id)
+    terminos BOOLEAN
+    CONSTRAINT pk_clientes PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
 CREATE TABLE usuarios(
@@ -20,3 +20,4 @@ CREATE TABLE usuarios(
     rol varchar(15) not null,
     CONSTRAINT pk_usuario PRIMARY KEY (id)
 )ENGINE=InnoDB;
+
