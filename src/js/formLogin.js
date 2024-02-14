@@ -38,18 +38,14 @@ function IniciarSesion(datos) {
         .then(function (response) {
 
             const  respuesta  = response.data;
-            console.log(response);
 
             if (respuesta === 1) {
-
                 formLogin.reset();
-                window.location.href = 'index.php';
-                
+                window.location.href = 'registros.php';
             }
 
             if (respuesta === 2) {
-
-                mostrarAlerta('No existe este usuario!')
+                mostrarAlerta('El usuario o password son incorrectos!')
                 return
             }
 

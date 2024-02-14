@@ -6,7 +6,7 @@
         </a>
         <div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
             <?php if (isset($_SESSION['user'])) : $datos = $_SESSION['user']  ?>
-                <p class="text-white font-semibold">Bienvenido: <span class="font-normal"><?= $datos['usuario'] ?> </span> </p>
+                <p class="text-white font-semibold">Bienvenido: <span class="font-normal"><?= $datos['user'] ?> </span> </p>
             <?php else : ?>
                 <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" type="button">
                     <div class="flex">
@@ -63,7 +63,7 @@
                 </div>
                 <!-- Modal body -->
                 <div class="p-4 md:p-5">
-                    <form class="space-y-4" id="formLogin">
+                    <form class="space-y-4" id="formLogin" method="POST">
                         <div class="mostrarAlerta mt-2"></div>
                         <div>
                             <label for="user" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email o usuario</label>

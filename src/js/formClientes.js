@@ -65,6 +65,7 @@ function validarCampos(e) {
 
 function guardarRegistro(datos) {
 
+
     axios.post('./config/registro.php', datos, {
         headers: {
             'Content-Type': 'application/json'
@@ -73,7 +74,6 @@ function guardarRegistro(datos) {
         .then(function (response) {
 
             const respuesta = response.data;
-            console.log(response)
 
             if (respuesta === 1) {
 
@@ -82,16 +82,24 @@ function guardarRegistro(datos) {
                     text: "Este correo ya fue usado anteriormente.",
                     icon: "error"
                 });
-            }
 
-            if (respuesta === 2) {
+            }else if (respuesta === 2) {
 
                 formulario.reset();
 
                 Swal.fire({
-                    title: "Registro exitoso!",
-                    text: "Los datos se han guardado correctamente.",
+                    title: "Felicitaciones!",
+                    text: "Tu registro fue realizado con exito!",
                     icon: "success"
+                });
+
+            }else{
+                const { mensaje } = respuesta
+                
+                Swal.fire({
+                    title: "Hubo un error!",
+                    text: `${mensaje}`,
+                    icon: "error"
                 });
             }
 

@@ -4,7 +4,7 @@ require_once('./conexion.php');
 require_once('./main.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
     $data = json_decode(file_get_contents("php://input"), true);
 }
 
@@ -15,25 +15,57 @@ $phone = limpiar_cadena($data['phone']);
 $message = limpiar_cadena($data['message']);
 $check = limpiar_cadena($data['check']);
 
+$response = array();
 //validar campos
 
+if ($documento == "" || $name == "" || $correo == "" || $phone == "" || $check == "") {
+    $response['mensaje'] = "Tus datos no son aceptados en nuestra plataforma.";
+}
 
-    // if (filter_var($correo, FILTER_VALIDATE_EMAIL)) {
 
-    //     $sql_email = "SELECT * FROM clientes WHERE correo = '$correo'; ";
-    //     $check_email = mysqli_query($conexion, $sql_email);
+if ($correo == "") {
+    $response['mensaje'] = "Tus datos no son aceptados en nuestra plataforma.";
+} else {
 
-    //     if ($check_email && mysqli_num_rows($check_email) == 1) {
-    //         echo 1;
-    //         die();
-    //     }
-    // }
+    if (filter_var($correo, FILTER_VALIDATE_EMAIL)) {
 
-    // $sql = "INSERT INTO clientes  VALUES (null, $documento, '$name', '$correo', '$phone', '$message', '$check')";
-    // $save = mysqli_query($conexion, $sql);
 
-    // if ($save) {
-    //     echo 2;
-    // }
+        $sql_email = "SELECT * FROM clientes WHERE email = ?";
+        $stmt = mysqli_prepare($conexion, $sql_email);
+        mysqli_stmt_bind_param($stmt, "s", $correo);
+        mysqli_stmt_execute($stmt);
+        $resultado = mysqli_stmt_get_result($stmt);
 
-echo 3;
+        // Verificar si se encontró un resultado
+        if (mysqli_num_rows($resultado) == 1) {
+            mysqli_stmt_close($stmt);
+            echo 1;
+            die();
+        }
+    }
+}
+
+if (count($response) > 0) {
+
+    // Devuelve la respuesta como JSON
+    header('Content-Type: application/json');
+    echo json_encode($response);
+
+}else{
+
+    $sql = "INSERT INTO clientes (documento, name, email, phone, comentarios, terminos) VALUES (?, ?, ?, ?, ?, ?)";
+
+    // Preparar la declaración
+    $stmt = mysqli_prepare($conexion, $sql);
+
+    mysqli_stmt_bind_param($stmt, "ssssss", $documento, $name, $correo, $phone, $message, $check);
+
+    $success = mysqli_stmt_execute($stmt);
+
+    if ($success) {
+        echo 2;
+    }
+
+    mysqli_stmt_close($stmt);
+    exit();
+}
