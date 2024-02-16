@@ -1,8 +1,9 @@
 <?php
-require_once('./layouts/header.php');
+session_start();
 if (!isset($_SESSION['user'])) {
     header('location:../index.php');
 }
+require_once('./layouts/header.php');
 require_once('./layouts/nav.php');
 ?>
 
@@ -52,3 +53,6 @@ require_once('./layouts/nav.php');
         </div>
     </div>
 </div>
+
+</body>
+</html>

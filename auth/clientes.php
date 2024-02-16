@@ -1,9 +1,15 @@
 <?php
-require_once('./layouts/header.php');
+session_start();
 if (!isset($_SESSION['user'])) {
     header('location:../index.php');
 }
+
+if(!isset($_GET['pagina'])){
+    header('location:./clientes.php?pagina=1');
+}
+require_once('./layouts/header.php');
 require_once('./layouts/nav.php');
+
 ?>
 
 <div class="p-4 sm:ml-64">
@@ -13,42 +19,56 @@ require_once('./layouts/nav.php');
         </div>
 
         <!-- cards de los clientes -->
-        <div class="p-4 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ">
-            <div class="relative block overflow-hidden rounded-lg border border-gray-100 p-2 sm:p-2 lg:p-4">
-                <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
-                <div class="sm:flex sm:justify-between sm:gap-4">
-                    <div>
-                        <h3 class="text-lg font-bold text-gray-100 sm:text-xl">
-                            Nombre completo
-                        </h3>
-                        <p class="mt-1 text-xs font-medium text-gray-200">No documento</p>
-                    </div>
-                </div>
-                <div class="sm:flex sm:justify-between sm:gap-4">
-                    <div>
-                        <p class="mt-1 text-xs font-medium text-gray-200">Email</p>
-                        <p class="mt-1 text-xs font-medium text-gray-200">Contacto</p>
-                    </div>
-                </div>
-                <div class="">
-                    <p>contenido del mensaje</p>
-                </div>
-                <dl class="mt-2 flex gap-4 sm:gap-6 mb-2">
-                    <div class="flex flex-col-reverse">
-                        <dd class="text-xs text-gray-500">31st June, 2021</dd>
-                    </div>
-                </dl>
+        <div class="p-4">
+
+            <div class="relative overflow-x-auto rounded">
+                <table class="w-full text-sm text-left rtl:text-right">
+                    <thead class="text-xs text-gray-400 uppercase bg-gray-700">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Nombre
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Documento
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Email
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Telefono
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Opciones
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-gray-800 border-b border-gray-400 text-gray-200">
+                            <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-gray-100">
+                                Administrador
+                            </th>
+                            <td class="px-6 py-4">
+                                admin
+                            </td>
+                            <td class="px-6 py-4">
+                                admin
+                            </td>
+                            <td class="px-6 py-4">
+                                admin
+                            </td>
+                            <td class="px-6 py-4 space-x-4">
+                                <a href="#" class="px-2 py-1 text-sm bg-red-300 rounded text-red-800 font-semibold hover:bg-red-600 hover:text-white">Eliminar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+
         </div>
     </div>
 </div>
 
 
-<!-- <div class="mt-2">
-    <p class="text-pretty text-sm text-gray-400">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. At velit illum provident a, ipsa
-        maiores deleniti consectetur nobis et eaque.
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt suscipit commodi voluptatem omnis dolorem sunt atque laborum, quis veniam iusto iure repellat fugit vero laboriosam mollitia. Sint dolor eligendi explicabo?
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem natus eligendi, quos sapiente maiores blanditiis minus atque officiis minima aspernatur vel iure fugit harum ea tempore earum nostrum odit. Ab.
-    </p>
-</div> -->
+
+</body>
+</html>

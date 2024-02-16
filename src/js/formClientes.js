@@ -2,6 +2,8 @@ const formulario = document.getElementById('formClientes');
 
 formulario.addEventListener('submit', validarCampos);
 
+
+//validacion del formulario
 function validarCampos(e) {
     e.preventDefault();
 
@@ -50,6 +52,7 @@ function validarCampos(e) {
         return
     }
 
+    //crear los datos
     const datos = {
         documento,
         name,
@@ -64,7 +67,6 @@ function validarCampos(e) {
 }
 
 function guardarRegistro(datos) {
-
 
     axios.post('./config/registro.php', datos, {
         headers: {

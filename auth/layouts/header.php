@@ -17,8 +17,7 @@
 
 
     <title>RecargaYa</title>
-    <link rel="shortcut icon" href="img/logo-antes.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="./src/css/app.css">
+    <link rel="shortcut icon" href="../img/logo-antes.jpg" type="image/x-icon">
     <?php
     // if ($_SERVER["HTTPS"] != "on") {
     //     // Redirige a la versión HTTPS de la misma página

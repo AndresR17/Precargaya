@@ -8,14 +8,14 @@
                         <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
                     </svg>
                 </button>
-                <a href="https://flowbite.com" class="flex ms-2 md:me-24">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
+                <div class="flex ms-2 md:me-24">
+                    <img src="../img/logo-antes.jpg" class="h-8 me-3" alt="FlowBite Logo" />
                     <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white">RecargaYa</span>
-                </a>
+                </div>
             </div>
             <div class="flex flex-col items-center">
-                <p class="font-semibold text-white">Nombre de usuario</p>
-                <span class="font-normal text-white">rol del usuario</span>
+                <p class="font-semibold text-white"><?= $_SESSION['user']['user']  ?></p>
+                <span class="font-normal text-white"><?= $_SESSION['user']['rol']  ?></span>
             </div>
         </div>
     </div>
@@ -47,6 +47,15 @@
                     </svg>
 
                     <span class="flex-1 ms-3 whitespace-nowrap">Clientes</span>
+                </a>
+            </li>
+            <li>
+                <a href="aliados.php" class="flex items-center p-2 rounded-lg group hover:text-white text-gray-200 hover:bg-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
+                    </svg>
+
+                    <span class="flex-1 ms-3 whitespace-nowrap">Aliados</span>
                 </a>
             </li>
             <li>
