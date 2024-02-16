@@ -3,7 +3,6 @@
         <div class="flex gap-3">
             <a href="https://web.facebook.com/profile.php?id=100094769269248" target="_blank"><img src="./img/footer/facebook.png" class="w-6 h-6"></a>
             <a href="https://www.instagram.com/recargaya_col/" target="_blank"><img src="./img/footer/instagram.png" class="w-6 h-6"></a>
-            <a href="https://wa.link/xtfpkd" target="_blank"><img src="./img/footer/whatsapp.png" class="w-6 h-6"></a>
         </div>
     </footer>
 

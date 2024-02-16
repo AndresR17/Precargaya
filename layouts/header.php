@@ -38,3 +38,12 @@
 </head>
 
 <body class="bg-black">
+
+
+
+<div data-dial-init class="fixed end-6 bottom-20 group">
+    <a href="https://wa.link/xtfpkd" target="_blank" type="button" data-dial-toggle="speed-dial-menu-default" aria-controls="speed-dial-menu-default" aria-expanded="false" class="flex items-center justify-center rounded-full w-14 h-14 bg-green-800 hover:bg-green-600 focus:outline-none">
+        <img src="./img/footer/whatsapp-logo.png" alt="">
+        <span class="sr-only">Open actions menu</span>
+    </a>
+</div>

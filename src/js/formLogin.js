@@ -41,7 +41,7 @@ function IniciarSesion(datos) {
 
             if (respuesta === 1) {
                 formLogin.reset();
-                window.location.href = 'registros.php';
+                window.location.href = './auth/usuarios.php';
             }
 
             if (respuesta === 2) {

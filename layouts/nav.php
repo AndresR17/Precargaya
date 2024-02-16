@@ -6,9 +6,6 @@
         </a>
         <div class="flex items-center md:order-2 space-x-1 md:space-x-4 rtl:space-x-reverse">
             <!-- Modal toggle -->
-            <?php if (isset($_SESSION['user'])) : $datos = $_SESSION['user']  ?>
-                <p class="text-white font-semibold">Bienvenido: <span class="font-normal"><?= $datos['user'] ?> </span> </p>
-            <?php else : ?>
 
                 <!-- boton del modal de registro  -->
                 <button data-modal-target="modal-register" data-modal-toggle="modal-register" class="block text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center " type="button">
@@ -23,8 +20,6 @@
                         </svg>
                     </div>
                 </button>
-
-            <?php endif; ?>
 
             <button data-collapse-toggle="mega-menu-icons" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-icons" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
@@ -42,14 +37,6 @@
                 <li>
                     <a href="#" class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white">contactos</a>
                 </li>
-                <?php if (isset($_SESSION['user'])) :  ?>
-                    <li>
-                        <a href="registros.php" class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white">Registros</a>
-                    </li>
-                    <li>
-                        <a href="./config/logout.php" class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white">Cerrar Sesion</a>
-                    </li>
-                <?php endif; ?>
             </ul>
         </div>
     </div>
