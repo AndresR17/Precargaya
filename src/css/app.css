@@ -16,25 +16,6 @@
 	background-repeat: no-repeat;
 }
 
-/* Estilos para el titulo */
-.splide__slide .slide-title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
-
-/* Estilos para la descripción */
-.splide__slide .slide-description {
-    position: absolute;
-    top: 65%; 
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    line-height: 1.5;
-
-}
 
 /* Estilos para el div semitransparente */
 .splide__slide .overlay {

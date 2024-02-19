@@ -8,15 +8,15 @@ require_once('./layouts/slide.php');
     <div class="lg:w-[40rem] xl:w-[50rem] 2xl:w-[60rem]">
         <img src="./img/img.down.jpg" class="w-full" alt="Img-RecargaYa">
     </div>
-    <div data-aos="zoom-out-left" class="flex flex-col lg:px-20 xl:p-6">
-        <h2 class="text-white text-4xl mt-5 font-semibold lg:mt-5 xl:text-2xl 2xl:text-4xl">RecargaYA! <br> Acompañandote en los mejores momentos.</h2>
-        <p class="text-gray-300 pt-5">
+    <div data-aos="zoom-out-left" class="flex justify-center flex-col lg:px-20 xl:p-6 space-y-6">
+        <h2 class="text-white text-4xl font-semibold xl:text-2xl 2xl:text-4xl mt-5 xl:m-0">RecargaYA! <br> Acompañandote en los mejores momentos.</h2>
+        <p class="text-gray-300 text-base">
             No importa si estas en tu casa, trabajo u oficina solo basta tener conexión a internet y
             podrás utilizar nuestros servicios de recargas y retiros. Hemos realizado miles de
             transferencias en línea desde 2022
         </p>
-        <div class="mt-3">
-            <a href="https://wa.link/xtfpkd" class="px-4 py-2 text-white bg-blue-600 hover:bg-blue-800 rounded" target="_blank">Cajero Oficial</a>
+        <div class="w-full">
+            <a href="https://wa.link/xtfpkd" class="px-14 py-2 text-white bg-blue-600 hover:bg-blue-800 rounded text-base text-center" target="_blank">Cajero Oficial</a>
         </div>
     </div>
 </section>
