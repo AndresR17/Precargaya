@@ -9,7 +9,7 @@
     </div>
     <div class="splide__track">
         <ul class="splide__list">
-            <li class="splide__slide splide-1">
+            <li class="splide__slide splide-1" data-splide-interval="5000">
                 <img src="./img/img.1.jpg" alt="">
                 <div class="overlay"></div>
                 <div class="slide-content">

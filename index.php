@@ -4,88 +4,90 @@ require_once('./layouts/nav.php');
 require_once('./layouts/slide.php');
 ?>
 
-<section data-aos="zoom-out-up" class="flex flex-col xl:flex-row my-10 mx-5 md:mx-[2rem] xl:mx-[10rem] p-4 items-center justify-center">
-    <div class="lg:w-[40rem] xl:w-[50rem] 2xl:w-[60rem]">
+<section data-aos="zoom-out-up" class="flex flex-col xl:flex-row my-[5rem] mx-5 md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem] items-center justify-center">
+    <div class="lg:w-[40rem] xl:w-[60rem]">
         <img src="./img/img.down.jpg" class="w-full" alt="Img-RecargaYa">
     </div>
     <div data-aos="zoom-out-left" class="flex justify-center flex-col lg:px-20 xl:p-6 space-y-6">
         <h2 class="text-white text-4xl font-semibold xl:text-2xl 2xl:text-4xl mt-5 xl:m-0">RecargaYA! <br> Acompañandote en los mejores momentos.</h2>
-        <p class="text-gray-300 text-base">
-            No importa si estas en tu casa, trabajo u oficina solo basta tener conexión a internet y
-            podrás utilizar nuestros servicios de recargas y retiros. Hemos realizado miles de
+        <p class="text-gray-300 text-lg text-justify">
+            No importa si estas en tu casa, trabajo u oficina solo basta tener conexión a internet
+            y podrás utilizar nuestros servicios de recargas y retiros. Hemos realizado miles de
             transferencias en línea desde 2022
         </p>
-        <div class="w-full">
-            <a href="https://wa.link/xtfpkd" class="px-14 py-2 text-white bg-blue-600 hover:bg-blue-800 rounded text-base text-center" target="_blank">Cajero Oficial</a>
+        <div class="">
+            <a class="inline-block uppercase rounded bg-blue-600 px-16 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-blue-500" href="#">
+                Cajero oficial
+            </a>
         </div>
     </div>
 </section>
 
-<section class="flex items-center justify-center mx-5 md:mx-[2rem] xl:mx-[10rem] px-4 ">
-    <div data-aos="fade-up-right" class="">
-        <h2 class="text-gray-100 text-center text-4xl font-semibold mb-5">Nuestros Servicios </h2>
-        <p class="text-gray-200 text-justify lg:px-12">Enviar una recarga en línea o bien dicho de otra manera, <span class="font-semibold text-blue-300">RECARGAR O RETIRAR PREMIOS</span> de una aplicación de apuestas, nunca fue tan fácil como lo es con RecargaYA.
-            Además de recibir dinero en efectivo en nuestras sedes comerciales, nos especializamos en
-            las transferencias en línea por medio de <span class="font-semibold text-blue-300">NEQUI, DAVIPLATA y BANCOLOMBIA, </span>de esta manera dando oportunidades a nuestro público Colombiano poder interactuar inclusive con plataformas
-            internacionales que operan en diferentes monedas, como Euros, Dólar entre otras muchas
-            opciones.
+<section class="flex items-center justify-center mx-5 my-[8rem] md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem]">
+    <div data-aos="fade-up-right space-y-10" class="">
+        <h2 class="text-gray-100 text-center text-4xl font-semibold mb-5 uppercase">Nuestros Servicios </h2>
+        <p class="text-gray-200 text-lg text-justify lg:px-12">Enviar una recarga en línea, o, dicho de otra manera, <span class="font-semibold text-blue-300">RECARGAR O RETIRAR PREMIOS</span> de una aplicación de apuestas, nunca fue tan fácil como lo es con RecargaYA. Además de recibir dinero en efectivo en nuestras sedes comerciales, nos especializamos en transferencias en línea por medio de <span class="font-semibold text-blue-300">NEQUI, DAVIPLATA y BANCOLOMBIA,</span> de esta manera, dando oportunidades a nuestro público colombiano para interactuar incluso con plataformas internacionales que operan en diferentes monedas, como euros, dólares, entre otras muchas opciones.
         </p>
     </div>
 </section>
 
-<section class="grid grid-cols-1 lg:grid-cols-3 mx-5 md:mx-[2rem] xl:mx-[10rem] mt-24 gap-6 ">
 
-    <div data-aos="zoom-in-up" class="w-full bg-gray-800 rounded-lg p-6 grid grid-cols-1 space-y-4">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="m-auto w-16 h-16">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
-        </svg>
-        <h3 class="text-yellow-300 font-semibold text-2xl text-center">Retiros</h3>
-        <p class="text-gray-300 text-justify">
-            ¡Descubre la comodidad de retirar dinero cuando quieras y donde quieras con Nequi
-            Daviplata y Bancolombia!
-            Queremos hacerte la vida más fácil y accesible, por eso te invitamos a aprovechar la
-            conveniencia de nuestros cajeros . Retira efectivo de tu cuenta Nequi
-            Daviplata y Bancolombia en cualquier momento, sin importar la hora o el lugar.
-        </p>
-        <a href="https://wa.link/xtfpkd" class="px-4 py-2 text-white bg-blue-600 hover:bg-blue-800 rounded w-full text-center" target="_blank">
-            Mas informacion
-        </a>
+<section class="flex flex-col md:flex-row items-center justify-center md:space-x-10 mx-5 md:mx-[2rem] xl:mx-[10rem] mt-24 gap-6 ">
+
+    <!-- Retiros -->
+    <div class="max-w-sm p-2 rounded-lg overflow-hidden md:hover:shadow-lg bg-gray-900 md:hover:scale-110 transition duration-300">
+        <div class="group relative">
+            <img class="block rounded-t-lg hover:scale-110 transition duration-300" src="./img/retiros.png" alt="Imagen retiros" />
+            <div class="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
+                <a href="https://wa.link/xtfpkd" target="_blank" class="text-white text-lg font-semibold uppercase">Realizar retiro</a>
+            </div>
+        </div>
+
+        <div class="p-5">
+            <h5 class="mb-6 text-4xl font-bold tracking-tight text-yellow-400">Retiros</h5>
+            <p class="mb-3 text-base text-gray-200 text-justify">¡Descubre la comodidad de retirar dinero cuando quieras y donde quieras con Nequi Daviplata y Bancolombia! Queremos hacerte la vida más fácil y accesible, por eso te invitamos a aprovechar la conveniencia de nuestros cajeros. Retira efectivo de tu cuenta Nequi Daviplata y Bancolombia en cualquier momento, sin importar la hora o el lugar.</p>
+            <div class="flex justify-center mt-10">
+                <a class="group relative uppercase inline-flex items-center overflow-hidden rounded bg-blue-600 px-14 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="https://wa.link/xtfpkd" target="_blank">
+                    <span class="absolute -end-full transition-all group-hover:end-4">
+                        <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </span>
+
+                    <span class="text-base font-medium transition-all group-hover:me-4"> Retirar ahora! </span>
+                </a>
+            </div>
+        </div>
     </div>
 
-    <div data-aos="zoom-in-up" class="w-full bg-gray-800 rounded-lg p-6 grid grid-cols-1 space-y-4">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="m-auto w-16 h-16">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
-        </svg>
-        <h3 class="text-yellow-300 font-semibold text-2xl text-center">Depositos</h3>
-        <p class="text-gray-300 text-justify">
-            ¡Descubre la comodidad de retirar dinero cuando quieras y donde quieras con Nequi
-            Daviplata y Bancolombia!
-            Queremos hacerte la vida más fácil y accesible, por eso te invitamos a aprovechar la
-            conveniencia de nuestros cajeros . Retira efectivo de tu cuenta Nequi
-            Daviplata y Bancolombia en cualquier momento, sin importar la hora o el lugar.
-        </p>
-        <a href="https://wa.link/xtfpkd" class="px-4 py-2 text-white bg-blue-600 hover:bg-blue-800 rounded w-full text-center" target="_blank">
-            Mas informacion
-        </a>
-    </div>
+    <!-- depositos -->
+    <div class="max-w-sm p-2 rounded-lg overflow-hidden md:hover:shadow-lg bg-gray-900 md:hover:scale-110 transition duration-300">
+        <div class="group relative">
+            <img class="block rounded-t-lg hover:scale-110 transition duration-300" src="./img/depositos.png" alt="Imagen retiros" />
+            <div class="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
+                <a href="https://wa.link/xtfpkd" target="_blank" class="text-white text-lg font-semibold uppercase">Realizar deposito</a>
+            </div>
+        </div>
 
-    <div data-aos="zoom-in-up" class="w-full bg-gray-800 rounded-lg p-6 grid grid-cols-1 space-y-4">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="m-auto w-16 h-16">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
-        </svg>
+        <div class="p-5">
+            <h5 class="mb-6 text-4xl font-bold tracking-tight text-yellow-400">Depositos</h5>
+            <p class="mb-3 text-base text-gray-200 text-justify">¡Descubre la comodidad de retirar dinero cuando quieras y donde quieras con Nequi
+                Daviplata y Bancolombia!
+                Queremos hacerte la vida más fácil y accesible, por eso te invitamos a aprovechar la
+                conveniencia de nuestros cajeros . Retira efectivo de tu cuenta Nequi
+                Daviplata y Bancolombia en cualquier momento, sin importar la hora o el lugar.</p>
+            <div class="flex justify-center mt-10">
+                <a class="group relative uppercase inline-flex items-center overflow-hidden rounded bg-blue-600 px-14 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="https://wa.link/xtfpkd" target="_blank">
+                    <span class="absolute -start-full transition-all group-hover:start-4">
+                        <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </span>
 
-        <h3 class="text-yellow-300 font-semibold text-2xl text-center">Ayuda</h3>
-        <p class="text-gray-300 text-justify">
-            ¡Queremos que sepas que estamos aquí para ayudarte en todo momento!
-            Nos complace brindarte asistencia y apoyo en tus
-            movimientos financieras. Ya sea que tengas preguntas sobre tus cuentas, necesites
-            realizar transacciones o requieras ayuda con algún servicio, nuestro equipo está listo
-            para ayudarte y brindar todo nuestros servicios.
-            <br>
-        </p>
-        <a href="https://wa.link/xtfpkd" class="block px-4 py-2 text-white bg-blue-600 hover:bg-blue-800 rounded w-full text-center" target="_blank">
-            Mas informacion
-        </a>
+                    <span class="text-base font-medium transition-all group-hover:ms-4"> Realizar deposito </span>
+                </a>
+            </div>
+        </div>
     </div>
 
 </section>
