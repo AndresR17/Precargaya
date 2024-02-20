@@ -91,16 +91,13 @@ require_once('./layouts/nav.php');
 <section class="grid grid-cols-1 mt-16 mx-2 md:mx-[8rem] xl:mx-[16rem] p-4 space-y-20">
 
     <div data-aos="fade-right" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
-        <img src="./img/person 1" class="rounded-xl w-64 hover:scale-110 transition" alt="Imagen aliado">
+        <img src="./img/oscarVivas.jpeg" class="rounded-xl w-64 hover:scale-110 transition" alt="Imagen aliado">
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
-            <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Roberto</h3>
+            <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Oscar Vivas</h3>
             <p class="text-justify text-gray-200">
-                El Visionario de las Estadísticas.
-                En las oficinas de nuestro equipo, todos reconocen a Roberto como el visionario de las
-                estadísticas. Su mente analítica y su habilidad para interpretar datos deportivos la han
-                convertido en una figura destacada en el mundo de las predicciones. Sus colegas lo
-                llaman "La Enciclopedia Deportiva" por su asombroso conocimiento. Cuando Roberto habla,
-                todos escuchan, y sus predicciones se han ganado la reputación de ser inquebrantables.
+            Pulpolandia es un canal que esta bajo el control del Colombiano Oscar Vivas. Conocido como el elpulpo79 en el mundo de las apuestas deportivas.
+             El pulpo es especialista en estadisticas de Tennis, ligas Europeas de futbol y un amante de la NBA. 
+             El Pulpo vive en Estados Unidos hace 25 años de los cuales hace 17 años trabaja con apuestas deportivas de forma privada. En el 2019 nació Pulpolandia en telegram y tiene varios records en los 5 años con el canal de telegram. Uno de esos records es el de 27 apuestas ganadas de seguido. Ese record es publico para cualquier persona que quiera ir a verlo en su canal.
             </p>
             <div class="flex gap-4 md:ml-auto items-center justify-center">
                 <a href=""><img src="./img/footer/facebook.png" alt=""></a>
@@ -111,15 +108,12 @@ require_once('./layouts/nav.php');
     </div>
 
     <div data-aos="fade-left" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
-        <img src="./img/person 2.jpeg" class="rounded-xl w-64 " alt="Imagen aliado">
+        <img src="./img/masterC.jpeg" class="rounded-xl w-64 " alt="Imagen aliado">
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
-            <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Luis</h3>
+            <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Master Colombia</h3>
             <p class="text-justify text-gray-200">
-                El Estratega Inigualable. En una esquina de la sala, encontrarás a Luis, el estratega
-                inigualable. Su enfoque
-                táctico para analizar cada movimiento en los deportes lo ha llevado a ser conocido como
-                "El Arquitecto de las Predicciones". Luis no solo ve el juego, sino que anticipa cada
-                estrategia y despliegue, dando a sus seguidores una ventaja única en sus apuestas
+            Máster Colombia con 7 años de experiencias en apuestas Deportivas, con nosotros encontrarás combinadas, 
+            retos multiplicadores y pronósticos diarios
             </p>
             <div class="flex gap-4 md:ml-auto items-center justify-center">
                 <a href=""><img src="./img/footer/facebook.png" alt=""></a>

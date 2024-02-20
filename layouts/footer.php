@@ -3,6 +3,7 @@
         <div class="flex space-x-6">
             <a href="https://web.facebook.com/profile.php?id=100094769269248" target="_blank"><img src="./img/footer/Facebook_Logo_Primary.png" class="w-8 h-8 rounded-lg"></a>
             <a href="https://www.instagram.com/recargaya_col/" target="_blank"><img src="./img/footer/Instagram_Glyph_Gradient.png" class="w-8 h-8 rounded-lg"></a>
+            <a href="" target="_blank"><img src="./img/footer/Logo.png" class="w-8 h-8 rounded-lg"></a>
         </div>
     </footer>
 
