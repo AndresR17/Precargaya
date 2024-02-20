@@ -5,8 +5,8 @@ require_once('./layouts/nav.php');
 ?>
 
 <!-- titulo -->
-<div class="text-center text-white mt-28 mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
-    <p class="text-gray-100 text-center text-lg">La colaboración con nuestros Aliados se basa en un sólido compromiso con la calidad. Su
+<div class="text-center text-white my-[10rem] mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
+    <p class="text-gray-100 text-center text-2xl">La colaboración con nuestros Aliados se basa en un sólido compromiso con la calidad. Su
         enfoque
         meticuloso y atención a los detalles han elevado nuestros estándares, asegurando que
         entreguemos productos y servicios de alta categoría a nuestros clientes.
@@ -75,7 +75,7 @@ require_once('./layouts/nav.php');
 </section>
 
 <!-- TITULO ANALISTAS -->
-<section data-aos="zoom-in-down" class="flex mt-20 mx-5 md:mx-[2rem] xl:mx-[10rem] p-4 ">
+<section data-aos="zoom-in-down" class="flex my-[10rem] mx-5 md:mx-[2rem] xl:mx-[10rem] p-4 ">
     <div class="space-y-4">
         <h2 class="text-white text-center font-bold text-4xl">NUESTROS ANALISTAS DEPORTIVOS EXPERTOS</h2>
         <p class="text-gray-300 text-justify lg:text-center text-xl">
@@ -88,10 +88,10 @@ require_once('./layouts/nav.php');
 </section>
 
 <!-- ANALISTAS -->
-<section class="grid grid-cols-1 mt-16 mx-2 md:mx-[8rem] xl:mx-[16rem] p-4 gap-6">
+<section class="grid grid-cols-1 mt-16 mx-2 md:mx-[8rem] xl:mx-[16rem] p-4 space-y-20">
 
     <div data-aos="fade-right" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
-        <img src="./img/person 1" class="rounded-xl w-64 " alt="Imagen aliado">
+        <img src="./img/person 1" class="rounded-xl w-64 hover:scale-110 transition" alt="Imagen aliado">
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
             <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Roberto</h3>
             <p class="text-justify text-gray-200">

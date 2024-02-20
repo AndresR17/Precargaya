@@ -1,13 +1,7 @@
 <?php
-session_start();
-if (!isset($_SESSION['user'])) {
-    header('location:../index.php');
-}
 require_once('./layouts/header.php');
 require_once('./layouts/nav.php');
 ?>
-
-
 
 <div class="p-4 sm:ml-64">
     <div class="py-4 px-2 border-2 border-gray-200 border-dashed rounded-lg mt-20">

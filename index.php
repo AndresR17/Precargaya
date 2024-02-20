@@ -71,9 +71,7 @@ require_once('./layouts/slide.php');
 
         <div class="p-5">
             <h5 class="mb-6 text-4xl font-bold tracking-tight text-yellow-400">Depositos</h5>
-            <p class="mb-3 text-base text-gray-200 text-justify">¡Descubre la comodidad de retirar dinero cuando quieras y donde quieras con Nequi
-                Daviplata y Bancolombia!
-                Queremos hacerte la vida más fácil y accesible, por eso te invitamos a aprovechar la
+            <p class="mb-3 text-base text-gray-200 text-justify">¡Descubre la comodidad de depositar dinero cuando quieras y donde quieras con Nequi Daviplata y Bancolombia! Queremos hacerte la vida más fácil y accesible, por eso te invitamos a aprovechar la
                 conveniencia de nuestros cajeros . Retira efectivo de tu cuenta Nequi
                 Daviplata y Bancolombia en cualquier momento, sin importar la hora o el lugar.</p>
             <div class="flex justify-center mt-10">
