@@ -41,7 +41,7 @@ function IniciarSesion(datos) {
 
             if (respuesta === 1) {
                 formLogin.reset();
-                window.location.href = './auth/dasboard.php';
+                window.location.href = './auth/dashboard.php';
             }
 
             if (respuesta === 2) {

@@ -6,16 +6,13 @@ require_once('./layouts/nav.php');
 
 <!-- titulo -->
 <div class="text-center text-white my-[10rem] mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
-    <p class="text-gray-100 text-center text-2xl">La colaboración con nuestros Aliados se basa en un sólido compromiso con la calidad. Su
-        enfoque
-        meticuloso y atención a los detalles han elevado nuestros estándares, asegurando que
-        entreguemos productos y servicios de alta categoría a nuestros clientes.
+    <p class="text-gray-100 text-center text-justify md:text-center text-2xl">La colaboración con nuestros Aliados se basa en un sólido compromiso con la calidad. Su enfoque meticuloso y atención a los detalles han elevado nuestros estándares, asegurando que entreguemos productos y servicios de alta categoría a nuestros clientes.
     </p>
 </div>
 
 <!-- ALIADOS -->
-<section data-aos="zoom-in-down" class="flex flex-col lg:flex-row items-center gap-4 justify-between xl:flex-row my-10 mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
-    <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg transition hover:scale-110">
+<section data-aos="zoom-in-down" class="flex flex-col md:space-y-6 lg:space-y-0 lg:space-x-2 lg:flex-row items-center gap-4 justify-between xl:flex-row my-10 mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
+    <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg md:transition md:hover:scale-110">
         <div class="space-y-5 ">
             <img src="./img/1xbet.jpg" class="w-[25rem]" alt="Imagen 1XBet">
             <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">1XBET</h3>
@@ -35,7 +32,7 @@ require_once('./layouts/nav.php');
         </div>
     </div>
 
-    <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg transition hover:scale-110">
+    <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg md:transition md:hover:scale-110">
         <div class="space-y-5">
             <img src="./img/betwinner.png" class="w-[25rem]" alt="Imagen 1XBet">
             <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">BETWINNER</h3>
@@ -54,7 +51,7 @@ require_once('./layouts/nav.php');
         </div>
     </div>
 
-    <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg transition hover:scale-110">
+    <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg md:transition md:hover:scale-110">
         <div class="space-y-5">
             <img src="./img/22bet.jpg" class="w-[25rem]" alt="Imagen 1XBet">
             <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">22BET</h3>
