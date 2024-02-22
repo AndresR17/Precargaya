@@ -6,17 +6,16 @@
         </a>
         <div class="flex items-center md:order-2 space-x-1 md:space-x-4 rtl:space-x-reverse">
 
-            <button data-modal-target="modal-register" data-modal-toggle="modal-register" class="hidden md:block uppercase block text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 md:px-10 py-2.5 text-center " type="button">
+            <button data-modal-target="modal-register" data-modal-toggle="modal-register" class="uppercase block text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 md:px-10 py-2.5 text-center " type="button">
                 Registrarme
             </button>
 
             <!-- boton para el modal de login  -->
-            <button data-modal-target="modal-login" data-modal-toggle="modal-login" type="button">
-                <div class="flex">
+            <div class="flex hidden md:block">
+                <button data-modal-target="modal-login" data-modal-toggle="modal-login" type="button">
                     <img src="./img/user.png" alt="" class="h-8 rounded-full">
-                </div>
-            </button>
-
+                </button>
+            </div>
             <!-- boton del modal de registro  -->
 
             <button data-collapse-toggle="mega-menu-icons" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-icons" aria-expanded="false">
@@ -38,12 +37,6 @@
             </ul>
         </div>
     </div>
-    <div class="px-4 pb-4 block md:hidden">
-        <button data-modal-target="modal-register" data-modal-toggle="modal-register" class="w-full uppercase block text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 md:px-10 py-2.5 text-center" type="button">
-            Registrarme
-        </button>
-    </div>
-
 
     <!-- Main modal login -->
     <div id="modal-login" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
