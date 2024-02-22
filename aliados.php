@@ -97,7 +97,7 @@ require_once('./layouts/nav.php');
              El Pulpo vive en Estados Unidos hace 25 años de los cuales hace 17 años trabaja con apuestas deportivas de forma privada. En el 2019 nació Pulpolandia en telegram y tiene varios records en los 5 años con el canal de telegram. Uno de esos records es el de 27 apuestas ganadas de seguido. Ese record es publico para cualquier persona que quiera ir a verlo en su canal.
             </p>
             <div class="flex gap-4 md:ml-auto items-center justify-center">
-                <a href=""><img src="./img/footer/facebook.png" alt=""></a>
+                <a href=""><img src="/img/footer/logo-white.png" alt=""></a>
                 <a href=""><img src="./img/footer/instagram.png" alt=""></a>
                 <a href=""><img src="./img/footer/twitter.png" alt=""></a>
             </div>
