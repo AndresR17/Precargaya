@@ -3,11 +3,15 @@
 //verificamos si viene algun parametro de busqueda
 $busqueda = isset($_POST['busqueda']) ? $_POST['busqueda'] : '';
 
-$sqlBase = "SELECT * FROM clientes";
+$sqlBase = "SELECT * FROM clientes WHERE estado = 'activo'";
 
 if ($busqueda != '') {
-    $sqlBase .= " WHERE documento LIKE '%$busqueda%' OR email LIKE '%$busqueda%'";
+    $sqlBase .= " AND (documento LIKE '%$busqueda%' OR email LIKE '%$busqueda%')";
 }
+
+// Agregar cláusula ORDER BY para ordenar los resultados por ID en orden descendente
+$sqlBase .= " ORDER BY id DESC";
+
 
 $resultadoBase = $conexion->query($sqlBase);
 $total = (int) $resultadoBase->num_rows;

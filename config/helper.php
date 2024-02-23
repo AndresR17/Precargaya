@@ -12,3 +12,14 @@ function obtenerDatos($conexion, $tabla)
     return $datos;
 }
 
+function BorrarErrores(){
+
+	if(isset($_SESSION['eliminado'])){
+		$_SESSION['eliminado']=null;
+	}
+
+    if(isset($_SESSION['error'])){
+		$_SESSION['error']=null;
+	}
+
+}

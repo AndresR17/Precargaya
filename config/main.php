@@ -38,24 +38,4 @@ function limpiar_cadena($cadena){
     return $cadena;
 }
 
-function mostrarAlerta($errores,$parametro){
-	$alerta = "";
-	if(isset($errores[$parametro]) && !empty($parametro)){
-		$alerta = "<p class='error has-text-centered mt-3'>". $errores[$parametro]."</p>";
-	}
-	return $alerta;
-}
-
-function BorrarErrores(){
-
-	if(isset($_SESSION['guardado'])){
-		$_SESSION['guardado']=null;
-	}
-
-    if(isset($_SESSION['correo'])){
-		$_SESSION['correo']=null;
-	}
-
-}
-
 ?>

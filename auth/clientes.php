@@ -2,11 +2,24 @@
 if (!isset($_GET['pagina']) || !is_numeric($_GET['pagina']) || $_GET['pagina'] < 1) {
     header('location:./clientes.php?pagina=1');
 }
+
 require_once('./layouts/header.php');
 require_once('./layouts/nav.php');
 
 //realizamos la consulta para obtener los clientes 
-require_once('../config/obtenerClientes.php')
+require_once('../config/obtenerClientes.php');
+
+if (isset($_SESSION['eliminado'])) {
+    echo '
+    <script>
+        Swal.fire({
+            title: "Correcto!",
+            text: "Usuario eliminado correctamente!",
+            icon: "success"
+        });
+    </script>
+    ';
+}
 ?>
 
 <div class="p-4 sm:ml-72">
@@ -80,7 +93,7 @@ require_once('../config/obtenerClientes.php')
                                         <?= $cliente['phone'] ?>
                                     </td>
                                     <td class="px-6 py-4 space-x-4">
-                                        <a href="#" class="px-2 py-1 text-sm bg-red-300 rounded text-red-800 font-semibold hover:bg-red-600 hover:text-white">Eliminar</a>
+                                        <a onclick="mostrarAlerta(<?= $cliente['id'] ?>, <?= $pagina ?>)" class="px-2 py-1 text-sm bg-red-300 rounded text-red-800 font-semibold hover:bg-red-600 hover:text-white cursor-pointer">Eliminar</a>
                                     </td>
                                 </tr>
                                 <?php $contador++ ?>
@@ -113,13 +126,22 @@ require_once('../config/obtenerClientes.php')
                                 </span>
                             </div>
                         </div>
+
                         <!-- si no se imprime paginador se muestra este enlace -->
-                    <?php else : ?>
-                        <a href="./clientes.php?pagina=1" class="inline-flex text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-base px-8 py-2 mt-5 uppercase">Mostrar todos los registros</a>
+                    <?php elseif ($busqueda != "") : ?>
+                        <div class="m-2">
+                            <a href="./clientes.php?pagina=1" class="inline-flex text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-base px-8 py-2 mt-5 uppercase">Mostrar todos los registros</a>
+                        </div>
                     <?php endif; ?>
 
-
                     <!-- si clientes es vacio se muestra este mensaje -->
+                <?php elseif ($busqueda != "") : ?>
+                    <div class="m-2">
+                    <p class="text-white text-center text-4xl font-semibold">
+                            No hay resultados
+                        </p>
+                        <a href="./clientes.php?pagina=1" class="inline-flex text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-base px-8 py-2 mt-5 uppercase">Mostrar todos los registros</a>
+                    </div>
                 <?php else : ?>
                     <div class="py-2">
                         <p class="text-white text-center text-4xl font-semibold">
@@ -128,12 +150,12 @@ require_once('../config/obtenerClientes.php')
                     </div>
                 <?php endif; ?>
 
+            </div>
         </div>
     </div>
 </div>
-</div>
-
-
+<?php BorrarErrores(); ?>
+<script src="../src/js/clientesAuth.js"></script>
 
 </body>
 
