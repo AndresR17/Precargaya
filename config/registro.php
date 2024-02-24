@@ -14,6 +14,8 @@ $correo = limpiar_cadena($data['email']);
 $phone = limpiar_cadena($data['phone']);
 $message = limpiar_cadena($data['message']);
 $check = limpiar_cadena($data['check']);
+$estado = limpiar_cadena($data['estado']);
+$createdAt = limpiar_cadena($data['createdAt']);
 
 $response = array();
 //validar campos
@@ -50,15 +52,16 @@ if (count($response) > 0) {
     // Devuelve la respuesta como JSON
     header('Content-Type: application/json');
     echo json_encode($response);
+    exit();
 
 }else{
 
-    $sql = "INSERT INTO clientes (documento, name, email, phone, comentarios, terminos) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO clientes (documento, name, email, phone, comentarios, terminos, estado, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     // Preparar la declaración
     $stmt = mysqli_prepare($conexion, $sql);
 
-    mysqli_stmt_bind_param($stmt, "ssssss", $documento, $name, $correo, $phone, $message, $check);
+    mysqli_stmt_bind_param($stmt, "ssssssss", $documento, $name, $correo, $phone, $message, $check, $estado, $createdAt);
 
     $success = mysqli_stmt_execute($stmt);
 

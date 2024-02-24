@@ -23,7 +23,7 @@ require_once('./layouts/slide.php');
     </div>
 </section>
 
-<section class="flex items-center justify-center mx-5 my-[8rem] md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem]">
+<section data-aos="zoom-out-down" class="flex items-center justify-center mx-5 my-[8rem] md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem]">
     <div data-aos="fade-up-right space-y-10" class="">
         <h2 class="text-gray-100 text-center text-4xl font-semibold mb-5 uppercase">Nuestros Servicios </h2>
         <p class="text-gray-200 text-lg text-justify lg:px-12">Enviar una recarga en línea, o, dicho de otra manera, <span class="font-semibold text-blue-300">RECARGAR O RETIRAR PREMIOS</span> de una aplicación de apuestas, nunca fue tan fácil como lo es con RecargaYA. Además de recibir dinero en efectivo en nuestras sedes comerciales, nos especializamos en transferencias en línea por medio de <span class="font-semibold text-blue-300">NEQUI, DAVIPLATA y BANCOLOMBIA,</span> de esta manera, dando oportunidades a nuestro público colombiano para interactuar incluso con plataformas internacionales que operan en diferentes monedas, como euros, dólares, entre otras muchas opciones.
@@ -32,7 +32,7 @@ require_once('./layouts/slide.php');
 </section>
 
 
-<section class="flex flex-col md:flex-row items-center justify-center md:space-x-10 mx-5 md:mx-[2rem] xl:mx-[10rem] mt-24 gap-6 ">
+<section data-aos="zoom-in" class="flex flex-col md:flex-row items-center justify-center md:space-x-10 mx-5 md:mx-[2rem] xl:mx-[10rem] mt-24 gap-6 ">
 
     <!-- Retiros -->
     <div class="max-w-sm p-2 rounded-lg overflow-hidden md:hover:shadow-lg bg-gray-900 md:hover:scale-110 transition duration-300">

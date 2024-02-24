@@ -15,12 +15,12 @@ function validarCampos(e) {
     const aceptoCheck = document.getElementById('acepto');
 
 
-    if (documento.trim() === '' ) {
-        
+    if (documento.trim() === '') {
+
         mostrarError('Define tu numero de documento', 'resDoc');
         return;
 
-    }else if(isNaN(documento)){
+    } else if (isNaN(documento)) {
         mostrarError('Este campo es numérico', 'resDoc');
         return
     }
@@ -39,18 +39,21 @@ function validarCampos(e) {
         return;
     }
 
-    if (phone.trim() === '' ) {
+    if (phone.trim() === '') {
         mostrarError('Define tu numero de contacto', 'resPhone');
         return;
-    }else if(isNaN(phone)){
+    } else if (isNaN(phone)) {
         mostrarError('Este campo es numérico', 'resPhone');
         return
     }
 
-    if(aceptoCheck.checked === false){
+    if (aceptoCheck.checked === false) {
         mostrarError('Debes aceptar los terminos y condiciones', 'resCheck');
         return
     }
+
+    const createdAt = obtenerFecha();
+    const estado = 'activo';
 
     //crear los datos
     const datos = {
@@ -59,7 +62,9 @@ function validarCampos(e) {
         email,
         phone,
         message,
-        check : 'Acepto terminos'
+        check: 'Acepto terminos',
+        estado,
+        createdAt
     }
 
     guardarRegistro(datos)
@@ -85,7 +90,7 @@ function guardarRegistro(datos) {
                     icon: "error"
                 });
 
-            }else if (respuesta === 2) {
+            } else if (respuesta === 2) {
 
                 formulario.reset();
 
@@ -95,9 +100,9 @@ function guardarRegistro(datos) {
                     icon: "success"
                 });
 
-            }else{
+            } else {
                 const { mensaje } = respuesta
-                
+
                 Swal.fire({
                     title: "Hubo un error!",
                     text: `${mensaje}`,
@@ -138,4 +143,19 @@ function validarCorreo(email) {
     const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regexCorreo.test(email);
 }
+
+
+function obtenerFecha() {
+    var fechaActual = new Date();
+
+    var año = fechaActual.getFullYear();
+    var mes = fechaActual.getMonth() + 1;
+    var dia = fechaActual.getDate();
+
+    // Formatear la fecha en un formato legible AAAA-MM-DD
+    var fechaFormateada = año + "-" + (mes < 10 ? "0" + mes : mes) + "-" + (dia < 10 ? "0" + dia : dia);
+    return fechaFormateada;
+}
+
+
 

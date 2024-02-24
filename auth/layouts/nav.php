@@ -1,5 +1,5 @@
 <?php $current_page = basename($_SERVER['PHP_SELF']); ?>
-<nav class="fixed top-0 z-50 w-full bg-gray-800 border-b border-gray-600">
+<nav class="fixed top-0 z-50 w-full bg-gray-800 border-b border-gray-600 ">
     <div class="px-3 py-4 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between px-2 lg:px-[10rem]">
             <div class="flex items-center justify-start rtl:justify-end">
@@ -9,18 +9,38 @@
                         <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
                     </svg>
                 </button>
-                <div class="flex ms-2 md:me-24">
-                    <img src="../img/logo-antes.jpg" class="h-8 me-3" alt="FlowBite Logo" />
+                <a href="./dashboard.php" class="flex ms-2 md:me-24">
+                    <img src="../img/logo-antes.jpg" class="h-8 me-3 rounded-lg" alt="FlowBite Logo" />
                     <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white">RecargaYa</span>
-                </div>
+                </a>
             </div>
-            <div class="flex items-center justify-center space-x-4">
-                <div class="flex hidden md:block">
-                    <img src="../img/user.png" alt="" class="h-8 rounded-full">
+            <div class="flex items-center">
+                <div class="flex items-center ms-3">
+                    <div>
+                        <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-blue-600 " aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                            <span class="sr-only">Open user menu</span>
+                            <img class="w-10 h-10 rounded-full" src="../img/user.png" alt="user photo">
+                        </button>
+                    </div>
+                    <div class="z-50 hidden my-4 text-base border border-gray-700 list-none bg-gray-800 divide-y divide-gray-100 rounded shadow " id="dropdown-user">
+                        <div class="px-4 py-3" role="none">
+                            <p class="text-base text-white font-normal " role="none">
+                                Usuario: <span class="font-semibold"><?= $_SESSION['user']['user'] ?></span>
+                            </p>
+                            <p class="text-sm text-gray-100 truncate" role="none">
+                                Rol: <?= $_SESSION['user']['rol'] ?>
+                            </p>
+                        </div>
+                        <ul class="py-1" role="none">
+                            <li>
+                                <a href="./perfil.php" class="block px-4 py-2 text-base text-gray-100 hover:bg-gray-600" role="menuitem">Perfil</a>
+                            </li>
+                            <li>
+                                <a href="../config/logout.php" class="block px-4 py-2 text-base text-gray-100 hover:bg-gray-600" role="menuitem">Cerrar Sesion</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <p class="font-semibold text-white flex flex-col"><?= $_SESSION['user']['user']  ?>
-                    <span class="font-normal text-sm text-white"><?= $_SESSION['user']['rol']  ?></span>
-                </p>
             </div>
         </div>
     </div>

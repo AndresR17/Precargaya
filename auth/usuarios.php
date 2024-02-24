@@ -2,7 +2,7 @@
 require_once('./layouts/header.php');
 require_once('./layouts/nav.php');
 
-$usuarios = obtenerDatos($conexion,'usuarios');
+$usuarios = obtenerDatos($conexion,'usuarios', null);
 ?>
 
 <div class="p-4 sm:ml-72">

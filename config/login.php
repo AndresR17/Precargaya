@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($check_password) {
 
-            $query = "SELECT user, rol FROM usuarios WHERE user = ? ";
+            $query = "SELECT id, user, rol FROM usuarios WHERE user = ? ";
             $stmt = mysqli_prepare($conexion, $query);
             mysqli_stmt_bind_param($stmt, "s", $usuario);
             mysqli_stmt_execute($stmt);

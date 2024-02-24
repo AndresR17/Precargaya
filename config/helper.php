@@ -1,8 +1,13 @@
 <?php
 
-function obtenerDatos($conexion, $tabla)
+function obtenerDatos($conexion, $tabla, $id)
 {
     $sql = "SELECT * FROM $tabla";
+
+    if(isset($id)){
+        $sql .= " WHERE id = $id";
+    }
+
     $resultado = mysqli_query($conexion, $sql);
     
     $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
@@ -22,4 +27,20 @@ function BorrarErrores(){
 		$_SESSION['error']=null;
 	}
 
+}
+
+function obtenerRegistros($conexion, $tabla, $id){
+
+    $sql = "SELECT COUNT(id) FROM $tabla";
+        
+        if($tabla == 'usuarios'){
+            $sql .= " WHERE id != $id";
+        }
+
+        $totalResultado = mysqli_query($conexion, $sql);
+
+        $total = mysqli_fetch_array($totalResultado);
+        $total = (int) $total[0];
+
+        return $total;
 }

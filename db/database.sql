@@ -23,6 +23,24 @@ CREATE TABLE usuarios(
     CONSTRAINT pk_usuario PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
+
+CREATE TABLE aliados(
+    id int(3) auto_increment not null,
+    name varchar(60) not null,
+    foto varchar(65) not null,
+    descripcion TEXT,
+    redSocial varchar(100),
+    calificacion varchar(60) not null,
+    createdAt DATE,
+    CONSTRAINT pk_aliados PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+
+
+
+
+
 INSERT INTO usuarios ( `user`, `password`, `rol`) VALUES ('administrador','$2y$10$RHRFhf5Fm.SXdQR5BHfKuuGRM/8uPt6/U6uWrEk7l7Q7qt/HK9zv.','administrador');
 
 INSERT INTO `clientes`(`documento`, `name`, `email`, `phone`, `comentarios`, `terminos`, `estado`, `createdAt`) VALUES ('115426895','Nombre completo1','correo@correo.com','3124567896','Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem a quo deserunt quas impedit! Eveniet voluptatum optio iusto hic distinctio reprehenderit delectus nostrum qui molestiae placeat, voluptates id architecto quos?','Acepto terminos','activo','2024-02-23');
