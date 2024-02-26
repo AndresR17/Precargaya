@@ -41,22 +41,26 @@ $ultimosClientes = obtenerUltimosRegistros($conexion);
 
         </section>
 
-        <section class="flex">
+        <section class="flex mt-20">
             <div class="w-3/5">
-                <p class="text-white">Seccion vacia</p>
+                <p class="text-white hidden">Seccion vacia</p>
             </div>
-            <div class="w-2/5">
-                <h3 class="text-white">Ultimos registros</h3>
-                <div class="">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6">
+            <div class="w-2/5 border-2 border-gray-600 p-4 rounded space-y-6">
+                <h3 class="text-gray-300 text-2xl border-b pb-4">Ultimos registros</h3>
+
+                <?php foreach($ultimosClientes as $cliente): ?>
+                <div class="flex space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
                     </svg>
+                    <p class="text-gray-400"><?= $cliente['name'] ?></p>
                 </div>
+                <?php endforeach; ?>
             </div>
         </section>
     </div>
 </div>
 
-</body>
 
+</body>
 </html>

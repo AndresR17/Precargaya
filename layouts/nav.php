@@ -10,6 +10,11 @@
                 Registrarme
             </button>
 
+            <!-- testeo base de datos  -->
+            <!-- <button id="boton" class="uppercase block text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 md:px-10 py-2.5 text-center " type="button">
+                Registrarme
+            </button> -->
+
             <!-- boton para el modal de login  -->
             <div class="flex hidden md:block">
                 <button data-modal-target="modal-login" data-modal-toggle="modal-login" type="button">
@@ -28,11 +33,11 @@
         <div id="mega-menu-icons" class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
             <ul class="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
                 <li>
-                    <a href="aliados.php" class="uppercase block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white" aria-current="page">Aliados</a>
+                    <a href="aliados.php" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white" aria-current="page">Aliados</a>
                 </li>
 
                 <li>
-                    <a href="#" class="uppercase block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white">contactos</a>
+                    <a href="#" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white">contactos</a>
                 </li>
             </ul>
         </div>
@@ -61,11 +66,11 @@
                         <div class="mostrarAlerta mt-2"></div>
                         <div>
                             <label for="user" class="block mb-2 text-sm font-medium text-white ">Email o usuario</label>
-                            <input type="text" name="user" id="user" class="bg-gray-800 border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 ">
+                            <input type="text" name="user" id="user" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
                         <div>
                             <label for="password" class="block mb-2 text-sm font-medium text-white ">Password</label>
-                            <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-800 border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 ">
+                            <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
                         <div class="flex justify-end">
                             <a href="#" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Olvide mi contraseña!</a>

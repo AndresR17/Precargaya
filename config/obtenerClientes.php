@@ -17,7 +17,7 @@ $resultadoBase = $conexion->query($sqlBase);
 $total = (int) $resultadoBase->num_rows;
 
 //numero de registros a obtener
-$registros = 10;
+$registros = 15;
 
 //indicar desde que regitro queremos tomar 
 $pagina = $_GET['pagina'];

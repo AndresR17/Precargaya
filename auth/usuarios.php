@@ -39,8 +39,8 @@ $usuarios = obtenerDatos($conexion,'usuarios', null);
                                 <?= $usuario['rol'] ?>
                             </td>
                             <td class="px-6 py-4 space-x-4">
-                                <a href="#" class="px-2 py-1 text-sm bg-indigo-300 hover:bg-indigo-600 hover:text-white border-indigo-600 rounded text-indigo-800 text-center font-semibold">Editar</a>
-                                <a href="#" class="px-2 py-1 text-sm bg-red-300 rounded text-red-800 font-semibold hover:bg-red-600 hover:text-white">Eliminar</a>
+                                <a href="./perfil.php" class="px-2 py-1 text-sm bg-indigo-300 hover:bg-indigo-600 hover:text-white border-indigo-600 rounded text-indigo-800 text-center font-semibold">Editar</a>
+                                <!-- <a href="#" class="px-2 py-1 text-sm bg-red-300 rounded text-red-800 font-semibold hover:bg-red-600 hover:text-white ">Eliminar</a> -->
                             </td>
                         </tr>
                         <?php endforeach; ?>

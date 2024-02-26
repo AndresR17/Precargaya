@@ -51,7 +51,7 @@ function obtenerRegistros($conexion, $tabla, $id){
 }
 
 function obtenerUltimosRegistros($conexion){
-    $sql = "SELECT * FROM clientes WHERE estado = 'activo' ORDER BY id DESC LIMIT 0,2;";
+    $sql = "SELECT * FROM clientes WHERE estado = 'activo' ORDER BY id DESC LIMIT 0,3;";
 
     $resultado = mysqli_query($conexion, $sql);
     
