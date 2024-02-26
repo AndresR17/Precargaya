@@ -37,10 +37,27 @@ function obtenerRegistros($conexion, $tabla, $id){
             $sql .= " WHERE id != $id";
         }
 
+        if($tabla == 'clientes'){
+            $sql .= " WHERE estado = 'activo' ";
+        }
+
+
         $totalResultado = mysqli_query($conexion, $sql);
 
         $total = mysqli_fetch_array($totalResultado);
         $total = (int) $total[0];
 
         return $total;
+}
+
+function obtenerUltimosRegistros($conexion){
+    $sql = "SELECT * FROM clientes WHERE estado = 'activo' ORDER BY id DESC LIMIT 0,2;";
+
+    $resultado = mysqli_query($conexion, $sql);
+    
+    $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+    
+    mysqli_close($conexion);
+
+    return $datos;
 }

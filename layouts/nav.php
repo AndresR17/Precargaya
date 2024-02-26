@@ -57,7 +57,7 @@
                 </div>
                 <!-- Modal body -->
                 <div class="p-4 md:p-5">
-                    <form class="space-y-4" id="formLogin" method="POST">
+                    <form class="space-y-4" id="formLogin" method="POST" autocomplete="off">
                         <div class="mostrarAlerta mt-2"></div>
                         <div>
                             <label for="user" class="block mb-2 text-sm font-medium text-white ">Email o usuario</label>
@@ -96,7 +96,7 @@
                 </div>
                 <!-- Modal body -->
                 <div class="p-4 md:p-5">
-                    <form class="" id="formClientes" method="POST">
+                    <form class="" id="formClientes" method="POST" autocomplete="off">
                         <div class="mb-6" id="resDoc">
                             <label for="documento" class="block mb-2 text-base font-medium text-white">No Documento:</label>
                             <input type="text" id="documento" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="...">

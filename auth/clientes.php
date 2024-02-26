@@ -29,7 +29,7 @@ if (isset($_SESSION['eliminado'])) {
 
             <!-- BUSCADOR DE CLIENTES  -->
             <div class="px-4 flex w-[50%]">
-                <form class="w-full" action="./clientes.php?pagina=1" method="POST">
+                <form class="w-full" action="./clientes.php?pagina=1" method="POST" autocomplete="off">
                     <div class="relative">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                             <svg class="w-4 h-4 text-gray-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">

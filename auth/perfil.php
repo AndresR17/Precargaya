@@ -30,20 +30,20 @@ $usuario = obtenerDatos($conexion, 'usuarios', $_SESSION['user']['id']);
                         <div class="flex items-center space-x-4" >                        
                                 <label for="passwordActual" class="block mb-2 text-base font-medium text-white w-2/5">Contraseña actual</label>
                                 <div class="w-full" id="resPasswordActual">
-                                    <input type="password" id="passwordActual" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                    <input type="password" id="passwordActual" class="bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 </div>
                         </div>
                         <div class="flex items-center space-x-4" >
                             <label for="password" class="block mb-2 text-base font-medium text-white w-2/5">Nueva contraseña</label>
                             <div class="w-full" id="resPassword">
-                                <input type="password" id="password" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <input type="password" id="password" class="bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             </div>
                             
                         </div>
                         <div class="flex items-center space-x-4" >
                             <label for="password_confirmation" class="block mb-2 text-base font-medium text-white w-2/5">Repetir nueva contraseña</label>
                             <div class="w-full" id="resPassword_confirmation">
-                                <input type="password" id="password_confirmation" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <input type="password" id="password_confirmation" class="bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             </div>
                             
                         </div>

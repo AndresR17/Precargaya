@@ -2,8 +2,10 @@
 require_once('./layouts/header.php');
 require_once('./layouts/nav.php');
 
+//funcion definida en el archivo helper.php
 $totalUsuarios = obtenerRegistros($conexion, 'usuarios', $_SESSION['user']['id']);
 $totalClientes = obtenerRegistros($conexion, 'clientes', null);
+$ultimosClientes = obtenerUltimosRegistros($conexion);
 
 ?>
 
@@ -29,18 +31,28 @@ $totalClientes = obtenerRegistros($conexion, 'clientes', null);
                 <h2 class="title-font font-medium text-3xl text-white"><?= $totalClientes ?></h2>
                 <p class="leading-relaxed text-gray-200">Clientes</p>
             </a>
-            <a href="aliados.php" class="border-2 border-gray-400 px-4 py-6 rounded-lg transform transition duration-500 hover:scale-110 cursor-pointer bg-gray-800 flex flex-col justify-center items-center space-y-3">
+            <!-- <a href="aliados.php" class="border-2 border-gray-400 px-4 py-6 rounded-lg transform transition duration-500 hover:scale-110 cursor-pointer bg-gray-800 flex flex-col justify-center items-center space-y-3">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
                 </svg>
                 <h2 class="title-font font-medium text-3xl text-white">982</h2>
                 <p class="leading-relaxed text-gray-200">Aliados</p>
-            </a>
+            </a> -->
 
         </section>
 
-        <section>
-
+        <section class="flex">
+            <div class="w-3/5">
+                <p class="text-white">Seccion vacia</p>
+            </div>
+            <div class="w-2/5">
+                <h3 class="text-white">Ultimos registros</h3>
+                <div class="">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+                    </svg>
+                </div>
+            </div>
         </section>
     </div>
 </div>
