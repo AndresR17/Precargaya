@@ -18,7 +18,7 @@ require_once('./layouts/nav.php');
             <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">1XBET</h3>
             <p class="text-gray-200 text-center text-base">¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
             <div class="flex justify-center">
-                <a class="group relative inline-flex uppercase items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="https://affpa.top/L?tag=d_1838183m_97c_&site=1838183&ad=97" target="_blank">
+                <a class="group relative inline-flex uppercase items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="" target="_blank">
                     <span class="absolute -end-full transition-all group-hover:end-4">
                         <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -57,7 +57,26 @@ require_once('./layouts/nav.php');
             <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">22BET</h3>
             <p class="text-gray-300 text-center">¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
             <div class="flex justify-center">
-                <a class="group relative inline-flex uppercase items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="https://welcome.toptrendyinc.com/redirect.aspx?pid=83130&bid=1562&lpid=104" target="_blank">
+                <a class="group relative inline-flex uppercase items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="https://welcome.toptrendyinc.com/redirect.aspx?pid=83130&lpid=15&bid=1484" target="_blank">
+                    <span class="absolute -end-full transition-all group-hover:end-4">
+                        <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </span>
+
+                    <span class="text-base font-medium transition-all group-hover:me-4"> Registrarme! </span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg md:transition md:hover:scale-110">
+        <div class="space-y-5">
+            <img src="./img/888starz-logo.png" class="w-[25rem]" alt="Imagen 1XBet">
+            <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">88STARZ</h3>
+            <p class="text-gray-300 text-center">¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
+            <div class="flex justify-center">
+                <a class="group relative inline-flex uppercase items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="https://bonuspack.fun/L?tag=d_3236137m_37513c_&site=3236137&ad=37513" target="_blank">
                     <span class="absolute -end-full transition-all group-hover:end-4">
                         <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
