@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = limpiar_cadena($data['password']);
 
 
-    $query = "SELECT * FROM usuarios WHERE user = ? ";
+    $query = "SELECT * FROM usuarios WHERE email = ? ";
     $stmt = mysqli_prepare($conexion, $query);
     mysqli_stmt_bind_param($stmt, "s", $usuario);
     mysqli_stmt_execute($stmt);
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($check_password) {
 
-            $query = "SELECT id, user, rol FROM usuarios WHERE user = ? ";
+            $query = "SELECT id, documento, name, email, phone, rol, createdAt FROM usuarios WHERE email = ? ";
             $stmt = mysqli_prepare($conexion, $query);
             mysqli_stmt_bind_param($stmt, "s", $usuario);
             mysqli_stmt_execute($stmt);
@@ -34,10 +34,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($user && mysqli_num_rows($user) == 1) {
 
-                $_SESSION['user'] =  mysqli_fetch_assoc($user);
+                $datos = mysqli_fetch_assoc($user);
+                $response = $datos['rol'];
+                $_SESSION['user'] = $datos;
+
+                header('Content-Type: application/json');
+                echo json_encode($response);
                 mysqli_stmt_close($stmt);
-                echo 1;
                 exit();
+
             }
         } else {
             mysqli_stmt_close($stmt);

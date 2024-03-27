@@ -1,9 +1,10 @@
 <?php
 require_once('../config/conexion.php');
 
-if (!isset($_SESSION['user'])) {
+if ($_SESSION['user']['rol'] == 'cliente') {
     header('location:../index.php');
 }
+
 require_once('../config/helper.php');
 ?>
 <!DOCTYPE html>

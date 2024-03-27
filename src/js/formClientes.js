@@ -11,8 +11,9 @@ function validarCampos(e) {
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
     const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
     const aceptoCheck = document.getElementById('acepto');
+    const passwordRegister = document.getElementById('password-register').value;
+    const password_confirmation = document.getElementById('password_confirmation').value;
 
 
     if (documento.trim() === '') {
@@ -25,7 +26,7 @@ function validarCampos(e) {
         return
     }
 
-    if (name.trim() == "") {
+    if (name.trim() === "") {
         mostrarError('El nombre es obligatorio', 'resName')
         return
     }
@@ -47,6 +48,21 @@ function validarCampos(e) {
         return
     }
 
+    if (passwordRegister.trim() === "") {
+        mostrarError('El password es obligatorio', 'resPassword-register')
+        return
+    }
+
+    if (password_confirmation.trim() === "") {
+        mostrarError('Confirma tu password', 'resPassword_confirmation')
+        return
+    }
+
+    if(passwordRegister !== password_confirmation){
+            mostrarError('Las contraseñas no coinciden', 'resPassword-register')
+            return
+    }
+
     if (aceptoCheck.checked === false) {
         mostrarError('Debes aceptar los terminos y condiciones', 'resCheck');
         return
@@ -54,6 +70,7 @@ function validarCampos(e) {
 
     const createdAt = obtenerFecha();
     const estado = 'activo';
+    
 
     //crear los datos
     const datos = {
@@ -61,7 +78,8 @@ function validarCampos(e) {
         name,
         email,
         phone,
-        message,
+        password: passwordRegister,
+        rol: 'cliente',
         check: 'Acepto terminos',
         estado,
         createdAt
@@ -128,7 +146,7 @@ function mostrarError(mensaje, id) {
         const container = document.getElementById(id)
 
         alerta.innerHTML = `
-            <span class="${id} block p-2 mt-2 text-sm text-red-800 border border-red-600 rounded-lg bg-red-50">${mensaje}</span>
+            <span class="${id} block p-2 mt-2 text-sm text-red-800 border border-red-400 bg-red-200 rounded-lg">${mensaje}</span>
         `;
 
         container.appendChild(alerta);
@@ -157,37 +175,6 @@ function obtenerFecha() {
     return fechaFormateada;
 }
 
-
-// PRUEBA MASIVA A LA BASE DE DATOS DE CLIENTES
-// const boton = document.getElementById('boton')
-// boton.addEventListener('click', insertData)
-
-// // Función para generar datos aleatorios
-// function generateRandomData() {
-//     return {
-//         documento: Math.floor(Math.random() * 1000000), // Genera un número aleatorio de 6 dígitos
-//         name: 'Nombre ' + Math.floor(Math.random() * 1000), // Genera un nombre aleatorio
-//         email: 'email' + Math.floor(Math.random() * 100000) + '@example.com', // Genera un correo electrónico aleatorio
-//         phone: '123456789', // Número de teléfono ficticio
-//         message: 'Mensaje de prueba',
-//         check: 'check',
-//         estado: 'activo',
-//         createdAt: new Date().toISOString() // Fecha y hora actual en formato ISO
-//     };
-// }
-
-// // Función para insertar datos
-// async function insertData() {
-//     try {
-//         for (let i = 0; i < 200; i++) {
-//             const data = generateRandomData();
-//             const response = await axios.post('./config/registro.php', data); // Reemplaza 'URL_DEL_ENDPOINT' con la URL real del endpoint
-//             console.log('Datos insertados:', response.data);
-//         }
-//     } catch (error) {
-//         console.error('Error al insertar datos:', error);
-//     }
-// }
 
 
 

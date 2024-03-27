@@ -12,7 +12,8 @@ $documento = limpiar_cadena($data['documento']);
 $name = limpiar_cadena($data['name']);
 $correo = limpiar_cadena($data['email']);
 $phone = limpiar_cadena($data['phone']);
-$message = limpiar_cadena($data['message']);
+$password = limpiar_cadena($data['password']);
+$rol = limpiar_cadena($data['rol']);
 $check = limpiar_cadena($data['check']);
 $estado = limpiar_cadena($data['estado']);
 $createdAt = limpiar_cadena($data['createdAt']);
@@ -20,8 +21,15 @@ $createdAt = limpiar_cadena($data['createdAt']);
 $response = array();
 //validar campos
 
-if ($documento == "" || $name == "" || $correo == "" || $phone == "" || $check == "") {
+if ($documento == "" || $name == "" || $correo == "" || $phone == "" || $check == ""|| $rol == "" ){
     $response['mensaje'] = "Tus datos no son aceptados en nuestra plataforma.";
+}
+
+
+if($password == ""){
+    $response['mensaje'] = "Tus datos no son aceptados en nuestra plataforma.";
+}else{
+    $passwordHashed= password_hash($password ,PASSWORD_BCRYPT,['cost'=>10]);
 }
 
 
@@ -32,7 +40,7 @@ if ($correo == "") {
     if (filter_var($correo, FILTER_VALIDATE_EMAIL)) {
 
 
-        $sql_email = "SELECT * FROM clientes WHERE email = ?";
+        $sql_email = "SELECT * FROM usuarios WHERE email = ?";
         $stmt = mysqli_prepare($conexion, $sql_email);
         mysqli_stmt_bind_param($stmt, "s", $correo);
         mysqli_stmt_execute($stmt);
@@ -56,12 +64,12 @@ if (count($response) > 0) {
 
 }else{
 
-    $sql = "INSERT INTO clientes (documento, name, email, phone, comentarios, terminos, estado, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO usuarios (documento, name, email, phone, terminos, password, rol, estado, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     // Preparar la declaración
     $stmt = mysqli_prepare($conexion, $sql);
 
-    mysqli_stmt_bind_param($stmt, "ssssssss", $documento, $name, $correo, $phone, $message, $check, $estado, $createdAt);
+    mysqli_stmt_bind_param($stmt, "sssssssss", $documento, $name, $correo, $phone, $check, $passwordHashed, $rol, $estado, $createdAt);
 
     $success = mysqli_stmt_execute($stmt);
 

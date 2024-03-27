@@ -4,24 +4,32 @@
             <img src="./img/logo-antes.jpg" class="h-8 rounded-xl" alt="logo recargaya!" />
             <span class="self-center text-2xl font-bold whitespace-nowrap text-white tracking-wide">RECARGAYA!</span>
         </a>
+
         <div class="flex items-center md:order-2 space-x-1 md:space-x-4 rtl:space-x-reverse">
+            <?php if (!isset($_SESSION['user'])) : ?>
+                <span class="inline-flex overflow-hidden rounded-md">
+                    <button data-modal-target="modal-login" data-modal-toggle="modal-login" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white uppercase bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
+                        </svg>
+                        Iniciar sesion
+                    </button>
 
-            <button data-modal-target="modal-register" data-modal-toggle="modal-register" class="uppercase block text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 md:px-10 py-2.5 text-center " type="button">
-                Registrarme
-            </button>
-
-            <!-- testeo base de datos  -->
-            <!-- <button id="boton" class="uppercase block text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 md:px-10 py-2.5 text-center " type="button">
-                Registrarme
-            </button> -->
-
-            <!-- boton para el modal de login  -->
-            <div class="flex hidden md:block">
-                <button data-modal-target="modal-login" data-modal-toggle="modal-login" type="button">
-                    <img src="./img/user.png" alt="" class="h-8 rounded-full">
-                </button>
-            </div>
-            <!-- boton del modal de registro  -->
+                    <button data-modal-target="modal-register" data-modal-toggle="modal-register" class="inline-flex items-center px-4 py-2 text-white font-medium uppercase text-sm bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                        </svg>
+                        Registrarme
+                    </button>
+                </span>
+            <?php else : ?>
+                <a href="./config/logout.php" class="inline-flex items-center text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+                    </svg>
+                    Cerrar sesion
+                </a>
+            <?php endif; ?>
 
             <button data-collapse-toggle="mega-menu-icons" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-icons" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
@@ -35,23 +43,29 @@
                 <li>
                     <a href="aliados.php" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white" aria-current="page">Aliados</a>
                 </li>
-
                 <li>
-                    <a href="#" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white">contactos</a>
+                    <a href="#" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white">Operaciones</a>
                 </li>
+                <?php if (isset($_SESSION['user'])) : ?>
+                    <li>
+                        <a href="perfil.php" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white">Perfil</a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>
 
     <!-- Main modal login -->
     <div id="modal-login" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="fixed top-0 right-0 left-0 bottom-0 bg-black opacity-50"></div>
+
+        <div class="relative p-4 w-full max-w-xl max-h-full">
             <!-- Modal content -->
             <div class="relative rounded-lg shadow bg-gray-900 border border-gray-700">
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                    <h3 class="text-2xl font-semibold text-white ">
-                        Nuestra plataforma
+                    <h3 class="text-2xl uppercase font-semibold text-white ">
+                        Ingresa a tu cuenta
                     </h3>
                     <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="modal-login">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -65,8 +79,8 @@
                     <form class="space-y-4" id="formLogin" method="POST" autocomplete="off">
                         <div class="mostrarAlerta mt-2"></div>
                         <div>
-                            <label for="user" class="block mb-2 text-sm font-medium text-white ">Email o usuario</label>
-                            <input type="text" name="user" id="user" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            <label for="user" class="block mb-2 text-sm font-medium text-white ">Email</label>
+                            <input type="email" name="user" id="user" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
                         <div>
                             <label for="password" class="block mb-2 text-sm font-medium text-white ">Password</label>
@@ -84,12 +98,14 @@
 
     <!-- Main modal para registro -->
     <div id="modal-register" tabindex="-1" aria-hidden="true" class=" hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full ">
+        <div class="fixed top-0 right-0 left-0 bottom-0 bg-black opacity-50"></div>
+
         <div class="relative p-10 w-full max-w-8xl max-h-full ">
             <!-- Modal content -->
             <div class="relative bg-gray-900 rounded-lg shadow border border-gray-700">
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4  md:p-5 border-b rounded-t">
-                    <h3 class="text-4xl uppercase font-semibold text-white">
+                    <h3 class="text-2xl uppercase font-semibold text-white">
                         Vamos a conectarnos
                     </h3>
                     <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="modal-register">
@@ -118,15 +134,22 @@
                             <label for="phone" class="block mb-2 text-base font-medium text-white">Telefono:</label>
                             <input type="text" id="phone" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="...">
                         </div>
-                        <div class="mb-6">
-                            <label for="message" class="block mb-2 text-base font-medium text-white">Mensaje:</label>
-                            <textarea id="message" rows="4" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Cuentanos tu experiencia..."></textarea>
+
+                        <div class="mb-6" id="resPassword-register">
+                            <label for="password-register" class="block mb-2 text-sm font-medium text-white ">Password</label>
+                            <input type="password" name="password-register" id="password-register" placeholder="••••••••" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
+
+                        <div class="mb-6" id="resPassword_confirmation">
+                            <label for="password_confirmation" class="block mb-2 text-sm font-medium text-white ">Confirmar password</label>
+                            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="••••••••" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        </div>
+
                         <div class="flex flex-col items-start mb-6" id="resCheck">
                             <div class="flex items-center h-5">
                                 <input id="acepto" type="checkbox" class="w-4 h-4 border border-gray-700 rounded bg-gray-800 focus:ring-3 focus:ring-blue-300"><span class="px-1 font-semibold text-white">Acepto</span><a href="public/TÉRMINOS Y CONDICIONES – RecargaYa.pdf" target="_blank" class="text-blue-400 hover:underline font-semibold">Terminos y condiciones.</a></label>
                             </div>
-                            <p class="text-gray-500 text-base mt-2 text-justify">Al hacer clic en “Registrarme”, usted acepta que RecargaYa procese sus datos personales proporcionados en el formulario anterior para comunicarse con usted como nuestro cliente potencial o real, tal y como se describe en nuestra Política de privacidad.</p>
+                            <p class="text-gray-400 text-base mt-2 text-justify">Al hacer clic en “Registrarme”, usted acepta que RecargaYa procese sus datos personales proporcionados en el formulario anterior para comunicarse con usted como nuestro cliente potencial o real, tal y como se describe en nuestra Política de privacidad.</p>
                         </div>
                         <input type="submit" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-base w-full sm:w-auto px-16 py-2.5 hover:scale-110 transition duration-300 text-center cursor-pointer uppercase" value="Registrarme">
                     </form>
