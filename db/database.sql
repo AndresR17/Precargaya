@@ -12,7 +12,8 @@ CREATE TABLE usuarios(
     password varchar(65) not null,
     rol varchar(15) not null,
     estado varchar(15) NOT NULL,
-    createdAt DATE,
+    createdAt DATE NOT NULL,
+    updateAt DATE,
     CONSTRAINT pk_clientes PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
