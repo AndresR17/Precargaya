@@ -1,3 +1,4 @@
+//*validacion y actualizacion de perfil del cliente
 import { validarCorreo, obtenerFecha, mostrarError } from './funciones.js'
 
 const formulario = document.getElementById('formPerfil');
@@ -8,7 +9,7 @@ let datos = {};
 //validacion del formulario
 function validarFormPerfil(e) {
     e.preventDefault();
-
+    const id = document.getElementById('idPerfil').value;
     const documento = document.getElementById('documento-perfil').value;
     const name = document.getElementById('name-perfil').value;
     const phone = document.getElementById('phone-perfil').value;
@@ -57,6 +58,7 @@ function validarFormPerfil(e) {
     
     //crear los datos
     datos = {
+        id,
         documento,
         name,
         email,
@@ -78,6 +80,7 @@ function validarFormPerfil(e) {
             passwordNew: passwordNewPerfil
         }
     }
+    console.log(datos);
 
     // ActualizarPerfil(datos)
 

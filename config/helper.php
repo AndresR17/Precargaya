@@ -5,7 +5,7 @@ function obtenerDatos($conexion, $tabla, $id)
     $sql = "SELECT * FROM $tabla";
 
     if(isset($id)){
-        $sql .= " WHERE id = $id";
+        $sql .= " WHERE rol != 'cliente' AND id != $id";
     }
 
     $resultado = mysqli_query($conexion, $sql);
@@ -29,16 +29,12 @@ function BorrarErrores(){
 
 }
 
-function obtenerRegistros($conexion, $tabla, $id){
+function obtenerRegistros($conexion, $tabla, $operador, $id){
 
-    $sql = "SELECT COUNT(id) FROM $tabla";
+    $sql = "SELECT COUNT(id) FROM $tabla WHERE id != $id AND estado = 'activo'";
         
         if($tabla == 'usuarios'){
-            $sql .= " WHERE id != $id";
-        }
-
-        if($tabla == 'clientes'){
-            $sql .= " WHERE estado = 'activo' ";
+            $sql .= " AND rol $operador 'cliente'";
         }
 
 
@@ -51,7 +47,7 @@ function obtenerRegistros($conexion, $tabla, $id){
 }
 
 function obtenerUltimosRegistros($conexion){
-    $sql = "SELECT * FROM clientes WHERE estado = 'activo' ORDER BY id DESC LIMIT 0,3;";
+    $sql = "SELECT * FROM usuarios WHERE estado = 'activo' ORDER BY id DESC LIMIT 0,3;";
 
     $resultado = mysqli_query($conexion, $sql);
     

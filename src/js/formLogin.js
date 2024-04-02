@@ -1,3 +1,5 @@
+//*validacion e inicio de sesion
+
 const formLogin = document.getElementById('formLogin')
 const divAlerta = document.querySelector(`.mostrarAlerta`);
 
@@ -41,7 +43,7 @@ function IniciarSesion(datos) {
 
             if (respuesta === 'admin') {
                 formLogin.reset();
-                window.location.href = './auth/dashboard.php';
+                window.location.href = './admin/dashboard.php';
                 return
             }
 

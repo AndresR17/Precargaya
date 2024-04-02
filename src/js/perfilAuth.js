@@ -1,3 +1,5 @@
+//*actualizar la contraseña para el usuario administrativo u otro rol diferente al cliente
+
 const formPerfil = document.getElementById('formPerfil');
 
 formPerfil.addEventListener('submit', validarDatos)

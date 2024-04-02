@@ -1,3 +1,5 @@
+//*funciones generales
+
 function validarCorreo(email) {
     // Expresión regular para validar un correo electrónico
     const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

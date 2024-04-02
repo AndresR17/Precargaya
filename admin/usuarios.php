@@ -2,7 +2,7 @@
 require_once('./layouts/header.php');
 require_once('./layouts/nav.php');
 
-$usuarios = obtenerDatos($conexion,'usuarios', null);
+$usuarios = obtenerDatos($conexion,'usuarios', $_SESSION['admin']['id']);
 ?>
 
 <div class="p-4 sm:ml-72">
@@ -16,13 +16,25 @@ $usuarios = obtenerDatos($conexion,'usuarios', null);
             <div class="relative overflow-x-auto rounded">
                 <?php if(count($usuarios) > 0 ) : ?>
                 <table class="w-full text-sm text-left rtl:text-right">
-                    <thead class="text-xs text-gray-400 uppercase bg-gray-700">
+                    <thead class="text-base text-gray-400 uppercase bg-gray-700">
                         <tr>
+                        <th scope="col" class="px-6 py-3">
+                                Documento
+                            </th>
                             <th scope="col" class="px-6 py-3">
-                                Usuario o email
+                                Nombre
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Email
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Celular
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Rol
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Ultima vez actualizado
                             </th>
                             <th scope="col-2" class="px-6 py-3">
                                 Opciones
@@ -31,12 +43,24 @@ $usuarios = obtenerDatos($conexion,'usuarios', null);
                     </thead>
                     <tbody>
                         <?php foreach($usuarios as $usuario): ?>
-                        <tr class="bg-gray-800 border-b border-gray-400 text-gray-200">
+                        <tr class="bg-gray-800 border-b border-gray-400 text-gray-200 text-base">
                             <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-gray-100">
-                                <?= $usuario['user'] ?>
+                                <?= $usuario['documento'] ?>
                             </th>
                             <td class="px-6 py-4">
+                                <?= $usuario['name'] ?>
+                            </td>
+                            <td class="px-6 py-4">
+                                <?= $usuario['email'] ?>
+                            </td>
+                            <td class="px-6 py-4">
+                                <?= $usuario['phone'] ?>
+                            </td>
+                            <td class="px-6 py-4">
                                 <?= $usuario['rol'] ?>
+                            </td>
+                            <td class="px-6 py-4">
+                                <?= $usuario['updateAt'] ?>
                             </td>
                             <td class="px-6 py-4 space-x-4">
                                 <a href="./perfil.php" class="px-2 py-1 text-sm bg-indigo-300 hover:bg-indigo-600 hover:text-white border-indigo-600 rounded text-indigo-800 text-center font-semibold">Editar</a>

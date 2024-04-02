@@ -3,8 +3,8 @@ require_once('./layouts/header.php');
 require_once('./layouts/nav.php');
 
 //funcion definida en el archivo helper.php
-$totalUsuarios = obtenerRegistros($conexion, 'usuarios', $_SESSION['user']['id']);
-$totalClientes = obtenerRegistros($conexion, 'clientes', null);
+$totalUsuarios = obtenerRegistros($conexion, 'usuarios', '!=', $_SESSION['admin']['id']);
+$totalClientes = obtenerRegistros($conexion,'usuarios', '=', $_SESSION['admin']['id']);
 $ultimosClientes = obtenerUltimosRegistros($conexion);
 
 ?>

@@ -13,7 +13,7 @@ require_once('./layouts/nav.php');
         <h1 class="text-white font-bold text-2xl px-10 pb-10 border-b border-gray-500 uppercase">Informacion personal</h1>
         <div class="px-10 pt-10">
             <form autocomplete="off" id="formPerfil">
-                <input type="hidden" value="<?= $user['id']; ?>">
+                <input type="hidden" id="idPerfil" value="<?= $user['id']; ?>">
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div id="resPerfilName">
                         <label for="name-perfil" class="block mb-2 text-base text-white font-medium text-gray-900 ">Nombre</label>
