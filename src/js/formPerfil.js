@@ -1,3 +1,4 @@
+//*validacion y actualizacion de perfil del cliente
 import { validarCorreo, obtenerFecha, mostrarError } from './funciones.js'
 
 const formulario = document.getElementById('formPerfil');
@@ -9,7 +10,7 @@ let datos = {};
 function validarFormPerfil(e) {
     e.preventDefault();
 
-    const idUser = Number(document.getElementById('idUser').value);
+    const id = Number(document.getElementById('idUser').value);
     const documento = document.getElementById('documento-perfil').value;
     const name = document.getElementById('name-perfil').value;
     const phone = document.getElementById('phone-perfil').value;
@@ -58,7 +59,7 @@ function validarFormPerfil(e) {
     
     //crear los datos
     datos = {
-        idUser,
+        id,
         documento,
         name,
         email,
@@ -87,7 +88,7 @@ function validarFormPerfil(e) {
 
 function ActualizarPerfil(datos) {
 
-    axios.post('./config/editarPerfil.php', datos, {
+    axios.post('./config/updatePerfil.php', datos, {
         headers: {
             'Content-Type': 'application/json'
         }

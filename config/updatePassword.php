@@ -1,5 +1,5 @@
 <?php
-
+//*se actualiza la password del usuario admin u otro usuario que este en el panel admin
 
 require_once('./conexion.php');
 require_once('./main.php');
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $passActual = limpiar_cadena($data['passActual']);
     $password = limpiar_cadena($data['password']);
     $passConfirmation = limpiar_cadena($data['passConfirmation']);
-    $id = $_SESSION['user']['id'];
+    $id = $_SESSION['admin']['id'];
 
     $errores = array();
 

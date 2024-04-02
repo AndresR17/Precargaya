@@ -7,7 +7,6 @@
         </div>
     </footer>
 
-    <script type="module" src="./src/js/app.js"></script>
     <script type="module" src="./src/js/slide.js"></script>
     <script type="module" src="./src/js/formLogin.js"></script>
     <script type="module" src="./src/js/formRegistro.js"></script>

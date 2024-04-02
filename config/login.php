@@ -36,7 +36,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $datos = mysqli_fetch_assoc($user);
                 $response = $datos['rol'];
-                $_SESSION['user'] = $datos;
+
+                if($response === 'admin'){
+                    $_SESSION['admin'] = $datos;
+                    
+                }else{
+                    $_SESSION['user'] = $datos;
+                }
+                
 
                 header('Content-Type: application/json');
                 echo json_encode($response);

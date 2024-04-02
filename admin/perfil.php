@@ -2,7 +2,6 @@
 require_once('./layouts/header.php');
 require_once('./layouts/nav.php');
 
-$usuario = obtenerDatos($conexion, 'usuarios', $_SESSION['user']['id']);
 ?>
 
 <div class="p-4 sm:ml-72">
@@ -15,8 +14,8 @@ $usuario = obtenerDatos($conexion, 'usuarios', $_SESSION['user']['id']);
             <div class="flex flex-col items-center justify-center w-2/5 border border-gray-600 py-4 px-4 space-y-3 bg-gray-800 rounded-lg">
                 <img src="../img/user.png" alt="Imagen Usuario" class="h-56 w-56 rounded-full">
                 <div class="text-center">
-                    <h3 class="text-white font-semibold text-xl"><?= $_SESSION['user']['user'] ?></h3>
-                    <p class="text-gray-200 font-normal text-base"><?= $_SESSION['user']['rol'] ?></p>
+                    <h3 class="text-white font-semibold text-xl"><?= $_SESSION['admin']['name'] ?></h3>
+                    <p class="text-gray-200 font-normal text-base"><?= $_SESSION['admin']['rol'] ?></p>
                 </div>
             </div>
             <div class="flex flex-col w-3/5 border border-gray-600 space-y-3 bg-gray-800 rounded-lg">

@@ -25,10 +25,10 @@
                     <div class="z-50 hidden my-4 text-base border border-gray-700 list-none bg-gray-800 divide-y divide-gray-100 rounded shadow " id="dropdown-user">
                         <div class="px-4 py-3" role="none">
                             <p class="text-base text-white font-normal " role="none">
-                                Usuario: <span class="font-semibold"><?= $_SESSION['user']['user'] ?></span>
+                                Usuario: <span class="font-semibold"><?= $_SESSION['admin']['name'] ?></span>
                             </p>
                             <p class="text-sm text-gray-100 truncate" role="none">
-                                Rol: <?= $_SESSION['user']['rol'] ?>
+                                Rol: <?= $_SESSION['admin']['rol'] ?>
                             </p>
                         </div>
                         <ul class="py-1" role="none">

@@ -15,7 +15,7 @@ if(!is_numeric($idCliente)){
 
 if (count($response) == 0) {
 
-    $sql = "UPDATE clientes SET estado = 'eliminado' WHERE id = ?";
+    $sql = "UPDATE usuarios SET estado = 'eliminado' WHERE id = ?";
 
     $stmt = mysqli_prepare($conexion, $sql);
     mysqli_stmt_bind_param($stmt, "i", $idCliente);

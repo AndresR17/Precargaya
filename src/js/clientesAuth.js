@@ -1,3 +1,4 @@
+//*funcion para mostrar un modal cuando se esta eliminando un usuario del panel administrativo
 
 function mostrarAlerta(id, pagina) {
     Swal.fire({

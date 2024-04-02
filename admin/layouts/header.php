@@ -1,7 +1,7 @@
 <?php
 require_once('../config/conexion.php');
 
-if ($_SESSION['user']['rol'] == 'cliente') {
+if (!isset($_SESSION['admin'])) {
     header('location:../index.php');
 }
 

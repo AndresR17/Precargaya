@@ -1,3 +1,4 @@
+//*Archivo donde se hace la validacion y registro para todos los usuarios
 import { validarCorreo, obtenerFecha, mostrarError } from './funciones.js'
 
 const formulario = document.getElementById('formClientes');
