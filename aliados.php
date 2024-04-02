@@ -5,74 +5,104 @@ require_once('./layouts/nav.php');
 ?>
 
 <!-- titulo -->
-<div class="text-center text-white my-[10rem] mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
+<div class="text-center text-white my-[5rem] lg:my-[10rem] mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
     <p class="text-gray-100 text-center text-justify md:text-center text-2xl">La colaboración con nuestros Aliados se basa en un sólido compromiso con la calidad. Su enfoque meticuloso y atención a los detalles han elevado nuestros estándares, asegurando que entreguemos productos y servicios de alta categoría a nuestros clientes.
     </p>
 </div>
 
 <!-- ALIADOS -->
-<section data-aos="zoom-in-down" class="flex flex-col md:space-y-6 lg:space-y-0 lg:space-x-2 lg:flex-row items-center gap-4 justify-between xl:flex-row my-10 mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
-    <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg md:transition md:hover:scale-110">
-        <div class="space-y-5 ">
-            <img src="./img/1xbet.jpg" class="w-[25rem]" alt="Imagen 1XBet">
-            <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">1XBET</h3>
-            <p class="text-gray-200 text-center text-base">¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
-            <div class="flex justify-center">
-                <a class="group relative inline-flex uppercase items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="https://affpa.top/L?tag=d_1838183m_97c_&site=1838183&ad=97" target="_blank">
-                    <span class="absolute -end-full transition-all group-hover:end-4">
-                        <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </span>
+<section data-aos="zoom-in-down" class="flex flex-col items-center justify-center md:space-y-6 lg:space-x-4 my-10 mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
 
-                    <span class="text-base font-medium transition-all group-hover:me-4"> Registrarme! </span>
-                </a>
-            </div>
+    <div class="ml-4 flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-6 xl:space-x-10 p-4">
 
-        </div>
-    </div>
+        <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg lg:transition lg:hover:scale-110">
+            <div class="space-y-5">
+                <img src="./img/1xbet.jpg" class="w-[25rem]" alt="Imagen 1XBet">
+                <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">1XBET</h3>
+                <p class="text-gray-200 text-center text-base">¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
+                <div class="flex justify-center">
+                    <a class="group relative inline-flex uppercase items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="" target="_blank">
+                        <span class="absolute -end-full transition-all group-hover:end-4">
+                            <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </span>
 
-    <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg md:transition md:hover:scale-110">
-        <div class="space-y-5">
-            <img src="./img/betwinner.png" class="w-[25rem]" alt="Imagen 1XBet">
-            <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">BETWINNER</h3>
-            <p class="text-gray-300 text-center">¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
-            <div class="flex justify-center">
-                <a class="group relative inline-flex uppercase items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="https://mqzegh.top/28PT?p=%2Fregistration%2F" target="_blank">
-                    <span class="absolute -end-full transition-all group-hover:end-4">
-                        <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </span>
+                        <span class="text-base font-medium transition-all group-hover:me-4"> Registrarme! </span>
+                    </a>
+                </div>
 
-                    <span class="text-base font-medium transition-all group-hover:me-4"> Registrarme! </span>
-                </a>
             </div>
         </div>
-    </div>
 
-    <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg md:transition md:hover:scale-110">
-        <div class="space-y-5">
-            <img src="./img/22bet.jpg" class="w-[25rem]" alt="Imagen 1XBet">
-            <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">22BET</h3>
-            <p class="text-gray-300 text-center">¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
-            <div class="flex justify-center">
-                <a class="group relative inline-flex uppercase items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="https://welcome.toptrendyinc.com/redirect.aspx?pid=83130&bid=1562&lpid=104" target="_blank">
-                    <span class="absolute -end-full transition-all group-hover:end-4">
-                        <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </span>
+        <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg lg:transition lg:hover:scale-110">
+            <div class="space-y-5">
+                <img src="./img/betwinner.png" class="w-[25rem]" alt="Imagen Betwinner">
+                <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">BETWINNER</h3>
+                <p class="text-gray-300 text-center">¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
+                <div class="flex justify-center">
+                    <a class="group relative inline-flex uppercase items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="https://mqzegh.top/28PT?p=%2Fregistration%2F" target="_blank">
+                        <span class="absolute -end-full transition-all group-hover:end-4">
+                            <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </span>
 
-                    <span class="text-base font-medium transition-all group-hover:me-4"> Registrarme! </span>
-                </a>
+                        <span class="text-base font-medium transition-all group-hover:me-4"> Registrarme! </span>
+                    </a>
+                </div>
             </div>
         </div>
+
     </div>
+
+
+    <div class="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-6 xl:space-x-10 p-4">
+
+        <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg lg:transition lg:hover:scale-110">
+            <div class="space-y-5">
+                <img src="./img/22bet.jpg" class="w-[25rem]" alt="Imagen 22 BET">
+                <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">22BET</h3>
+                <p class="text-gray-300 text-center">¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
+                <div class="flex justify-center">
+                    <a class="group relative inline-flex uppercase items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="https://welcome.toptrendyinc.com/redirect.aspx?pid=83130&lpid=15&bid=1484" target="_blank">
+                        <span class="absolute -end-full transition-all group-hover:end-4">
+                            <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </span>
+
+                        <span class="text-base font-medium transition-all group-hover:me-4"> Registrarme! </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg lg:transition lg:hover:scale-110">
+            <div class="space-y-5">
+                <img src="./img/888starz-logo.png" class="w-[25rem]" alt="Imagen 88STARZ">
+                <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">88STARZ</h3>
+                <p class="text-gray-300 text-center">¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
+                <div class="flex justify-center">
+                    <a class="group relative inline-flex uppercase items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="https://bonuspack.fun/L?tag=d_3236137m_37513c_&site=3236137&ad=37513" target="_blank">
+                        <span class="absolute -end-full transition-all group-hover:end-4">
+                            <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </span>
+
+                        <span class="text-base font-medium transition-all group-hover:me-4"> Registrarme! </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
 </section>
 
 <!-- TITULO ANALISTAS -->
-<section data-aos="zoom-in-down" class="flex my-[10rem] mx-5 md:mx-[2rem] xl:mx-[10rem] p-4 ">
+<section data-aos="zoom-in-down" class="flex my-[10rem] mx-5 md:mx-[2rem] xl:mx-[10rem] ">
     <div class="space-y-4">
         <h2 class="text-white text-center font-bold text-4xl">NUESTROS ANALISTAS DEPORTIVOS EXPERTOS</h2>
         <p class="text-gray-300 text-justify lg:text-center text-xl">
@@ -92,9 +122,9 @@ require_once('./layouts/nav.php');
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
             <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Oscar Vivas</h3>
             <p class="text-justify text-gray-200">
-            Pulpolandia es un canal que esta bajo el control del Colombiano Oscar Vivas. Conocido como el elpulpo79 en el mundo de las apuestas deportivas.
-             El pulpo es especialista en estadisticas de Tennis, ligas Europeas de futbol y un amante de la NBA. 
-             El Pulpo vive en Estados Unidos hace 25 años de los cuales hace 17 años trabaja con apuestas deportivas de forma privada. En el 2019 nació Pulpolandia en telegram y tiene varios records en los 5 años con el canal de telegram. Uno de esos records es el de 27 apuestas ganadas de seguido. Ese record es publico para cualquier persona que quiera ir a verlo en su canal.
+                Pulpolandia es un canal que esta bajo el control del Colombiano Oscar Vivas. Conocido como el elpulpo79 en el mundo de las apuestas deportivas.
+                El pulpo es especialista en estadisticas de Tennis, ligas Europeas de futbol y un amante de la NBA.
+                El Pulpo vive en Estados Unidos hace 25 años de los cuales hace 17 años trabaja con apuestas deportivas de forma privada. En el 2019 nació Pulpolandia en telegram y tiene varios records en los 5 años con el canal de telegram. Uno de esos records es el de 27 apuestas ganadas de seguido. Ese record es publico para cualquier persona que quiera ir a verlo en su canal.
             </p>
             <div class="flex gap-4 md:ml-auto items-center justify-center">
                 <a href=""><img src="/img/footer/logo-white.png" alt=""></a>
@@ -109,8 +139,8 @@ require_once('./layouts/nav.php');
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
             <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Master Colombia</h3>
             <p class="text-justify text-gray-200">
-            Máster Colombia con 7 años de experiencias en apuestas Deportivas, con nosotros encontrarás combinadas, 
-            retos multiplicadores y pronósticos diarios
+                Máster Colombia con 7 años de experiencias en apuestas Deportivas, con nosotros encontrarás combinadas,
+                retos multiplicadores y pronósticos diarios
             </p>
             <div class="flex gap-4 md:ml-auto items-center justify-center">
                 <a href=""><img src="./img/footer/facebook.png" alt=""></a>

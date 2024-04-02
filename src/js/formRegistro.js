@@ -1,3 +1,5 @@
+import { validarCorreo, obtenerFecha, mostrarError } from './funciones.js'
+
 const formulario = document.getElementById('formClientes');
 
 formulario.addEventListener('submit', validarCampos);
@@ -11,8 +13,9 @@ function validarCampos(e) {
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
     const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
     const aceptoCheck = document.getElementById('acepto');
+    const passwordRegister = document.getElementById('password-register').value;
+    const password_confirmation = document.getElementById('password_confirmation').value;
 
 
     if (documento.trim() === '') {
@@ -25,7 +28,7 @@ function validarCampos(e) {
         return
     }
 
-    if (name.trim() == "") {
+    if (name.trim() === "") {
         mostrarError('El nombre es obligatorio', 'resName')
         return
     }
@@ -47,6 +50,21 @@ function validarCampos(e) {
         return
     }
 
+    if (passwordRegister.trim() === "") {
+        mostrarError('El password es obligatorio', 'resPassword-register')
+        return
+    }
+
+    if (password_confirmation.trim() === "") {
+        mostrarError('Confirma tu password', 'resPassword_confirmation')
+        return
+    }
+
+    if(passwordRegister !== password_confirmation){
+            mostrarError('Las contraseñas no coinciden', 'resPassword-register')
+            return
+    }
+
     if (aceptoCheck.checked === false) {
         mostrarError('Debes aceptar los terminos y condiciones', 'resCheck');
         return
@@ -54,6 +72,7 @@ function validarCampos(e) {
 
     const createdAt = obtenerFecha();
     const estado = 'activo';
+    
 
     //crear los datos
     const datos = {
@@ -61,7 +80,8 @@ function validarCampos(e) {
         name,
         email,
         phone,
-        message,
+        password: passwordRegister,
+        rol: 'cliente',
         check: 'Acepto terminos',
         estado,
         createdAt
@@ -118,44 +138,6 @@ function guardarRegistro(datos) {
 
 
 
-
-function mostrarError(mensaje, id) {
-
-    const alerta = document.querySelector(`.${id}`);
-
-    if (!alerta) {
-        const alerta = document.createElement('div');
-        const container = document.getElementById(id)
-
-        alerta.innerHTML = `
-            <span class="${id} block p-2 mt-2 text-sm text-red-800 border border-red-600 rounded-lg bg-red-50">${mensaje}</span>
-        `;
-
-        container.appendChild(alerta);
-        setTimeout(() => {
-            alerta.remove();
-        }, 3000);
-    }
-}
-
-function validarCorreo(email) {
-    // Expresión regular para validar un correo electrónico
-    const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regexCorreo.test(email);
-}
-
-
-function obtenerFecha() {
-    var fechaActual = new Date();
-
-    var año = fechaActual.getFullYear();
-    var mes = fechaActual.getMonth() + 1;
-    var dia = fechaActual.getDate();
-
-    // Formatear la fecha en un formato legible AAAA-MM-DD
-    var fechaFormateada = año + "-" + (mes < 10 ? "0" + mes : mes) + "-" + (dia < 10 ? "0" + dia : dia);
-    return fechaFormateada;
-}
 
 
 
