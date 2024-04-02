@@ -9,6 +9,7 @@ let datos = {};
 function validarFormPerfil(e) {
     e.preventDefault();
 
+    const idUser = Number(document.getElementById('idUser').value);
     const documento = document.getElementById('documento-perfil').value;
     const name = document.getElementById('name-perfil').value;
     const phone = document.getElementById('phone-perfil').value;
@@ -57,12 +58,13 @@ function validarFormPerfil(e) {
     
     //crear los datos
     datos = {
+        idUser,
         documento,
         name,
         email,
         phone,
         password:passwordPerfil,
-        updatedAt: obtenerFecha()
+        updateAt: obtenerFecha()
     }
     
     if(passwordNewPerfil !== passwordConfirmPerfil){
@@ -78,42 +80,52 @@ function validarFormPerfil(e) {
             passwordNew: passwordNewPerfil
         }
     }
-
-    // ActualizarPerfil(datos)
+    
+    ActualizarPerfil(datos)
 
 }
 
 function ActualizarPerfil(datos) {
 
-    axios.post('./config/registro.php', datos, {
+    axios.post('./config/editarPerfil.php', datos, {
         headers: {
             'Content-Type': 'application/json'
         }
     })
         .then(function (response) {
 
-            const respuesta = response.data;
+            const respuestaPerfil = response.data;
 
-            if (respuesta === 1) {
-
-                Swal.fire({
-                    title: "Hubo un error!",
-                    text: "Este correo ya fue usado anteriormente.",
-                    icon: "error"
-                });
-
-            } else if (respuesta === 2) {
-
-                formulario.reset();
+            if (respuestaPerfil === 1) {
 
                 Swal.fire({
-                    title: "Felicitaciones!",
-                    text: "Tu registro fue realizado con exito!",
+                    title: "Actualizacion exitosa!",
+                    text: "Tus datos fueron actualizados.",
                     icon: "success"
                 });
 
+                return
+
+            } else if (respuestaPerfil === 2) {
+
+                Swal.fire({
+                    title: "Password incorrecta!",
+                    text: "Tu password no coincide!",
+                    icon: "error"
+                });
+                return
+
+            }else if(respuestaPerfil === 3){
+
+                Swal.fire({
+                    title: "Hubo un error!",
+                    text: "El usuario que intentas actualizar no existe!",
+                    icon: "error"
+                });
+                return
+
             } else {
-                const { mensaje } = respuesta
+                const { mensaje } = respuestaPerfil
 
                 Swal.fire({
                     title: "Hubo un error!",

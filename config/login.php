@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($check_password) {
 
-            $query = "SELECT id, documento, name, email, phone, rol, createdAt FROM usuarios WHERE email = ? ";
+            $query = "SELECT id, documento, name, email, phone, rol FROM usuarios WHERE email = ? ";
             $stmt = mysqli_prepare($conexion, $query);
             mysqli_stmt_bind_param($stmt, "s", $usuario);
             mysqli_stmt_execute($stmt);

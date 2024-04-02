@@ -113,6 +113,7 @@ function guardarRegistro(datos) {
             } else if (respuesta === 2) {
 
                 formulario.reset();
+                window.location.href = './index.php';
 
                 Swal.fire({
                     title: "Felicitaciones!",

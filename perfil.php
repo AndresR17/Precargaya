@@ -13,7 +13,7 @@ require_once('./layouts/nav.php');
         <h1 class="text-white font-bold text-2xl px-10 pb-10 border-b border-gray-500 uppercase">Informacion personal</h1>
         <div class="px-10 pt-10">
             <form autocomplete="off" id="formPerfil">
-                <input type="hidden" value="<?= $user['id']; ?>">
+                <input type="hidden" id="idUser" value="<?= $user['id']; ?>">
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div id="resPerfilName">
                         <label for="name-perfil" class="block mb-2 text-base text-white font-medium text-gray-900 ">Nombre</label>
@@ -21,7 +21,7 @@ require_once('./layouts/nav.php');
                     </div>
                     <div id="resPerfilDocumento">
                         <label for="documento-perfil" class="block mb-2 text-base text-white font-medium text-gray-900 ">No de identificacion</label>
-                        <input type="text" id="documento-perfil" class="border text-base text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500" value="<?= $user['documento']; ?>" disabled />
+                        <input type="text" id="documento-perfil" class="border text-base text-white rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500" value="<?= $user['documento']; ?>" />
                     </div>
                     <div id="resPerfilEmail">
                         <label for="email-perfil" class="block mb-2 text-base text-white font-medium text-gray-900 ">Email</label>
