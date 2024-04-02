@@ -158,36 +158,6 @@ function obtenerFecha() {
 }
 
 
-// PRUEBA MASIVA A LA BASE DE DATOS DE CLIENTES
-// const boton = document.getElementById('boton')
-// boton.addEventListener('click', insertData)
-
-// // Función para generar datos aleatorios
-// function generateRandomData() {
-//     return {
-//         documento: Math.floor(Math.random() * 1000000), // Genera un número aleatorio de 6 dígitos
-//         name: 'Nombre ' + Math.floor(Math.random() * 1000), // Genera un nombre aleatorio
-//         email: 'email' + Math.floor(Math.random() * 100000) + '@example.com', // Genera un correo electrónico aleatorio
-//         phone: '123456789', // Número de teléfono ficticio
-//         message: 'Mensaje de prueba',
-//         check: 'check',
-//         estado: 'activo',
-//         createdAt: new Date().toISOString() // Fecha y hora actual en formato ISO
-//     };
-// }
-
-// // Función para insertar datos
-// async function insertData() {
-//     try {
-//         for (let i = 0; i < 200; i++) {
-//             const data = generateRandomData();
-//             const response = await axios.post('./config/registro.php', data); // Reemplaza 'URL_DEL_ENDPOINT' con la URL real del endpoint
-//             console.log('Datos insertados:', response.data);
-//         }
-//     } catch (error) {
-//         console.error('Error al insertar datos:', error);
-//     }
-// }
 
 
 
