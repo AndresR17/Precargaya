@@ -2,7 +2,7 @@
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
         <a href="./index.php" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="./img/logo-antes.jpg" class="h-8 rounded-xl" alt="logo recargaya!" />
-            <span class="self-center text-2xl font-bold whitespace-nowrap text-white tracking-wide">RECARGAYA!</span>
+            <span class="self-center text-2xl font-bold whitespace-nowrap text-white tracking-wide">RECARGAYA</span>
         </a>
 
         <div class="flex items-center md:order-2 space-x-1 md:space-x-4 rtl:space-x-reverse">

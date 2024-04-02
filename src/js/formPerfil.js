@@ -4,6 +4,7 @@ import { validarCorreo, obtenerFecha, mostrarError } from './funciones.js'
 const formulario = document.getElementById('formPerfil');
 
 formulario.addEventListener('submit', validarFormPerfil);
+
 let datos = {};
 
 //validacion del formulario
@@ -52,11 +53,11 @@ function validarFormPerfil(e) {
         return
     }
 
-    if (passwordPerfil .trim() === "") {
+    if (passwordPerfil.trim() === "") {
         mostrarError('Ingresa tu contraseña para actualizar tu informacion', 'resPerfilPassword')
         return
     }
-    
+
     //crear los datos
     datos = {
         id,
@@ -64,24 +65,24 @@ function validarFormPerfil(e) {
         name,
         email,
         phone,
-        password:passwordPerfil,
+        password: passwordPerfil,
         updateAt: obtenerFecha()
     }
-    
-    if(passwordNewPerfil !== passwordConfirmPerfil){
+
+    if (passwordNewPerfil !== passwordConfirmPerfil) {
         mostrarError('Las contraseñas no coinciden', 'resPerfilPasswordNew')
         return
 
     }
-    
-    if(passwordNewPerfil != ""){
 
-        datos ={
+    if (passwordNewPerfil != "") {
+
+        datos = {
             ...datos,
             passwordNew: passwordNewPerfil
         }
     }
-    
+
     ActualizarPerfil(datos)
 
 }
@@ -98,6 +99,10 @@ function ActualizarPerfil(datos) {
             const respuestaPerfil = response.data;
 
             if (respuestaPerfil === 1) {
+
+                document.getElementById('password-perfil').value = "";
+                document.getElementById('password-perfil-new').value = "";
+                document.getElementById('confirm_password-perfil').value = "";
 
                 Swal.fire({
                     title: "Actualizacion exitosa!",
@@ -116,7 +121,7 @@ function ActualizarPerfil(datos) {
                 });
                 return
 
-            }else if(respuestaPerfil === 3){
+            } else if (respuestaPerfil === 3) {
 
                 Swal.fire({
                     title: "Hubo un error!",
