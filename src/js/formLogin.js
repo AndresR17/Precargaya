@@ -1,3 +1,5 @@
+import { BASE_URL, currentPath } from './config.js';
+
 //*validacion e inicio de sesion
 
 const formLogin = document.getElementById('formLogin')
@@ -32,7 +34,7 @@ function ValidarDatos(e) {
 
 function IniciarSesion(datos) {
 
-    axios.post('./config/login.php', datos, {
+    axios.post(BASE_URL + '/config/login.php', datos, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -43,13 +45,13 @@ function IniciarSesion(datos) {
 
             if (respuesta === 'admin') {
                 formLogin.reset();
-                window.location.href = './admin/dashboard.php';
+                window.location.href = BASE_URL + '/admin/dashboard.php';
                 return
             }
 
             if (respuesta === 'cliente') {
                 formLogin.reset();
-                window.location.href = './index.php';
+                window.location.href = currentPath;
                 return
             }
 

@@ -1,11 +1,12 @@
 <?php
 
-require_once('./layouts/header.php');
+require_once('../../layouts/header.php');
+require_once(__DIR__ . '/../../layouts/nav.php');
 
 if (!isset($_SESSION['user'])) {
     header('location:index.php');
 }
-require_once('./layouts/nav.php');
+
 ?>
 
 <section class="flex flex-col xl:flex-row my-[6rem] mx-5 md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem] items-center justify-center">
@@ -57,6 +58,6 @@ require_once('./layouts/nav.php');
     </div>
 </section>
 
-<script type="module" src="./src/js/formPerfil.js"></script>
+<script type="module" src="<?= BASE_URL . 'src/js/formPerfil.js' ?>"></script>
 
-<?php require_once('./layouts/footer.php') ?>
+<?php require_once(__DIR__ . '/../../layouts/footer.php') ?>

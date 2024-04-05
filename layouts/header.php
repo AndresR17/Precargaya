@@ -1,7 +1,12 @@
-<?php session_start();
+<?php
+define('BASE_URL', 'http://localhost/Precargaya/');
+
+
+session_start();
 if(isset($_SESSION['user'])){
     $user = $_SESSION['user'];
 } 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,8 +35,8 @@ if(isset($_SESSION['user'])){
 
     <title>RecargaYa</title>
     <link rel="shortcut icon" href="img/logo-antes.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="./src/css/app.css">
-    <script type="module" src="./src/js/app.js"></script>
+    <link rel="stylesheet" href="<?= BASE_URL. 'src/css/app.css'; ?>">
+    <script type="module" src="<?= BASE_URL . 'src/js/app.js'?>"></script>
 
     <?php
     // if ($_SERVER["HTTPS"] != "on") {
@@ -48,7 +53,7 @@ if(isset($_SESSION['user'])){
 <!-- Boton de whatsap  -->
 <div data-dial-init class="z-50 fixed end-6 bottom-10 md:bottom-24 group">
     <a href="https://wa.link/xtfpkd" target="_blank" type="button" data-dial-toggle="speed-dial-menu-default" aria-controls="speed-dial-menu-default" aria-expanded="false" class="flex items-center justify-center rounded-full w-14 h-14 bg-green-600 focus:outline-none hover:scale-110 transition duration-300">
-        <img src="./img/footer/Print_Glyph_White.png" alt="" class="w-8 h-8">
+        <img src="<?= BASE_URL . 'img/footer/Print_Glyph_White.png'?>" alt="" class="w-8 h-8">
         <span class="sr-only">Open actions menu</span>
     </a>
 </div>
