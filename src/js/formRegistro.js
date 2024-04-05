@@ -1,5 +1,6 @@
 //*Archivo donde se hace la validacion y registro para todos los usuarios
 import { validarCorreo, obtenerFecha, mostrarError } from './funciones.js'
+import { BASE_URL } from './config.js';
 
 const formulario = document.getElementById('formClientes');
 
@@ -94,7 +95,7 @@ function validarCampos(e) {
 
 function guardarRegistro(datos) {
 
-    axios.post('./config/registro.php', datos, {
+    axios.post(BASE_URL + '/config/registro.php', datos, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -114,7 +115,6 @@ function guardarRegistro(datos) {
             } else if (respuesta === 2) {
 
                 formulario.reset();
-                window.location.href = './index.php';
 
                 Swal.fire({
                     title: "Felicitaciones!",

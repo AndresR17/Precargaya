@@ -1,7 +1,7 @@
 <nav class="shadow bg-gray-800 md:fixed md:top-0 w-full z-50">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
-        <a href="./index.php" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="./img/logo-antes.jpg" class="h-8 rounded-xl" alt="logo recargaya!" />
+        <a href="<?= BASE_URL; ?>" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="<?= BASE_URL . 'img/logo-antes.jpg'; ?>" class="h-8 rounded-xl" alt="logo recargaya!" />
             <span class="self-center text-2xl font-bold whitespace-nowrap text-white tracking-wide">RECARGAYA</span>
         </a>
 
@@ -38,7 +38,7 @@
                         </div>
                         <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownInformationButton">
                             <li>
-                                <a href="./movimientos.php" class="block flex items-center px-4 py-2 hover:bg-gray-800 text-white text-base">
+                                <a href="<?= BASE_URL. 'views/auth/movimientos.php'?>" class="block flex items-center px-4 py-2 hover:bg-gray-800 text-white text-base">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
                                     </svg>
@@ -46,7 +46,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="./perfil.php" class="block flex items-center px-4 py-2 hover:bg-gray-800 text-white text-base">
+                                <a href="<?= BASE_URL. 'views/auth/perfil.php'?>" class="block flex items-center px-4 py-2 hover:bg-gray-800 text-white text-base">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                                     </svg>
@@ -55,7 +55,7 @@
                             </li>
                         </ul>
                         <div class="py-2">
-                            <a href="./config/logout.php" class="block flex items-center px-4 py-2 text-base text-gray-700 hover:bg-gray-800 text-white">
+                            <a href="<?= BASE_URL . 'config/logout.php'; ?>" class="block flex items-center px-4 py-2 text-base text-gray-700 hover:bg-gray-800 text-white">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
                                 </svg>
@@ -76,10 +76,10 @@
         <div id="mega-menu-icons" class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
             <ul class="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
                 <li>
-                    <a href="aliados.php" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white" aria-current="page">Aliados</a>
+                    <a href="<?= BASE_URL . 'views/aliados.php'; ?>" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white" aria-current="page">Aliados</a>
                 </li>
                 <li>
-                    <a href="operaciones.php" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white">Operaciones</a>
+                    <a href="<?= BASE_URL . 'views/operaciones.php'; ?>" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white">Operaciones</a>
                 </li>
             </ul>
         </div>

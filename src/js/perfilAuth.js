@@ -1,5 +1,5 @@
 //*actualizar la contraseña para el usuario administrativo u otro rol diferente al cliente
-
+import { BASE_URL } from './config.js';
 const formPerfil = document.getElementById('formPerfil');
 
 formPerfil.addEventListener('submit', validarDatos)
@@ -42,7 +42,7 @@ function validarDatos(e){
 
 function cambiarDatos(datos){
 
-    axios.post('../config/updatePassword.php', datos, {
+    axios.post(BASE_URL + '/config/updatePassword.php', datos, {
         headers: {
             'Content-Type': 'application/json'
         }

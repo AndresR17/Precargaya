@@ -73,7 +73,7 @@ $usuarios = obtenerDatos($conexion,'usuarios', $_SESSION['admin']['id']);
                 <?php else: ?>
                     <div class="py-2">
                         <p class="text-white text-center text-4xl font-semibold">
-                            No hay clientes registrados
+                            No hay usuarios registrados
                         </p>
                     </div>
                 <?php endif; ?>
