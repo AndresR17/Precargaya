@@ -62,4 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo 2;
         exit();
     }
+}else {
+    header('location:../index.php');
 }
+?>
