@@ -1,16 +1,16 @@
 <div class="splide" role="group" aria-label="Splide Basic HTML Example">
     <div class="splide__arrows splide__arrows--ltr">
         <button class="splide__arrow splide__arrow--prev" type="button" aria-label="Previous slide" aria-controls="splide01-track">
-            <img src="./img/left.png" width="40px" alt="">
+            <img src="<?= BASE_URL . 'img/left.png'; ?>" width="40px" alt="">
         </button>
         <button class="splide__arrow splide__arrow--next" type="button" aria-label="Next slide" aria-controls="splide01-track">
-            <img src="./img/right.png" width="40px" alt="">
+            <img src="<?= BASE_URL . 'img/right.png'; ?>" width="40px" alt="">
         </button>
     </div>
     <div class="splide__track">
         <ul class="splide__list">
             <li class="splide__slide splide-1" data-splide-interval="5000">
-                <img src="./img/img.1.jpg" alt="">
+                <img src="<?= BASE_URL . 'img/img.1.jpg'; ?>" alt="">
                 <div class="overlay"></div>
                 <div class="slide-content">
                     <div class="absolute top-[40%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10 text-center text-white text-4xl md:text-6xl xl:text-7xl sm:block font-bold tracking-wide ">RECARGA TU CUENTA</div>
@@ -19,7 +19,7 @@
             </li>
 
             <li class="splide__slide splide-1" data-splide-interval="5000">
-                <img src="./img/img.2.jpg" alt="">
+                <img src="<?= BASE_URL . 'img/img.2.jpg'; ?>" alt="">
                 <div class="overlay"></div>
                 <div class="slide-content">
                     <div class="absolute top-[40%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10 text-center text-white text-4xl md:text-6xl xl:text-7xl sm:block font-bold tracking-wide ">RETIRAR AHORA</div>
@@ -28,7 +28,7 @@
             </li>
 
             <li class="splide__slide splide-1" data-splide-interval="5000">
-                <img src="./img/img.3.jpg" alt="">
+                <img src="<?= BASE_URL . 'img/img.3.jpg'; ?>" alt="">
                 <div class="overlay"></div>
                 <div class="slide-content">
                     <div class="absolute top-[40%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10 text-center text-white text-4xl md:text-6xl xl:text-7xl sm:block font-bold tracking-wide">DEPOSITA AHORA</div>
