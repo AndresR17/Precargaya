@@ -34,11 +34,11 @@
                     <div id="dropdownInformation" class="z-10 hidden divide-y divide-gray-600 rounded-lg shadow w-44 bg-gray-700">
                         <div class="px-4 py-3 text-sm text-white">
                             <div class="text-base"><?= $user['name'] ?></div>
-                            <div class="font-medium truncate text-base"><?= $user['email'] ;?></div>
+                            <div class="font-medium truncate text-base"><?= $user['email']; ?></div>
                         </div>
                         <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownInformationButton">
                             <li>
-                                <a href="<?= BASE_URL. 'views/auth/movimientos.php'?>" class="block flex items-center px-4 py-2 hover:bg-gray-800 text-white text-base">
+                                <a href="<?= BASE_URL . 'views/auth/movimientos.php' ?>" class="block flex items-center px-4 py-2 hover:bg-gray-800 text-white text-base">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
                                     </svg>
@@ -46,7 +46,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= BASE_URL. 'views/auth/perfil.php'?>" class="block flex items-center px-4 py-2 hover:bg-gray-800 text-white text-base">
+                                <a href="<?= BASE_URL . 'views/auth/perfil.php' ?>" class="block flex items-center px-4 py-2 hover:bg-gray-800 text-white text-base">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                                     </svg>
@@ -107,6 +107,9 @@
                 <!-- Modal body -->
                 <div class="p-4 md:p-5">
                     <form class="space-y-4" id="formLogin" method="POST" autocomplete="off">
+
+                        <input type="hidden" id="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
+
                         <div class="mostrarAlerta mt-2"></div>
                         <div>
                             <label for="user" class="block mb-2 text-sm font-medium text-white ">Email</label>
@@ -148,6 +151,7 @@
                 <!-- Modal body -->
                 <div class="p-4 md:p-5">
                     <form class="" id="formClientes" method="POST" autocomplete="off">
+                        <input type="hidden" id="csrf_token_registro" value="<?= $_SESSION['csrf_token']; ?>">
                         <div class="mb-6" id="resDoc">
                             <label for="documento" class="block mb-2 text-base font-medium text-white">No Documento:</label>
                             <input type="text" id="documento" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="...">

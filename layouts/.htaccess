@@ -1,0 +1,20 @@
+<Files config.php>
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files nav.php>
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files slide.php>
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files footer.php>
+    Order allow,deny
+    Deny from all
+</Files>
+

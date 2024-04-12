@@ -1,18 +1,4 @@
-<?php
-define('BASE_URL', 'http://localhost/Precargaya/');
-
-session_start();
-
-//sesion cuando algun usuario esta logeado
-if(isset($_SESSION['user'])){
-    $user = $_SESSION['user'];
-} 
-
-if (!isset($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Genera un token CSRF único
-}
-
-?>
+<?php require_once('config.php') ;?>
 <!DOCTYPE html>
 <html lang="en">
 

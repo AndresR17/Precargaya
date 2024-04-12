@@ -14,7 +14,10 @@ if (!isset($_SESSION['user'])) {
         <h1 class="text-white font-bold text-2xl px-10 pb-10 border-b border-gray-500 uppercase">Informacion personal</h1>
         <div class="px-10 pt-10">
             <form autocomplete="off" id="formPerfil">
-                <input type="hidden" id="idUser" value="<?= $user['id']; ?>">
+
+                <input type="hidden" id="csrf_token_perfil" value="<?= $_SESSION['csrf_token']; ?>">
+                <input type="hidden" id="idUser" value="<?= openssl_encrypt($user['id'], AES, KEY);  ?>">
+                
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div id="resPerfilName">
                         <label for="name-perfil" class="block mb-2 text-base text-white font-medium text-gray-900 ">Nombre</label>

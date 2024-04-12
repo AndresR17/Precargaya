@@ -9,7 +9,8 @@ formLogin.addEventListener('submit', ValidarDatos)
 
 function ValidarDatos(e) {
     e.preventDefault()
-
+    
+    const token = document.getElementById('csrf_token').value;
     const user = document.getElementById('user').value;
     const password = document.getElementById('password').value;
 
@@ -24,6 +25,7 @@ function ValidarDatos(e) {
     }
 
     const datos = {
+        token,
         user,
         password
     }
@@ -40,7 +42,7 @@ function IniciarSesion(datos) {
         }
     })
         .then(function (response) {
-
+            
             const  respuesta  = response.data;
 
             if (respuesta === 'admin') {
@@ -57,6 +59,10 @@ function IniciarSesion(datos) {
 
             if (respuesta === 2) {
                 mostrarAlerta('El usuario o password son incorrectos!')
+                return
+            }
+            if (respuesta === 3) {
+                mostrarAlerta('No tienes acceso a esta aplicacion!')
                 return
             }
 

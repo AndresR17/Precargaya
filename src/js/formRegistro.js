@@ -18,6 +18,7 @@ function validarCampos(e) {
     const aceptoCheck = document.getElementById('acepto');
     const passwordRegister = document.getElementById('password-register').value;
     const password_confirmation = document.getElementById('password_confirmation').value;
+    const token = document.getElementById('csrf_token_registro').value;
 
 
     if (documento.trim() === '') {
@@ -78,6 +79,7 @@ function validarCampos(e) {
 
     //crear los datos
     const datos = {
+        token,
         documento,
         name,
         email,
@@ -95,7 +97,7 @@ function validarCampos(e) {
 
 function guardarRegistro(datos) {
 
-    axios.post(BASE_URL + '/config/registro.php', datos, {
+    axios.post(BASE_URL + '/config/registrarUsuarios.php', datos, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -122,7 +124,16 @@ function guardarRegistro(datos) {
                     icon: "success"
                 });
 
-            } else {
+            }else if(respuesta === 3){
+
+                formulario.reset();
+                Swal.fire({
+                    title: "Acceso denegado!",
+                    text: "No tienes acceso a nuestra aplicacion.",
+                    icon: "error"
+                });
+            
+            }else {
                 const { mensaje } = respuesta
 
                 Swal.fire({

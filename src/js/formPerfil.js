@@ -12,7 +12,7 @@ let datos = {};
 function validarFormPerfil(e) {
     e.preventDefault();
 
-    const id = Number(document.getElementById('idUser').value);
+    const id = document.getElementById('idUser').value;
     const documento = document.getElementById('documento-perfil').value;
     const name = document.getElementById('name-perfil').value;
     const phone = document.getElementById('phone-perfil').value;
@@ -20,6 +20,7 @@ function validarFormPerfil(e) {
     const passwordPerfil = document.getElementById('password-perfil').value;
     const passwordNewPerfil = document.getElementById('password-perfil-new').value;
     const passwordConfirmPerfil = document.getElementById('confirm_password-perfil').value;
+    const token = document.getElementById('csrf_token_perfil').value;
 
 
     if (documento.trim() === '') {
@@ -61,6 +62,7 @@ function validarFormPerfil(e) {
 
     //crear los datos
     datos = {
+        token,
         id,
         documento,
         name,
@@ -83,7 +85,7 @@ function validarFormPerfil(e) {
             passwordNew: passwordNewPerfil
         }
     }
-
+    console.log(datos);
     ActualizarPerfil(datos)
 
 }
@@ -97,6 +99,7 @@ function ActualizarPerfil(datos) {
         }
     })
         .then(function (response) {
+            console.log(response);
 
             const respuestaPerfil = response.data;
 

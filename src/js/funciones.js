@@ -38,9 +38,18 @@ function mostrarError(mensaje, id) {
     }
 }
 
+function validarCampo(campo, mensaje, resultadoId) {
+    if (campo.value === "") {
+        mostrarError(mensaje, resultadoId);
+        return false;
+    }
+    return true;
+}
+
 
 export {
     validarCorreo,
     obtenerFecha,
-    mostrarError
+    mostrarError,
+    validarCampo
 }
