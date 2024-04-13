@@ -76,10 +76,10 @@
         <div id="mega-menu-icons" class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
             <ul class="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
                 <li>
-                    <a href="<?= BASE_URL . 'views/aliados.php'; ?>" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white" aria-current="page">Aliados</a>
+                    <a href="<?= BASE_URL . 'aliados'; ?>" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white" aria-current="page">Aliados</a>
                 </li>
                 <li>
-                    <a href="<?= BASE_URL . 'views/operaciones.php'; ?>" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white">Operaciones</a>
+                    <a href="<?= BASE_URL . 'operaciones'; ?>" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white">Operaciones</a>
                 </li>
             </ul>
         </div>
@@ -117,7 +117,7 @@
                         </div>
                         <div>
                             <label for="password" class="block mb-2 text-sm font-medium text-white ">Password</label>
-                            <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            <input type="password" name="password" id="password" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
                         <div class="flex justify-end">
                             <a href="#" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Olvide mi contraseña!</a>
@@ -154,34 +154,41 @@
                         <input type="hidden" id="csrf_token_registro" value="<?= $_SESSION['csrf_token']; ?>">
                         <div class="mb-6" id="resDoc">
                             <label for="documento" class="block mb-2 text-base font-medium text-white">No Documento:</label>
-                            <input type="text" id="documento" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="...">
+                            <input type="text" id="documento" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         </div>
                         <div class="mb-6" id="resName">
-                            <label for="name" class="block mb-2 text-base font-medium text-white">Nombre:</label>
-                            <input type="text" id="name" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nombre completo...">
+                            <label for="name" class="block mb-2 text-base font-medium text-white">Nombre completo:</label>
+                            <input type="text" id="name" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         </div>
                         <div class="mb-6" id="resEmail">
                             <label for="email" class="block mb-2 text-base font-medium text-white">Email:</label>
-                            <input type="email" id="email" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="...">
+                            <input type="email" id="email" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         </div>
                         <div class="mb-6" id="resPhone">
                             <label for="phone" class="block mb-2 text-base font-medium text-white">Telefono:</label>
-                            <input type="text" id="phone" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="...">
+                            <input type="text" id="phone" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         </div>
 
                         <div class="mb-6" id="resPassword-register">
-                            <label for="password-register" class="block mb-2 text-sm font-medium text-white ">Password</label>
-                            <input type="password" name="password-register" id="password-register" placeholder="••••••••" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            <label for="password-register" class="block mb-2 text-sm font-medium text-white ">Contraseña</label>
+                            <input type="password" name="password-register" id="password-register" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
 
                         <div class="mb-6" id="resPassword_confirmation">
-                            <label for="password_confirmation" class="block mb-2 text-sm font-medium text-white ">Confirmar password</label>
-                            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="••••••••" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            <label for="password_confirmation" class="block mb-2 text-sm font-medium text-white ">Confirmar Contraseña</label>
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
 
                         <div class="flex flex-col items-start mb-6" id="resCheck">
                             <div class="flex items-center h-5">
-                                <input id="acepto" type="checkbox" class="w-4 h-4 border border-gray-700 rounded bg-gray-800 focus:ring-3 focus:ring-blue-300"><span class="px-1 font-semibold text-white">Acepto</span><a href="public/TÉRMINOS Y CONDICIONES – RecargaYa.pdf" target="_blank" class="text-blue-400 hover:underline font-semibold">Terminos y condiciones.</a></label>
+                                <input id="acepto" type="checkbox" class="w-4 h-4 border cursor-pointer border-gray-700 rounded bg-gray-800 focus:ring-3 focus:ring-blue-300"><span class="px-1 font-semibold text-white"></span>
+                                <label for="acepto" class="text-white font-semibold text-base cursor-pointer mr-1">Acepto</label>
+                                <a href="public/TÉRMINOS Y CONDICIONES – RecargaYa.pdf" target="_blank" class="flex items-center text-blue-400 hover:underline font-semibold">
+                                    Terminos y condiciones
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
+                                </a>
                             </div>
                             <p class="text-gray-400 text-base mt-2 text-justify">Al hacer clic en “Registrarme”, usted acepta que RecargaYa procese sus datos personales proporcionados en el formulario anterior para comunicarse con usted como nuestro cliente potencial o real, tal y como se describe en nuestra Política de privacidad.</p>
                         </div>

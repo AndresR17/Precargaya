@@ -1,7 +1,6 @@
 import { BASE_URL } from "./config.js"
 import { validarCampo, mostrarError, obtenerFecha } from "./funciones.js";
 
-
 //Funcion y validacion de los botones que muestran los formularios de operaciones
 const btnRetirar = document.getElementById('btn-retirar');
 const btnRecargar = document.getElementById('btn-recargar');
@@ -10,6 +9,34 @@ const sectionRetirar = document.getElementById('section-retirar');
 
 btnRetirar.addEventListener('click', () => cambiarColor(btnRetirar, btnRecargar, sectionRetirar, sectionRecargar));
 btnRecargar.addEventListener('click', () => cambiarColor(btnRecargar, btnRetirar, sectionRecargar, sectionRetirar));
+
+
+
+window.onload = function () {
+var parametro = obtenerParametroURL();
+
+    if (parametro === 'recargar') {
+
+        btnRecargar.classList.remove("bg-gray-800", "border-gray-600", "hover:bg-gray-700");
+        btnRecargar.classList.add("bg-blue-700", "hover:bg-blue-600", "focus:ring-blue-700", "focus:ring-4", "border-blue-600");
+        sectionRecargar.classList.remove('hidden')
+
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
+    }
+
+    if (parametro === 'retirar') {
+
+        btnRetirar.classList.remove("bg-gray-800", "border-gray-600", "hover:bg-gray-700");
+        btnRetirar.classList.add("bg-blue-700", "hover:bg-blue-600", "focus:ring-blue-700", "focus:ring-4", "border-blue-600");
+        sectionRetirar.classList.remove('hidden')
+
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        
+    }
+}
+
+
 
 
 function cambiarColor(btnClick, btnActivo, sectionMostrar, sectionOcultar) {
@@ -184,4 +211,16 @@ function spinner() {
         }
     })
 
+}
+
+
+function obtenerParametroURL() {
+    const ruta = window.location.pathname;
+    const parametros = ruta.split('/').filter(parametro => parametro !== ''); // Eliminar segmentos vacíos
+
+    if (parametros.length > 0) {
+        return parametros[parametros.length - 1];
+    } else {
+        return null; // O puedes retornar un valor por defecto, dependiendo de tu caso de uso
+    }
 }

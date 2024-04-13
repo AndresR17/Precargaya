@@ -1,0 +1,21 @@
+
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /Precargaya/
+
+# Reescribir URL para views/*
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]+)/?$ views/$1.php [NC,L]
+
+# Reescribir URL para operaciones/*
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^operaciones(/retirar|/recargar)?/?$ views/operaciones.php [NC,L]
+
+
+
+
+
+
+

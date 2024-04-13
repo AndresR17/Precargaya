@@ -39,7 +39,7 @@ require_once('./layouts/slide.php');
         <div class="group relative">
             <img class="block rounded-t-lg hover:scale-110 transition duration-300" src="./img/retiros.png" alt="Imagen retiros" />
             <div class="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
-                <a href="<?= BASE_URL . 'views/operaciones.php';?>" class="text-white text-lg font-semibold uppercase">Realizar retiro</a>
+                <a href="<?= BASE_URL . 'operaciones/retirar';?>" class="text-white text-lg font-semibold uppercase">Realizar retiro</a>
             </div>
         </div>
 
@@ -47,7 +47,7 @@ require_once('./layouts/slide.php');
             <h5 class="mb-6 text-4xl font-bold tracking-tight text-yellow-400">Retiros</h5>
             <p class="mb-3 text-base text-gray-200 text-justify">¡Descubre la comodidad de retirar dinero cuando quieras y donde quieras con Nequi Daviplata y Bancolombia! Queremos hacerte la vida más fácil y accesible, por eso te invitamos a aprovechar la conveniencia de nuestros cajeros. Retira efectivo de tu cuenta Nequi Daviplata y Bancolombia en cualquier momento, sin importar la hora o el lugar.</p>
             <div class="flex justify-center mt-10">
-                <a class="group relative uppercase inline-flex items-center overflow-hidden rounded bg-blue-600 px-14 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="<?= BASE_URL . 'views/operaciones.php';?>">
+                <a class="group relative uppercase inline-flex items-center overflow-hidden rounded bg-blue-600 px-14 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="<?= BASE_URL . 'operaciones/retirar';?>">
                     <span class="absolute -end-full transition-all group-hover:end-4">
                         <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -65,7 +65,7 @@ require_once('./layouts/slide.php');
         <div class="group relative">
             <img class="block rounded-t-lg hover:scale-110 transition duration-300" src="./img/depositos.png" alt="Imagen retiros" />
             <div class="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
-                <a href="<?= BASE_URL . 'views/operaciones.php';?>" class="text-white text-lg font-semibold uppercase">Realizar deposito</a>
+                <a href="<?= BASE_URL . 'operaciones/recargar';?>" class="text-white text-lg font-semibold uppercase">Realizar deposito</a>
             </div>
         </div>
 
@@ -75,7 +75,7 @@ require_once('./layouts/slide.php');
                 conveniencia de nuestros cajeros . Retira efectivo de tu cuenta Nequi
                 Daviplata y Bancolombia en cualquier momento, sin importar la hora o el lugar.</p>
             <div class="flex justify-center mt-10">
-                <a class="group relative uppercase inline-flex items-center overflow-hidden rounded bg-blue-600 px-14 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="<?= BASE_URL . 'views/operaciones.php#btn';?>">
+                <a class="group relative uppercase inline-flex items-center overflow-hidden rounded bg-blue-600 px-14 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="<?= BASE_URL . 'operaciones/recargar';?>">
                     <span class="absolute -start-full transition-all group-hover:start-4">
                         <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />

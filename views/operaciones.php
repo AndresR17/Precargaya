@@ -8,6 +8,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
     <h1 class="text-white text-4xl">Retiros y Recargas de Dinero en <span class="font-semibold text-blue-500 uppercase">1xBet</span></h1>
 </section>
 
+
 <section data-aos="zoom-in-up" class="flex flex-col xl:flex-row mx-5 mb-[3rem] md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem] items-center justify-center">
 
     <?php if (!isset($_SESSION['user'])) :  ?>
@@ -20,7 +21,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
 </section>
 
 <!-- BOTONES PARA MOSTRAR LOS FORMULARIOS -->
-<section id="btn" class="flex flex-col mx-5 md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem] justify-center">
+<section class="flex flex-col mx-5 md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem] justify-center">
 
     <div class="flex w-full space-x-3">
         <button id="btn-retirar" type="button" class="flex w-full text-base text-white border items-center focus:outline-none focus:ring-4 font-medium rounded px-5 py-2.5 me-2 mb-2 bg-gray-800 border-gray-600 hover:bg-gray-700 focus:ring-blue-700">
@@ -38,6 +39,9 @@ require_once(__DIR__ . '/../layouts/slide.php');
     </div>
 
 </section>
+
+<!-- DIV CREADO PARA QUE LA PAGINA SE POCISIONE EN ESTE DIV  -->
+<div id="form"></div>
 
 <!-- SECCION PARA RETIRAR -->
 <section id="section-retirar" data-aos="zoom-in-down" class="hidden transition flex flex-col justify-center md:space-y-6 lg:space-x-4 my-10 mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
