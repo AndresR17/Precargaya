@@ -1,7 +1,7 @@
 <?php
 define('BASE_URL', 'http://localhost/Precargaya/');
 
-define("KEY", "Recargaya@2024*");
+define("KEY", "Recargaya@2024*CLAVESECRETA");
 define("AES", "AES-256-ECB");
 
 session_start();

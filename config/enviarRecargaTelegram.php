@@ -8,12 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($_POST['token']) && $_POST['token'] === $_SESSION['csrf_token']) {
 
-        // Token del bot proporcionado por BotFather
-        $botToken = TELEGRAM_TOKEN;
-
-        // ID del chat donde quieres enviar el mensaje
-        $chatId = TELEGRAM_ID_CHAT;
-
         // Datos del formulario
         $idHash = openssl_decrypt($_POST['id'], AES, KEY);
         $id = (int)limpiar_cadena($idHash);
@@ -22,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $idJugador = limpiar_cadena($_POST['idJugador']);
         $valor = (int)limpiar_cadena($_POST['valor']);
         $createdAt = limpiar_cadena($_POST['createdAt']);
-        $tipo = 'Recarga';
         $response = array();
         $valorMinimo = 30000;
 
@@ -34,49 +27,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Verificar si se subió un archivo
         if ($imagen['error'] !== UPLOAD_ERR_OK) {
-            // Error al subir el archivo
-            $response['mensaje'] = "Error: No se pudo subir la imagen.";
-            exit;
+            enviarRespuestaJSON('Error: No se pudo subir la imagen.!');
         }
 
-        // Verificar si el archivo es una imagen válida
         $extensionesValidas = array("jpg", "jpeg", "png", "gif");
 
         $extension = pathinfo($imagen['name'], PATHINFO_EXTENSION);
         if (!in_array($extension, $extensionesValidas)) {
             // Extensión de imagen no válida
-            $response['mensaje'] = "Error: La extensión de la imagen no es válida.";
-            exit;
+            enviarRespuestaJSON('Error: La extensión de la imagen no es válida.!');
         }
 
-        if (empty($id) || empty($name) || empty($documento) || empty($idJugador) || empty($valor)) {
-            $response['mensaje'] = "Tus datos no son aceptados en nuestra plataforma";
-            exit;
+        if (empty($id) || empty($name) || empty($documento) || empty($idJugador) || empty($valor) || empty($createdAt)) {
+            enviarRespuestaJSON('Tus datos no son aceptados en nuestra plataforma.!');
+        }
+
+        if(!is_numeric($valor) || !is_numeric($documento) || !is_numeric($id)){         
+            enviarRespuestaJSON('Ingresaste datos incorrectos!');
         }
 
         if ($valor < $valorMinimo) {
-            $response['mensaje'] = "Este valor no puede ser recargado";
-            exit;
+            enviarRespuestaJSON('Este valor no puede ser recargado!');
         }
+
         $valorFormateado = number_format($valor, 2);
         
-        if (count($response) == 0) {
             // Mensaje a enviar
-            $mensaje = "COMPROBANTE DE PAGO:
-            \nCordial saludo, nueva RECARGA a realizar:
-            \nNOMBRE: $name
-            \nDOCUMENTO: $documento
-            \nID JUGADOR: $idJugador
-            \nVALOR A RECARGAR: $ $valorFormateado
-            \n ";
+            $mensaje = "Comprobante de pago:"
+            ."\nCordial saludo, ** RECARGA ** a realizar:"
+            . "\n "
+            . "\nNOMBRE: $name"
+            . "\nDOCUMENTO: $documento"
+            . "\nID JUGADOR: $idJugador"
+            . "\nVALOR A RECARGAR: $ $valorFormateado"
+            . "\n "
+            . "\n ************** | Gracias | ****************";
 
 
             // URL de la API de Telegram para enviar mensajes
-            $telegramUrl = "https://api.telegram.org/bot$botToken/sendPhoto";
+            $telegramUrl = "https://api.telegram.org/bot". TELEGRAM_TOKEN ."/sendPhoto";
 
             // Campos de la solicitud POST
             $postFields = array(
-                'chat_id' => $chatId,
+                'chat_id' => TELEGRAM_ID_CHAT,
                 'caption' => $mensaje,
                 'photo' => new CURLFile($fileTmpPath, $fileType, $fileName), // Usa CURLFile para manejar el archivo adjunto
             );
@@ -98,30 +91,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($response && json_decode($response)->ok) {
 
                 // LA RESPUESTA FUE CORRECTA 
-                $sql = "INSERT INTO operaciones(id_usuario, tipo, valor, createdAt) VALUES (?, ?, ?, ?)";
+                $sql = "INSERT INTO recargas(id_usuario, valor, createdAt) VALUES (?, ?, ?)";
                 $stmt = mysqli_prepare($conexion, $sql);
-                mysqli_stmt_bind_param($stmt, "isss", $id, $tipo, $valor, $createdAt);
+                mysqli_stmt_bind_param($stmt, "iss", $id, $valor, $createdAt);
                 $success = mysqli_stmt_execute($stmt);
                 if($success){
-                    echo 1;
+                    enviarRespuestaJSON(1);
                     exit();
                 }
 
             } else {
-                echo 2;
+                enviarRespuestaJSON(2);
                 exit();
             }
-        } else {
-
-            header('Content-Type: application/json');
-            echo json_encode($response);
-            exit();
-        }
+        
     } else {
-
-        header('Content-Type: application/json');
-        echo "Token no valido, Recarga la pagina";
-        exit();
+        enviarRespuestaJSON('Token no valido, Recarga la pagina!');
     }
 } else {
     session_destroy();

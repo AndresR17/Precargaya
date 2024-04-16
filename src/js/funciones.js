@@ -39,8 +39,17 @@ function mostrarError(mensaje, id) {
 }
 
 function validarCampo(campo, mensaje, resultadoId) {
-    if (campo.value === "") {
+    if (campo.value.trim() === "") {
         mostrarError(mensaje, resultadoId);
+        return false;
+    }
+    return true;
+}
+
+function validarNumero(campo,mensaje,resultado) {
+    
+    if (isNaN(campo.value.trim())) {
+        mostrarError(mensaje, resultado);
         return false;
     }
     return true;
@@ -51,5 +60,6 @@ export {
     validarCorreo,
     obtenerFecha,
     mostrarError,
-    validarCampo
+    validarCampo,
+    validarNumero
 }

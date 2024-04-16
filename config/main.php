@@ -1,12 +1,9 @@
 <?php 
 
-function verificar_datos($filtro,$cadena){
-
-    if(preg_match("/^".$filtro."$/",$cadena)){
-        return false;
-    }else{
-        return true;
-    }
+function enviarRespuestaJSON($respuesta) {
+    header('Content-Type: application/json');
+    echo json_encode($respuesta);
+    exit();
 }
 
 function limpiar_cadena($cadena){

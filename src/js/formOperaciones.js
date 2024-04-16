@@ -1,5 +1,7 @@
+//! VALIDACION Y ENVIO DE INFORMACION DE LOS FORMULARIOS Y FUNCIONALIDAD DE LOS BOTONES DE LA VISTA OPERACIONES 
+
 import { BASE_URL } from "./config.js"
-import { validarCampo, mostrarError, obtenerFecha } from "./funciones.js";
+import { validarCampo, mostrarError, obtenerFecha, validarNumero } from "./funciones.js";
 
 //Funcion y validacion de los botones que muestran los formularios de operaciones
 const btnRetirar = document.getElementById('btn-retirar');
@@ -11,9 +13,9 @@ btnRetirar.addEventListener('click', () => cambiarColor(btnRetirar, btnRecargar,
 btnRecargar.addEventListener('click', () => cambiarColor(btnRecargar, btnRetirar, sectionRecargar, sectionRetirar));
 
 
-
+//Se verifica si en la url trae algun parametro para desplegar el formulario
 window.onload = function () {
-var parametro = obtenerParametroURL();
+    var parametro = obtenerParametroURL();
 
     if (parametro === 'recargar') {
 
@@ -32,13 +34,11 @@ var parametro = obtenerParametroURL();
         sectionRetirar.classList.remove('hidden')
 
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        
+
     }
 }
 
-
-
-
+//funcionalidad de los botones de la pagina de operaciones
 function cambiarColor(btnClick, btnActivo, sectionMostrar, sectionOcultar) {
     const botonClickGris = btnClick.classList.contains("bg-gray-800");
     const botonActivoAzul = btnActivo.classList.contains("bg-blue-700");
@@ -74,33 +74,35 @@ function cambiarColor(btnClick, btnActivo, sectionMostrar, sectionOcultar) {
     }
 }
 
+//constante para usar en los dos formularios
+const createdAt = obtenerFecha();
 
-
-// validacion para el formulario de recargar saldo en la vista operaciones
-const formRetirar = document.getElementById('formRetirar');
-
+//* validacion y envio para el formulario de recargar
 const formRecargar = document.getElementById('formRecargar');
+const valorMinimoRecargar = 30000;
+
 formRecargar.addEventListener('submit', validarFormRecargar);
-const valorMinimo = 30000;
 
 const tokenRecargar = document.getElementById('token_recargar');
 const idRecargar = document.getElementById('idRecargar');
 const nameRecargar = document.getElementById('name-recargar');
 const docRecargar = document.getElementById('doc-recargar');
 const idJugadorRecargar = document.getElementById('idJugador-recargar');
-const valorRecargarInput = document.getElementById('valor-recargar');
+const valorRecargar = document.getElementById('valor-recargar');
 const comprobanteRecargar = document.getElementById('comprobante_recargar');
-const createdAt = obtenerFecha()
 
+//se validacion cada campo del formulario
 function validarFormRecargar(e) {
     e.preventDefault();
 
-    const valorRecargar = Number(valorRecargarInput.value);
     if (!validarCampo(nameRecargar, 'Define tu nombre completo', 'resUserRecargar')) return;
     if (!validarCampo(docRecargar, 'Define tu documento', 'resDocRecargar')) return;
+    if (!validarNumero(docRecargar, 'El documento no es valido!', 'resDocRecargar')) return;
     if (!validarCampo(idJugadorRecargar, 'Define ID de jugador', 'resIDjugadorRecargar')) return;
-    if (!validarCampo(valorRecargarInput, 'Define el valor a recargar', 'resValorRecargar')) return;
-    if (valorRecargar < valorMinimo) {
+    if (!validarCampo(valorRecargar, 'Define el valor a recargar', 'resValorRecargar')) return;
+    if (!validarNumero(valorRecargar, 'El valor no es valido!', 'resValorRecargar')) return;
+
+    if (valorRecargar.value < valorMinimoRecargar) {
         mostrarError('El valor mínimo debe ser de $30.000', 'resValorRecargar');
         return;
     }
@@ -122,18 +124,19 @@ function validarFormRecargar(e) {
     formData.append('name', nameRecargar.value);
     formData.append('documento', docRecargar.value);
     formData.append('idJugador', idJugadorRecargar.value);
-    formData.append('valor', valorRecargar);
+    formData.append('valor', valorRecargar.value);
     formData.append('createdAt', createdAt);
 
-    enviarMensaje(formData)
+    enviarRecarga(formData)
 }
 
-function enviarMensaje(datos) {
+//Envio de formulario recargar
+function enviarRecarga(datos) {
 
     spinner();
 
     // Realizar la solicitud POST usando Axios
-    axios.post(BASE_URL + '/config/mensajeApiTelegram.php', datos, {
+    axios.post(BASE_URL + '/config/enviarRecargaTelegram.php', datos, {
         headers: {
             'Content-Type': 'multipart/form-data'
         }
@@ -141,15 +144,114 @@ function enviarMensaje(datos) {
 
         .then(response => {
 
-            console.log('Respuesta del servidor:', response.data);
             const respuesta = response.data;
+            Swal.close();
 
             if (respuesta === 1) {
 
                 formRecargar.reset();
                 Swal.fire({
                     title: "Se ha enviado su peticion!",
-                    text: "Si en 15 minutos no se realiza la recarga por favor contactanos via telegram.",
+                    text: "Tu solicitud se puede tardar entre 15 a 20 minutos , si no se le ha hecho el envió DESPUES DE ESE TIEMPO comunícate via telegram.",
+                    icon: "success"
+                });
+
+            } else if (respuesta === 2) {
+
+                Swal.fire({
+                    title: "Hubo en error!",
+                    text: "Por favor intenta nuevamente!",
+                    icon: "error"
+                });
+
+            } else {
+                const { mensaje } = respuesta
+
+                Swal.fire({
+                    title: "Hubo un error!",
+                    text: `${mensaje}`,
+                    icon: "error"
+                });
+            }
+        })
+        .catch(error => {
+            // Manejar errores
+            console.error('Error al enviar', error);
+        });
+}
+
+//* validacion y  envio para el formulario de retirar
+const formRetirar = document.getElementById('formRetirar');
+const valorMinimoRetirar = 100000;
+
+formRetirar.addEventListener('submit', validarFormRetirar);
+
+const tokenRetirar = document.getElementById('tokenRetirar');
+const idRetirar = document.getElementById('idRetirar');
+const nameRetirar = document.getElementById('nameRetirar');
+const docRetirar = document.getElementById('doc-retirar');
+const idJugadorRetirar = document.getElementById('idJugador-retirar');
+const codigoRetiro = document.getElementById('cod-retirar');
+const entidadRetiro = document.getElementById('ent-retirar');
+const cuentaRetirar = document.getElementById('cuenta-retirar');
+const valorRetirar = document.getElementById('valor-retirar');
+
+function validarFormRetirar(e) {
+    e.preventDefault();
+    if (!validarCampo(nameRetirar, 'Define tu nombre completo', 'resUserRetirar')) return;
+    if (!validarCampo(docRetirar, 'Define tu documento', 'resDocRetirar')) return;
+    if (!validarNumero(docRetirar, 'El documento no es valido!', 'resDocRetirar')) return;
+    if (!validarCampo(idJugadorRetirar, 'Define ID de jugador', 'resIDjugadorRetirar')) return;
+    if (!validarCampo(codigoRetiro, 'Ingresa tu codigo de retiro de 1XBET', 'resCodigoRetirar')) return;
+    if (!validarCampo(entidadRetiro, 'Selecciona una opcion valida!', 'resEntRetirar')) return;
+    if (!validarCampo(cuentaRetirar, 'Define tu numero de cuenta', 'resEntRetirar')) return;
+    if (!validarCampo(valorRetirar, 'Define el valor a recargar', 'resValorRetirar')) return;
+    if (!validarNumero(valorRetirar, 'El valor no es valido!', 'resValorRetirar')) return;
+    if (valorRetirar.value < valorMinimoRetirar) {
+        mostrarError('El valor mínimo debe ser de $100.000', 'resValorRetirar');
+        return;
+    }
+
+    const datos = {
+        token: tokenRetirar.value,
+        id: idRetirar.value,
+        name: nameRetirar.value,
+        documento: docRetirar.value,
+        idJugador: idJugadorRetirar.value,
+        codigo: codigoRetiro.value,
+        entidad: entidadRetiro.value,
+        cuenta: cuentaRetirar.value,
+        valor: valorRetirar.value,
+        createdAt
+    };
+    
+    enviarRetiro(datos);
+
+}
+
+// envio de formulario para retirar
+function enviarRetiro(datos) {
+
+    spinner();
+
+    // Realizar la solicitud POST usando Axios
+    axios.post(BASE_URL + '/config/enviarRetiroTelegram.php', datos, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+        .then(response => {
+
+            const respuesta = response.data;
+            Swal.close();
+
+            if (respuesta === 1) {
+
+                formRetirar.reset();
+                Swal.fire({
+                    title: "Se ha enviado su peticion!",
+                    text: "Tu solicitud se puede tardar entre 15 a 20 minutos , si no se le ha hecho el envió DESPUES DE ESE TIEMPO comunícate via telegram.",
                     icon: "success"
                 });
 
@@ -178,8 +280,6 @@ function enviarMensaje(datos) {
 }
 
 
-
-
 function validarExtension(archivo) {
     const extensionesPermitidas = ['jpg', 'jpeg', 'png', 'gif']; // Lista de extensiones permitidas
     const extension = archivo.name.split('.').pop().toLowerCase(); // Obtener la extensión del archivo
@@ -193,23 +293,15 @@ function validarExtension(archivo) {
 
 function spinner() {
 
-    let timerInterval;
     Swal.fire({
-        title: "Enviando peticion!",
-        text: "Permíteme por favor un momento mientras realizo el proceso de deposito",
-        timer: 5000,
-        timerProgressBar: true,
+        title: "Cargando...",
+        text: 'Permíteme por favor un momento mientras se realiza el proceso.',
+        showCancelButton: false,
+        showConfirmButton: false,
         didOpen: () => {
             Swal.showLoading();
-            const timer = Swal.getPopup().querySelector("b");
-            timerInterval = setInterval(() => {
-                timer.textContent = `${Swal.getTimerLeft()}`;
-            }, 100);
-        },
-        willClose: () => {
-            clearInterval(timerInterval);
         }
-    })
+    });
 
 }
 
@@ -221,6 +313,6 @@ function obtenerParametroURL() {
     if (parametros.length > 0) {
         return parametros[parametros.length - 1];
     } else {
-        return null; // O puedes retornar un valor por defecto, dependiendo de tu caso de uso
+        return null;
     }
 }

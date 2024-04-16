@@ -2,6 +2,7 @@
 require_once('../layouts/header.php');
 require_once(__DIR__ . '/../layouts/nav.php');
 require_once(__DIR__ . '/../layouts/slide.php');
+
 ?>
 
 <section data-aos="zoom-in" class="flex flex-col xl:flex-row mt-[6rem] mb-[5rem] mx-5 md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem] items-center justify-center">
@@ -40,62 +41,59 @@ require_once(__DIR__ . '/../layouts/slide.php');
 
 </section>
 
-<!-- DIV CREADO PARA QUE LA PAGINA SE POCISIONE EN ESTE DIV  -->
-<div id="form"></div>
-
 <!-- SECCION PARA RETIRAR -->
 <section id="section-retirar" data-aos="zoom-in-down" class="hidden transition flex flex-col justify-center md:space-y-6 lg:space-x-4 my-10 mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
 
-    <form method="POST" id="formRetirar" action="<?= BASE_URL . 'config/datosTelegram.php'; ?>" enctype="multipart/form-data" autocomplete="off">
+    <form id="formRetirar" method="POST" autocomplete="off">
         <fieldset class="w-full border border-gray-600 p-8  rounded-lg">
             <legend class="text-gray-200 text-base text-base border border-gray-600 px-4 py-2 rounded">
                 Completa los campos a continuación para realizar tu retiro.
             </legend>
 
-            <input type="hidden" id="token_retirar" value="<?= $_SESSION['csrf_token']; ?>">
-            <input type="hidden" id="id-retirar" value="<?= openssl_encrypt($user['id'], AES, KEY);  ?>">
+            <input type="hidden" id="tokenRetirar" value="<?= $_SESSION['csrf_token']; ?>">
+            <input type="hidden" id="idRetirar" value="<?= openssl_encrypt($user['id'], AES, KEY);  ?>">
+
             <div class="grid gap-6 md:grid-cols-2">
-                <div>
-                    <label for="user_retirar" class="block mb-2 text-base font-medium text-white">Nombre</label>
-                    <input type="text" id="user_retirar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500 focus:bg-gray-700" value="<?= isset($_SESSION['user']) ? $user['name'] : ''; ?>" />
+                <div id="resUserRetirar">
+                    <label for="nameRetirar" class="block mb-2 text-base font-medium text-white">Nombre completo</label>
+                    <input type="text" id="nameRetirar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500 focus:bg-gray-700" value="<?= isset($_SESSION['user']) ? $user['name'] : ''; ?>" />
                 </div>
-                <div>
+                <div id="resDocRetirar">
                     <label for="doc-retirar" class="block mb-2 text-base font-medium text-white">Documento</label>
                     <input type="text" id="doc-retirar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" value="<?= isset($_SESSION['user']) ? $user['documento'] : ''; ?>" />
                 </div>
 
-                <div class="">
+                <div id="resIDjugadorRetirar">
                     <label for="idJugador-retirar" class="block mb-2 text-base font-medium text-white">ID jugador</label>
                     <input type="text" id="idJugador-retirar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="ID de 1XBET" />
                 </div>
-                <div class="">
+                <div id="resCodigoRetirar">
                     <label for="cod-retirar" class="block mb-2 text-base font-medium text-white">Codigo de retiro</label>
                     <input type="text" id="cod-retirar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" />
                 </div>
 
             </div>
-            <div class="my-6">
+            <div class="my-6" id="resEntRetirar">
                 <label for="ent-retirar" class="block mb-2 text-base font-medium text-white">Entidad financiera</label>
                 <select id="ent-retirar" class=" border text-base rounded-lg focus:ring-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-                    <option selected>--Selccione una opcion--</option>
+                    <option value="" selected>--Selccione una opcion--</option>
                     <option value="Bancolombia">Bancolombia</option>
                     <option value="Davivienda">Davivienda</option>
                 </select>
             </div>
 
-            <div class="mb-6">
-                <label for="cuenta-retirar" class="block mb-2 text-base font-medium text-white">Numero de cuenta</label>
+            <div class="mb-6" id="resCuentaRetirar">
+                <label for="cuenta-retirar" class="block mb-2 text-base font-medium text-white">Numero de cuenta para recibir</label>
                 <input type="text" id="cuenta-retirar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" />
             </div>
 
-            <div class="mb-6">
+            <div class="mb-6" id="resValorRetirar">
                 <label for="valor-retirar" class="block mb-2 text-base font-medium text-white">Valor a Retirar</label>
-                <input type="text" id="valor-retirar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="min $100.000" />
+                <input type="number" id="valor-retirar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="min $100.000" />
             </div>
 
-
             <?php if (isset($_SESSION['user'])) : ?>
-                <button type="submit" class="bg-blue-700 hover:bg-blue-600 text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:w-auto px-10 py-2.5 text-center transition hover:scale-110 ">Realizar operación</button>
+                <button type="submit" class="bg-blue-700 hover:bg-blue-600 text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:w-auto px-10 py-2.5 text-center transition hover:scale-110 ">Realizar operación</button>
             <?php endif; ?>
         </fieldset>
     </form>
@@ -109,14 +107,14 @@ require_once(__DIR__ . '/../layouts/slide.php');
             <legend class="text-gray-200 text-base text-base border border-gray-600 px-4 py-2 rounded">
                 Completa los campos a continuación para realizar tu recarga.
             </legend>
-
+            
             <input type="hidden" id="token_recargar" value="<?= $_SESSION['csrf_token']; ?>">
             <input type="hidden" id="idRecargar" value="<?= openssl_encrypt($user['id'], AES, KEY);  ?>">
 
             <div class="grid gap-6 md:grid-cols-2">
 
                 <div id="resUserRecargar">
-                    <label for="name-recargar" class="block mb-2 text-base font-medium text-white">Nombre</label>
+                    <label for="name-recargar" class="block mb-2 text-base font-medium text-white">Nombre completo</label>
                     <input type="text" id="name-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500 focus:bg-gray-700" value="<?= isset($_SESSION['user']) ? $user['name'] : ''; ?>" />
                 </div>
                 <div id="resDocRecargar">
@@ -129,8 +127,8 @@ require_once(__DIR__ . '/../layouts/slide.php');
                     <input type="text" id="idJugador-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="ID de 1XBET" />
                 </div>
                 <div class="mb-6" id="resValorRecargar">
-                    <label for="valor-recargar" class="block mb-2 text-base font-medium text-white">Valor a depositar</label>
-                    <input type="text" id="valor-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="min $30.000" />
+                    <label for="valor-recargar" class="block mb-2 text-base font-medium text-white">Valor a recargar</label>
+                    <input type="number" id="valor-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="min $30.000" />
                 </div>
 
             </div>
@@ -144,7 +142,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
                 <div id="btn-submit">
                     <button type="submit" class="bg-blue-700 hover:bg-blue-600 text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:w-auto px-8 py-2.5 text-center transition hover:scale-110">Realizar operacion</button>
                 </div>
-                
+
             <?php endif; ?>
         </fieldset>
     </form>

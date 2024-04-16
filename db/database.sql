@@ -18,14 +18,23 @@ CREATE TABLE usuarios(
     CONSTRAINT pk_clientes PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
-CREATE Table operaciones (
+CREATE Table recargas (
     id int(50) auto_increment not null,
     id_usuario int (50) not null,
-    tipo varchar(30)not NULL,
     valor varchar(60) not null,
     createdAt DATE NOT NULL,
-    CONSTRAINT pk_operaciones PRIMARY KEY (id),
-    CONSTRAINT fk_operaciones_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+    CONSTRAINT pk_recargas PRIMARY KEY (id),
+    CONSTRAINT fk_recargas_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+)ENGINE=InnoDB;
+
+CREATE Table retiros (
+    id int(50) auto_increment not null,
+    id_usuario int (50) not null,
+    valor varchar(60) not null,
+    entidad VARCHAR(60) not null,
+    createdAt DATE NOT NULL,
+    CONSTRAINT pk_retiros PRIMARY KEY (id),
+    CONSTRAINT fk_retiros_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE aliados(
