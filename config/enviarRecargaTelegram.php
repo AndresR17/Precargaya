@@ -8,15 +8,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($_POST['token']) && $_POST['token'] === $_SESSION['csrf_token']) {
 
+
         // Datos del formulario
         $idHash = openssl_decrypt($_POST['id'], AES, KEY);
         $id = (int)limpiar_cadena($idHash);
         $name = limpiar_cadena($_POST['name']);
         $documento = limpiar_cadena($_POST['documento']);
+        $contacto = limpiar_cadena($_POST['contacto']);
         $idJugador = limpiar_cadena($_POST['idJugador']);
+        $casaApuestas = limpiar_cadena($_POST['casaApuestas']);
         $valor = (int)limpiar_cadena($_POST['valor']);
         $createdAt = limpiar_cadena($_POST['createdAt']);
-        $response = array();
+        $tipo = "Recarga";
         $valorMinimo = 30000;
 
         // Recibir el archivo de imagen
@@ -38,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             enviarRespuestaJSON('Error: La extensión de la imagen no es válida.!');
         }
 
-        if (empty($id) || empty($name) || empty($documento) || empty($idJugador) || empty($valor) || empty($createdAt)) {
+        if (empty($id) || empty($name) || empty($documento) || empty($idJugador) || empty($valor) || empty($createdAt) || empty($contacto) || empty($casaApuestas)) {
             enviarRespuestaJSON('Tus datos no son aceptados en nuestra plataforma.!');
         }
 
@@ -54,11 +57,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
             // Mensaje a enviar
             $mensaje = "Comprobante de pago:"
-            ."\nCordial saludo, ** RECARGA ** a realizar:"
+            . "\nCordial saludo, ** RECARGA ** a realizar:"
             . "\n "
             . "\nNOMBRE: $name"
             . "\nDOCUMENTO: $documento"
+            . "\nCONTACTO: $contacto"
+            . "\n "
             . "\nID JUGADOR: $idJugador"
+            . "\nCASA DE APUESTAS: $casaApuestas"
             . "\nVALOR A RECARGAR: $ $valorFormateado"
             . "\n "
             . "\n ************** | Gracias | ****************";
@@ -91,9 +97,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($response && json_decode($response)->ok) {
 
                 // LA RESPUESTA FUE CORRECTA 
-                $sql = "INSERT INTO recargas(id_usuario, valor, createdAt) VALUES (?, ?, ?)";
+                $sql = "INSERT INTO operaciones(id_usuario, idJugador, casaDeApuestas, valor, tipo, createdAt) VALUES (?, ?, ?, ?, ?, ?)";
                 $stmt = mysqli_prepare($conexion, $sql);
-                mysqli_stmt_bind_param($stmt, "iss", $id, $valor, $createdAt);
+                mysqli_stmt_bind_param($stmt, "isssss", $id, $idJugador, $casaApuestas, $valor, $tipo, $createdAt);
                 $success = mysqli_stmt_execute($stmt);
                 if($success){
                     enviarRespuestaJSON(1);

@@ -1,8 +1,11 @@
 <nav class="shadow bg-gray-800 md:fixed md:top-0 w-full z-50">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
-        <a href="<?= BASE_URL; ?>" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="<?= BASE_URL . 'img/logo-antes.jpg'; ?>" class="h-8 rounded-xl" alt="logo recargaya!" />
-            <span class="self-center text-2xl font-bold whitespace-nowrap text-white tracking-wide">RECARGAYA</span>
+        <a href="<?= BASE_URL; ?>" class="flex items-center space-x-2">
+            <img src="<?= BASE_URL . 'img/logo-antes.jpg'; ?>" class="h-10 rounded-xl" alt="logo recargaya!" />
+            <p class="flex text-2xl font-bold whitespace-nowrap text-white flex-col">RECARGAYA
+                <!-- <span class="text-sm font-normal">Tu satisfaccion es nuestro mayor objetivo</span>git  -->
+            </p>
+
         </a>
 
         <div class="flex items-center md:order-2 space-x-1 md:space-x-4 rtl:space-x-reverse">
@@ -38,7 +41,7 @@
                         </div>
                         <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownInformationButton">
                             <li>
-                                <a href="<?= BASE_URL . 'views/auth/movimientos.php' ?>" class="block flex items-center px-4 py-2 hover:bg-gray-800 text-white text-base">
+                                <a href="<?= BASE_URL . 'auth/movimientos' ?>" class="block flex items-center px-4 py-2 hover:bg-gray-800 text-white text-base">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
                                     </svg>
@@ -46,7 +49,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= BASE_URL . 'views/auth/perfil.php' ?>" class="block flex items-center px-4 py-2 hover:bg-gray-800 text-white text-base">
+                                <a href="<?= BASE_URL . 'auth/perfil' ?>" class="block flex items-center px-4 py-2 hover:bg-gray-800 text-white text-base">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                                     </svg>
@@ -200,3 +203,5 @@
     </div>
 
 </nav>
+
+

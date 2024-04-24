@@ -15,11 +15,6 @@ require_once('./layouts/slide.php');
             y podrás utilizar nuestros servicios de recargas y retiros. Hemos realizado miles de
             transferencias en línea desde 2022
         </p>
-        <div class="">
-            <a class="inline-block uppercase rounded bg-blue-600 px-16 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-blue-500" href="#">
-                Cajero oficial
-            </a>
-        </div>
     </div>
 </section>
 
@@ -30,7 +25,6 @@ require_once('./layouts/slide.php');
         </p>
     </div>
 </section>
-
 
 <section data-aos="zoom-in" class="flex flex-col md:flex-row items-center justify-center md:space-x-10 mx-5 md:mx-[2rem] xl:mx-[10rem] mt-24 gap-6 ">
 

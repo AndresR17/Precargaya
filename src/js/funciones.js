@@ -46,14 +46,21 @@ function validarCampo(campo, mensaje, resultadoId) {
     return true;
 }
 
-function validarNumero(campo,mensaje,resultado) {
-    
+function validarNumero(campo, mensaje, resultado) {
+    // Verifica si el campo no es un número
     if (isNaN(campo.value.trim())) {
         mostrarError(mensaje, resultado);
         return false;
+    } else {
+        var numero = Number(campo.value.trim());
+        if (numero <= 0) {
+            mostrarError(mensaje, resultado);
+            return false;
+        }
     }
     return true;
 }
+
 
 
 export {

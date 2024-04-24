@@ -1,11 +1,9 @@
 <?php
 
 require_once('../../layouts/header.php');
+isLogin();
 require_once(__DIR__ . '/../../layouts/nav.php');
 
-if (!isset($_SESSION['user'])) {
-    header('location:index.php');
-}
 
 ?>
 
@@ -16,7 +14,7 @@ if (!isset($_SESSION['user'])) {
             <form autocomplete="off" id="formPerfil">
 
                 <input type="hidden" id="csrf_token_perfil" value="<?= $_SESSION['csrf_token']; ?>">
-                <input type="hidden" id="idUser" value="<?= openssl_encrypt($user['id'], AES, KEY);  ?>">
+                <input type="hidden" id="idUser" value="<?= openssl_encrypt($user['id'], AES_FRONT, KEY_FRONT);  ?>">
                 
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div id="resPerfilName">

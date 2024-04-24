@@ -87,9 +87,11 @@ const tokenRecargar = document.getElementById('token_recargar');
 const idRecargar = document.getElementById('idRecargar');
 const nameRecargar = document.getElementById('name-recargar');
 const docRecargar = document.getElementById('doc-recargar');
+const contactoRecargar = document.getElementById('contacto-recargar');
 const idJugadorRecargar = document.getElementById('idJugador-recargar');
 const valorRecargar = document.getElementById('valor-recargar');
 const comprobanteRecargar = document.getElementById('comprobante_recargar');
+const casaApuestasRecargar = document.getElementById('casaApuestas-Recargar');
 
 //se validacion cada campo del formulario
 function validarFormRecargar(e) {
@@ -98,7 +100,10 @@ function validarFormRecargar(e) {
     if (!validarCampo(nameRecargar, 'Define tu nombre completo', 'resUserRecargar')) return;
     if (!validarCampo(docRecargar, 'Define tu documento', 'resDocRecargar')) return;
     if (!validarNumero(docRecargar, 'El documento no es valido!', 'resDocRecargar')) return;
+    if (!validarCampo(contactoRecargar, 'Define numero de contacto', 'resContactoRecargar')) return;
+    if (!validarNumero(contactoRecargar, 'El numero no es valido', 'resContactoRecargar')) return;
     if (!validarCampo(idJugadorRecargar, 'Define ID de jugador', 'resIDjugadorRecargar')) return;
+    if (!validarCampo(casaApuestasRecargar, 'Selecciona una opcion valida!', 'resCasaApuestasRecargar')) return;
     if (!validarCampo(valorRecargar, 'Define el valor a recargar', 'resValorRecargar')) return;
     if (!validarNumero(valorRecargar, 'El valor no es valido!', 'resValorRecargar')) return;
 
@@ -123,7 +128,9 @@ function validarFormRecargar(e) {
     formData.append('id', idRecargar.value);
     formData.append('name', nameRecargar.value);
     formData.append('documento', docRecargar.value);
+    formData.append('contacto', contactoRecargar.value);
     formData.append('idJugador', idJugadorRecargar.value);
+    formData.append('casaApuestas', casaApuestasRecargar.value);
     formData.append('valor', valorRecargar.value);
     formData.append('createdAt', createdAt);
 
@@ -190,7 +197,9 @@ const tokenRetirar = document.getElementById('tokenRetirar');
 const idRetirar = document.getElementById('idRetirar');
 const nameRetirar = document.getElementById('nameRetirar');
 const docRetirar = document.getElementById('doc-retirar');
+const contactoRetirar = document.getElementById('contacto-retirar');
 const idJugadorRetirar = document.getElementById('idJugador-retirar');
+const casaApuestasRetirar = document.getElementById('casaApuestas-retirar');
 const codigoRetiro = document.getElementById('cod-retirar');
 const entidadRetiro = document.getElementById('ent-retirar');
 const cuentaRetirar = document.getElementById('cuenta-retirar');
@@ -201,8 +210,11 @@ function validarFormRetirar(e) {
     if (!validarCampo(nameRetirar, 'Define tu nombre completo', 'resUserRetirar')) return;
     if (!validarCampo(docRetirar, 'Define tu documento', 'resDocRetirar')) return;
     if (!validarNumero(docRetirar, 'El documento no es valido!', 'resDocRetirar')) return;
+    if (!validarCampo(contactoRetirar, 'Define tu numero de contacto', 'resContactoRetirar')) return;
+    if (!validarNumero(contactoRetirar, 'El contacto no es valido!', 'resContactoRetirar')) return;
     if (!validarCampo(idJugadorRetirar, 'Define ID de jugador', 'resIDjugadorRetirar')) return;
-    if (!validarCampo(codigoRetiro, 'Ingresa tu codigo de retiro de 1XBET', 'resCodigoRetirar')) return;
+    if (!validarCampo(casaApuestasRetirar, 'Selecciona una opcion valida!', 'resCasaApuestasRetirar')) return;
+    if (!validarCampo(codigoRetiro, 'Ingresa tu codigo de retiro', 'resCodigoRetirar')) return;
     if (!validarCampo(entidadRetiro, 'Selecciona una opcion valida!', 'resEntRetirar')) return;
     if (!validarCampo(cuentaRetirar, 'Define tu numero de cuenta', 'resEntRetirar')) return;
     if (!validarCampo(valorRetirar, 'Define el valor a recargar', 'resValorRetirar')) return;
@@ -217,7 +229,9 @@ function validarFormRetirar(e) {
         id: idRetirar.value,
         name: nameRetirar.value,
         documento: docRetirar.value,
+        contacto: contactoRetirar.value,
         idJugador: idJugadorRetirar.value,
+        casaApuestas: casaApuestasRetirar.value,
         codigo: codigoRetiro.value,
         entidad: entidadRetiro.value,
         cuenta: cuentaRetirar.value,

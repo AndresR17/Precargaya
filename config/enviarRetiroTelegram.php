@@ -15,16 +15,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = (int)limpiar_cadena($idHash);
         $name = limpiar_cadena($data['name']);
         $documento = limpiar_cadena($data['documento']);
+        $contacto = limpiar_cadena($data['contacto']);
         $idJugador = limpiar_cadena($data['idJugador']);
+        $casaApuestas = limpiar_cadena($data['casaApuestas']);
         $codigo = limpiar_cadena($data['codigo']);
         $entidad = limpiar_cadena($data['entidad']);
         $cuenta = (int)limpiar_cadena($data['cuenta']);
         $valor = (int)limpiar_cadena($data['valor']);
         $createdAt = limpiar_cadena($data['createdAt']);
+        $tipo = "Retiro";
 
         $valorMinimo = 100000;
-
-        if (empty($id) || empty($name) || empty($documento) || empty($idJugador) || empty($valor) || empty($codigo) || empty($entidad) || empty($createdAt) || !is_numeric($cuenta) || !is_numeric($documento) || !is_numeric($valor) || !is_numeric($id)) {
+        
+        if (empty($id) || empty($name) || empty($documento) || empty($idJugador) || empty($valor) || empty($codigo) || empty($entidad) || empty($createdAt) || !is_numeric($cuenta) || !is_numeric($documento) || !is_numeric($valor) || !is_numeric($id) ||empty($contacto) || empty($casaApuestas)) {
             enviarRespuestaJSON('Tus datos son incorrectos!');
         }
 
@@ -39,9 +42,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         . "\n "
         . "\n-NOMBRE: $name "
         . "\n-DOCUMENTO: $documento"
-        . "\n-ID JUGADOR: $idJugador"
+        . "\n-CONTACTO: $contacto"
         . "\n "
+        . "\n-ID JUGADOR: $idJugador"
+        . "\n-CASA DE APUESTAS: $casaApuestas"
         . "\n-CODIGO DE RETIRO: $codigo"
+        . "\n "
         . "\n-ENTIDAD FINANCIERA: $entidad"
         . "\n-No DE CUENTA: $cuenta"
         . "\n-VALOR A RETIRAR: $ $valorFormateado"
@@ -77,9 +83,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($response && json_decode($response)->ok) {
 
                 // LA RESPUESTA FUE CORRECTA 
-                $sql = "INSERT INTO retiros(id_usuario, valor, entidad, createdAt) VALUES (?, ?, ?, ?)";
+                $sql = "INSERT INTO operaciones(id_usuario, idJugador, casaDeApuestas, tipo, entidad, valor, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 $stmt = mysqli_prepare($conexion, $sql);
-                mysqli_stmt_bind_param($stmt, "isss", $id, $valor, $entidad, $createdAt);
+                mysqli_stmt_bind_param($stmt, "issssss", $id, $idJugador, $casaApuestas, $tipo, $entidad, $valor, $createdAt);
                 $success = mysqli_stmt_execute($stmt);
                 if($success){
                     enviarRespuestaJSON(1);

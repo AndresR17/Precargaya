@@ -1,5 +1,8 @@
 <?php 
 
+session_start();
+session_regenerate_id(true);
+
 function enviarRespuestaJSON($respuesta) {
     header('Content-Type: application/json');
     echo json_encode($respuesta);
