@@ -4,10 +4,10 @@ USE recargaya;
 
 CREATE TABLE usuarios(
     id int(50) auto_increment not null,
-    documento varchar(20) not null,
+    documento varchar(20),
     name varchar(60) not null,
     email varchar(60) not null,
-    phone varchar(15) not null,
+    phone varchar(15),
     terminos varchar(30) NOT NULL,
     password varchar(65) not null,
     rol varchar(15) not null,

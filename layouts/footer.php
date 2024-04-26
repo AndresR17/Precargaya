@@ -7,7 +7,6 @@
         </div>
     </footer>
 
-    <script type="module" src="<?= BASE_URL . 'src/js/slide.js'?>"></script>
     <script type="module" src="<?= BASE_URL . 'src/js/formLogin.js'?>"></script>
     <script type="module" src="<?= BASE_URL . 'src/js/formRegistro.js'?>"></script>
     

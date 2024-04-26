@@ -155,10 +155,6 @@
                 <div class="p-4 md:p-5">
                     <form class="" id="formClientes" method="POST" autocomplete="off">
                         <input type="hidden" id="csrf_token_registro" value="<?= $_SESSION['csrf_token']; ?>">
-                        <div class="mb-6" id="resDoc">
-                            <label for="documento" class="block mb-2 text-base font-medium text-white">No Documento:</label>
-                            <input type="text" id="documento" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                        </div>
                         <div class="mb-6" id="resName">
                             <label for="name" class="block mb-2 text-base font-medium text-white">Nombre completo:</label>
                             <input type="text" id="name" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
@@ -167,11 +163,6 @@
                             <label for="email" class="block mb-2 text-base font-medium text-white">Email:</label>
                             <input type="email" id="email" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         </div>
-                        <div class="mb-6" id="resPhone">
-                            <label for="phone" class="block mb-2 text-base font-medium text-white">Telefono:</label>
-                            <input type="text" id="phone" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                        </div>
-
                         <div class="mb-6" id="resPassword-register">
                             <label for="password-register" class="block mb-2 text-sm font-medium text-white ">Contraseña</label>
                             <input type="password" name="password-register" id="password-register" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">

@@ -1,4 +1,5 @@
 import { BASE_URL, currentPath } from './config.js';
+import { validarCorreo, spinner } from './funciones.js';
 
 //*validacion e inicio de sesion
 
@@ -11,11 +12,16 @@ function ValidarDatos(e) {
     e.preventDefault()
     
     const token = document.getElementById('csrf_token').value;
-    const user = document.getElementById('user').value;
+    const user = document.getElementById('user');
     const password = document.getElementById('password').value;
 
-    if (user.trim() == "") {
+    if (user.value.trim() == "") {
         mostrarAlerta('El Email es obligatorio')
+        return
+    }
+
+    if(!validarCorreo(user)){
+        mostrarAlerta('El formato del email es inválido!')
         return
     }
 
@@ -26,7 +32,7 @@ function ValidarDatos(e) {
 
     const datos = {
         token,
-        user,
+        user:user.value,
         password
     }
 
@@ -36,6 +42,8 @@ function ValidarDatos(e) {
 
 function IniciarSesion(datos) {
 
+    spinner()
+
     axios.post(BASE_URL + '/config/login.php', datos, {
         headers: {
             'Content-Type': 'application/json'
@@ -44,14 +52,16 @@ function IniciarSesion(datos) {
         .then(function (response) {
             
             const  respuesta  = response.data;
+            console.log(respuesta);
 
-            if (respuesta === 'admin') {
+
+            if (respuesta === 'Administrador') {
                 formLogin.reset();
                 window.location.href = BASE_URL + '/admin/dashboard.php';
                 return
             }
 
-            if (respuesta === 'cliente') {
+            if (respuesta === 'Cliente') {
                 formLogin.reset();
                 window.location.href = currentPath;
                 return
@@ -64,6 +74,14 @@ function IniciarSesion(datos) {
             if (respuesta === 3) {
                 mostrarAlerta('No tienes acceso a esta aplicacion!')
                 return
+
+            }else{
+
+                Swal.fire({
+                    title: "Hubo un error!",
+                    text: `${respuesta}`,
+                    icon: "error"
+                });
             }
 
         })

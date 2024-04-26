@@ -1,5 +1,5 @@
 //*Archivo donde se hace la validacion y registro para todos los usuarios
-import { validarCorreo, obtenerFecha, mostrarError } from './funciones.js'
+import { validarCampo, validarCorreo, obtenerFecha, mostrarError, spinner } from './funciones.js'
 import { BASE_URL } from './config.js';
 
 const formulario = document.getElementById('formClientes');
@@ -11,63 +11,28 @@ formulario.addEventListener('submit', validarCampos);
 function validarCampos(e) {
     e.preventDefault();
 
-    const documento = document.getElementById('documento').value;
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value;
-    const aceptoCheck = document.getElementById('acepto');
-    const passwordRegister = document.getElementById('password-register').value;
-    const password_confirmation = document.getElementById('password_confirmation').value;
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const aceptoCheck = document.getElementById('acepto').value;
+    const password = document.getElementById('password-register');
+    const password_confirmation = document.getElementById('password_confirmation');
     const token = document.getElementById('csrf_token_registro').value;
 
+    if (!validarCampo(name, 'Define tu nombre completo', 'resName')) return;
+    if (!validarCampo(email, 'Define tu correo', 'resEmail')) return;
 
-    if (documento.trim() === '') {
-
-        mostrarError('Define tu numero de documento', 'resDoc');
-        return;
-
-    } else if (isNaN(documento)) {
-        mostrarError('Este campo es numérico', 'resDoc');
-        return
-    }
-
-    if (name.trim() === "") {
-        mostrarError('El nombre es obligatorio', 'resName')
-        return
-    }
-
-    if (email.trim() === "") {
-        mostrarError('Define tu correo', 'resEmail');
-        return;
-
-    } else if (!validarCorreo(email)) {
+    if (!validarCorreo(email)) {
         mostrarError('El formato del correo es inválido', 'resEmail');
         return;
     }
 
-    if (phone.trim() === '') {
-        mostrarError('Define tu numero de contacto', 'resPhone');
-        return;
-    } else if (isNaN(phone)) {
-        mostrarError('Este campo es numérico', 'resPhone');
+    if (!validarCampo(password, 'El password es obligatorio', 'resPassword-register')) return;
+    if (!validarCampo(password_confirmation, 'Confirma tu password', 'resPassword_confirmation')) return;
+
+    if (password.value !== password_confirmation.value) {
+        mostrarError('Las contraseñas no coinciden', 'resPassword-register')
         return
     }
-
-    if (passwordRegister.trim() === "") {
-        mostrarError('El password es obligatorio', 'resPassword-register')
-        return
-    }
-
-    if (password_confirmation.trim() === "") {
-        mostrarError('Confirma tu password', 'resPassword_confirmation')
-        return
-    }
-
-    if(passwordRegister !== password_confirmation){
-            mostrarError('Las contraseñas no coinciden', 'resPassword-register')
-            return
-    }
-
     if (aceptoCheck.checked === false) {
         mostrarError('Debes aceptar los terminos y condiciones', 'resCheck');
         return
@@ -75,27 +40,31 @@ function validarCampos(e) {
 
     const createdAt = obtenerFecha();
     const estado = 'activo';
-    
+    const check = 'Acepto terminos';
+    const rol = 'Cliente';
+
 
     //crear los datos
     const datos = {
         token,
-        documento,
-        name,
-        email,
-        phone,
-        password: passwordRegister,
-        rol: 'cliente',
-        check: 'Acepto terminos',
+        name: name.value,
+        email: email.value,
+        password: password.value,
+        rol,
+        check,
         estado,
         createdAt
     }
 
     guardarRegistro(datos)
+    
+
 
 }
 
 function guardarRegistro(datos) {
+
+    spinner();
 
     axios.post(BASE_URL + '/config/registrarUsuarios.php', datos, {
         headers: {
@@ -104,7 +73,9 @@ function guardarRegistro(datos) {
     })
         .then(function (response) {
 
+
             const respuesta = response.data;
+            Swal.close();
 
             if (respuesta === 1) {
 
@@ -117,28 +88,18 @@ function guardarRegistro(datos) {
             } else if (respuesta === 2) {
 
                 formulario.reset();
-
+                
                 Swal.fire({
-                    title: "Felicitaciones!",
-                    text: "Tu registro fue realizado con exito!",
+                    title: "Tu registro fue realizado con exito!",
+                    text: "Recuerda completar la informacion en tu perfil!",
                     icon: "success"
                 });
 
-            }else if(respuesta === 3){
-
-                formulario.reset();
-                Swal.fire({
-                    title: "Acceso denegado!",
-                    text: "No tienes acceso a nuestra aplicacion.",
-                    icon: "error"
-                });
-            
-            }else {
-                const { mensaje } = respuesta
+            } else {
 
                 Swal.fire({
                     title: "Hubo un error!",
-                    text: `${mensaje}`,
+                    text: `${respuesta}`,
                     icon: "error"
                 });
             }

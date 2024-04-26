@@ -1,5 +1,5 @@
 //*validacion y actualizacion de perfil del cliente
-import { validarCorreo, obtenerFecha, mostrarError } from './funciones.js'
+import { validarCampo, validarNumero, validarCorreo, obtenerFecha, mostrarError, spinner } from './funciones.js'
 import { BASE_URL } from './config.js';
 
 const formulario = document.getElementById('formPerfil');
@@ -12,80 +12,54 @@ let datos = {};
 function validarFormPerfil(e) {
     e.preventDefault();
 
+    const token = document.getElementById('csrf_token_perfil').value;
     const id = document.getElementById('idUser').value;
-    const documento = document.getElementById('documento-perfil').value;
-    const name = document.getElementById('name-perfil').value;
-    const phone = document.getElementById('phone-perfil').value;
-    const email = document.getElementById('email-perfil').value;
-    const passwordPerfil = document.getElementById('password-perfil').value;
+    const documento = document.getElementById('documento-perfil');
+    const name = document.getElementById('name-perfil');
+    const phone = document.getElementById('phone-perfil');
+    const email = document.getElementById('email-perfil');
+    const passwordPerfil = document.getElementById('password-perfil');
     const passwordNewPerfil = document.getElementById('password-perfil-new').value;
     const passwordConfirmPerfil = document.getElementById('confirm_password-perfil').value;
-    const token = document.getElementById('csrf_token_perfil').value;
 
+    if (!validarCampo(name,'El nombre es obligatorio', 'resPerfilName')) return;
 
-    if (documento.trim() === '') {
-
-        mostrarError('Define tu numero de documento', 'resPerfilDocumento');
-        return;
-
-    } else if (isNaN(documento)) {
-        mostrarError('Este campo es numérico', 'resPerfilDocumento');
-        return
+    if (phone.value !== ""){
+        if(!validarNumero(phone, 'Numero de contacto no valido', 'resPerfilPhone'))return       
     }
+    if (!validarCampo(email,'Define tu correo', 'resPerfilEmail')) return;
 
-    if (name.trim() === "") {
-        mostrarError('El nombre es obligatorio', 'resPerfilName')
-        return
-    }
-
-    if (email.trim() === "") {
-        mostrarError('Define tu correo', 'resPerfilEmail');
-        return;
-
-    } else if (!validarCorreo(email)) {
+    if (!validarCorreo(email)) {
         mostrarError('El formato del correo es inválido', 'resPerfilEmail');
         return;
     }
-
-    if (phone.trim() === '') {
-        mostrarError('Define tu numero de contacto', 'resPerfilPhone');
-        return;
-    } else if (isNaN(phone)) {
-        mostrarError('Este campo es numérico', 'resPerfilPhone');
-        return
-    }
-
-    if (passwordPerfil.trim() === "") {
-        mostrarError('Ingresa tu contraseña para actualizar tu informacion', 'resPerfilPassword')
-        return
-    }
+    if (!validarCampo(passwordPerfil, 'Ingresa tu contraseña para actualizar', 'resPerfilPassword'))return;
 
     //crear los datos
     datos = {
         token,
         id,
-        documento,
-        name,
-        email,
-        phone,
-        password: passwordPerfil,
+        documento: documento.value,
+        name: name.value,
+        email: email.value,
+        phone: phone.value,
+        password: passwordPerfil.value,
         updateAt: obtenerFecha()
     }
 
     if (passwordNewPerfil !== passwordConfirmPerfil) {
         mostrarError('Las contraseñas no coinciden', 'resPerfilPasswordNew')
         return
-
     }
 
-    if (passwordNewPerfil != "") {
+    if (passwordNewPerfil !== "") {
 
         datos = {
             ...datos,
             passwordNew: passwordNewPerfil
         }
     }
-    console.log(datos);
+
     ActualizarPerfil(datos)
 
 }
@@ -93,15 +67,17 @@ function validarFormPerfil(e) {
 
 function ActualizarPerfil(datos) {
 
+    spinner();
+
     axios.post( BASE_URL + '/config/updatePerfil.php', datos, {
         headers: {
             'Content-Type': 'application/json'
         }
     })
         .then(function (response) {
-            console.log(response);
-
+            
             const respuestaPerfil = response.data;
+            Swal.close();
 
             if (respuestaPerfil === 1) {
 
@@ -126,21 +102,11 @@ function ActualizarPerfil(datos) {
                 });
                 return
 
-            } else if (respuestaPerfil === 3) {
-
-                Swal.fire({
-                    title: "Hubo un error!",
-                    text: "El usuario que intentas actualizar no existe!",
-                    icon: "error"
-                });
-                return
-
             } else {
-                const { mensaje } = respuestaPerfil
 
                 Swal.fire({
                     title: "Hubo un error!",
-                    text: `${mensaje}`,
+                    text: `${respuestaPerfil }`,
                     icon: "error"
                 });
             }

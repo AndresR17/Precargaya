@@ -3,7 +3,7 @@
 function validarCorreo(email) {
     // Expresión regular para validar un correo electrónico
     const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regexCorreo.test(email);
+    return regexCorreo.test(email.value);
 }
 
 
@@ -62,11 +62,27 @@ function validarNumero(campo, mensaje, resultado) {
 }
 
 
+function spinner() {
+
+    Swal.fire({
+        title: "Cargando...",
+        text: 'Permíteme por favor un momento mientras se realiza el proceso.',
+        showCancelButton: false,
+        showConfirmButton: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+
+}
+
+
 
 export {
     validarCorreo,
     obtenerFecha,
     mostrarError,
     validarCampo,
-    validarNumero
+    validarNumero,
+    spinner
 }

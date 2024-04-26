@@ -172,11 +172,10 @@ function enviarRecarga(datos) {
                 });
 
             } else {
-                const { mensaje } = respuesta
 
                 Swal.fire({
                     title: "Hubo un error!",
-                    text: `${mensaje}`,
+                    text: `${respuesta}`,
                     icon: "error"
                 });
             }
@@ -278,11 +277,10 @@ function enviarRetiro(datos) {
                 });
 
             } else {
-                const { mensaje } = respuesta
-
+            
                 Swal.fire({
                     title: "Hubo un error!",
-                    text: `${mensaje}`,
+                    text: `${respuesta}`,
                     icon: "error"
                 });
             }
@@ -304,21 +302,6 @@ function validarExtension(archivo) {
         return false; // La extensión no es válida
     }
 }
-
-function spinner() {
-
-    Swal.fire({
-        title: "Cargando...",
-        text: 'Permíteme por favor un momento mientras se realiza el proceso.',
-        showCancelButton: false,
-        showConfirmButton: false,
-        didOpen: () => {
-            Swal.showLoading();
-        }
-    });
-
-}
-
 
 function obtenerParametroURL() {
     const ruta = window.location.pathname;

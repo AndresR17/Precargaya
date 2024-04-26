@@ -13,6 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $usuario = limpiar_cadena($data['user']);
         $password = limpiar_cadena($data['password']);
 
+        if(empty($usuario) || empty($password)){
+            enviarRespuestaJSON('Tus datos no son aceptados en la plataforma!');
+        }
+
 
         $query = "SELECT * FROM usuarios WHERE email = ? ";
         $stmt = mysqli_prepare($conexion, $query);
@@ -45,28 +49,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $_SESSION['user'] = $datos;
                     }
 
-
-                    header('Content-Type: application/json');
-                    echo json_encode($response);
                     mysqli_stmt_close($stmt);
-                    exit();
+                    enviarRespuestaJSON($response);
                 }
             } else {
                 mysqli_stmt_close($stmt);
-                echo 2;
-                exit();
+                enviarRespuestaJSON(2);
             }
         } else {
 
             mysqli_stmt_close($stmt);
-            echo 2;
-            exit();
+            enviarRespuestaJSON(2);
         }
 
     }else{
         session_destroy();
-        echo 3;
-        exit();
+        enviarRespuestaJSON('Token no valido, Recarga la pagina!');
     }
 
 } else {
