@@ -1,7 +1,7 @@
 <?php
-
-require_once('./conexion.php');
-require_once('./main.php');
+//!PROCESO PARA CREAR NUEVOS USUARIOS
+require_once('../conexion.php');
+require_once('../main.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

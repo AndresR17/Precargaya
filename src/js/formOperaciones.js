@@ -143,7 +143,7 @@ function enviarRecarga(datos) {
     spinner();
 
     // Realizar la solicitud POST usando Axios
-    axios.post(BASE_URL + '/config/enviarRecargaTelegram.php', datos, {
+    axios.post(BASE_URL + '/config/operaciones/enviarRecargaTelegram.php', datos, {
         headers: {
             'Content-Type': 'multipart/form-data'
         }
@@ -248,7 +248,7 @@ function enviarRetiro(datos) {
     spinner();
 
     // Realizar la solicitud POST usando Axios
-    axios.post(BASE_URL + '/config/enviarRetiroTelegram.php', datos, {
+    axios.post(BASE_URL + '/config/operaciones/enviarRetiroTelegram.php', datos, {
         headers: {
             'Content-Type': 'application/json'
         }

@@ -1,5 +1,5 @@
 <?php 
-
+//!FUNCIONES GENERALES PARA USAR EN LOS ARCHIVOS QUE VALIDAN O REALIZAN LAS SOLICITUDES EN EL BACKEND
 session_start();
 session_regenerate_id(true);
 
@@ -36,6 +36,10 @@ function limpiar_cadena($cadena){
     $cadena = str_ireplace(";", "", $cadena);
     $cadena = str_ireplace("::", "", $cadena);
     return $cadena;
+}
+
+function generarToken() {
+    return bin2hex(random_bytes(32));
 }
 
 ?>

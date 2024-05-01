@@ -1,8 +1,8 @@
 <?php
-//* Archivo para editar perfil de los clientes
+//! EDITAR PERFIL DEL USUARIO
 
-require_once('./conexion.php');
-require_once('./main.php');
+require_once('../conexion.php');
+require_once('../main.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

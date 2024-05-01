@@ -2,7 +2,8 @@
 
 require_once('../../layouts/header.php');
 //valida si tiene iniciada la sesion
-isLogin();
+validarSession($_SESSION['user']);
+
 require_once(__DIR__ . '/../../layouts/nav.php');
 require_once(__DIR__ . '/../../config/conexion.php');
 require_once(__DIR__ . '/../../config/helper.php');

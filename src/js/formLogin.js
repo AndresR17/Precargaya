@@ -1,7 +1,7 @@
+//!validacion e inicio de sesion
 import { BASE_URL, currentPath } from './config.js';
 import { validarCorreo, spinner } from './funciones.js';
 
-//*validacion e inicio de sesion
 
 const formLogin = document.getElementById('formLogin')
 const divAlerta = document.querySelector(`.mostrarAlerta`);
@@ -35,7 +35,7 @@ function ValidarDatos(e) {
         user:user.value,
         password
     }
-
+    console.log(datos);
     IniciarSesion(datos)
 
 }
@@ -44,7 +44,7 @@ function IniciarSesion(datos) {
 
     spinner()
 
-    axios.post(BASE_URL + '/config/login.php', datos, {
+    axios.post(BASE_URL + '/config/auth/login.php', datos, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -54,8 +54,7 @@ function IniciarSesion(datos) {
             const  respuesta  = response.data;
             console.log(respuesta);
 
-
-            if (respuesta === 'Administrador') {
+            if (respuesta === 'admin') {
                 formLogin.reset();
                 window.location.href = BASE_URL + '/admin/dashboard.php';
                 return
@@ -70,13 +69,8 @@ function IniciarSesion(datos) {
             if (respuesta === 2) {
                 mostrarAlerta('El usuario o password son incorrectos!')
                 return
-            }
-            if (respuesta === 3) {
-                mostrarAlerta('No tienes acceso a esta aplicacion!')
-                return
 
             }else{
-
                 Swal.fire({
                     title: "Hubo un error!",
                     text: `${respuesta}`,

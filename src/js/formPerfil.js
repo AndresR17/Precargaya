@@ -1,4 +1,4 @@
-//*validacion y actualizacion de perfil del cliente
+//! validacion y actualizacion de perfil de los usuarios 
 import { validarCampo, validarNumero, validarCorreo, obtenerFecha, mostrarError, spinner } from './funciones.js'
 import { BASE_URL } from './config.js';
 
@@ -69,7 +69,7 @@ function ActualizarPerfil(datos) {
 
     spinner();
 
-    axios.post( BASE_URL + '/config/updatePerfil.php', datos, {
+    axios.post( BASE_URL + '/config/auth/updatePerfil.php', datos, {
         headers: {
             'Content-Type': 'application/json'
         }

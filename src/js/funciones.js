@@ -1,4 +1,4 @@
-//*funciones generales
+//! funciones generales y/o globales
 
 function validarCorreo(email) {
     // Expresión regular para validar un correo electrónico

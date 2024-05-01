@@ -1,5 +1,5 @@
 <?php
-
+//! FUNCIONES GENERALES PARA USAR EN LA VISTAS
 function obtenerDatos($conexion, $tabla, $id)
 {
     $sql = "SELECT * FROM $tabla";

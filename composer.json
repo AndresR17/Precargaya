@@ -1,5 +1,15 @@
 {
+    
     "require": {
-        "vlucas/phpdotenv": "^5.6"
+        "phpmailer/phpmailer": "^6.9",
+        "getbrevo/brevo-php": "1.x.x",
+        "railsware/mailtrap-php": "^1.8",
+        "symfony/http-client": "^7.0",
+        "nyholm/psr7": "^1.8"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     }
 }

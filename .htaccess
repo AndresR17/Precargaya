@@ -8,12 +8,22 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^auth/([^/]+)/?$ views/auth/$1.php [NC,L]
 
+# Reescribir URL para views/solicitar
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^solicitar/([^/]+)$ views/solicitar/$1.php [NC,L]
+
+# Reescribir URL views/solicitar y que tengan un parametro por la url
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^solicitar/nuevo_password/([^/]+)$ views/solicitar/nuevo_password.php?token=$1 [NC,L]
+
 # Reescribir URL para views/*
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^/]+)/?$ views/$1.php [NC,L]
 
-# Reescribir URL para operaciones/*
+# Reescribir URL para operaciones/con algunos de los dos parametros en la url*
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^operaciones(/retirar|/recargar)?/?$ views/operaciones.php [NC,L]

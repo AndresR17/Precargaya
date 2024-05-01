@@ -1,8 +1,8 @@
 <?php
 //*se actualiza la password del usuario admin u otro usuario que este en el panel admin
 
-require_once('./conexion.php');
-require_once('./main.php');
+require_once('../conexion.php');
+require_once('../main.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

@@ -1,7 +1,7 @@
 <?php 
 
-require_once('./conexion.php');
-require_once('./main.php');
+require_once('../conexion.php');
+require_once('../main.php');
 
 
 $pagina = limpiar_cadena($_GET['pagina']);

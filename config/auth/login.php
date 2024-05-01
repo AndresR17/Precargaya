@@ -1,7 +1,7 @@
 <?php
-
-require_once 'conexion.php';
-require_once 'main.php';
+//! VALIDAR LAS CREDENCIALES DEL USUARIO PARA LOGEARLO
+require_once '../conexion.php';
+require_once '../main.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -45,12 +45,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     if ($response === 'admin') {
                         $_SESSION['admin'] = $datos;
+                        mysqli_stmt_close($stmt);
+                        enviarRespuestaJSON($response);
+
                     } else {
                         $_SESSION['user'] = $datos;
+                        mysqli_stmt_close($stmt);
+                        enviarRespuestaJSON($response);
                     }
 
-                    mysqli_stmt_close($stmt);
-                    enviarRespuestaJSON($response);
                 }
             } else {
                 mysqli_stmt_close($stmt);

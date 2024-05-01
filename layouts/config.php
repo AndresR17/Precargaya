@@ -16,8 +16,9 @@ if (!isset($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Genera un token CSRF único
 }
 
-function isLogin(){
-    if (!isset($_SESSION['user'])) {
+//valida si existe una sesion
+function validarSession($sesion){
+    if (!isset($sesion)) {
         session_destroy();
         header("location:" . BASE_URL );
         exit();

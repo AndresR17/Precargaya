@@ -1,4 +1,5 @@
 <?php 
+//! CERRAR Y DESTRUIR SESIONES PARA QUE EL USUARIO NO ESTE LOGEADO 
 session_start();
 
 if(isset($_SESSION['user'])){

@@ -14,7 +14,7 @@ CREATE TABLE usuarios(
     estado varchar(15) NOT NULL,
     createdAt DATE NOT NULL,
     updateAt DATE,
-    token VARCHAR(100),
+    token VARCHAR(60),
     CONSTRAINT pk_usuarios PRIMARY KEY (id)
 )ENGINE=InnoDB;
 

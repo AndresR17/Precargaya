@@ -1,4 +1,4 @@
-//*Archivo donde se hace la validacion y registro para todos los usuarios
+//! Archivo donde se hace la validacion y registro para todos los usuarios
 import { validarCampo, validarCorreo, obtenerFecha, mostrarError, spinner } from './funciones.js'
 import { BASE_URL } from './config.js';
 
@@ -58,21 +58,18 @@ function validarCampos(e) {
 
     guardarRegistro(datos)
     
-
-
 }
 
 function guardarRegistro(datos) {
 
     spinner();
 
-    axios.post(BASE_URL + '/config/registrarUsuarios.php', datos, {
+    axios.post(BASE_URL + '/config/logout/registrarUsuarios.php', datos, {
         headers: {
             'Content-Type': 'application/json'
         }
     })
         .then(function (response) {
-
 
             const respuesta = response.data;
             Swal.close();
