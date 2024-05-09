@@ -1,3 +1,4 @@
+
 <nav class="shadow bg-gray-800 md:fixed md:top-0 w-full z-50">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
         <a href="<?= BASE_URL; ?>" class="flex items-center space-x-2">

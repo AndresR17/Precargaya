@@ -8,9 +8,9 @@ require '../../vendor/autoload.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    require_once 'config.php';
-    require_once 'main.php';
-    require_once 'conexion.php';
+    require_once '../conexion.php';
+    require_once '../config.php';
+    require_once '../main.php';
 
     $data = json_decode(file_get_contents("php://input"), true);
 
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $usuario = $stmt->get_result()->fetch_assoc();
-        // $stmt->close();
+        
 
         // Verificar si se encontró un USUARIO
         if ($usuario && $usuario !== null) {
@@ -41,8 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($affected_rows > 0) {
                 //tomamos el id del usuario y lo encriptamos
-                $id = openssl_encrypt($usuario['id'], AES, KEY);
-                
+
                 try {
                     //Server settings
                     $mail = new PHPMailer();
@@ -71,7 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $mail->AltBody = 'Para restablecer tu password en RecargaYa, visita el siguiente enlace: ' . BASE_URL . 'solicitar/nuevo_password/' . $token;
                     $mail->send();
 
-                    $_SESSION['newPassword'] = $id;
+                    $_SESSION['newPassword'] = $usuario['id'];
+                    $stmt->close();
                     enviarRespuestaJSON(1);
 
                 } catch (Exception $e) {

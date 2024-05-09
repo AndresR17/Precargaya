@@ -25,6 +25,40 @@ function validarSession($sesion){
     }
 }
 
+function modalOpen(){
 
+    if(isset($_SESSION['modal'])){
 
+        echo "
+        <script>
+        // Obtenemos el modal
+        const modal = document.getElementById('modal-login');
+
+        // Función para abrir el modal
+        function openModal() {
+        // Mostramos el modal
+        modal.classList.remove('hidden');
+        modal.classList.add('fixed', 'top-0', 'left-0', 'right-0', 'bottom-0', 'flex', 'items-center', 'justify-center');
+        modal.setAttribute('aria-hidden', 'false');
+    
+        modal.focus();
+        // Agregamos la clase para deshabilitar el desplazamiento del fondo
+        document.body.classList.add('overflow-hidden');
+
+        }
+        openModal();
+
+        </script>
+        ";
+    }
+
+}
+
+function borrarSesiones(){
+
+	if(isset($_SESSION['modal'])){
+		$_SESSION['modal']=null;
+	}
+
+}
 ?>

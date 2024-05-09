@@ -1,10 +1,10 @@
 <?php
 //!PROCESO PARA ENVIAR LA INFORMACION A LA API DE TELEGRAM AL MOMENTO DE REALIZAR UNA RECARGA
-require_once('../conexion.php');
-require_once('../main.php');
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    require_once('../conexion.php');
+    require_once('../main.php');
 
     if (isset($_POST['token']) && $_POST['token'] === $_SESSION['csrf_token']) {
 

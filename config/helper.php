@@ -12,17 +12,6 @@ function obtenerDatos($conexion, $tabla, $id)
     return $datos;
 }
 
-function BorrarErrores(){
-
-	if(isset($_SESSION['eliminado'])){
-		$_SESSION['eliminado']=null;
-	}
-    if(isset($_SESSION['error'])){
-		$_SESSION['error']=null;
-	}
-
-}
-
 function obtenerRegistros($conexion, $tabla, $operador, $id){
     $sql = "SELECT COUNT(id) FROM $tabla WHERE id != $id AND estado = 'activo'";
         

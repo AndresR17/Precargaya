@@ -12,7 +12,7 @@ require_once(__DIR__ . '/../../layouts/nav.php');
         <div class="px-10 pt-10">
             <form autocomplete="off" method="POST" id="formNewPassword">
                 <input type="hidden" id="csrf_rec" value="<?= $_SESSION['csrf_token']; ?>">
-                <input type="hidden" id="user_rec" value="<?= $_SESSION['newPassword'];?>">
+                <input type="hidden" id="user_rec" value="<?= openssl_encrypt($_SESSION['newPassword'], AES_FRONT, KEY_FRONT);?>">
                 <input type="hidden" id="token_user" value="<?= $_GET['token']; ?>">
 
                 <div id="resNuevoPassword" class="mb-6">
@@ -32,4 +32,4 @@ require_once(__DIR__ . '/../../layouts/nav.php');
     </div>
 </section>
 
-<script type="module" src="<?= BASE_URL . 'src/js/formRecuperarPassword.js' ?>"></script>
+<script type="module" src="<?= BASE_URL . 'src/js/formEnviarPassword.js' ?>"></script>

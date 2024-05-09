@@ -35,7 +35,7 @@ function ValidarDatos(e) {
         user:user.value,
         password
     }
-    console.log(datos);
+    
     IniciarSesion(datos)
 
 }
@@ -52,7 +52,7 @@ function IniciarSesion(datos) {
         .then(function (response) {
             
             const  respuesta  = response.data;
-            console.log(respuesta);
+            Swal.close();
 
             if (respuesta === 'admin') {
                 formLogin.reset();

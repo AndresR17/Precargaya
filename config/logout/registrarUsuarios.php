@@ -47,6 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     mysqli_stmt_close($stmt);
                     enviarRespuestaJSON(1) ;
                 }
+            }else{
+                enviarRespuestaJSON("El email ingresado no es valido.") ;
             }
         }
 

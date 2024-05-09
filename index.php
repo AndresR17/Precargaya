@@ -2,6 +2,8 @@
 require_once('./layouts/header.php');
 require_once('./layouts/nav.php');
 require_once('./layouts/slide.php');
+modalOpen();
+
 ?>
 
 <section data-aos="zoom-out-up" class="flex flex-col xl:flex-row my-[5rem] mx-5 md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem] items-center justify-center">
@@ -84,8 +86,7 @@ require_once('./layouts/slide.php');
 
 </section>
 
-
-
 <?php
+borrarSesiones();
 require_once('./layouts/footer.php')
 ?>
