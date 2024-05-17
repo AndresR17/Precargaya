@@ -1,7 +1,7 @@
 //! VALIDACION Y ENVIO DE INFORMACION DE LOS FORMULARIOS Y FUNCIONALIDAD DE LOS BOTONES DE LA VISTA OPERACIONES 
 
-import { BASE_URL } from "./config.js"
-import { validarCampo, mostrarError, obtenerFecha, validarNumero } from "./funciones.js";
+import { BASE_URL, currentPath } from "./config.js"
+import { validarCampo, mostrarError, obtenerFecha, validarNumero, spinner } from "./funciones.js";
 
 //Funcion y validacion de los botones que muestran los formularios de operaciones
 const btnRetirar = document.getElementById('btn-retirar');
@@ -86,12 +86,18 @@ formRecargar.addEventListener('submit', validarFormRecargar);
 const tokenRecargar = document.getElementById('token_recargar');
 const idRecargar = document.getElementById('idRecargar');
 const nameRecargar = document.getElementById('name-recargar');
+const tipoDocRecargar = document.getElementById('tipoDocRecargar').value;
 const docRecargar = document.getElementById('doc-recargar');
+const prefijoRecargar = document.getElementById('Prefijo').value;
 const contactoRecargar = document.getElementById('contacto-recargar');
 const idJugadorRecargar = document.getElementById('idJugador-recargar');
 const valorRecargar = document.getElementById('valor-recargar');
 const comprobanteRecargar = document.getElementById('comprobante_recargar');
 const casaApuestasRecargar = document.getElementById('casaApuestas-Recargar');
+const checkWompi = document.getElementById('wompi');
+const checkComprobante = document.getElementById('comprobante');
+const formButtonWompi = document.getElementById('buttonWompi');
+
 
 //se validacion cada campo del formulario
 function validarFormRecargar(e) {
@@ -112,15 +118,51 @@ function validarFormRecargar(e) {
         return;
     }
 
-    if (!comprobanteRecargar.files[0]) {
-        mostrarError('Sube tu comprobante de pago', 'resComprobanteRecargar');
-        return;
+    if (checkWompi.checked) {
+
+        // const divWompi = document.getElementById('divWompi');
+        // divWompi.classList.remove('hidden')
+        
+        // let precioSentavos = formatoAPesos(valorRecargar.value);
+        // let referencia = generarReferencia() ;
+
+        // obtener el hash
+        
+        // Crear el elemento script
+        const scriptElement = document.createElement('script');
+        scriptElement.src = "https://checkout.wompi.co/widget.js";
+        scriptElement.setAttribute('data-render', 'button');
+        scriptElement.setAttribute('data-public-key', 'pub_test_TWj13GmeFpTJYr4iPuZadTjFghK4d68z');
+        scriptElement.setAttribute('data-currency', 'COP');
+        scriptElement.setAttribute('data-amount-in-cents', '4500000');
+        scriptElement.setAttribute('data-customer-data:full-name', nameRecargar.value);
+        scriptElement.setAttribute('data-customer-data:legal-id-type', tipoDocRecargar);
+        scriptElement.setAttribute('data-customer-data:legal-id', docRecargar.value);
+        scriptElement.setAttribute('data-customer-data:phone-number', contactoRecargar.value);
+        scriptElement.setAttribute('data-customer-data:phone-number-prefix', prefijoRecargar);
+        scriptElement.setAttribute('data-reference', referencia);
+        scriptElement.setAttribute('data-signature:integrity', '669be2edd2c97fe9779381eb274171093ca0701e4381b1f6503493577fd4b60c');
+        scriptElement.setAttribute('data-redirect-url', currentPath + '/recargar');
+
+        // Agregar el script al formulario
+        formButtonWompi.appendChild(scriptElement);
+        console.log(scriptElement);
+
+    } else if (checkComprobante.checked) {
+        console.log("Comprobante está seleccionado");
+    } else {
+        mostrarError('Elige un metodo de pago','resMetodos')
     }
 
-    if (!validarExtension(comprobanteRecargar.files[0])) {
-        mostrarError('La extensión de la imagen no es válida.', 'resComprobanteRecargar');
-        return;
-    }
+    // if (!comprobanteRecargar.files[0]) {
+    //     mostrarError('Sube tu comprobante de pago', 'resComprobanteRecargar');
+    //     return;
+    // }
+
+    // if (!validarExtension(comprobanteRecargar.files[0])) {
+    //     mostrarError('La extensión de la imagen no es válida.', 'resComprobanteRecargar');
+    //     return;
+    // }
 
     const formData = new FormData();
     formData.append('imagen', comprobanteRecargar.files[0]);
@@ -203,6 +245,7 @@ const codigoRetiro = document.getElementById('cod-retirar');
 const entidadRetiro = document.getElementById('ent-retirar');
 const cuentaRetirar = document.getElementById('cuenta-retirar');
 const valorRetirar = document.getElementById('valor-retirar');
+
 
 function validarFormRetirar(e) {
     e.preventDefault();
@@ -312,4 +355,63 @@ function obtenerParametroURL() {
     } else {
         return null;
     }
+}
+function generarReferencia(){
+    
+        const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const longitud = 24;
+        let referencia = '';
+        for (let i = 0; i < longitud; i++) {
+            referencia += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+        }
+        return referencia;
+    }
+    
+
+    // async function crearHash(referencia, valor) {
+    //     const valorTexto = valor.toString();
+    //     const cadenaConcatenada = referencia + valorTexto + "COPtest_integrity_uUI9OnC6cOdbijH8XrCx7FOuXs6pBAfN";
+    
+    //     // Codificar la cadena concatenada a UTF-8
+    //     const encondedText = new TextEncoder().encode(cadenaConcatenada);
+    
+    //     // Calcular el hash SHA-256
+    //     const hashBuffer = await crypto.subtle.digest("SHA-256", encondedText);
+    
+    //     // Convertir el buffer de hash a un array de bytes
+    //     const hashArray = Array.from(new Uint8Array(hashBuffer));
+    
+    //     // Convertir el array de bytes a una cadena hexadecimal
+    //     const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+    
+    //     return hashHex;
+    // }
+
+    const referencia = 'asdff546dfs23df';
+
+    const valor = formatoAPesos(45000);
+    console.log(valor);
+
+    // const cadenaConcatenada = referencia + valorTexto + "COPtest_integrity_uUI9OnC6cOdbijH8XrCx7FOuXs6pBAfN";
+    const cadenaConcatenada = referencia + valor + "COPtest_integrity_uUI9OnC6cOdbijH8XrCx7FOuXs6pBAfN";
+    
+        // Codificar la cadena concatenada a UTF-8
+        const encondedText = new TextEncoder().encode(cadenaConcatenada);
+    
+        // Calcular el hash SHA-256
+        const hashBuffer = await crypto.subtle.digest("SHA-256", encondedText);
+    
+        // Convertir el buffer de hash a un array de bytes
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+    
+        // Convertir el array de bytes a una cadena hexadecimal
+        const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+    
+        console.log(hashHex);
+
+function formatoAPesos(precio) {
+    // Multiplicar el precio por 100 para convertirlo a centavos
+    const precioEnCentavos = precio * 100;
+    // Devolver el precio en centavos
+    return precioEnCentavos;
 }

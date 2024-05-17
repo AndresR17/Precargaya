@@ -4,7 +4,7 @@ AOS.init();
 
 
 // Configuraciones para el slide 
-window.addEventListener('load', ()=> {
+window.addEventListener('load', () => {
 
     const splideElements = document.querySelectorAll('.splide');
 
@@ -13,13 +13,14 @@ window.addEventListener('load', ()=> {
         const splide = new Splide(element, {
             perPage: 1,
             rewind: true,
-            autoplay: true, 
+            autoplay: true,
             interval: 5000,
         });
-    
+
         splide.mount();
     });
 
 })
+
 
 
