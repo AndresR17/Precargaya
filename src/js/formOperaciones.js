@@ -8,6 +8,8 @@ const btnRetirar = document.getElementById('btn-retirar');
 const btnRecargar = document.getElementById('btn-recargar');
 const sectionRecargar = document.getElementById('section-recargar');
 const sectionRetirar = document.getElementById('section-retirar');
+//constante para usar en los dos formularios
+const createdAt = obtenerFecha();
 
 btnRetirar.addEventListener('click', () => cambiarColor(btnRetirar, btnRecargar, sectionRetirar, sectionRecargar));
 btnRecargar.addEventListener('click', () => cambiarColor(btnRecargar, btnRetirar, sectionRecargar, sectionRetirar));
@@ -74,14 +76,13 @@ function cambiarColor(btnClick, btnActivo, sectionMostrar, sectionOcultar) {
     }
 }
 
-//constante para usar en los dos formularios
-const createdAt = obtenerFecha();
 
 //* validacion y envio para el formulario de recargar
 const formRecargar = document.getElementById('formRecargar');
 const valorMinimoRecargar = 30000;
+let metodoComprobante = false;
 
-formRecargar.addEventListener('submit', validarFormRecargar);
+formRecargar.addEventListener('submit', enviarRecarga);
 
 const tokenRecargar = document.getElementById('token_recargar');
 const idRecargar = document.getElementById('idRecargar');
@@ -96,138 +97,155 @@ const comprobanteRecargar = document.getElementById('comprobante_recargar');
 const casaApuestasRecargar = document.getElementById('casaApuestas-Recargar');
 const checkWompi = document.getElementById('wompi');
 const checkComprobante = document.getElementById('comprobante');
-const formButtonWompi = document.getElementById('buttonWompi');
+const divButtonWompi = document.getElementById('buttonWompi');
+const divButtonSubmit = document.getElementById('btn-submit');
 
+
+//se agrega un evento a los check del formulario de recargas al momento de escojer el metodo de pago
+checkWompi.addEventListener('change', comprobarChecks);
+checkComprobante.addEventListener('change', comprobarChecks);
+
+//funcion para validar el formulario y mostrar los div correspondientes dependiendo de check se escoja
+function comprobarChecks() {
+
+    if (checkWompi.checked) {
+        divButtonSubmit.classList.toggle('hidden', !checkComprobante.checked);
+        metodoComprobante = false;
+        if (!validarFormRecargar(event)) {
+            checkWompi.checked = false;
+            divButtonWompi.classList.add('hidden');
+            return
+        } else {
+            divButtonWompi.classList.toggle('hidden', !checkWompi.checked);
+            divButtonSubmit.classList.toggle('hidden', !checkComprobante.checked);
+        }
+    }
+
+    if (checkComprobante.checked) {
+        divButtonWompi.classList.toggle('hidden', !checkWompi.checked);
+
+        if (!validarFormRecargar(event)) {
+            checkComprobante.checked = false
+            divButtonSubmit.classList.add('hidden');
+            return
+        } else {
+            metodoComprobante = true;
+            divButtonWompi.classList.toggle('hidden', !checkWompi.checked);
+            divButtonSubmit.classList.toggle('hidden', !checkComprobante.checked);
+        }
+    }
+
+}
+
+//funcion para colocar los valores por defecto de realizar una recarga y ocultar los div
+function ocultarCampos(){
+    divButtonSubmit.classList.add('hidden');
+    divButtonWompi.classList.add('hidden');
+    checkComprobante.checked = false
+    checkWompi.checked = false;
+    metodoComprobante = false;
+}
 
 //se validacion cada campo del formulario
 function validarFormRecargar(e) {
     e.preventDefault();
 
-    if (!validarCampo(nameRecargar, 'Define tu nombre completo', 'resUserRecargar')) return;
-    if (!validarCampo(docRecargar, 'Define tu documento', 'resDocRecargar')) return;
-    if (!validarNumero(docRecargar, 'El documento no es valido!', 'resDocRecargar')) return;
-    if (!validarCampo(contactoRecargar, 'Define numero de contacto', 'resContactoRecargar')) return;
-    if (!validarNumero(contactoRecargar, 'El numero no es valido', 'resContactoRecargar')) return;
-    if (!validarCampo(idJugadorRecargar, 'Define ID de jugador', 'resIDjugadorRecargar')) return;
-    if (!validarCampo(casaApuestasRecargar, 'Selecciona una opcion valida!', 'resCasaApuestasRecargar')) return;
-    if (!validarCampo(valorRecargar, 'Define el valor a recargar', 'resValorRecargar')) return;
-    if (!validarNumero(valorRecargar, 'El valor no es valido!', 'resValorRecargar')) return;
+    if (!validarCampo(nameRecargar, 'Define tu nombre completo', 'resUserRecargar')) return false;
+    if (!validarCampo(docRecargar, 'Define tu documento', 'resDocRecargar')) return false;
+    if (!validarNumero(docRecargar, 'El documento no es válido', 'resDocRecargar')) return false;
+    if (!validarCampo(contactoRecargar, 'Define número de contacto', 'resContactoRecargar')) return false;
+    if (!validarNumero(contactoRecargar, 'El número no es válido', 'resContactoRecargar')) return false;
+    if (!validarCampo(idJugadorRecargar, 'Define ID de jugador', 'resIDjugadorRecargar')) return false;
+    if (!validarCampo(casaApuestasRecargar, 'Selecciona una opción válida', 'resCasaApuestasRecargar')) return false;
+    if (!validarCampo(valorRecargar, 'Define el valor a recargar', 'resValorRecargar')) return false;
+    if (!validarNumero(valorRecargar, 'El valor no es válido', 'resValorRecargar')) return false;
 
     if (valorRecargar.value < valorMinimoRecargar) {
         mostrarError('El valor mínimo debe ser de $30.000', 'resValorRecargar');
-        return;
+        return false;
     }
 
-    if (checkWompi.checked) {
+    if (metodoComprobante) {
+        if (!comprobanteRecargar.files[0]) {
+            mostrarError('Sube tu comprobante de pago', 'comprobantePago');
+            return false;
+        }
 
-        // const divWompi = document.getElementById('divWompi');
-        // divWompi.classList.remove('hidden')
-        
-        // let precioSentavos = formatoAPesos(valorRecargar.value);
-        // let referencia = generarReferencia() ;
-
-        // obtener el hash
-        
-        // Crear el elemento script
-        const scriptElement = document.createElement('script');
-        scriptElement.src = "https://checkout.wompi.co/widget.js";
-        scriptElement.setAttribute('data-render', 'button');
-        scriptElement.setAttribute('data-public-key', 'pub_test_TWj13GmeFpTJYr4iPuZadTjFghK4d68z');
-        scriptElement.setAttribute('data-currency', 'COP');
-        scriptElement.setAttribute('data-amount-in-cents', '4500000');
-        scriptElement.setAttribute('data-customer-data:full-name', nameRecargar.value);
-        scriptElement.setAttribute('data-customer-data:legal-id-type', tipoDocRecargar);
-        scriptElement.setAttribute('data-customer-data:legal-id', docRecargar.value);
-        scriptElement.setAttribute('data-customer-data:phone-number', contactoRecargar.value);
-        scriptElement.setAttribute('data-customer-data:phone-number-prefix', prefijoRecargar);
-        scriptElement.setAttribute('data-reference', referencia);
-        scriptElement.setAttribute('data-signature:integrity', '669be2edd2c97fe9779381eb274171093ca0701e4381b1f6503493577fd4b60c');
-        scriptElement.setAttribute('data-redirect-url', currentPath + '/recargar');
-
-        // Agregar el script al formulario
-        formButtonWompi.appendChild(scriptElement);
-        console.log(scriptElement);
-
-    } else if (checkComprobante.checked) {
-        console.log("Comprobante está seleccionado");
-    } else {
-        mostrarError('Elige un metodo de pago','resMetodos')
+        if (!validarExtension(comprobanteRecargar.files[0])) {
+            mostrarError('La extensión de la imagen no es válida', 'comprobantePago');
+            return false;
+        }
     }
 
-    // if (!comprobanteRecargar.files[0]) {
-    //     mostrarError('Sube tu comprobante de pago', 'resComprobanteRecargar');
-    //     return;
-    // }
-
-    // if (!validarExtension(comprobanteRecargar.files[0])) {
-    //     mostrarError('La extensión de la imagen no es válida.', 'resComprobanteRecargar');
-    //     return;
-    // }
-
-    const formData = new FormData();
-    formData.append('imagen', comprobanteRecargar.files[0]);
-    formData.append('token', tokenRecargar.value);
-    formData.append('id', idRecargar.value);
-    formData.append('name', nameRecargar.value);
-    formData.append('documento', docRecargar.value);
-    formData.append('contacto', contactoRecargar.value);
-    formData.append('idJugador', idJugadorRecargar.value);
-    formData.append('casaApuestas', casaApuestasRecargar.value);
-    formData.append('valor', valorRecargar.value);
-    formData.append('createdAt', createdAt);
-
-    enviarRecarga(formData)
+    return true; // Si todas las validaciones fueron exitosas
 }
+
 
 //Envio de formulario recargar
-function enviarRecarga(datos) {
+function enviarRecarga() {
 
-    spinner();
+    if (validarFormRecargar(event)) {
 
-    // Realizar la solicitud POST usando Axios
-    axios.post(BASE_URL + '/config/operaciones/enviarRecargaTelegram.php', datos, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
-    })
+        const formData = new FormData();
+        formData.append('imagen', comprobanteRecargar.files[0]);
+        formData.append('token', tokenRecargar.value);
+        formData.append('id', idRecargar.value);
+        formData.append('name', nameRecargar.value);
+        formData.append('documento', docRecargar.value);
+        formData.append('contacto', contactoRecargar.value);
+        formData.append('idJugador', idJugadorRecargar.value);
+        formData.append('casaApuestas', casaApuestasRecargar.value);
+        formData.append('valor', valorRecargar.value);
+        formData.append('createdAt', createdAt);
 
-        .then(response => {
+        spinner();
 
-            const respuesta = response.data;
-            Swal.close();
-
-            if (respuesta === 1) {
-
-                formRecargar.reset();
-                Swal.fire({
-                    title: "Se ha enviado su peticion!",
-                    text: "Tu solicitud se puede tardar entre 15 a 20 minutos , si no se le ha hecho el envió DESPUES DE ESE TIEMPO comunícate via telegram.",
-                    icon: "success"
-                });
-
-            } else if (respuesta === 2) {
-
-                Swal.fire({
-                    title: "Hubo en error!",
-                    text: "Por favor intenta nuevamente!",
-                    icon: "error"
-                });
-
-            } else {
-
-                Swal.fire({
-                    title: "Hubo un error!",
-                    text: `${respuesta}`,
-                    icon: "error"
-                });
+        // Realizar la solicitud POST usando Axios
+        axios.post(BASE_URL + '/config/operaciones/enviarRecargaTelegram.php', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
             }
         })
-        .catch(error => {
-            // Manejar errores
-            console.error('Error al enviar', error);
-        });
+
+            .then(response => {
+
+                const respuesta = response.data;
+                Swal.close();
+                
+                if (respuesta === 1) {
+                    ocultarCampos();
+                    formRecargar.reset();
+                    Swal.fire({
+                        title: "Se ha enviado su peticion!",
+                        text: "Tu solicitud se puede tardar entre 15 a 20 minutos , si no se le ha hecho el envió DESPUES DE ESE TIEMPO comunícate via telegram.",
+                        icon: "success"
+                    });
+
+                } else if (respuesta === 2) {
+
+                    Swal.fire({
+                        title: "Hubo en error!",
+                        text: "Por favor intenta nuevamente!",
+                        icon: "error"
+                    });
+
+                } else {
+
+                    Swal.fire({
+                        title: "Hubo un error!",
+                        text: `${respuesta}`,
+                        icon: "error"
+                    });
+                }
+            })
+            .catch(error => {
+                // Manejar errores
+                console.error('Error al enviar', error);
+            });
+    }
 }
 
+//! -----------------------------------------------------------------------------------------------------------------------------------
 //* validacion y  envio para el formulario de retirar
 const formRetirar = document.getElementById('formRetirar');
 const valorMinimoRetirar = 100000;
@@ -280,7 +298,7 @@ function validarFormRetirar(e) {
         valor: valorRetirar.value,
         createdAt
     };
-    
+
     enviarRetiro(datos);
 
 }
@@ -320,7 +338,7 @@ function enviarRetiro(datos) {
                 });
 
             } else {
-            
+
                 Swal.fire({
                     title: "Hubo un error!",
                     text: `${respuesta}`,
@@ -356,58 +374,58 @@ function obtenerParametroURL() {
         return null;
     }
 }
-function generarReferencia(){
-    
-        const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        const longitud = 24;
-        let referencia = '';
-        for (let i = 0; i < longitud; i++) {
-            referencia += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
-        }
-        return referencia;
+function generarReferencia() {
+
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const longitud = 24;
+    let referencia = '';
+    for (let i = 0; i < longitud; i++) {
+        referencia += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
     }
-    
+    return referencia;
+}
 
-    // async function crearHash(referencia, valor) {
-    //     const valorTexto = valor.toString();
-    //     const cadenaConcatenada = referencia + valorTexto + "COPtest_integrity_uUI9OnC6cOdbijH8XrCx7FOuXs6pBAfN";
-    
-    //     // Codificar la cadena concatenada a UTF-8
-    //     const encondedText = new TextEncoder().encode(cadenaConcatenada);
-    
-    //     // Calcular el hash SHA-256
-    //     const hashBuffer = await crypto.subtle.digest("SHA-256", encondedText);
-    
-    //     // Convertir el buffer de hash a un array de bytes
-    //     const hashArray = Array.from(new Uint8Array(hashBuffer));
-    
-    //     // Convertir el array de bytes a una cadena hexadecimal
-    //     const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
-    
-    //     return hashHex;
-    // }
 
-    const referencia = 'asdff546dfs23df';
+// async function crearHash(referencia, valor) {
+//     const valorTexto = valor.toString();
+//     const cadenaConcatenada = referencia + valorTexto + "COPtest_integrity_uUI9OnC6cOdbijH8XrCx7FOuXs6pBAfN";
 
-    const valor = formatoAPesos(45000);
-    console.log(valor);
+//     // Codificar la cadena concatenada a UTF-8
+//     const encondedText = new TextEncoder().encode(cadenaConcatenada);
 
-    // const cadenaConcatenada = referencia + valorTexto + "COPtest_integrity_uUI9OnC6cOdbijH8XrCx7FOuXs6pBAfN";
-    const cadenaConcatenada = referencia + valor + "COPtest_integrity_uUI9OnC6cOdbijH8XrCx7FOuXs6pBAfN";
-    
-        // Codificar la cadena concatenada a UTF-8
-        const encondedText = new TextEncoder().encode(cadenaConcatenada);
-    
-        // Calcular el hash SHA-256
-        const hashBuffer = await crypto.subtle.digest("SHA-256", encondedText);
-    
-        // Convertir el buffer de hash a un array de bytes
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-    
-        // Convertir el array de bytes a una cadena hexadecimal
-        const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
-    
-        console.log(hashHex);
+//     // Calcular el hash SHA-256
+//     const hashBuffer = await crypto.subtle.digest("SHA-256", encondedText);
+
+//     // Convertir el buffer de hash a un array de bytes
+//     const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+//     // Convertir el array de bytes a una cadena hexadecimal
+//     const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+
+//     return hashHex;
+// }
+
+const referencia = 'asdff546dfs23df';
+
+const valor = formatoAPesos(45000);
+console.log(valor);
+
+// const cadenaConcatenada = referencia + valorTexto + "COPtest_integrity_uUI9OnC6cOdbijH8XrCx7FOuXs6pBAfN";
+const cadenaConcatenada = referencia + valor + "COPtest_integrity_uUI9OnC6cOdbijH8XrCx7FOuXs6pBAfN";
+
+// Codificar la cadena concatenada a UTF-8
+const encondedText = new TextEncoder().encode(cadenaConcatenada);
+
+// Calcular el hash SHA-256
+const hashBuffer = await crypto.subtle.digest("SHA-256", encondedText);
+
+// Convertir el buffer de hash a un array de bytes
+const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+// Convertir el array de bytes a una cadena hexadecimal
+const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+
+console.log(hashHex);
 
 function formatoAPesos(precio) {
     // Multiplicar el precio por 100 para convertirlo a centavos

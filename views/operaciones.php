@@ -453,7 +453,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
                 </div>
                 <div class="mb-6" id="resValorRecargar">
                     <label for="valor-recargar" class="block mb-2 text-base font-medium text-white">Valor a recargar</label>
-                    <input type="number" id="valor-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="min $30.000" value="45000" />
+                    <input type="number" id="valor-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="min $30.000" />
                 </div>
             </div>
 
@@ -486,34 +486,27 @@ require_once(__DIR__ . '/../layouts/slide.php');
             </div>
 
 
-            <div id="buttonWompi" class="">
-            <form>
-                        <script
-                            id="wompi-widget-script"
-                            src="https://checkout.wompi.co/widget.js"
-                            data-render="button"
-                            data-public-key='pub_test_TWj13GmeFpTJYr4iPuZadTjFghK4d68z'
-                            data-currency="COP"
-                            data-amount-in-cents="4500000"
-                            data-reference="referencia"
-                            data-signature:integrity=""
-                            data-redirect-url="http://localhost/Precargaya/operaciones/recargar"
-                            data-expiration-time=""
-                            data-customer-data:full-name=""
-                            data-customer-data:phone-number=""
-                            data-customer-data:phone-number-prefix=""
-                            data-customer-data:legal-id=""
-                            data-customer-data:legal-id-type=""
-                        ></script>
-                    </form>
+            <div id="buttonWompi" class="hidden">
+                <form>
+                    <script id="wompi-widget-script" 
+                        src="https://checkout.wompi.co/widget.js" 
+                        data-render="button" 
+                        data-public-key='pub_test_TWj13GmeFpTJYr4iPuZadTjFghK4d68z' 
+                        data-currency="COP" 
+                        data-amount-in-cents="4500000" 
+                        data-reference="referencia" 
+                        data-signature:integrity="asdasdDFSDFASDFASDFASDFQWE" 
+                        data-redirect-url="http://localhost/Precargaya/operaciones/recargar">
+                    </script>
+                </form>
                 <?php if (isset($_GET['id'])) : ?>
-                    </div>
-                        <button type="submit" id="submitWompi" class="hidden bg-blue-700 hover:bg-blue-600 text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:w-auto px-8 py-2.5 text-center transition hover:scale-110">
-                            Terminar proceso
-                        </button>
-                    </div>
-                <?php endif; ?>
             </div>
+            <button type="submit" id="submitWompi" class="bg-blue-700 hover:bg-blue-600 text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:w-auto px-8 py-2.5 text-center transition hover:scale-110">
+                Terminar proceso
+            </button>
+            </div>
+        <?php endif; ?>
+        </div>
         <div id="btn-submit" class="hidden">
             <div class="mb-6" id="comprobantePago">
                 <label class="block mb-2 text-base font-medium text-white" for="comprobante_recargar">Comprobante de pago</label>
