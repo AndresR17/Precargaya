@@ -19,33 +19,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $casaApuestas = limpiar_cadena($_POST['casaApuestas']);
         $valor = (int)limpiar_cadena($_POST['valor']);
         $createdAt = limpiar_cadena($_POST['createdAt']);
+
+        $referenciaPago = isset($_POST['referencia']) ? limpiar_cadena($_POST['referencia']) : '';
+        $idPago = isset($_POST['idPago']) ? limpiar_cadena($_POST['idPago']) : '';
+        $metodoPago = isset($_POST['metodo']) ? limpiar_cadena($_POST['metodo']) : '';
+
         $tipo = "Recarga";
         $valorMinimo = 30000;
-
-        // Recibir el archivo de imagen
-        $imagen = $_FILES['imagen'];
-        $fileTmpPath = $imagen['tmp_name'];
-        $fileName = $imagen['name'];
-        $fileType = $imagen['type'];
-
-        // Verificar si se subió un archivo
-        if ($imagen['error'] !== UPLOAD_ERR_OK) {
-            enviarRespuestaJSON('Error: No se pudo subir la imagen.!');
-        }
-
-        $extensionesValidas = array("jpg", "jpeg", "png", "gif");
-
-        $extension = pathinfo($imagen['name'], PATHINFO_EXTENSION);
-        if (!in_array($extension, $extensionesValidas)) {
-            // Extensión de imagen no válida
-            enviarRespuestaJSON('Error: La extensión de la imagen no es válida.!');
-        }
+        $valorFormateado = number_format($valor, 2);
+        
 
         if (empty($id) || empty($name) || empty($documento) || empty($idJugador) || empty($valor) || empty($createdAt) || empty($contacto) || empty($casaApuestas)) {
             enviarRespuestaJSON('Tus datos no son aceptados en nuestra plataforma.!');
         }
 
-        if(!is_numeric($valor) || !is_numeric($documento) || !is_numeric($id)){         
+        if (!is_numeric($valor) || !is_numeric($documento) || !is_numeric($id)) {
             enviarRespuestaJSON('Ingresaste datos incorrectos!');
         }
 
@@ -53,64 +41,113 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             enviarRespuestaJSON('Este valor no puede ser recargado!');
         }
 
-        $valorFormateado = number_format($valor, 2);
-        
+        if (isset($_FILES['imagen'])) {
+            // Recibir el archivo de imagen
+            $imagen = $_FILES['imagen'];
+            $fileTmpPath = $imagen['tmp_name'];
+            $fileName = $imagen['name'];
+            $fileType = $imagen['type'];
+
+            // Verificar si se subió un archivo
+            if ($imagen['error'] !== UPLOAD_ERR_OK) {
+                enviarRespuestaJSON('Error: No se pudo subir la imagen.!');
+            }
+
+            $extensionesValidas = array("jpg", "jpeg", "png", "gif");
+
+            $extension = pathinfo($imagen['name'], PATHINFO_EXTENSION);
+            if (in_array($extension, $extensionesValidas)) {
+
+                $entidad = 'Comprobante de pago';
+                // Mensaje a enviar
+                $mensaje = "Comprobante de pago:"
+                    . "\nCordial saludo, ** RECARGA ** a realizar:"
+                    . "\n "
+                    . "\nNOMBRE: $name"
+                    . "\nDOCUMENTO: $documento"
+                    . "\nCONTACTO: $contacto"
+                    . "\n "
+                    . "\nID JUGADOR: $idJugador"
+                    . "\nCASA DE APUESTAS: $casaApuestas"
+                    . "\nVALOR A RECARGAR: $ $valorFormateado"
+                    . "\n "
+                    . "\n ************** | Gracias | ****************";
+
+
+                // URL de la API de Telegram para enviar mensajes
+                $telegramUrl = "https://api.telegram.org/bot" . TELEGRAM_TOKEN . "/sendPhoto";
+
+                // Campos de la solicitud POST
+                $postFields = array(
+                    'chat_id' => TELEGRAM_ID_CHAT,
+                    'caption' => $mensaje,
+                    'photo' => new CURLFile($fileTmpPath, $fileType, $fileName), // Usa CURLFile para manejar el archivo adjunto
+                );
+            } else {
+                // Extensión de imagen no válida
+                enviarRespuestaJSON('Error: La extensión de la imagen no es válida.!');
+            }
+
+        } else {
+            $entidad = $metodoPago;
             // Mensaje a enviar
-            $mensaje = "Comprobante de pago:"
-            . "\nCordial saludo, ** RECARGA ** a realizar:"
-            . "\n "
-            . "\nNOMBRE: $name"
-            . "\nDOCUMENTO: $documento"
-            . "\nCONTACTO: $contacto"
-            . "\n "
-            . "\nID JUGADOR: $idJugador"
-            . "\nCASA DE APUESTAS: $casaApuestas"
-            . "\nVALOR A RECARGAR: $ $valorFormateado"
-            . "\n "
-            . "\n ************** | Gracias | ****************";
+            $mensaje = "Cordial saludo"
+                . "\n** RECARGA ** a realizar:"
+                . "\n "
+                . "\nNOMBRE: $name"
+                . "\nDOCUMENTO: $documento"
+                . "\nCONTACTO: $contacto"
+                . "\n "
+                . "\nID JUGADOR: $idJugador"
+                . "\nCASA DE APUESTAS: $casaApuestas"
+                . "\nVALOR A RECARGAR: $ $valorFormateado"
+                . "\n "
+                . "\nREFERENCIA: $referenciaPago"
+                . "\nID-PAGO: # $idPago"
+                . "\nMETODO PAGO: $metodoPago"
+                . "\n ************** | Gracias | ****************";
 
 
             // URL de la API de Telegram para enviar mensajes
-            $telegramUrl = "https://api.telegram.org/bot". TELEGRAM_TOKEN ."/sendPhoto";
+            $telegramUrl = "https://api.telegram.org/bot" . TELEGRAM_TOKEN . "/sendMessage";
 
             // Campos de la solicitud POST
             $postFields = array(
                 'chat_id' => TELEGRAM_ID_CHAT,
-                'caption' => $mensaje,
-                'photo' => new CURLFile($fileTmpPath, $fileType, $fileName), // Usa CURLFile para manejar el archivo adjunto
+                'text' => $mensaje,
             );
+        }
 
-            // Inicializar cURL para realizar la solicitud POST
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $telegramUrl);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-            // Ejecutar la solicitud y obtener la respuesta
-            $response = curl_exec($ch);
+        // Inicializar cURL para realizar la solicitud POST
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $telegramUrl);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-            // Cerrar cURL
-            curl_close($ch);
+        // Ejecutar la solicitud y obtener la respuesta
+        $response = curl_exec($ch);
 
-            // Comprobar si se envió correctamente
-            if ($response && json_decode($response)->ok) {
+        // Cerrar cURL
+        curl_close($ch);
 
-                // LA RESPUESTA FUE CORRECTA 
-                $sql = "INSERT INTO operaciones(id_usuario, idJugador, casaDeApuestas, valor, tipo, createdAt) VALUES (?, ?, ?, ?, ?, ?)";
-                $stmt = mysqli_prepare($conexion, $sql);
-                mysqli_stmt_bind_param($stmt, "isssss", $id, $idJugador, $casaApuestas, $valor, $tipo, $createdAt);
-                $success = mysqli_stmt_execute($stmt);
-                if($success){
-                    enviarRespuestaJSON(1);
-                    exit();
-                }
+        // Comprobar si se envió correctamente
+        if ($response && json_decode($response)->ok) {
 
-            } else {
-                enviarRespuestaJSON(2);
+            // LA RESPUESTA FUE CORRECTA 
+            $sql = "INSERT INTO operaciones(id_usuario, idJugador, casaDeApuestas, tipo, entidad, valor, referencia, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = mysqli_prepare($conexion, $sql);
+            mysqli_stmt_bind_param($stmt, "isssssss", $id, $idJugador, $casaApuestas, $tipo, $entidad, $valor, $referenciaPago, $createdAt);
+            $success = mysqli_stmt_execute($stmt);
+            if ($success) {
+                enviarRespuestaJSON(1);
                 exit();
             }
-        
+        } else {
+            enviarRespuestaJSON(2);
+            exit();
+        }
     } else {
         enviarRespuestaJSON('Token no valido, Recarga la pagina!');
     }

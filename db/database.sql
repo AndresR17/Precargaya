@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS recargaya;
 USE recargaya;
 
 CREATE TABLE usuarios(
-    id int(50) auto_increment not null,
+    id int(10) auto_increment not null,
     documento varchar(20),
     name varchar(60) not null,
     email varchar(60) not null,
@@ -26,6 +26,7 @@ CREATE Table operaciones (
     tipo varchar(30) not null,
     entidad VARCHAR(50),
     valor varchar(60) not null,
+    referencia varchar(30),
     createdAt DATE NOT NULL,
     CONSTRAINT pk_operaciones PRIMARY KEY (id),
     CONSTRAINT fk_operaciones_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id)

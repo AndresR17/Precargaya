@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="<?= BASE_URL . 'src/css/app.css'; ?>">
     <script type="module" src="<?= BASE_URL . 'src/js/app.js' ?>"></script>
 
+    <script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>
+
     <?php
     // if ($_SERVER["HTTPS"] != "on") {
     //     // Redirige a la versión HTTPS de la misma página

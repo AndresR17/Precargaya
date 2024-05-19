@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cuenta = (int)limpiar_cadena($data['cuenta']);
         $valor = (int)limpiar_cadena($data['valor']);
         $createdAt = limpiar_cadena($data['createdAt']);
+        $referencia = 'No Aplica';
         $tipo = "Retiro";
 
         $valorMinimo = 100000;
@@ -83,9 +84,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($response && json_decode($response)->ok) {
 
                 // LA RESPUESTA FUE CORRECTA 
-                $sql = "INSERT INTO operaciones(id_usuario, idJugador, casaDeApuestas, tipo, entidad, valor, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                $sql = "INSERT INTO operaciones(id_usuario, idJugador, casaDeApuestas, tipo, entidad, valor, referencia, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = mysqli_prepare($conexion, $sql);
-                mysqli_stmt_bind_param($stmt, "issssss", $id, $idJugador, $casaApuestas, $tipo, $entidad, $valor, $createdAt);
+                mysqli_stmt_bind_param($stmt, "isssssss", $id, $idJugador, $casaApuestas, $tipo, $entidad, $valor, $referencia, $createdAt);
                 $success = mysqli_stmt_execute($stmt);
                 if($success){
                     enviarRespuestaJSON(1);

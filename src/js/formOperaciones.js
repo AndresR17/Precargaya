@@ -76,13 +76,12 @@ function cambiarColor(btnClick, btnActivo, sectionMostrar, sectionOcultar) {
     }
 }
 
-
 //* validacion y envio para el formulario de recargar
 const formRecargar = document.getElementById('formRecargar');
 const valorMinimoRecargar = 30000;
 let metodoComprobante = false;
 
-formRecargar.addEventListener('submit', enviarRecarga);
+formRecargar.addEventListener('submit', () => enviarRecarga(null,null,null));
 
 const tokenRecargar = document.getElementById('token_recargar');
 const idRecargar = document.getElementById('idRecargar');
@@ -97,7 +96,7 @@ const comprobanteRecargar = document.getElementById('comprobante_recargar');
 const casaApuestasRecargar = document.getElementById('casaApuestas-Recargar');
 const checkWompi = document.getElementById('wompi');
 const checkComprobante = document.getElementById('comprobante');
-const divButtonWompi = document.getElementById('buttonWompi');
+const divButtonWompi = document.getElementById('divWompi');
 const divButtonSubmit = document.getElementById('btn-submit');
 
 
@@ -111,10 +110,12 @@ function comprobarChecks() {
     if (checkWompi.checked) {
         divButtonSubmit.classList.toggle('hidden', !checkComprobante.checked);
         metodoComprobante = false;
+
         if (!validarFormRecargar(event)) {
             checkWompi.checked = false;
             divButtonWompi.classList.add('hidden');
             return
+
         } else {
             divButtonWompi.classList.toggle('hidden', !checkWompi.checked);
             divButtonSubmit.classList.toggle('hidden', !checkComprobante.checked);
@@ -137,8 +138,61 @@ function comprobarChecks() {
 
 }
 
+
+const formButtonWompi = document.getElementById('formButtonWompi');
+
+formButtonWompi.addEventListener('click', crearBotonWompi)
+
+
+async function crearBotonWompi() {
+
+    let precioSentavos = formatoAPesos(valorRecargar.value);
+    let referencia = generarReferencia();
+    let fechaExpiracion = obtenerFechaExpiracion();
+
+    const hashIntegridad = await crearHash(referencia, precioSentavos, fechaExpiracion);
+
+    // Paso 2: Configura los datos de la transacción
+    var checkout = new WidgetCheckout({
+        currency: 'COP',
+        amountInCents: precioSentavos,
+        reference: referencia,
+        publicKey: 'pub_test_TWj13GmeFpTJYr4iPuZadTjFghK4d68z',
+        signature: {
+            integrity: hashIntegridad
+        },
+        redirectUrl: 'http://localhost/Precargaya/operaciones/recargar', // Opcional
+        expirationTime: fechaExpiracion, // Opcional
+        customerData: {
+            email: 'correo@correo.com', // Opcional // Aquí puedes poner un campo de entrada si lo deseas
+            fullName: nameRecargar.value,
+            phoneNumber: contactoRecargar.value,
+            phoneNumberPrefix: prefijoRecargar,
+            legalId: docRecargar.value,
+            legalIdType: tipoDocRecargar
+        }
+    });
+
+
+    openCheckout(checkout)
+
+}
+
+function openCheckout(parametro) {
+    parametro.open(function (result) {
+        const { status, id, reference, paymentMethodType } = result.transaction;
+
+        if (status === 'APPROVED') {
+            enviarRecarga(reference, id, paymentMethodType)
+        }else{
+            mostrarError('El proceso de la transaccion fue declinada', 'resWompi');
+            return
+        }
+    });
+}
+
 //funcion para colocar los valores por defecto de realizar una recarga y ocultar los div
-function ocultarCampos(){
+function ocultarCampos() {
     divButtonSubmit.classList.add('hidden');
     divButtonWompi.classList.add('hidden');
     checkComprobante.checked = false
@@ -180,23 +234,29 @@ function validarFormRecargar(e) {
     return true; // Si todas las validaciones fueron exitosas
 }
 
-
 //Envio de formulario recargar
-function enviarRecarga() {
+function enviarRecarga(referencia, idPago, metodoPago) {
+
+    const formData = new FormData();
+            formData.append('token', tokenRecargar.value);
+            formData.append('id', idRecargar.value);
+            formData.append('name', nameRecargar.value);
+            formData.append('documento', docRecargar.value);
+            formData.append('contacto', contactoRecargar.value);
+            formData.append('idJugador', idJugadorRecargar.value);
+            formData.append('casaApuestas', casaApuestasRecargar.value);
+            formData.append('valor', valorRecargar.value);
+            formData.append('createdAt', createdAt);
 
     if (validarFormRecargar(event)) {
 
-        const formData = new FormData();
-        formData.append('imagen', comprobanteRecargar.files[0]);
-        formData.append('token', tokenRecargar.value);
-        formData.append('id', idRecargar.value);
-        formData.append('name', nameRecargar.value);
-        formData.append('documento', docRecargar.value);
-        formData.append('contacto', contactoRecargar.value);
-        formData.append('idJugador', idJugadorRecargar.value);
-        formData.append('casaApuestas', casaApuestasRecargar.value);
-        formData.append('valor', valorRecargar.value);
-        formData.append('createdAt', createdAt);
+        if (idPago === null) {
+            formData.append('imagen', comprobanteRecargar.files[0]);
+        } else {
+            formData.append('idPago', idPago);
+            formData.append('referencia', referencia);
+            formData.append('metodo', metodoPago);
+        }
 
         spinner();
 
@@ -211,7 +271,7 @@ function enviarRecarga() {
 
                 const respuesta = response.data;
                 Swal.close();
-                
+
                 if (respuesta === 1) {
                     ocultarCampos();
                     formRecargar.reset();
@@ -386,50 +446,35 @@ function generarReferencia() {
 }
 
 
-// async function crearHash(referencia, valor) {
-//     const valorTexto = valor.toString();
-//     const cadenaConcatenada = referencia + valorTexto + "COPtest_integrity_uUI9OnC6cOdbijH8XrCx7FOuXs6pBAfN";
+async function crearHash(referencia, valor, fecha) {
+    const valorTexto = valor.toString();
+    const cadenaConcatenada = referencia + valorTexto + "COP" + fecha + "test_integrity_uUI9OnC6cOdbijH8XrCx7FOuXs6pBAfN";
 
-//     // Codificar la cadena concatenada a UTF-8
-//     const encondedText = new TextEncoder().encode(cadenaConcatenada);
+    // Codificar la cadena concatenada a UTF-8
+    const encondedText = new TextEncoder().encode(cadenaConcatenada);
+    // Calcular el hash SHA-256
+    const hashBuffer = await crypto.subtle.digest("SHA-256", encondedText);
+    // Convertir el buffer de hash a un array de bytes
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    // Convertir el array de bytes a una cadena hexadecimal
+    const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+    return hashHex;
+}
 
-//     // Calcular el hash SHA-256
-//     const hashBuffer = await crypto.subtle.digest("SHA-256", encondedText);
-
-//     // Convertir el buffer de hash a un array de bytes
-//     const hashArray = Array.from(new Uint8Array(hashBuffer));
-
-//     // Convertir el array de bytes a una cadena hexadecimal
-//     const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
-
-//     return hashHex;
-// }
-
-const referencia = 'asdff546dfs23df';
-
-const valor = formatoAPesos(45000);
-console.log(valor);
-
-// const cadenaConcatenada = referencia + valorTexto + "COPtest_integrity_uUI9OnC6cOdbijH8XrCx7FOuXs6pBAfN";
-const cadenaConcatenada = referencia + valor + "COPtest_integrity_uUI9OnC6cOdbijH8XrCx7FOuXs6pBAfN";
-
-// Codificar la cadena concatenada a UTF-8
-const encondedText = new TextEncoder().encode(cadenaConcatenada);
-
-// Calcular el hash SHA-256
-const hashBuffer = await crypto.subtle.digest("SHA-256", encondedText);
-
-// Convertir el buffer de hash a un array de bytes
-const hashArray = Array.from(new Uint8Array(hashBuffer));
-
-// Convertir el array de bytes a una cadena hexadecimal
-const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
-
-console.log(hashHex);
 
 function formatoAPesos(precio) {
     // Multiplicar el precio por 100 para convertirlo a centavos
     const precioEnCentavos = precio * 100;
     // Devolver el precio en centavos
     return precioEnCentavos;
+}
+
+function obtenerFechaExpiracion() {
+    // Obtener la hora actual
+    let horaActual = new Date();
+    // Sumar 3 minutos
+    horaActual.setMinutes(horaActual.getMinutes() + 5);
+    // Formatear la hora en el formato ISO 8601
+    let horaFormateada = horaActual.toISOString();
+    return horaFormateada;
 }

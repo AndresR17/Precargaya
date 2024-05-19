@@ -434,26 +434,30 @@ require_once(__DIR__ . '/../layouts/slide.php');
                             <option value="+263">+263 - Zimbabue</option>
                         </select>
 
-                        <input type="number" id="contacto-recargar" class="w-3/4 border rounded-tr-lg rounded-br-lg text-base focus:border-blue-500 block p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" value="<?= isset($_SESSION['user']) ? $user['phone'] : ''; ?>" />
+
+                        <input type="number" id="contacto-recargar" class="w-3/4 border rounded-tr-lg rounded-br-lg text-base focus:border-blue-500 block p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" value="3991111111" />
                     </div>
                 </div>
+
                 <div id="resIDjugadorRecargar">
                     <label for="idJugador-recargar" class="block mb-2 text-base font-medium text-white">ID jugador</label>
                     <input type="text" id="idJugador-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="ID o numero de cuenta" value="DE34FR5TB0S9NM" />
                 </div>
+
                 <div id="resCasaApuestasRecargar">
                     <label for="casaApuestas-Recargar" class="block mb-2 text-base font-medium text-white">Casa de apuestas</label>
                     <select id="casaApuestas-Recargar" class="border text-base rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-                        <!-- <option value="" selected>--Seleccione una opcion--</option> -->
+                        <!-- <option value="" selected>--Seleccione una opcion --</option> -->
                         <option value="1XBET">1XBET</option>
                         <option value="BETWINNER">BETWINNER</option>
                         <option value="22BET">22BET</option>
                         <option value="88STARZ">88STARZ</option>
                     </select>
                 </div>
+
                 <div class="mb-6" id="resValorRecargar">
                     <label for="valor-recargar" class="block mb-2 text-base font-medium text-white">Valor a recargar</label>
-                    <input type="number" id="valor-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="min $30.000" />
+                    <input type="number" id="valor-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="min $30.000" value="165000" />
                 </div>
             </div>
 
@@ -484,52 +488,41 @@ require_once(__DIR__ . '/../layouts/slide.php');
                     </li>
                 </ul>
             </div>
+            <!-- seccion para enviar los formularios dependiendo de que metodo de pago escoja el usuario  -->
+            <?php if (isset($_SESSION['user'])) : ?>
+                <div id="divWompi" class="hidden">
 
+                    <button id="formButtonWompi" class="flex text-white text-base py-2 px-4 bg-blue-900 rounded-md hover:bg-blue-800" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="#233876" class="w-6 h-6 mr-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                        </svg>
+                        Paga con<span class="font-semibold ml-1">Wompi</span>
+                    </button>
 
-            <div id="buttonWompi" class="hidden">
-                <form>
-                    <script id="wompi-widget-script" 
-                        src="https://checkout.wompi.co/widget.js" 
-                        data-render="button" 
-                        data-public-key='pub_test_TWj13GmeFpTJYr4iPuZadTjFghK4d68z' 
-                        data-currency="COP" 
-                        data-amount-in-cents="4500000" 
-                        data-reference="referencia" 
-                        data-signature:integrity="asdasdDFSDFASDFASDFASDFQWE" 
-                        data-redirect-url="http://localhost/Precargaya/operaciones/recargar">
-                    </script>
-                </form>
-                <?php if (isset($_GET['id'])) : ?>
-            </div>
-            <button type="submit" id="submitWompi" class="bg-blue-700 hover:bg-blue-600 text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:w-auto px-8 py-2.5 text-center transition hover:scale-110">
-                Terminar proceso
-            </button>
-            </div>
-        <?php endif; ?>
-        </div>
-        <div id="btn-submit" class="hidden">
-            <div class="mb-6" id="comprobantePago">
-                <label class="block mb-2 text-base font-medium text-white" for="comprobante_recargar">Comprobante de pago</label>
-                <input class="block w-full text-base border rounded-lg cursor-pointer text-gray-400 focus:outline-none bg-gray-700 border-gray-600" id="comprobante_recargar" type="file">
-            </div>
-            <button type="submit" class="bg-blue-700 hover:bg-blue-600 text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:w-auto px-8 py-2.5 text-center transition hover:scale-110">Realizar operacion</button>
-        </div>
+                </div>
 
-        <?php if (!isset($_SESSION['user'])) : ?>
-            <div>
-                <p class="text-red-600 text-base mb-2 text-white ">Para continuar, <span class="text-red-600 font-bold">inicia sesión o regístrate</span> para disfrutar de todas las funciones disponibles.</p>
-                <button type="button" data-modal-target="modal-login" data-modal-toggle="modal-login" class="inline-flex items-center rounded px-4 py-2 text-sm font-medium text-white uppercase bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br">
-                    Iniciar sesion
-                </button>
-            </div>
-        <?php endif; ?>
+                <div id="btn-submit" class="hidden">
+                    <div class="mb-6" id="comprobantePago">
+                        <label class="block mb-2 text-base font-medium text-white" for="comprobante_recargar">Comprobante de pago</label>
+                        <input class="block w-full text-base border rounded-lg cursor-pointer text-gray-400 focus:outline-none bg-gray-700 border-gray-600" id="comprobante_recargar" type="file">
+                    </div>
+                    <button type="submit" class="bg-blue-800 hover:bg-blue-700 text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:w-auto px-8 py-2.5 text-center">Realizar operacion</button>
+                </div>
+            <?php endif; ?>
+                <!-- MOSTRAMOS LA RESPUESTA QUE NOS DEVUELVE WOMPI  -->
+                <div id="resWompi" class="mb-6"></div>
+
+            <?php if (!isset($_SESSION['user'])) : ?>
+                <div>
+                    <p class="text-red-600 text-base mb-2 text-white ">Para continuar, <span class="text-red-600 font-bold">inicia sesión o regístrate</span> para disfrutar de todas las funciones disponibles.</p>
+                    <button type="button" data-modal-target="modal-login" data-modal-toggle="modal-login" class="inline-flex items-center rounded px-4 py-2 text-sm font-medium text-white uppercase bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br">
+                        Iniciar sesion
+                    </button>
+                </div>
+            <?php endif; ?>
         </fieldset>
     </form>
-
 </section>
-
-
-
 
 <script type="module" src="<?= BASE_URL . 'src/js/formOperaciones.js' ?>"></script>
 
