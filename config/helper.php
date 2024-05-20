@@ -34,7 +34,7 @@ function obtenerUltimosRegistros($conexion){
 
 // obtener registros para las operaciones de cada usuario
 function obtenerOperaciones($conexion, $id){
-    $sql = "SELECT * FROM operaciones WHERE id_usuario = $id ORDER BY id DESC LIMIT 0,10;";
+    $sql = "SELECT * FROM operaciones WHERE id_usuario = $id ORDER BY id DESC LIMIT 0,15;";
     $resultado = mysqli_query($conexion, $sql);
     $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
     mysqli_close($conexion);

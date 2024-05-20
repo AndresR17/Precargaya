@@ -1,6 +1,6 @@
 <?php
 //CONSTANTES GLOBALES
-define('BASE_URL', 'http://localhost/Precargaya/');
+define('BASE_URL_BACK', 'http://localhost/Precargaya/');
 
 define('DB_HOST', 'localhost');
 define('DB_USUARIO', 'root');

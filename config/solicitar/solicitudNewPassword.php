@@ -63,11 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <p>Hola '. $usuario['name']. ',</p>
                         <p>Hemos recibido una solicitud para restablecer tu contraseña en RecargaYa.</p>
                         <p>Para continuar con el proceso, por favor haz clic en el siguiente enlace:</p>
-                        <p><a href="' . BASE_URL . 'solicitar/nuevo_password/' . $token . '">Restablecer password</a></p>
+                        <p><a href="' . BASE_URL_BACK . 'solicitar/nuevo_password/' . $token . '">Restablecer password</a></p>
                         <p>Si no solicitaste restablecer tu password, puedes ignorar este mensaje de correo electrónico.</p>
                         <p>¡Gracias por confiar en RecargaYa!</p>
                         ';
-                    $mail->AltBody = 'Para restablecer tu password en RecargaYa, visita el siguiente enlace: ' . BASE_URL . 'solicitar/nuevo_password/' . $token;
+                    $mail->AltBody = 'Para restablecer tu password en RecargaYa, visita el siguiente enlace: ' . BASE_URL_BACK . 'solicitar/nuevo_password/' . $token;
                     $mail->send();
 
                     $_SESSION['newPassword'] = $usuario['id'];

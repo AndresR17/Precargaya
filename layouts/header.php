@@ -40,7 +40,7 @@
     ?>
 </head>
 
-<body class="bg-black">
+<body class="flex flex-col bg-black min-h-screen">
 
     <!-- Boton de whatsap  -->
     <div data-dial-init class="z-50 fixed end-6 bottom-10 md:bottom-24 group">
