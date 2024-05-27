@@ -1,10 +1,9 @@
-
 <nav class="shadow bg-gray-800 md:fixed md:top-0 w-full z-50">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
         <a href="<?= BASE_URL; ?>" class="flex items-center space-x-2">
             <img src="<?= BASE_URL . 'img/logo-antes.jpg'; ?>" class="h-10 rounded-xl" alt="logo recargaya!" />
             <p class="flex text-2xl font-bold whitespace-nowrap text-white flex-col">RECARGAYA
-                <!-- <span class="text-sm font-normal">Tu satisfaccion es nuestro mayor objetivo</span>git  -->
+                <!-- <span class="text-base font-normal">Tu satisfaccion es nuestro mayor objetivo</span>git  -->
             </p>
 
         </a>
@@ -12,14 +11,14 @@
         <div class="flex items-center md:order-2 space-x-1 md:space-x-4 rtl:space-x-reverse">
             <?php if (!isset($_SESSION['user'])) : ?>
                 <span class="inline-flex overflow-hidden rounded-md">
-                    <button data-modal-target="modal-login" data-modal-toggle="modal-login" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white uppercase bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br">
+                    <button data-modal-target="modal-login" data-modal-toggle="modal-login" class="hidden md:inline-flex md:px-2 md:text-sm  items-center px-4 py-2 text-base font-medium text-white uppercase bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
                         </svg>
                         Iniciar sesion
                     </button>
 
-                    <button data-modal-target="modal-register" data-modal-toggle="modal-register" class="inline-flex items-center px-4 py-2 text-white font-medium uppercase text-sm bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br">
+                    <button data-modal-target="modal-register" data-modal-toggle="modal-register" class="hidden md:inline-flex sm:px-2 sm:text-sm items-center lg:px-4 py-2 text-white font-medium uppercase lg:text-base bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                         </svg>
@@ -29,18 +28,17 @@
             <?php else : ?>
                 <div class="flex items-center space-x-3">
 
-                    <button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center text-base uppercase" type="button">Bienvenido<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation" class="hidden md:inline-flex text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-5 py-2.5 text-center items-center text-base uppercase" type="button">Bienvenido<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg>
                     </button>
 
                     <!-- Dropdown menu -->
                     <div id="dropdownInformation" class="z-10 hidden divide-y divide-gray-600 rounded-lg shadow w-44 bg-gray-700">
-                        <div class="px-4 py-3 text-sm text-white">
+                        <div class="px-4 py-3 text-base text-white">
                             <div class="text-base"><?= $user['name'] ?></div>
-                            <div class="font-medium truncate text-base"><?= $user['email']; ?></div>
                         </div>
-                        <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownInformationButton">
+                        <ul class="py-2 text-base text-gray-700" aria-labelledby="dropdownInformationButton">
                             <li>
                                 <a href="<?= BASE_URL . 'auth/movimientos' ?>" class="block flex items-center px-4 py-2 hover:bg-gray-800 text-white text-base">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
@@ -70,7 +68,7 @@
                 </div>
             <?php endif; ?>
 
-            <button data-collapse-toggle="mega-menu-icons" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-icons" aria-expanded="false">
+            <button data-collapse-toggle="mega-menu-icons" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-base text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-icons" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
@@ -78,13 +76,41 @@
             </button>
         </div>
         <div id="mega-menu-icons" class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
-            <ul class="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
+            <ul class="flex flex-col mt-4 font-medium md:flex-row space-y-1 md:mt-0 md:space-x-8 rtl:space-x-reverse">
+                <?php if (!isset($_SESSION['user'])) : ?>
+                    <li class="md:hidden">
+                        <button data-modal-target="modal-login" data-modal-toggle="modal-login" class="w-full inline-flex px-3 text-base  items-center px-4 py-2 font-medium text-white border-b border-gray-400  uppercase bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br">
+                            Iniciar sesion
+                        </button>
+                    </li>
+                    <li class="md:hidden">
+                        <button data-modal-target="modal-register" data-modal-toggle="modal-register" class="inline-flex w-full px-3 text-base items-center lg:px-4 py-2 text-white font-medium uppercase border-b border-gray-400  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br">
+                            Registrarme
+                        </button>
+                    </li>
+                <?php endif; ?>
+                <?php if (isset($_SESSION['user'])) : ?>
+                    <div class="md:hidden bg-blue-900 border-b border-gray-400 px-4 py-3 text-base text-white">
+                        <p class="uppercase text-center">Bienvenido</p>
+                        <div class="text-base text-center font-normal"><?= $user['name'] ?></div>
+                    </div>
+                    <li class="md:hidden">
+                        <a href="<?= BASE_URL . 'auth/movimientos' ?>" class="bg-blue-900 md:bg-gray-800 uppercase block py-2 px-3 border-b border-gray-400 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white" aria-current="page">Mis movimientos</a>
+                    </li>
+                    <li class="md:hidden">
+                        <a href="<?= BASE_URL . 'auth/perfil' ?>" class="bg-blue-900 md:bg-gray-800 uppercase block py-2 px-3 border-b border-gray-400 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white" aria-current="page">Perfil</a>
+                    </li>
+                    <li class="md:hidden">
+                        <a href="<?= BASE_URL . 'config/logout.php' ?>" class="bg-blue-900 md:bg-gray-800 uppercase block py-2 px-3 border-b border-gray-400 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white" aria-current="page">Cerrar Sesion</a>
+                    </li>
+                <?php endif; ?>
                 <li>
-                    <a href="<?= BASE_URL . 'aliados'; ?>" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white" aria-current="page">Aliados</a>
+                    <a href="<?= BASE_URL . 'aliados'; ?>" class="bg-gray-900 md:bg-gray-800 uppercase block py-2 px-3 border-b border-gray-400 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white" aria-current="page">Aliados</a>
                 </li>
                 <li>
-                    <a href="<?= BASE_URL . 'operaciones'; ?>" class="uppercase block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white">Operaciones</a>
+                    <a href="<?= BASE_URL . 'operaciones'; ?>" class="bg-gray-900 md:bg-gray-800 uppercase block py-2 px-3 border-b border-gray-400 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 text-white">Operaciones</a>
                 </li>
+
             </ul>
         </div>
     </div>
@@ -98,10 +124,16 @@
             <div class="relative rounded-lg shadow bg-gray-900 border border-gray-700">
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                    <h3 class="text-2xl uppercase font-semibold text-white ">
-                        Ingresa a tu cuenta
-                    </h3>
-                    <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="modal-login">
+                    <div class="">
+                        <h3 class="text-lg md:text-2xl uppercase font-semibold text-white ">
+                            Ingresa a tu cuenta
+                        </h3>
+                        <p class="text-sm md:text-base text-white">
+                            Y disfruta de todas las funciones disponibles.
+                        </p>
+                    </div>
+
+                    <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-base w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="modal-login">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
@@ -116,17 +148,17 @@
 
                         <div class="mostrarAlerta mt-2"></div>
                         <div>
-                            <label for="user" class="block mb-2 text-sm font-medium text-white ">Email</label>
-                            <input type="email" name="user" id="user" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            <label for="user" class="block mb-2 text-sm md:text-base font-medium text-white ">Email</label>
+                            <input type="email" name="user" id="user" class="bg-gray-800 border border-gray-600 text-white text-sm md:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
                         <div>
-                            <label for="password" class="block mb-2 text-sm font-medium text-white ">Password</label>
-                            <input type="password" name="password" id="password" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            <label for="password" class="block mb-2 text-sm md:text-base font-medium text-white ">Password</label>
+                            <input type="password" name="password" id="password" class="bg-gray-800 border border-gray-600 text-white text-sm md:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
                         <div class="flex justify-end">
-                            <a href="<?= BASE_URL . 'solicitar/olvide_password';?>" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Olvide mi contraseña!</a>
+                            <a href="<?= BASE_URL . 'solicitar/olvide_password'; ?>" class="text-sm md:text-base text-blue-700 hover:underline dark:text-blue-500">Olvide mi contraseña!</a>
                         </div>
-                        <button type="submit" class="w-full uppercase text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 text-center">Ingresar</button>
+                        <button type="submit" class="w-full uppercase text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm md:text-base px-5 py-2.5 text-center">Ingresar</button>
                     </form>
                 </div>
             </div>
@@ -142,10 +174,16 @@
             <div class="relative bg-gray-900 rounded-lg shadow border border-gray-700">
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4  md:p-5 border-b rounded-t">
-                    <h3 class="text-2xl uppercase font-semibold text-white">
-                        Vamos a conectarnos
-                    </h3>
-                    <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="modal-register">
+                    <div>
+                        <h3 class="text-lg md:text-2xl uppercase font-semibold text-white">
+                            Vamos a conectarnos
+                        </h3>
+                        <p class="text-sm md:text-base text-white">
+                            Registrate y disfruta de todos nuestros beneficios.
+                        </p>
+                    </div>
+
+                    <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-base w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="modal-register">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
@@ -157,27 +195,27 @@
                     <form class="" id="formClientes" method="POST" autocomplete="off">
                         <input type="hidden" id="csrf_token_registro" value="<?= $_SESSION['csrf_token']; ?>">
                         <div class="mb-6" id="resName">
-                            <label for="name" class="block mb-2 text-base font-medium text-white">Nombre completo:</label>
-                            <input type="text" id="name" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <label for="name" class="block mb-2 text-sm md:text-base font-medium text-white">Nombre completo:</label>
+                            <input type="text" id="name" class="bg-gray-800 border border-gray-700 text-white text-sm md:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         </div>
                         <div class="mb-6" id="resEmail">
-                            <label for="email" class="block mb-2 text-base font-medium text-white">Email:</label>
-                            <input type="email" id="email" class="bg-gray-800 border border-gray-700 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <label for="email" class="block mb-2 text-sm md:text-base font-medium text-white">Email:</label>
+                            <input type="email" id="email" class="bg-gray-800 border border-gray-700 text-white text-sm md:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         </div>
                         <div class="mb-6" id="resPassword-register">
-                            <label for="password-register" class="block mb-2 text-sm font-medium text-white ">Contraseña</label>
-                            <input type="password" name="password-register" id="password-register" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            <label for="password-register" class="block mb-2 text-sm md:text-base font-medium text-white ">Contraseña</label>
+                            <input type="password" name="password-register" id="password-register" class="bg-gray-800 border border-gray-600 text-white text-sm md:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
 
                         <div class="mb-6" id="resPassword_confirmation">
-                            <label for="password_confirmation" class="block mb-2 text-sm font-medium text-white ">Confirmar Contraseña</label>
-                            <input type="password" name="password_confirmation" id="password_confirmation" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            <label for="password_confirmation" class="block mb-2 text-sm md:text-base font-medium text-white ">Confirmar Contraseña</label>
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="bg-gray-800 border border-gray-600 text-white text-sm md:text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
 
                         <div class="flex flex-col items-start mb-6" id="resCheck">
                             <div class="flex items-center h-5">
                                 <input id="acepto" type="checkbox" class="w-4 h-4 border cursor-pointer border-gray-700 rounded bg-gray-800 focus:ring-3 focus:ring-blue-300"><span class="px-1 font-semibold text-white"></span>
-                                <label for="acepto" class="text-white font-semibold text-base cursor-pointer mr-1">Acepto</label>
+                                <label for="acepto" class="text-white font-semibold text-sm md:text-base cursor-pointer mr-1">Acepto</label>
                                 <a href="public/TÉRMINOS Y CONDICIONES – RecargaYa.pdf" target="_blank" class="flex items-center text-blue-400 hover:underline font-semibold">
                                     Terminos y condiciones
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -185,9 +223,9 @@
                                     </svg>
                                 </a>
                             </div>
-                            <p class="text-gray-400 text-base mt-2 text-justify">Al hacer clic en “Registrarme”, usted acepta que RecargaYa procese sus datos personales proporcionados en el formulario anterior para comunicarse con usted como nuestro cliente potencial o real, tal y como se describe en nuestra Política de privacidad.</p>
+                            <p class="text-gray-400 text-sm md:text-base mt-2 text-justify">Al hacer clic en “Registrarme”, usted acepta que RecargaYa procese sus datos personales proporcionados en el formulario anterior para comunicarse con usted como nuestro cliente potencial o real, tal y como se describe en nuestra Política de privacidad.</p>
                         </div>
-                        <input type="submit" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-base w-full sm:w-auto px-16 py-2.5 hover:scale-110 transition duration-300 text-center cursor-pointer uppercase" value="Registrarme">
+                        <input type="submit" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm md:text-base w-full sm:w-auto px-16 py-2.5 hover:scale-110 transition duration-300 text-center cursor-pointer uppercase" value="Registrarme">
                     </form>
                 </div>
             </div>
@@ -195,5 +233,3 @@
     </div>
 
 </nav>
-
-

@@ -1,7 +1,22 @@
 //! VALIDACION Y ENVIO DE INFORMACION DE LOS FORMULARIOS Y FUNCIONALIDAD DE LOS BOTONES DE LA VISTA OPERACIONES 
 
-import { BASE_URL, currentPath } from "./config.js"
+import { BASE_URL, PUBLIC_KEY_WOMPI, TEST_INTEGRITY } from "./config.js"
 import { validarCampo, mostrarError, obtenerFecha, validarNumero, spinner } from "./funciones.js";
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Obtener la URL actual
+    var currentUrl = new URL(window.location.href);
+
+    // Verificar si existe el parámetro "id"
+    if (currentUrl.searchParams.has('id')) {
+        // Eliminar el parámetro "id"
+        currentUrl.searchParams.delete('id');
+
+        // Actualizar la URL sin recargar la página
+        history.replaceState(null, '', currentUrl.href);
+    }
+});
+
 
 //Funcion y validacion de los botones que muestran los formularios de operaciones
 const btnRetirar = document.getElementById('btn-retirar');
@@ -81,7 +96,7 @@ const formRecargar = document.getElementById('formRecargar');
 const valorMinimoRecargar = 30000;
 let metodoComprobante = false;
 
-formRecargar.addEventListener('submit', () => enviarRecarga(null,null,null));
+formRecargar.addEventListener('submit', submitFormRecargar);
 
 const tokenRecargar = document.getElementById('token_recargar');
 const idRecargar = document.getElementById('idRecargar');
@@ -100,6 +115,8 @@ const divButtonWompi = document.getElementById('divWompi');
 const divButtonSubmit = document.getElementById('btn-submit');
 
 
+
+
 //se agrega un evento a los check del formulario de recargas al momento de escojer el metodo de pago
 checkWompi.addEventListener('change', comprobarChecks);
 checkComprobante.addEventListener('change', comprobarChecks);
@@ -111,7 +128,7 @@ function comprobarChecks() {
         divButtonSubmit.classList.toggle('hidden', !checkComprobante.checked);
         metodoComprobante = false;
 
-        if (!validarFormRecargar(event)) {
+        if (!validarFormRecargar()) {
             checkWompi.checked = false;
             divButtonWompi.classList.add('hidden');
             return
@@ -125,7 +142,7 @@ function comprobarChecks() {
     if (checkComprobante.checked) {
         divButtonWompi.classList.toggle('hidden', !checkWompi.checked);
 
-        if (!validarFormRecargar(event)) {
+        if (!validarFormRecargar()) {
             checkComprobante.checked = false
             divButtonSubmit.classList.add('hidden');
             return
@@ -146,35 +163,39 @@ formButtonWompi.addEventListener('click', crearBotonWompi)
 
 async function crearBotonWompi() {
 
-    let precioSentavos = formatoAPesos(valorRecargar.value);
-    let referencia = generarReferencia();
-    let fechaExpiracion = obtenerFechaExpiracion();
+    if (validarFormRecargar()) {
 
-    const hashIntegridad = await crearHash(referencia, precioSentavos, fechaExpiracion);
+        let precioSentavos = formatoAPesos(valorRecargar.value);
+        let referencia = generarReferencia();
+        let fechaExpiracion = obtenerFechaExpiracion();
 
-    // Paso 2: Configura los datos de la transacción
-    var checkout = new WidgetCheckout({
-        currency: 'COP',
-        amountInCents: precioSentavos,
-        reference: referencia,
-        publicKey: 'pub_test_TWj13GmeFpTJYr4iPuZadTjFghK4d68z',
-        signature: {
-            integrity: hashIntegridad
-        },
-        redirectUrl: 'http://localhost/Precargaya/operaciones/recargar', // Opcional
-        expirationTime: fechaExpiracion, // Opcional
-        customerData: {
-            email: 'correo@correo.com', // Opcional // Aquí puedes poner un campo de entrada si lo deseas
-            fullName: nameRecargar.value,
-            phoneNumber: contactoRecargar.value,
-            phoneNumberPrefix: prefijoRecargar,
-            legalId: docRecargar.value,
-            legalIdType: tipoDocRecargar
-        }
-    });
+        const hashIntegridad = await crearHash(referencia, precioSentavos, fechaExpiracion);
+
+        // Paso 2: Configura los datos de la transacción
+        var checkout = new WidgetCheckout({
+            currency: 'COP',
+            amountInCents: precioSentavos,
+            reference: referencia,
+            publicKey: PUBLIC_KEY_WOMPI,
+            signature: {
+                integrity: hashIntegridad
+            },
+            redirectUrl: 'http://localhost/Precargaya/operaciones/recargar', // Opcional
+            expirationTime: fechaExpiracion, // Opcional
+            customerData: {
+                email: 'correo@correo.com', // Opcional // Aquí puedes poner un campo de entrada si lo deseas
+                fullName: nameRecargar.value,
+                phoneNumber: contactoRecargar.value,
+                phoneNumberPrefix: prefijoRecargar,
+                legalId: docRecargar.value,
+                legalIdType: tipoDocRecargar
+            }
+        });
 
 
-    openCheckout(checkout)
+        guardarDatosStorage(referencia);
+        openCheckout(checkout)
+    }
 
 }
 
@@ -183,10 +204,20 @@ function openCheckout(parametro) {
         const { status, id, reference, paymentMethodType } = result.transaction;
 
         if (status === 'APPROVED') {
-            enviarRecarga(reference, id, paymentMethodType)
+            enviarRecarga(reference, id, paymentMethodType);
+
+        } else if (status === 'DECLINED') {
+            Swal.fire({
+                title: "Transacción RECHAZADA!",
+                icon: "error"
+            });
+
         }else{
-            mostrarError('El proceso de la transaccion fue declinada', 'resWompi');
-            return
+            Swal.fire({
+                title: "Hubo un error!",
+                text: 'Por favor intenta nuevamente!',
+                icon: "error"
+            });
         }
     });
 }
@@ -200,9 +231,13 @@ function ocultarCampos() {
     metodoComprobante = false;
 }
 
-//se validacion cada campo del formulario
-function validarFormRecargar(e) {
+function submitFormRecargar(e){
     e.preventDefault();
+    enviarRecarga(null, null, null)
+}
+
+//se validacion cada campo del formulario
+function validarFormRecargar() {
 
     if (!validarCampo(nameRecargar, 'Define tu nombre completo', 'resUserRecargar')) return false;
     if (!validarCampo(docRecargar, 'Define tu documento', 'resDocRecargar')) return false;
@@ -220,6 +255,7 @@ function validarFormRecargar(e) {
     }
 
     if (metodoComprobante) {
+        
         if (!comprobanteRecargar.files[0]) {
             mostrarError('Sube tu comprobante de pago', 'comprobantePago');
             return false;
@@ -231,31 +267,49 @@ function validarFormRecargar(e) {
         }
     }
 
+    guardarDatosStorage()
     return true; // Si todas las validaciones fueron exitosas
+}
+
+
+function guardarDatosStorage(referencia) {
+
+    const datos = {
+        idJugador: idJugadorRecargar.value,
+        casaApuestas: casaApuestasRecargar.value,
+        valor: valorRecargar.value,
+        referenciaStorage: referencia || ''
+    }
+
+    localStorage.setItem('RecargaYa', JSON.stringify(datos))
+
 }
 
 //Envio de formulario recargar
 function enviarRecarga(referencia, idPago, metodoPago) {
 
-    const formData = new FormData();
-            formData.append('token', tokenRecargar.value);
-            formData.append('id', idRecargar.value);
-            formData.append('name', nameRecargar.value);
-            formData.append('documento', docRecargar.value);
-            formData.append('contacto', contactoRecargar.value);
-            formData.append('idJugador', idJugadorRecargar.value);
-            formData.append('casaApuestas', casaApuestasRecargar.value);
-            formData.append('valor', valorRecargar.value);
-            formData.append('createdAt', createdAt);
+    const datosStorage = localStorage.getItem('RecargaYa');
+    const { idJugador, casaApuestas, valor, referenciaStorage } = JSON.parse(datosStorage);
 
-    if (validarFormRecargar(event)) {
+    const formData = new FormData();
+    formData.append('token', tokenRecargar.value);
+    formData.append('id', idRecargar.value);
+    formData.append('name', nameRecargar.value);
+    formData.append('documento', docRecargar.value);
+    formData.append('contacto', contactoRecargar.value);
+    formData.append('idJugador', idJugadorRecargar.value || idJugador);
+    formData.append('casaApuestas', casaApuestasRecargar.value || casaApuestas);
+    formData.append('valor', valorRecargar.value || valor);
+    formData.append('createdAt', createdAt);
+
+    if (validarFormRecargar()) {
 
         if (idPago === null) {
             formData.append('imagen', comprobanteRecargar.files[0]);
         } else {
             formData.append('idPago', idPago);
-            formData.append('referencia', referencia);
-            formData.append('metodo', metodoPago);
+            formData.append('referencia', referencia || referenciaStorage);
+            formData.append('metodo', metodoPago || 'Wompi, Confirmar Transaccion');
         }
 
         spinner();
@@ -273,6 +327,7 @@ function enviarRecarga(referencia, idPago, metodoPago) {
                 Swal.close();
 
                 if (respuesta === 1) {
+                    localStorage.removeItem('RecargaYa');
                     ocultarCampos();
                     formRecargar.reset();
                     Swal.fire({
@@ -448,7 +503,7 @@ function generarReferencia() {
 
 async function crearHash(referencia, valor, fecha) {
     const valorTexto = valor.toString();
-    const cadenaConcatenada = referencia + valorTexto + "COP" + fecha + "test_integrity_uUI9OnC6cOdbijH8XrCx7FOuXs6pBAfN";
+    const cadenaConcatenada = referencia + valorTexto + "COP" + fecha + TEST_INTEGRITY;
 
     // Codificar la cadena concatenada a UTF-8
     const encondedText = new TextEncoder().encode(cadenaConcatenada);
@@ -477,4 +532,8 @@ function obtenerFechaExpiracion() {
     // Formatear la hora en el formato ISO 8601
     let horaFormateada = horaActual.toISOString();
     return horaFormateada;
+}
+
+export {
+    enviarRecarga
 }

@@ -3,6 +3,7 @@
 
 require_once('../conexion.php');
 require_once('../main.php');
+require_once('../config.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -10,8 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!$data) {
         // Manejar el error de datos JSON no válidos
-        echo json_encode(array("error" => "Datos JSON no válidos"));
-        exit();
+        enviarRespuestaJSON('Datos JSON no válidos');
     }
 
     $passActual = limpiar_cadena($data['passActual']);
@@ -19,19 +19,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $passConfirmation = limpiar_cadena($data['passConfirmation']);
     $id = $_SESSION['admin']['id'];
 
-    $errores = array();
-
     if (empty($passActual) || empty($password) || empty($passConfirmation)) {
-        $errores['mensaje'] = "Tus datos no son aceptados en nuestra plataforma!";
+        enviarRespuestaJSON('Tus datos no son aceptados en nuestra plataforma!');
     }
 
     if ($password != $passConfirmation) {
-        $errores['mensaje'] = "Las contraseñas no coinciden";
+        enviarRespuestaJSON('Las contraseñas no coinciden!');
     } else {
         $pass = password_hash($password, PASSWORD_BCRYPT, ["cost" => 10]);
     }
-
-    if (count($errores) == 0) {
 
         $sql = "SELECT password FROM usuarios WHERE id = ?";
         $stmt = $conexion->prepare($sql);
@@ -47,23 +43,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $update = $stmt->execute();
 
             if ($update) {
+                mysqli_stmt_close($stmt);
                 // Se actualizó correctamente la contraseña
-                $stmt->close();
-                echo 1;
-                exit();
+                enviarRespuestaJSON(1);
             }
         } else {
-
-            // Las contraseñas actuales no coinciden
-            $stmt->close();
-            echo 2;
-            exit();
+            mysqli_stmt_close($stmt);
+            enviarRespuestaJSON(2);
+            
         }
 
-    } else {
-        // Devolver errores en formato JSON
-        header('Content-Type: application/json');
-        echo json_encode($errores);
-        exit();
-    }
+}else{
+    session_destroy();
+    header('location:'. BASE_URL_BACK);
 }

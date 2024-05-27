@@ -105,6 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 . "\nREFERENCIA: $referenciaPago"
                 . "\nID-PAGO: # $idPago"
                 . "\nMETODO PAGO: $metodoPago"
+                . "\n "
                 . "\n ************** | Gracias | ****************";
 
 
@@ -141,12 +142,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_stmt_bind_param($stmt, "isssssss", $id, $idJugador, $casaApuestas, $tipo, $entidad, $valor, $referenciaPago, $createdAt);
             $success = mysqli_stmt_execute($stmt);
             if ($success) {
+                mysqli_stmt_close($stmt);
                 enviarRespuestaJSON(1);
-                exit();
             }
         } else {
+            mysqli_stmt_close($stmt);
             enviarRespuestaJSON(2);
-            exit();
         }
     } else {
         enviarRespuestaJSON('Token no valido, Recarga la pagina!');

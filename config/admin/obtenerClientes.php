@@ -4,7 +4,7 @@
 //verificamos si viene algun parametro de busqueda
 $busqueda = isset($_POST['busqueda']) ? $_POST['busqueda'] : '';
 
-$sqlBase = "SELECT * FROM usuarios WHERE estado = 'activo' AND rol = 'cliente'";
+$sqlBase = "SELECT * FROM usuarios WHERE estado = 'activo' AND rol = 'Cliente'";
 
 if ($busqueda != '') {
     $sqlBase .= " AND (documento LIKE '%$busqueda%' OR email LIKE '%$busqueda%')";

@@ -40,7 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->execute();
 
             if (mysqli_stmt_affected_rows($stmt) > 0) {
-                $_SESSION['newPassword'] = null;
+                unset($_SESSION['newPassword']) ;
+                unset($_SESSION['user']); 
                 $_SESSION['modal'] = true;
                 $stmt->close();
                 enviarRespuestaJSON(1);

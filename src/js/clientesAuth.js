@@ -12,7 +12,7 @@ function mostrarAlerta(id, pagina) {
         cancelButtonText: "Cancelar"
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = `../config/eliminarCliente.php?pagina=${pagina}&idCliente=${id}`
+            window.location.href = `../config/admin/eliminarCliente.php?pagina=${pagina}&idCliente=${id}`
         }
     });
 

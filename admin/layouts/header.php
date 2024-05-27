@@ -1,10 +1,8 @@
 <?php
+require_once('config.php');
 require_once('../config/conexion.php');
 
-if (!isset($_SESSION['admin'])) {
-    header('location:../index.php');
-}
-
+validarSession($_SESSION['admin']);
 require_once('../config/helper.php');
 ?>
 <!DOCTYPE html>
@@ -25,7 +23,7 @@ require_once('../config/helper.php');
 
 
     <title>RecargaYa</title>
-    <link rel="shortcut icon" href="../img/logo-antes.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= BASE_URL . 'img/logo-antes.jpg'?>" type="image/x-icon">
     <?php
     // if ($_SERVER["HTTPS"] != "on") {
     //     // Redirige a la versión HTTPS de la misma página

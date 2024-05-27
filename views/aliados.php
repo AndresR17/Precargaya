@@ -11,7 +11,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
 </div>
 
 <!-- ALIADOS -->
-<section data-aos="zoom-in-down" class="flex flex-col items-center justify-center md:space-y-6 lg:space-x-4 my-10 mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
+<section data-aos="zoom-in-down" class="flex flex-col items-center justify-center md:space-y-6 lg:space-x-4 my-2 md:my-10 mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
 
     <div class="ml-4 flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-6 xl:space-x-10 p-4">
 
@@ -90,7 +90,6 @@ require_once(__DIR__ . '/../layouts/slide.php');
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                         </span>
-
                         <span class="text-base font-medium transition-all group-hover:me-4"> Registrarme! </span>
                     </a>
                 </div>
@@ -98,11 +97,10 @@ require_once(__DIR__ . '/../layouts/slide.php');
         </div>
         
     </div>
-
 </section>
 
 <!-- TITULO ANALISTAS -->
-<section data-aos="zoom-in-down" class="flex my-[10rem] mx-5 md:mx-[2rem] xl:mx-[10rem] ">
+<section data-aos="zoom-in-down" class="flex my-8 md:my-[10rem] mx-5 md:mx-[2rem] xl:mx-[10rem] ">
     <div class="space-y-4">
         <h2 class="text-white text-center font-bold text-4xl">NUESTROS ANALISTAS DEPORTIVOS EXPERTOS</h2>
         <p class="text-gray-300 text-justify lg:text-center text-xl">
@@ -116,7 +114,6 @@ require_once(__DIR__ . '/../layouts/slide.php');
 
 <!-- ANALISTAS -->
 <section class="grid grid-cols-1 mt-16 mx-2 md:mx-[8rem] xl:mx-[16rem] p-4 space-y-20">
-
     <div data-aos="fade-right" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
         <img src="<?=BASE_URL . 'img/aliados/oscarVivas.jpeg'?>" class="rounded-xl w-64 hover:scale-110 transition" alt="Imagen aliado">
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">

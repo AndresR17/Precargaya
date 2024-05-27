@@ -24,7 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <title>RecargaYa</title>
-    <link rel="shortcut icon" href="img/logo-antes.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= BASE_URL . 'img/logo-antes.jpg'?>" type="image/x-icon">
     <link rel="stylesheet" href="<?= BASE_URL . 'src/css/app.css'; ?>">
     <script type="module" src="<?= BASE_URL . 'src/js/app.js' ?>"></script>
 

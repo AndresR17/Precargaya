@@ -89,10 +89,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 mysqli_stmt_bind_param($stmt, "isssssss", $id, $idJugador, $casaApuestas, $tipo, $entidad, $valor, $referencia, $createdAt);
                 $success = mysqli_stmt_execute($stmt);
                 if($success){
+                    mysqli_stmt_close($stmt);
                     enviarRespuestaJSON(1);
                 }
                 
             } else {
+                mysqli_stmt_close($stmt);
                 enviarRespuestaJSON(2);
             }
         

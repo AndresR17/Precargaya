@@ -61,12 +61,12 @@ modalOpen();
         <div class="group relative">
             <img class="block rounded-t-lg hover:scale-110 transition duration-300" src="./img/depositos.png" alt="Imagen retiros" />
             <div class="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
-                <a href="<?= BASE_URL . 'operaciones/recargar';?>" class="text-white text-lg font-semibold uppercase">Realizar deposito</a>
+                <a href="<?= BASE_URL . 'operaciones/recargar';?>" class="text-white text-lg font-semibold uppercase">Realizar recarga</a>
             </div>
         </div>
 
         <div class="p-5">
-            <h5 class="mb-6 text-4xl font-bold tracking-tight text-yellow-400">Depositos</h5>
+            <h5 class="mb-6 text-4xl font-bold tracking-tight text-yellow-400">Recargas</h5>
             <p class="mb-3 text-base text-gray-200 text-justify">¡Descubre la comodidad de depositar dinero cuando quieras y donde quieras con Nequi Daviplata y Bancolombia! Queremos hacerte la vida más fácil y accesible, por eso te invitamos a aprovechar la
                 conveniencia de nuestros cajeros . Retira efectivo de tu cuenta Nequi
                 Daviplata y Bancolombia en cualquier momento, sin importar la hora o el lugar.</p>
@@ -78,7 +78,7 @@ modalOpen();
                         </svg>
                     </span>
 
-                    <span class="text-base font-medium transition-all group-hover:ms-4"> Realizar deposito </span>
+                    <span class="text-base font-medium transition-all group-hover:ms-4"> Realizar Recarga </span>
                 </a>
             </div>
         </div>

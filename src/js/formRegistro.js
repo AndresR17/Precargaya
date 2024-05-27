@@ -57,7 +57,7 @@ function validarCampos(e) {
     }
 
     guardarRegistro(datos)
-    
+
 }
 
 function guardarRegistro(datos) {
@@ -76,22 +76,23 @@ function guardarRegistro(datos) {
 
             if (respuesta === 1) {
 
-                Swal.fire({
-                    title: "Hubo un error!",
-                    text: "Este correo ya fue usado anteriormente.",
-                    icon: "error"
-                });
-
-            } else if (respuesta === 2) {
-
                 formulario.reset();
-                
+
                 Swal.fire({
                     title: "Tu registro fue realizado con exito!",
                     text: "Recuerda completar la informacion en tu perfil!",
-                    icon: "success"
+                    icon: "success",
+                    showCancelButton: true,
+                    confirmButtonColor: "#28A745",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Iniciar Sesion",
+                    cancelButtonText: "Cerrar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = BASE_URL ;
+                    }
                 });
-
+                
             } else {
 
                 Swal.fire({

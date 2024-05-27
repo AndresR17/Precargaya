@@ -43,9 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $resultado = mysqli_stmt_get_result($stmt);
 
                 // Verificar si se encontró un resultado
-                if (mysqli_num_rows($resultado) == 1) {
+                if (mysqli_num_rows($resultado) > 0) {
                     mysqli_stmt_close($stmt);
-                    enviarRespuestaJSON(1) ;
+                    enviarRespuestaJSON('Este correo ya fue usado anteriormente.') ;
                 }
             }else{
                 enviarRespuestaJSON("El email ingresado no es valido.") ;
@@ -57,9 +57,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = mysqli_prepare($conexion, $sql);
             mysqli_stmt_bind_param($stmt, "sssssss",  $name, $correo, $check, $passwordHashed, $rol, $estado, $createdAt);
             $success = mysqli_stmt_execute($stmt);
+
+            //El registro fue realizado con exito
             if ($success) {
+                $_SESSION['modal'] = true;
                 mysqli_stmt_close($stmt);
-                enviarRespuestaJSON(2) ;
+                enviarRespuestaJSON(1) ;
             }
             
         

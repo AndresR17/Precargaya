@@ -4,7 +4,7 @@ function obtenerDatos($conexion, $tabla, $id)
 {
     $sql = "SELECT * FROM $tabla";
     if(isset($id)){
-        $sql .= " WHERE rol != 'cliente' AND id != $id";
+        $sql .= " WHERE rol != 'Cliente' AND id != $id";
     }
     $resultado = mysqli_query($conexion, $sql);
     $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
@@ -42,8 +42,35 @@ function obtenerOperaciones($conexion, $id){
 }
 
 function formatearFecha($fecha) {
+    // Crear un objeto DateTime a partir de la fecha proporcionada
     $fechaObjeto = new DateTime($fecha);
+
+    // Obtener los nombres de los meses en español
+    $mesesEspanol = [
+        'January' => 'enero',
+        'February' => 'febrero',
+        'March' => 'marzo',
+        'April' => 'abril',
+        'May' => 'mayo',
+        'June' => 'junio',
+        'July' => 'julio',
+        'August' => 'agosto',
+        'September' => 'septiembre',
+        'October' => 'octubre',
+        'November' => 'noviembre',
+        'December' => 'diciembre'
+    ];
+
+    // Formatear la fecha en inglés
     $fechaFormateada = $fechaObjeto->format('d \d\e F \d\e Y'); // "d" para día, "F" para mes y "Y" para año
-    
+
+    // Reemplazar el nombre del mes en inglés por el correspondiente en español
+    $mesIngles = $fechaObjeto->format('F');
+    $mesEspanol = $mesesEspanol[$mesIngles];
+    $fechaFormateada = str_replace($mesIngles, $mesEspanol, $fechaFormateada);
+
     return $fechaFormateada;
 }
+
+// Ejemplo de uso
+echo formatearFecha('2024-05-26'); // "26 de mayo de 2024"

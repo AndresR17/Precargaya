@@ -12,7 +12,7 @@ require_once('./layouts/nav.php');
 
         <div class="py-4 px-2 flex mt-10 space-x-6">
             <div class="flex flex-col items-center justify-center w-2/5 border border-gray-600 py-4 px-4 space-y-3 bg-gray-800 rounded-lg">
-                <img src="../img/user.png" alt="Imagen Usuario" class="h-56 w-56 rounded-full">
+                <img src="<?= BASE_URL . 'img/admin/user.png'?>" alt="Imagen Usuario" class="h-56 w-56 rounded-full">
                 <div class="text-center">
                     <h3 class="text-white font-semibold text-xl"><?= $_SESSION['admin']['name'] ?></h3>
                     <p class="text-gray-200 font-normal text-base"><?= $_SESSION['admin']['rol'] ?></p>
@@ -56,8 +56,8 @@ require_once('./layouts/nav.php');
     </div>
 </div>
 
-<?php BorrarErrores(); ?>
-<script src="../src/js/perfilAuth.js"></script>
+<?php borrarSesiones(); ?>
+<script type="module" src="../src/js/perfilAuth.js"></script>
 
 </body>
 

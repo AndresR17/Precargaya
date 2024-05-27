@@ -55,10 +55,13 @@ function modalOpen(){
 }
 
 function borrarSesiones(){
-
 	if(isset($_SESSION['modal'])){
 		$_SESSION['modal']=null;
 	}
 
+    if(isset($_SESSION['eliminado'])){
+		$_SESSION['eliminado']=null;
+	}
+    
 }
 ?>

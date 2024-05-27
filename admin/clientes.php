@@ -7,7 +7,7 @@ require_once('./layouts/header.php');
 require_once('./layouts/nav.php');
 
 //realizamos la consulta para obtener los clientes 
-require_once('../config/obtenerClientes.php');
+require_once('../config/admin/obtenerClientes.php');
 
 if (isset($_SESSION['eliminado'])) {
     echo '
@@ -52,7 +52,7 @@ if (isset($_SESSION['eliminado'])) {
                 <?php if (count($clientes) > 0) : ?>
 
                     <table class="w-full text-left rtl:text-right">
-                        <thead class="text-base text-gray-300 uppercase bg-gray-700">
+                        <thead class="text-base text-gray-400 bg-gray-700">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
                                     #
@@ -70,7 +70,7 @@ if (isset($_SESSION['eliminado'])) {
                                     Telefono
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Ultima vez actualizado
+                                    Fecha registro/actualización
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Opciones
@@ -79,31 +79,35 @@ if (isset($_SESSION['eliminado'])) {
                         </thead>
                         <tbody>
                             <?php foreach ($clientes as $cliente) : ?>
-                                <tr class="bg-gray-800 border-b border-gray-400 text-gray-100 hover:bg-gray-600 text-base">
+                                <tr class="bg-gray-800 border-b border-gray-400 text-gray-100 text-base">
                                     <td class="px-6 py-4 font-bold">
                                         <?= $contador ?>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <?= $cliente['name'] ?>
+                                        <?= $cliente['name'] ; ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?= $cliente['documento'] ?>
+                                        <?= $cliente['documento'] ?? 'S/D' ;?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?= $cliente['email'] ?>
+                                        <?= $cliente['email'] ;?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?= $cliente['phone'] ?>
+                                        <?= $cliente['phone'] ?? 'S/D' ;?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?= $cliente['updateAt'] ?>
+                                        <?= !empty($cliente['updateAt']) ? 
+                                        '<p class="flex flex-col">' . formatearFecha($cliente['updateAt']) . '
+                                        <span class="text-sm">Actualizacion</span></p>'  : 
+                                        '<p class="flex flex-col">' . formatearFecha($cliente['createdAt']) . '
+                                        <span class="text-sm">Registro</span></p>' ; ?>
                                     </td>
                                     <td class="px-6 py-4 space-x-4 flex items-center">
                                         <a onclick="mostrarAlerta(<?= $cliente['id'] ?>, <?= $pagina ?>)" class="px-2 py-1 text-sm bg-red-300 rounded text-red-800 font-semibold hover:bg-red-600 hover:text-white cursor-pointer">Eliminar</a>
                                     </td>
                                 </tr>
                                 <?php $contador++ ?>
-
+                                
                                 <!-- fin del foreach que muestra la tabla de los clientes -->
                             <?php endforeach; ?>
                         </tbody>
@@ -162,7 +166,7 @@ if (isset($_SESSION['eliminado'])) {
         </div>
     </div>
 </div>
-<?php BorrarErrores(); ?>
+<?php borrarSesiones(); ?>
 <script src="../src/js/clientesAuth.js"></script>
 
 </body>

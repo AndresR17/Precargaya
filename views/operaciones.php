@@ -478,11 +478,19 @@ require_once(__DIR__ . '/../layouts/slide.php');
 </section>
 
 <?php 
-if(isset($_GET['id'])){
-    $idPago = $_GET['id'];
-    
-}
+    if(isset($_GET['id']) && isset($_SESSION['user'])):
+        $idPago = $_GET['id'];
 ?>
+<script type="module">
+    import { enviarRecarga } from '<?= BASE_URL . 'src/js/formOperaciones.js' ?>';
+        const idPagoGet = '<?php echo $idPago; ?>';
+        enviarRecarga(null, idPagoGet, null)
+
+        
+</script>
+<?php endif ; ?>
+
+
 
 <script type="module" src="<?= BASE_URL . 'src/js/formOperaciones.js' ?>"></script>
 

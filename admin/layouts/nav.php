@@ -19,16 +19,16 @@
                     <div>
                         <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-blue-600 " aria-expanded="false" data-dropdown-toggle="dropdown-user">
                             <span class="sr-only">Open user menu</span>
-                            <img class="w-10 h-10 rounded-full" src="../img/user.png" alt="user photo">
+                            <img class="w-10 h-10 rounded-full" src="<?= BASE_URL . 'img/admin/user.png'?>" alt="user photo">
                         </button>
                     </div>
                     <div class="z-50 hidden my-4 text-base border border-gray-700 list-none bg-gray-800 divide-y divide-gray-100 rounded shadow " id="dropdown-user">
                         <div class="px-4 py-3" role="none">
                             <p class="text-base text-white font-normal " role="none">
-                                Usuario: <span class="font-semibold"><?= $_SESSION['admin']['name'] ?></span>
+                                Usuario: <span class="font-semibold"><?= $admin['name'] ?></span>
                             </p>
                             <p class="text-sm text-gray-100 truncate" role="none">
-                                Rol: <?= $_SESSION['admin']['rol'] ?>
+                                Rol: <?= $admin['rol'] ?>
                             </p>
                         </div>
                         <ul class="py-1" role="none">
@@ -36,7 +36,7 @@
                                 <a href="./perfil.php" class="block px-4 py-2 text-base text-gray-100 hover:bg-gray-600" role="menuitem">Perfil</a>
                             </li>
                             <li>
-                                <a href="../config/logout.php" class="block px-4 py-2 text-base text-gray-100 hover:bg-gray-600" role="menuitem">Cerrar Sesion</a>
+                                <a href="../config/admin/logout.php" class="block px-4 py-2 text-base text-gray-100 hover:bg-gray-600" role="menuitem">Cerrar Sesion</a>
                             </li>
                         </ul>
                     </div>
@@ -58,6 +58,7 @@
                     <span class="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
                 </a>
             </li>
+            <?php if($admin['rol'] === 'admin') : ?>
             <li>
                 <a href="usuarios.php" class="<?= ($current_page == "usuarios.php") ? 'bg-blue-600' : 'hover:bg-gray-700'; ?> flex items-center py-2 px-4 rounded-lg group hover:text-white text-gray-200 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -66,6 +67,7 @@
                     <span class="flex-1 ms-3 whitespace-nowrap">Usuarios</span>
                 </a>
             </li>
+            <?php endif ; ?>
             <li>
                 <a href="clientes.php" class="<?= ($current_page == "clientes.php") ? 'bg-blue-600' : 'hover:bg-gray-700'; ?> flex items-center py-2 px-4 rounded-lg group hover:text-white text-gray-200 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -93,7 +95,7 @@
                 </a>
             </li>
             <li>
-                <a href="../config/logout.php" class="flex items-center py-2 px-4 rounded-lg group hover:text-white text-gray-200 hover:bg-gray-700 text-base">
+                <a href="../config/admin/logout.php" class="flex items-center py-2 px-4 rounded-lg group hover:text-white text-gray-200 hover:bg-gray-700 text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
                     </svg>

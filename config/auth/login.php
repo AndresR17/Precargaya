@@ -27,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($check_user && mysqli_num_rows($check_user) == 1) {
 
-            $datos = mysqli_fetch_assoc($check_user);
-            $check_password = password_verify($password, $datos["password"]);
+            $datosDB = mysqli_fetch_assoc($check_user);
+            $check_password = password_verify($password, $datosDB["password"]);
 
             if ($check_password) {
 
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $response = $datos['rol'];
 
                     if ($response === 'admin') {
-                        $_SESSION['admin'] = $datos;
+                        $_SESSION['admin'] = $datosDB;
                         mysqli_stmt_close($stmt);
                         enviarRespuestaJSON($response);
 

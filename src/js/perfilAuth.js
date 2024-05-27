@@ -1,5 +1,5 @@
 //!actualizar la contraseña para el usuario administrativo
-import { BASE_URL } from './config.js';
+import { BASE_URL } from './config.js'
 const formPerfil = document.getElementById('formPerfil');
 
 formPerfil.addEventListener('submit', validarDatos)
@@ -51,7 +51,6 @@ function cambiarDatos(datos){
 
             const respuesta = response.data;
 
-            console.log(response);
             if (respuesta === 1) {
 
                 formPerfil.reset();
