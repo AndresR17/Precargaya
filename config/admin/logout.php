@@ -6,5 +6,5 @@ if(isset($_SESSION['admin'])){
     unset($_SESSION['admin']); // Eliminar solo la variable 'admin' de la sesión
 }
 
-header('location: ../');
+header('location:../../');
 ?>

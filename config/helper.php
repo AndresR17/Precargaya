@@ -4,7 +4,7 @@ function obtenerDatos($conexion, $tabla, $id)
 {
     $sql = "SELECT * FROM $tabla";
     if(isset($id)){
-        $sql .= " WHERE rol != 'Cliente' AND id != $id";
+        $sql .= " WHERE rol != 'Cliente' AND id != $id AND estado != 'eliminado'";
     }
     $resultado = mysqli_query($conexion, $sql);
     $datos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
@@ -72,5 +72,3 @@ function formatearFecha($fecha) {
     return $fechaFormateada;
 }
 
-// Ejemplo de uso
-echo formatearFecha('2024-05-26'); // "26 de mayo de 2024"

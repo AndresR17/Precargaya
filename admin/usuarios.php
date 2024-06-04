@@ -5,6 +5,18 @@ if($admin['rol'] !== 'admin') {
 }
 require_once('./layouts/nav.php');
 
+if (isset($_SESSION['eliminado'])) {
+    echo '
+    <script>
+        Swal.fire({
+            title: "Proceso realizado!",
+            text: "Usuario eliminado correctamente!",
+            icon: "success"
+        });
+    </script>
+    ';
+}
+
 $usuarios = obtenerDatos($conexion, 'usuarios', $_SESSION['admin']['id']);
 ?>
 
@@ -77,7 +89,7 @@ $usuarios = obtenerDatos($conexion, 'usuarios', $_SESSION['admin']['id']);
                                     </td>
                                     <td class="px-6 py-4 space-x-4">
                                         <a href="./perfil.php" class="px-2 py-1 text-base bg-indigo-300 hover:bg-indigo-600 hover:text-white border-indigo-600 rounded text-indigo-800 text-center font-semibold">Editar</a>
-                                        <a href="./perfil.php" class="px-2 py-1 text-base bg-red-300 hover:bg-red-600 hover:text-white border-red-600 rounded text-red-800 text-center font-semibold">Eliminar</a>
+                                        <a onclick="mostrarAlerta(<?= $usuario['id'] ?>, null, 'usuario')" class="px-2 py-1 text-base bg-red-300 hover:bg-red-600 hover:text-white border-red-600 rounded text-red-800 text-center font-semibold cursor-pointer">Eliminar</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -103,7 +115,7 @@ $usuarios = obtenerDatos($conexion, 'usuarios', $_SESSION['admin']['id']);
         <div class="relative rounded-lg shadow border border-gray-700 bg-gray-900">
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-600">
-                <h3 class="text-lg font-semibold text-gray-900 text-white">
+                <h3 class="text-2xl font-semibold text-gray-900 text-white">
                     Crear usuario
                 </h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-base w-8 h-8 ms-auto inline-flex justify-center items-center hover:bg-gray-600 hover:text-white" data-modal-toggle="modal-usuario">
@@ -114,36 +126,43 @@ $usuarios = obtenerDatos($conexion, 'usuarios', $_SESSION['admin']['id']);
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" autocomplete="off">
+            <form class="p-4 md:p-5" id="formRegister" method="POST" action="" autocomplete="off">
+                <input type="hidden" class="datos" name="csrf_token" value="<?= $_SESSION['csrf_token'] ; ?>">
+                <div class="mb-2" id="resForm"></div>
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
                         <label for="name" class="block mb-2 text-base font-medium text-white">Nombre</label>
-                        <input type="text" name="name" id="name" class="bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <input type="text" name="name" id="name" class="datos bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <label for="doc" class="block mb-2 text-base font-medium text-white">Documento</label>
-                        <input type="number" name="doc" id="doc" class="bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <input type="number" name="doc" id="doc" class="datos bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <label for="email" class="block mb-2 text-base font-medium text-white">Email</label>
-                        <input type="email" name="email" id="email" class="bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <input type="email" name="email" id="email" class="datos bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     </div>
                     <div class="col-span-2 sm:col-span-1">
-                        <label for="phone" class="block mb-2 text-base font-medium text-white">Contacto</label>
-                        <input type="text" name="phone" id="phone" class="bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <label for="phone" class="block mb-2 text-base font-medium text-white">Celular</label>
+                        <input type="text" name="phone" id="phone" class="datos bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     </div>
-                    <div class="col-span-2 sm:col-span-1 mb-6">
+                    <div class="col-span-2 sm:col-span-1">
                         <label for="Rol" class="block mb-2 text-base font-medium text-white">Rol</label>
-                        <select id="Rol" name="rol" class="bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        <select id="Rol" name="rol" class="datos bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option value="Cajero">Cajero</option>
                             <option value="admin">Administrador</option>
                         </select>
                     </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="password" class="block mb-2 text-base font-medium text-white">Contraseña</label>
+                        <input type="password" name="password" id="password" class="datos bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    </div>
+                    <div class="col-span-2 sm:col-span-1  mb-6">
+                        <label for="password_confirmation" class="block mb-2 text-base font-medium text-white">Confirmar contraseña</label>
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="datos bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    </div>
                 </div>
                 <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-8 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
-                    <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
-                    </svg>
                     Registrar
                 </button>
             </form>
@@ -152,7 +171,9 @@ $usuarios = obtenerDatos($conexion, 'usuarios', $_SESSION['admin']['id']);
 </div>
 
 
+<?php borrarSesiones(); ?>
 <script type="module" src="../src/js/obtenerUsuarios.js"></script>
+<script src="../src/js/clientesAuth.js"></script>
 
 </body>
 </html>

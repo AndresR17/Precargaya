@@ -394,13 +394,13 @@ require_once(__DIR__ . '/../layouts/slide.php');
 
                 <div id="resIDjugadorRecargar">
                     <label for="idJugador-recargar" class="block mb-2 text-base font-medium text-white">ID jugador</label>
-                    <input type="text" id="idJugador-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="ID o numero de cuenta" />
+                    <input type="text" id="idJugador-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="ID o numero de cuenta" value="ED8ASDA78SDAD" />
                 </div>
 
                 <div id="resCasaApuestasRecargar">
                     <label for="casaApuestas-Recargar" class="block mb-2 text-base font-medium text-white">Casa de apuestas</label>
                     <select id="casaApuestas-Recargar" class="border text-base rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-                        <option value="" selected>--Seleccione una opcion --</option>
+                        <!-- <option value="" selected>--Seleccione una opcion --</option> -->
                         <option value="1XBET">1XBET</option>
                         <option value="BETWINNER">BETWINNER</option>
                         <option value="22BET">22BET</option>
@@ -410,7 +410,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
 
                 <div class="mb-6" id="resValorRecargar">
                     <label for="valor-recargar" class="block mb-2 text-base font-medium text-white">Valor a recargar</label>
-                    <input type="number" id="valor-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="min $30.000" />
+                    <input type="number" id="valor-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="min $30.000" value="150000"/>
                 </div>
             </div>
 

@@ -17,9 +17,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $estado = limpiar_cadena($data['estado']);
         $createdAt = limpiar_cadena($data['createdAt']);
 
-
+        
         if (empty($name) || empty($correo) || empty($check) || empty($rol)) {
             enviarRespuestaJSON("Tus datos no son aceptados en nuestra plataforma.") ;
+        }
+
+        if($rol !== 'Cliente'){
+            enviarRespuestaJSON("Recarga la pagina y vuelve a intentarlo.") ;
         }
 
         if (empty($password)) {

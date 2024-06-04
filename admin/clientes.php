@@ -13,8 +13,8 @@ if (isset($_SESSION['eliminado'])) {
     echo '
     <script>
         Swal.fire({
-            title: "Correcto!",
-            text: "Usuario eliminado correctamente!",
+            title: "Proceso realizado!",
+            text: "Cliente eliminado correctamente!",
             icon: "success"
         });
     </script>
@@ -103,7 +103,7 @@ if (isset($_SESSION['eliminado'])) {
                                         <span class="text-sm">Registro</span></p>' ; ?>
                                     </td>
                                     <td class="px-6 py-4 space-x-4 flex items-center">
-                                        <a onclick="mostrarAlerta(<?= $cliente['id'] ?>, <?= $pagina ?>)" class="px-2 py-1 text-sm bg-red-300 rounded text-red-800 font-semibold hover:bg-red-600 hover:text-white cursor-pointer">Eliminar</a>
+                                        <a onclick="mostrarAlerta(<?= $cliente['id'] ?>, <?= $pagina ?>,'cliente')" class="px-2 py-1 text-sm bg-red-300 rounded text-red-800 font-semibold hover:bg-red-600 hover:text-white cursor-pointer">Eliminar</a>
                                     </td>
                                 </tr>
                                 <?php $contador++ ?>

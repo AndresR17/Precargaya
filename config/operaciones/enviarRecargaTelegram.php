@@ -106,7 +106,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 . "\nID-PAGO: # $idPago"
                 . "\nMETODO PAGO: $metodoPago"
                 . "\n "
-                . "\n ************** | Gracias | ****************";
+                . "\nRECUERDA SIEMPRE VALIDAR LA TRANSACCION"
+                . "\n *********** | Gracias | *************";
 
 
             // URL de la API de Telegram para enviar mensajes

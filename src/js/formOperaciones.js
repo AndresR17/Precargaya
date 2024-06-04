@@ -115,8 +115,6 @@ const divButtonWompi = document.getElementById('divWompi');
 const divButtonSubmit = document.getElementById('btn-submit');
 
 
-
-
 //se agrega un evento a los check del formulario de recargas al momento de escojer el metodo de pago
 checkWompi.addEventListener('change', comprobarChecks);
 checkComprobante.addEventListener('change', comprobarChecks);
@@ -202,9 +200,18 @@ async function crearBotonWompi() {
 function openCheckout(parametro) {
     parametro.open(function (result) {
         const { status, id, reference, paymentMethodType } = result.transaction;
+        console.log(result);
 
         if (status === 'APPROVED') {
-            enviarRecarga(reference, id, paymentMethodType);
+            if(paymentMethodType === 'BANCOLOMBIA_COLLECT'){
+                Swal.fire({
+                    title: "Transaccion en proceso!",
+                    text: "Cuando realizes el pago emite tu recarga por la opcion subir comprobante de pago.",
+                    icon: "success"
+                });
+            }else{
+                enviarRecarga(reference, id, paymentMethodType);
+            }
 
         } else if (status === 'DECLINED') {
             Swal.fire({
@@ -285,11 +292,25 @@ function guardarDatosStorage(referencia) {
 
 }
 
+function sincronizarStorage(){
+    const datosStorage = JSON.parse(localStorage.getItem('RecargaYa'));
+    return datosStorage
+}
+
 //Envio de formulario recargar
 function enviarRecarga(referencia, idPago, metodoPago) {
 
-    const datosStorage = localStorage.getItem('RecargaYa');
-    const { idJugador, casaApuestas, valor, referenciaStorage } = JSON.parse(datosStorage);
+
+    const datosStorage = sincronizarStorage();
+    console.log(datosStorage);
+    if(datosStorage){
+
+        const { idJugador, casaApuestas, valor } = datosStorage;
+        idJugadorRecargar.value = idJugador;
+        casaApuestasRecargar.value = casaApuestas;
+        valorRecargar.value = valor;
+
+    }
 
     const formData = new FormData();
     formData.append('token', tokenRecargar.value);
@@ -297,9 +318,9 @@ function enviarRecarga(referencia, idPago, metodoPago) {
     formData.append('name', nameRecargar.value);
     formData.append('documento', docRecargar.value);
     formData.append('contacto', contactoRecargar.value);
-    formData.append('idJugador', idJugadorRecargar.value || idJugador);
-    formData.append('casaApuestas', casaApuestasRecargar.value || casaApuestas);
-    formData.append('valor', valorRecargar.value || valor);
+    formData.append('idJugador', idJugadorRecargar.value);
+    formData.append('casaApuestas', casaApuestasRecargar.value);
+    formData.append('valor', valorRecargar.value );
     formData.append('createdAt', createdAt);
 
     if (validarFormRecargar()) {
@@ -307,9 +328,11 @@ function enviarRecarga(referencia, idPago, metodoPago) {
         if (idPago === null) {
             formData.append('imagen', comprobanteRecargar.files[0]);
         } else {
+            
+            const { referenciaStorage } = datosStorage
             formData.append('idPago', idPago);
             formData.append('referencia', referencia || referenciaStorage);
-            formData.append('metodo', metodoPago || 'Wompi, Confirmar Transaccion');
+            formData.append('metodo', metodoPago || 'Wompi');
         }
 
         spinner();
