@@ -117,7 +117,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
     <div data-aos="fade-right" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
         <img src="<?=BASE_URL . 'img/aliados/pulpolandia.jpeg'?>" class="rounded-xl w-64 hover:scale-110 transition" alt="Imagen aliado">
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
-            <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Oscar Vivas</h3>
+            <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">el pulpo </h3>
             <p class="text-justify text-gray-200">
                 Pulpolandia es un canal que esta bajo el control del Colombiano Oscar Vivas. Conocido como el elpulpo79 en el mundo de las apuestas deportivas.
                 El pulpo es especialista en estadisticas de Tennis, ligas Europeas de futbol y un amante de la NBA.
