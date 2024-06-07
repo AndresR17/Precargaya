@@ -21,7 +21,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
                 <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">1XBET</h3>
                 <p class="text-gray-200 text-center text-base">¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
                 <div class="flex justify-center">
-                    <a class="group relative inline-flex uppercase items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="" target="_blank">
+                    <a class="group relative inline-flex uppercase items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-500" href="https://affpa.top/L?tag=d_1838183m_97c_&site=1838183&ad=97" target="_blank">
                         <span class="absolute -end-full transition-all group-hover:end-4">
                             <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -115,7 +115,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
 <!-- ANALISTAS -->
 <section class="grid grid-cols-1 mt-16 mx-2 md:mx-[8rem] xl:mx-[16rem] p-4 space-y-20">
     <div data-aos="fade-right" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
-        <img src="<?=BASE_URL . 'img/aliados/oscarVivas.jpeg'?>" class="rounded-xl w-64 hover:scale-110 transition" alt="Imagen aliado">
+        <img src="<?=BASE_URL . 'img/aliados/pulpolandia.jpeg'?>" class="rounded-xl w-64 hover:scale-110 transition" alt="Imagen aliado">
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
             <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Oscar Vivas</h3>
             <p class="text-justify text-gray-200">

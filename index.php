@@ -8,7 +8,7 @@ modalOpen();
 
 <section data-aos="zoom-out-up" class="flex flex-col xl:flex-row my-[5rem] mx-5 md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem] items-center justify-center">
     <div class="lg:w-[40rem] xl:w-[60rem]">
-        <img src="./img/img.down.jpg" class="w-full" alt="Img-RecargaYa">
+        <img src="<?=BASE_URL . 'img/imgdown.jpg'?>" class="w-full" alt="Img-RecargaYa">
     </div>
     <div data-aos="zoom-out-left" class="flex justify-center flex-col lg:px-20 xl:p-6 space-y-6">
         <h2 class="text-white text-4xl font-semibold xl:text-2xl 2xl:text-4xl mt-5 xl:m-0">RecargaYA! <br> Acompañandote en los mejores momentos.</h2>
