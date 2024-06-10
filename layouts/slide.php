@@ -14,7 +14,7 @@
                 <div class="overlay"></div>
                 <div class="slide-content">
                     <div class="absolute top-[40%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10 text-center text-white text-4xl md:text-6xl xl:text-7xl sm:block font-bold tracking-wide ">RECARGA TU CUENTA</div>
-                    <div class="slide-description absolute top-[65%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10 leading-normal text-white text-center sm:text-base md:text-xl lg:text-2xl">¿Qué es RecargaYA? RecargaYA es una de las plataformas de recarga y retiros de premios nacional más usada en Colombia.</div>
+                    <div class="slide-description absolute top-[65%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10 leading-normal text-white text-center sm:text-base md:text-xl lg:text-2xl">¿Qué es RecargaYA? RecargaYA es una de las plataformas de recarga y retiros, más usada en Colombia.</div>
                 </div>
             </li>
 
