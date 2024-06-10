@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $datos = mysqli_fetch_assoc($user);
                     $response = $datos['rol'];
 
-                    if ($response === 'admin') {
+                    if ($response === 'admin' || $response === 'Cajero') {
                         $_SESSION['admin'] = $datosDB;
                         mysqli_stmt_close($stmt);
                         enviarRespuestaJSON($response);

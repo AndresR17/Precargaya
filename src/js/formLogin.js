@@ -54,7 +54,7 @@ function IniciarSesion(datos) {
             const  respuesta  = response.data;
             Swal.close();
             console.log(respuesta);
-            if (respuesta === 'admin') {
+            if (respuesta === 'admin' || respuesta === 'Cajero') {
                 formLogin.reset();
                 window.location.href = BASE_URL + '/admin/dashboard.php';
                 return

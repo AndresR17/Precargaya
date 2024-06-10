@@ -1,14 +1,24 @@
 <?php
 require_once('../layouts/header.php');
 require_once(__DIR__ . '/../layouts/nav.php');
-require_once(__DIR__ . '/../layouts/slide.php');
+
 ?>
 
-<!-- titulo -->
-<div class="text-center text-white my-[5rem] lg:my-[10rem] mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
-    <p class="text-gray-100 text-center text-justify md:text-center text-2xl">La colaboración con nuestros Aliados se basa en un sólido compromiso con la calidad. Su enfoque meticuloso y atención a los detalles han elevado nuestros estándares, asegurando que entreguemos productos y servicios de alta categoría a nuestros clientes.
-    </p>
+<div class="splide mt-10" role="group" aria-label="Splide Basic HTML Example">
+    <div class="splide__track">
+        <ul class="splide__list">
+            <li class="splide__slide splide-1">
+                <img src="<?= BASE_URL . 'img/slide/estadio.jpg'; ?>" alt="">
+                <div class="overlay"></div>
+                <div class="slide-content">
+                    <div class="absolute top-[40%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10 text-center text-white text-4xl md:text-6xl xl:text-7xl sm:block font-bold tracking-wide uppercase">Analistas y aliados</div>
+                    <div class="slide-description absolute top-[65%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10 leading-normal text-white text-center sm:text-base md:text-xl lg:text-2xl">La colaboración con nuestros Aliados se basa en un sólido compromiso con la calidad. Su enfoque meticuloso y atención a los detalles han elevado nuestros estándares.</div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
+
 
 <!-- ALIADOS -->
 <section data-aos="zoom-in-down" class="flex flex-col items-center justify-center md:space-y-6 lg:space-x-4 my-2 md:my-10 mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
@@ -17,7 +27,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
 
         <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg lg:transition lg:hover:scale-110">
             <div class="space-y-5">
-                <img src="<?= BASE_URL . 'img/aliados/1xbet.jpg'?>" class="w-[25rem]" alt="Imagen 1XBet">
+                <img src="<?= BASE_URL . 'img/aliados/1xbet.jpg' ?>" class="w-[25rem]" alt="Imagen 1XBet">
                 <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">1XBET</h3>
                 <p class="text-gray-200 text-center text-base">¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
                 <div class="flex justify-center">
@@ -37,7 +47,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
 
         <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg lg:transition lg:hover:scale-110">
             <div class="space-y-5">
-                <img src="<?=BASE_URL . 'img/aliados/betwinner.png'?>" class="w-[25rem]" alt="Imagen Betwinner">
+                <img src="<?= BASE_URL . 'img/aliados/betwinner.png' ?>" class="w-[25rem]" alt="Imagen Betwinner">
                 <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">BETWINNER</h3>
                 <p class="text-gray-300 text-center">¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
                 <div class="flex justify-center">
@@ -61,7 +71,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
 
         <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg lg:transition lg:hover:scale-110">
             <div class="space-y-5">
-                <img src="<?=BASE_URL . 'img/aliados/22bet.jpg'?>" class="w-[25rem]" alt="Imagen 22 BET">
+                <img src="<?= BASE_URL . 'img/aliados/22bet.jpg' ?>" class="w-[25rem]" alt="Imagen 22 BET">
                 <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">22BET</h3>
                 <p class="text-gray-300 text-center">¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
                 <div class="flex justify-center">
@@ -80,7 +90,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
 
         <div class="grid grid-cols-1 bg-gray-800 p-4 rounded-lg lg:transition lg:hover:scale-110">
             <div class="space-y-5">
-                <img src="<?=BASE_URL . 'img/aliados/888starz-logo.png'?>" class="w-[25rem]" alt="Imagen 88STARZ">
+                <img src="<?= BASE_URL . 'img/aliados/888starz-logo.png' ?>" class="w-[25rem]" alt="Imagen 88STARZ">
                 <h3 class="text-yellow-400 uppercase text-center text-2xl font-semibold">88STARZ</h3>
                 <p class="text-gray-300 text-center">¡DALE AL BOTON PARA REGISTRARTE CON NOSOSTROS!</p>
                 <div class="flex justify-center">
@@ -95,7 +105,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
                 </div>
             </div>
         </div>
-        
+
     </div>
 </section>
 
@@ -115,7 +125,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
 <!-- ANALISTAS -->
 <section class="grid grid-cols-1 mt-16 mx-2 md:mx-[8rem] xl:mx-[16rem] p-4 space-y-20">
     <div data-aos="fade-right" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
-        <img src="<?=BASE_URL . 'img/aliados/oscarVivas.jpeg'?>" class="rounded-xl w-64 hover:scale-110 transition" alt="Imagen aliado">
+        <img src="<?= BASE_URL . 'img/aliados/oscarVivas.jpeg' ?>" class="rounded-xl w-64 hover:scale-110 transition" alt="Imagen aliado">
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
             <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Oscar Vivas</h3>
             <p class="text-justify text-gray-200">
@@ -132,7 +142,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
     </div>
 
     <div data-aos="fade-left" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
-        <img src="<?= BASE_URL . 'img/aliados/masterC.jpeg'?>" class="rounded-xl w-64 " alt="Imagen aliado">
+        <img src="<?= BASE_URL . 'img/aliados/masterC.jpeg' ?>" class="rounded-xl w-64 " alt="Imagen aliado">
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
             <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Master Colombia</h3>
             <p class="text-justify text-gray-200">
@@ -148,7 +158,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
     </div>
 
     <div data-aos="fade-right" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
-        <img src="<?= BASE_URL . 'img/aliados/person 3.jpeg'?>" class="rounded-xl w-64" alt="Imagen aliado">
+        <img src="<?= BASE_URL . 'img/aliados/person 3.jpeg' ?>" class="rounded-xl w-64" alt="Imagen aliado">
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
             <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Maria</h3>
             <p class="text-justify text-gray-200">
@@ -168,7 +178,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
     </div>
 
     <div data-aos="fade-left" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
-        <img src="<?= BASE_URL . 'img/aliados/person 4.avif'?>" class="rounded-xl w-64" alt="Imagen aliado">
+        <img src="<?= BASE_URL . 'img/aliados/person 4.avif' ?>" class="rounded-xl w-64" alt="Imagen aliado">
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
             <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Rogger</h3>
             <p class="text-justify text-gray-200">

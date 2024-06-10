@@ -70,9 +70,6 @@ $datos = obtenerOperaciones($conexion, $user['id']);
                             Valor
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Referencia de pago
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             Fecha
                         </th>
                     </tr>
@@ -95,9 +92,6 @@ $datos = obtenerOperaciones($conexion, $user['id']);
                             </td>
                             <td class="px-6 py-4">
                                 <?= '$ ' . number_format($operacion['valor'], 2); ?>
-                            </td>
-                            <td class="px-6 py-4">
-                                <?= $operacion['referencia']; ?>
                             </td>
                             <td class="px-6 py-4">
                                 <?= formatearFecha($operacion['createdAt']); ?>

@@ -1,19 +1,29 @@
 <?php
 require_once('../layouts/header.php');
 require_once(__DIR__ . '/../layouts/nav.php');
-require_once(__DIR__ . '/../layouts/slide.php');
+
 
 ?>
 
-<section data-aos="zoom-in" class="flex flex-col xl:flex-row mt-[6rem] mb-[5rem] mx-5 md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem] items-center justify-center">
-    <h1 class="text-white text-4xl">Retiros y Recargas de Dinero en <span class="font-semibold text-blue-500 uppercase">1xBet</span></h1>
-</section>
+<div class="splide mt-10" role="group" aria-label="Splide Basic HTML Example">
+    <div class="splide__track">
+        <ul class="splide__list">
+            <li class="splide__slide splide-1">
+                <img src="<?= BASE_URL . 'img/slide/banner2.jpg'; ?>" alt="">
+                <div class="overlay"></div>
+                <div class="slide-content">
+                    <div class="absolute top-[40%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10 text-center text-white text-4xl md:text-6xl xl:text-7xl sm:block font-bold tracking-wide uppercase">Operaciones</div>
+                    <div class="slide-description absolute top-[65%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10 leading-normal text-white text-center sm:text-base md:text-xl lg:text-2xl font-semibold"><h1>Retiros y Recargas de Dinero en <span class="font-bold text-blue-600 uppercase">1xBet</span></h1>.</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
 
-
-<section data-aos="zoom-in-up" class="flex flex-col xl:flex-row mx-5 mb-[3rem] md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem] items-center justify-center">
+<section data-aos="zoom-in-up" class="flex flex-col xl:flex-row mt-[6rem] mx-5 mb-[3rem] md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem] items-center justify-center">
 
     <?php if (!isset($_SESSION['user'])) :  ?>
-        <p class="text-gray-200 text-lg">¡Bienvenido a nuestra seccion para retirar o recargar tu cuenta de <span class="font-semibold text-blue-500 uppercase">1xBet</span>! Aquí encontrarás una manera fácil y segura de gestionar tus fondos de juego en nuestra plataforma. Por favor <span class="font-semibold text-blue-500">inicia sesion en nuestra plataforma para habilitar cada formulario correspondiente</span> , y asi procesar tu solicitud de retiro o recarga.</p>
+        <p class="text-gray-200 text-xl">¡Bienvenido a nuestra seccion para retirar o recargar tu cuenta de <span class="font-semibold text-blue-500 uppercase">1xBet</span>! Aquí encontrarás una manera fácil y segura de gestionar tus fondos de juego en nuestra plataforma. Por favor <span class="font-semibold text-blue-500">inicia sesion en nuestra plataforma para habilitar cada formulario correspondiente</span> , y asi procesar tu solicitud de retiro o recarga.</p>
 
     <?php else : ?>
         <p class="text-gray-50 text-xl">¡Bienvenido a nuestra seccion para retirar o recargar tu cuenta de <span class="font-semibold text-blue-500 uppercase">1xBet</span>! Aquí encontrarás una manera fácil y segura de gestionar tus fondos de juego en nuestra plataforma. <br> Haz click en la operacion que desea realizar.</p>
@@ -394,13 +404,13 @@ require_once(__DIR__ . '/../layouts/slide.php');
 
                 <div id="resIDjugadorRecargar">
                     <label for="idJugador-recargar" class="block mb-2 text-base font-medium text-white">ID jugador</label>
-                    <input type="text" id="idJugador-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="ID o numero de cuenta" value="ED8ASDA78SDAD" />
+                    <input type="text" id="idJugador-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="ID o numero de cuenta" />
                 </div>
 
                 <div id="resCasaApuestasRecargar">
                     <label for="casaApuestas-Recargar" class="block mb-2 text-base font-medium text-white">Casa de apuestas</label>
                     <select id="casaApuestas-Recargar" class="border text-base rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-                        <!-- <option value="" selected>--Seleccione una opcion --</option> -->
+                        <option value="" selected>--Seleccione una opcion --</option>
                         <option value="1XBET">1XBET</option>
                         <option value="BETWINNER">BETWINNER</option>
                         <option value="22BET">22BET</option>
@@ -410,7 +420,7 @@ require_once(__DIR__ . '/../layouts/slide.php');
 
                 <div class="mb-6" id="resValorRecargar">
                     <label for="valor-recargar" class="block mb-2 text-base font-medium text-white">Valor a recargar</label>
-                    <input type="number" id="valor-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="min $30.000" value="150000"/>
+                    <input type="number" id="valor-recargar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="min $30.000" />
                 </div>
             </div>
 

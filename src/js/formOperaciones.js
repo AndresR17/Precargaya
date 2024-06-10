@@ -209,6 +209,7 @@ function openCheckout(parametro) {
                     text: "Cuando realizes el pago emite tu recarga por la opcion subir comprobante de pago.",
                     icon: "success"
                 });
+                return
             }else{
                 enviarRecarga(reference, id, paymentMethodType);
             }
