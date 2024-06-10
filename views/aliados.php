@@ -110,7 +110,7 @@ require_once(__DIR__ . '/../layouts/nav.php');
 </section>
 
 <!-- TITULO ANALISTAS -->
-<section data-aos="zoom-in-down" class="flex my-8 md:my-[10rem] mx-5 md:mx-[2rem] xl:mx-[10rem] ">
+<section data-aos="zoom-in-down" class="flex my-8 md:my-[6rem] mx-5 md:mx-[2rem] xl:mx-[10rem] ">
     <div class="space-y-4">
         <h2 class="text-white text-center font-bold text-4xl">NUESTROS ANALISTAS DEPORTIVOS EXPERTOS</h2>
         <p class="text-gray-300 text-justify lg:text-center text-xl">
@@ -125,7 +125,7 @@ require_once(__DIR__ . '/../layouts/nav.php');
 <!-- ANALISTAS -->
 <section class="grid grid-cols-1 mt-16 mx-2 md:mx-[8rem] xl:mx-[16rem] p-4 space-y-20">
     <div data-aos="fade-right" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
-        <img src="<?=BASE_URL . 'img/aliados/pulpolandia.jpeg'?>" class="rounded-xl w-64 hover:scale-110 transition" alt="Imagen aliado">
+        <img src="<?= BASE_URL . 'img/aliados/pulpolandia.jpeg' ?>" class="rounded-xl w-64" alt="Imagen aliado">
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
             <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">el pulpo </h3>
             <p class="text-justify text-gray-200">
@@ -135,8 +135,6 @@ require_once(__DIR__ . '/../layouts/nav.php');
             </p>
             <div class="flex gap-4 md:ml-auto items-center justify-center">
                 <a href=""><img src="/img/footer/logo-white.png" alt=""></a>
-                <a href=""><img src="./img/footer/instagram.png" alt=""></a>
-                <a href=""><img src="./img/footer/twitter.png" alt=""></a>
             </div>
         </div>
     </div>
@@ -151,55 +149,28 @@ require_once(__DIR__ . '/../layouts/nav.php');
             </p>
             <div class="flex gap-4 md:ml-auto items-center justify-center">
                 <a href=""><img src="./img/footer/facebook.png" alt=""></a>
-                <a href=""><img src="./img/footer/instagram.png" alt=""></a>
-                <a href=""><img src="./img/footer/twitter.png" alt=""></a>
-            </div>
-        </div>
-    </div>
-
-    <div data-aos="fade-right" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
-        <img src="<?= BASE_URL . 'img/aliados/person 3.jpeg' ?>" class="rounded-xl w-64" alt="Imagen aliado">
-        <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
-            <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Maria</h3>
-            <p class="text-justify text-gray-200">
-                La Intuición en Estado Puro. Al otro lado de la sala, se encuentra Maria, conocida como
-                "La Intuitiva". Su capacidad
-                para sentir las vibraciones del deporte la coloca en otro nivel. Maria confía en su
-                intuición y experiencia para ofrecer predicciones que sorprenden a todos. Ha ganado el
-                apodo de "La Sacerdotisa Deportiva", ya que parece tener una conexión especial con los
-                eventos deportivos.
-            </p>
-            <div class="flex gap-4 md:ml-auto items-center justify-center">
-                <a href=""><img src="./img/footer/facebook.png" alt=""></a>
-                <a href=""><img src="./img/footer/instagram.png" alt=""></a>
-                <a href=""><img src="./img/footer/twitter.png" alt=""></a>
             </div>
         </div>
     </div>
 
     <div data-aos="fade-left" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
-        <img src="<?= BASE_URL . 'img/aliados/person 4.avif' ?>" class="rounded-xl w-64" alt="Imagen aliado">
+        <img src="<?= BASE_URL . 'img/aliados/fpc.jpg' ?>" class="rounded-xl w-64 " alt="Imagen aliado">
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
-            <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Rogger</h3>
+            <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Master Colombia</h3>
             <p class="text-justify text-gray-200">
-                El Gurú de la Actualidad. Finalmente, está Rogger, el gurú de la actualidad deportiva.
-                Con su dedicación a
-                mantenerse al día con cada noticia y evento relevante, Rogger se ha ganado el título de
-                "El Oráculo del Deporte". Sus predicciones van más allá de las estadísticas,
-                incorporando el análisis de la actualidad para proporcionar una visión completa y
-                precisa.
-
-                Estos cuatro maestros del análisis y la predicción forman un equipo imparable, cada uno
-                aportando su propia perspectiva única. Juntos, ofrecen a nuestros seguidores la garantía
-                de las predicciones más acertadas y emocionantes en el mundo del deporte.
+                ¡mas de 5 años de trayectoria!
+                expertos en pronósticos deportivos del Futbol profesional colombiano
+                una nueva manera de ganar dinero con tu equipo favorito.
             </p>
             <div class="flex gap-4 md:ml-auto items-center justify-center">
-                <a href=""><img src="./img/footer/facebook.png" alt=""></a>
-                <a href=""><img src="./img/footer/instagram.png" alt=""></a>
-                <a href=""><img src="./img/footer/twitter.png" alt=""></a>
+                <a href="https://t.me/+kb9DIRRpVeUxMDcx" target="_blank" class="flex text-white bg-blue-600 font-semibold py-2 px-8 rounded-lg hover:scale-110 transition">
+                    Ir al chat ...
+                    <img src="<?= BASE_URL . 'img/footer/logo.png' ?>" alt="Telegram logo" class="h-7 w-7 ml-2">
+                </a>
             </div>
         </div>
     </div>
+
 
 </section>
 

@@ -75,11 +75,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                 // URL de la API de Telegram para enviar mensajes
-                $telegramUrl = "https://api.telegram.org/bot" . TELEGRAM_TOKEN . "/sendPhoto";
+                $telegramUrl = "https://api.telegram.org/bot" . TELEGRAM_TOKEN_RECARGA . "/sendPhoto";
 
                 // Campos de la solicitud POST
                 $postFields = array(
-                    'chat_id' => TELEGRAM_ID_CHAT,
+                    'chat_id' => TELEGRAM_ID_CHAT_RECARGA,
                     'caption' => $mensaje,
                     'photo' => new CURLFile($fileTmpPath, $fileType, $fileName), // Usa CURLFile para manejar el archivo adjunto
                 );
@@ -111,11 +111,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
             // URL de la API de Telegram para enviar mensajes
-            $telegramUrl = "https://api.telegram.org/bot" . TELEGRAM_TOKEN . "/sendMessage";
+            $telegramUrl = "https://api.telegram.org/bot" . TELEGRAM_TOKEN_RECARGA . "/sendMessage";
 
             // Campos de la solicitud POST
             $postFields = array(
-                'chat_id' => TELEGRAM_ID_CHAT,
+                'chat_id' => TELEGRAM_ID_CHAT_RECARGA,
                 'text' => $mensaje,
             );
         }
