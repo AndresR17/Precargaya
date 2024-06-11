@@ -124,7 +124,7 @@ require_once(__DIR__ . '/../layouts/nav.php');
 
 <!-- ANALISTAS -->
 <section class="grid grid-cols-1 mt-16 mx-2 md:mx-[8rem] xl:mx-[16rem] p-4 space-y-20">
-    <div data-aos="fade-right" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
+    <!--<div data-aos="fade-right" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
         <img src="<?= BASE_URL . 'img/aliados/pulpolandia.jpeg' ?>" class="rounded-xl w-64" alt="Imagen aliado">
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
             <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">el pulpo </h3>
@@ -137,21 +137,9 @@ require_once(__DIR__ . '/../layouts/nav.php');
                 <a href=""><img src="/img/footer/logo-white.png" alt=""></a>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <div data-aos="fade-left" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
-        <img src="<?= BASE_URL . 'img/aliados/masterC.jpeg' ?>" class="rounded-xl w-64 " alt="Imagen aliado">
-        <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
-            <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Master Colombia</h3>
-            <p class="text-justify text-gray-200">
-                Máster Colombia con 7 años de experiencias en apuestas Deportivas, con nosotros encontrarás combinadas,
-                retos multiplicadores y pronósticos diarios
-            </p>
-            <div class="flex gap-4 md:ml-auto items-center justify-center">
-                <a href=""><img src="./img/footer/facebook.png" alt=""></a>
-            </div>
-        </div>
-    </div>
+
 
     <div data-aos="fade-left" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
         <img src="<?= BASE_URL . 'img/aliados/fpc.jpg' ?>" class="rounded-xl w-64 " alt="Imagen aliado">
@@ -164,6 +152,23 @@ require_once(__DIR__ . '/../layouts/nav.php');
             </p>
             <div class="flex gap-4 md:ml-auto items-center justify-center">
                 <a href="https://t.me/+kb9DIRRpVeUxMDcx" target="_blank" class="flex text-white bg-blue-600 font-semibold py-2 px-8 rounded-lg hover:scale-110 transition">
+                    Ir al chat ...
+                    <img src="<?= BASE_URL . 'img/footer/logo.png' ?>" alt="Telegram logo" class="h-7 w-7 ml-2">
+                </a>
+            </div>
+        </div>
+    </div>
+<!--otro analista-->
+    <div data-aos="fade-left" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
+        <img src="<?= BASE_URL . 'img/aliados/masterC.jpeg' ?>" class="rounded-xl w-64 " alt="Imagen aliado">
+        <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
+            <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Master Colombia</h3>
+            <p class="text-justify text-gray-200">
+                Máster Colombia con 7 años de experiencias en apuestas Deportivas, con nosotros encontrarás combinadas,
+                retos multiplicadores y pronósticos diarios
+            </p>
+            <div class="flex gap-4 md:ml-auto items-center justify-center">
+                <a href="https://t.me/+VafKow_Q8TdqsRF7" target="_blank" class="flex text-white bg-blue-600 font-semibold py-2 px-8 rounded-lg hover:scale-110 transition">
                     Ir al chat ...
                     <img src="<?= BASE_URL . 'img/footer/logo.png' ?>" alt="Telegram logo" class="h-7 w-7 ml-2">
                 </a>
