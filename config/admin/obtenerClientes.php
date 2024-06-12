@@ -1,5 +1,5 @@
 <?php
-//*se obtienen los clientes que seran mostrados en el panel administrativo
+//! se obtienen los clientes que seran mostrados en el panel administrativo
 
 //verificamos si viene algun parametro de busqueda
 $busqueda = isset($_POST['busqueda']) ? $_POST['busqueda'] : '';

@@ -49,61 +49,59 @@ $datos = obtenerOperaciones($conexion, $user['id']);
         </div>
     </section>
 
-    <section class="flex flex-col my-[3rem] mx-5 md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem] items-center justify-center">
-        <div class="relative overflow-x-auto rounded">
-            <table class="w-full text-base text-left rtl:text-right text-gray-200">
-                <thead class="text-base uppercase bg-gray-700 text-gray-200 ">
+    <section class="flex flex-col my-[3rem] mx-5 md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem] justify-center">
+        <div class="relative rounded sm:overflow-x-auto overflow-x-scroll">
+            <table class="w-full text-base text-left text-gray-200 ">
+                <thead class="text-sm md:text-base uppercase bg-gray-700 text-gray-200 ">
                     <tr>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-2 md:px-6 py-3">
                             Movimiento
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-2 md:px-6 py-3">
                             Casa de apuestas
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-2 md:px-6 py-3">
                             ID Jugador
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-2 md:px-6 py-3">
                             Entidad Bancaria
                         </th>
-                        <th scope="col" class="px-6 py-3">
-                            Valor
+                        <th class="px-8 py-3 xl:px-6">
+                            Valor                              
                         </th>
-                        <th scope="col" class="px-6 py-3">
-                            Fecha
+                        <th scope="col" class="px-14 xl:px-6 py-3">
+                            Fecha 
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-
                     <?php foreach ($datos as $operacion) : ?>
-                        <tr class="filaDatos border-b bg-gray-800 border-gray-700 text-base hover:bg-gray-600">
-                            <th scope="row" class="tipo px-6 py-4 font-medium whitespace-nowrap text-white">
+                        <tr class="filaDatos border-b bg-gray-800 border-gray-700 text-sm md:text-base hover:bg-gray-600">
+                            <th scope="row" class="tipo px-2 md:px-6 py-3 font-medium whitespace-nowrap text-white">
                                 <?= $operacion['tipo']; ?>
                             </th>
-                            <td class="px-6 py-4">
+                            <td class="px-3 md:px-6 py-3">
                                 <?= $operacion['casaDeApuestas']; ?>
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-3 md:px-6 py-3">
                                 <?= $operacion['idJugador']; ?>
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-3 md:px-6 py-3">
                                 <?= $operacion['entidad']; ?>
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-3 py-3 text-center md:text-left">
                                 <?= '$ ' . number_format($operacion['valor'], 2); ?>
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-3 md:px-6 py-2">
                                 <?= formatearFecha($operacion['createdAt']); ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
-
         </div>
-
     </section>
+    
     <main class="flex flex-grow"></main>
 <?php else : ?>
     <section class="flex flex-grow xl:flex-row my-[4rem] mx-5 md:mx-[2rem] lg:mx-[5rem] xl:mx-[10rem] items-center justify-center">

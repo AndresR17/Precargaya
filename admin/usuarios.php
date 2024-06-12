@@ -1,6 +1,6 @@
 <?php
 require_once('./layouts/header.php');
-if($admin['rol'] !== 'admin') {
+if ($admin['rol'] !== 'admin') {
     header('location: dashboard.php');
 }
 require_once('./layouts/nav.php');
@@ -18,9 +18,66 @@ if (isset($_SESSION['eliminado'])) {
 }
 
 $usuarios = obtenerDatos($conexion, 'usuarios', $_SESSION['admin']['id']);
+
 ?>
 
 <div class="p-4 sm:ml-72">
+
+    <?php
+    if (isset($_GET['edit'])) :
+        $usuarioEditar = verificarUsuario($conexion, $_GET['edit']);
+        if ($usuarioEditar > 0) : ?>
+            <div class="py-4 px-2 border border-gray-600 rounded-lg mt-20" id="divEditar">
+                <div class="flex items-center justify-between px-4 border-b border-gray-400 pb-4">
+                    <h2 class="text-white text-2xl">Editar usuario <?= $usuarioEditar['name'] ?></h2>
+                    <button class="flex items-center block text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-800 font-medium rounded-lg text-base px-5 py-2.5 text-center" type="button" id="cerrarDiv">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="py-4 px-2">
+                    <div class="relative overflow-x-auto rounded">
+                        <form class="p-4 md:p-5" id="formEditar" method="POST" autocomplete="off">
+                            <input type="hidden" class="datosEditar" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
+                            <input type="hidden" class="datosEditar" name="id_user" value="<?= openssl_encrypt($usuarioEditar['id'], AES_FRONT, KEY_FRONT); ?>">
+                            <div class="mb-2" id="resFormEditar"></div>
+                            <div class="grid gap-4 mb-4 grid-cols-2">
+                                <div class="col-span-2">
+                                    <label for="nameEditar" class="block mb-2 text-base font-medium text-white">Nombre</label>
+                                    <input type="text" name="name" id="nameEditar" class="datosEditar bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="<?= $usuarioEditar['name'] ?>">
+                                </div>
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="docEditar" class="block mb-2 text-base font-medium text-white">Documento</label>
+                                    <input type="number" name="documento" id="docEditar" class="datosEditar bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="<?= $usuarioEditar['documento'] ?>">
+                                </div>
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="emailEditar" class="block mb-2 text-base font-medium text-white">Email</label>
+                                    <input type="email" name="email" id="emailEditar" class="datosEditar bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="<?= $usuarioEditar['email'] ?>">
+                                </div>
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="phoneEditar" class="block mb-2 text-base font-medium text-white">Celular</label>
+                                    <input type="text" name="celular" id="phoneEditar" class="datosEditar bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="<?= $usuarioEditar['phone'] ?>">
+                                </div>
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="RolEditar" class="block mb-2 text-base font-medium text-white">Rol</label>
+                                    <select id="RolEditar" name="rol" class="datosEditar bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                        <option <?= $usuarioEditar['rol'] == 'Cajero' ? 'selected' : ''; ?> value="Cajero">Cajero</option>
+                                        <option <?= $usuarioEditar['rol'] == 'admin' ? 'selected' : ''; ?> value="admin">Administrador</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-8 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+                                Actualizar Usuario
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
+
     <div class="py-4 px-2 border border-gray-600 rounded-lg mt-20">
         <div class="flex items-center justify-between px-4 border-b border-gray-400 pb-4">
             <h2 class="text-white text-2xl">Lista de usuarios</h2>
@@ -55,7 +112,7 @@ $usuarios = obtenerDatos($conexion, 'usuarios', $_SESSION['admin']['id']);
                                     Rol
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                Fecha registro/actualización
+                                    Fecha registro/actualización
                                 </th>
                                 <th scope="col-2" class="px-6 py-3">
                                     Opciones
@@ -81,14 +138,14 @@ $usuarios = obtenerDatos($conexion, 'usuarios', $_SESSION['admin']['id']);
                                         <?= $usuario['rol'] ?>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <?= !empty($usuario['updateAt']) ? 
-                                        '<p class="flex flex-col">' . formatearFecha($usuario['updateAt']) . '
-                                        <span class="text-sm">Actualizacion</span></p>'  : 
-                                        '<p class="flex flex-col">' . formatearFecha($usuario['createdAt']) . '
-                                        <span class="text-sm">Registro</span></p>' ; ?>
+                                        <?= !empty($usuario['updateAt']) ?
+                                            '<p class="flex flex-col">' . formatearFecha($usuario['updateAt']) . '
+                                        <span class="text-sm">Actualizacion</span></p>'  :
+                                            '<p class="flex flex-col">' . formatearFecha($usuario['createdAt']) . '
+                                        <span class="text-sm">Registro</span></p>'; ?>
                                     </td>
                                     <td class="px-6 py-4 space-x-4">
-                                        <a href="./perfil.php" class="px-2 py-1 text-base bg-indigo-300 hover:bg-indigo-600 hover:text-white border-indigo-600 rounded text-indigo-800 text-center font-semibold">Editar</a>
+                                        <a href="usuarios.php?edit=<?= openssl_encrypt($usuario['id'], AES_FRONT, KEY_FRONT);; ?>" class="px-2 py-1 text-base bg-indigo-300 hover:bg-indigo-600 hover:text-white border-indigo-600 rounded text-indigo-800 text-center font-semibold">Editar</a>
                                         <a onclick="mostrarAlerta(<?= $usuario['id'] ?>, null, 'usuario')" class="px-2 py-1 text-base bg-red-300 hover:bg-red-600 hover:text-white border-red-600 rounded text-red-800 text-center font-semibold cursor-pointer">Eliminar</a>
                                     </td>
                                 </tr>
@@ -126,8 +183,8 @@ $usuarios = obtenerDatos($conexion, 'usuarios', $_SESSION['admin']['id']);
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" id="formRegister" method="POST" action="" autocomplete="off">
-                <input type="hidden" class="datos" name="csrf_token" value="<?= $_SESSION['csrf_token'] ; ?>">
+            <form class="p-4 md:p-5" id="formRegister" method="POST" autocomplete="off">
+                <input type="hidden" class="datos" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
                 <div class="mb-2" id="resForm"></div>
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
@@ -136,7 +193,7 @@ $usuarios = obtenerDatos($conexion, 'usuarios', $_SESSION['admin']['id']);
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <label for="doc" class="block mb-2 text-base font-medium text-white">Documento</label>
-                        <input type="number" name="doc" id="doc" class="datos bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <input type="number" name="documento" id="doc" class="datos bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <label for="email" class="block mb-2 text-base font-medium text-white">Email</label>
@@ -144,7 +201,7 @@ $usuarios = obtenerDatos($conexion, 'usuarios', $_SESSION['admin']['id']);
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <label for="phone" class="block mb-2 text-base font-medium text-white">Celular</label>
-                        <input type="text" name="phone" id="phone" class="datos bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <input type="text" name="celular" id="phone" class="datos bg-gray-800 border border-gray-600 text-white text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <label for="Rol" class="block mb-2 text-base font-medium text-white">Rol</label>
@@ -172,8 +229,9 @@ $usuarios = obtenerDatos($conexion, 'usuarios', $_SESSION['admin']['id']);
 
 
 <?php borrarSesiones(); ?>
-<script type="module" src="../src/js/obtenerUsuarios.js"></script>
+<script type="module" src="../src/js/usuariosAdmin.js"></script>
 <script src="../src/js/clientesAuth.js"></script>
 
 </body>
+
 </html>

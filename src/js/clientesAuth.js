@@ -1,4 +1,4 @@
-//*funcion para mostrar un modal cuando se esta eliminando un cliente del panel administrativo
+//!funcion para mostrar un modal cuando se esta eliminando un cliente del panel administrativo
 function mostrarAlerta(id, pagina, usuario) {
     Swal.fire({
         title: "¿Estás seguro?",

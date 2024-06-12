@@ -1,4 +1,5 @@
 <?php
+//!CAMBIAR DE ESTADO A ELIMINADO CLIENTES DESDE EL PANEL ADMIN
 
 require_once('../conexion.php');
 require_once('../main.php');

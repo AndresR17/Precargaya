@@ -1,5 +1,5 @@
-<?php
-//!REGISTRO DE USUARIOS NUEVOS DESDE EL PANEL ADMINISTRATIVO
+<?php 
+//! EDITAR USUARIOS DEL PANEL ADMINISTRATIVO
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -11,24 +11,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($_SESSION['csrf_token']) && $data['csrf_token'] === $_SESSION['csrf_token']) {
 
+        $idEncript = openssl_decrypt($data['id_user'], AES, KEY);
+        $id = (int) limpiar_cadena($idEncript);
         $name = limpiar_cadena($data['name']);
         $doc = limpiar_cadena($data['documento']);
         $email = limpiar_cadena($data['email']);
         $phone = limpiar_cadena($data['celular']);
         $rol = limpiar_cadena($data['rol']);
         $fecha = limpiar_cadena($data['fecha']);
-        $password = limpiar_cadena($data['password']);
-        $password_confirmation = limpiar_cadena($data['password_confirmation']);
-        $estado = 'activo';
 
-        if (empty($name) || empty($doc) || empty($phone) || empty($rol) || empty($password) || empty($password_confirmation)|| empty($fecha)) {
+        if (empty($id) || empty($name) || empty($doc) || empty($phone) || empty($rol) || empty($fecha)) {
             enviarRespuestaJSON('Tus datos no son aceptados en nuestra plataforma');
-        }
-
-        if ($password !== $password_confirmation) {
-            enviarRespuestaJSON('Tus contraseñas no coinciden');
-        } else {
-            $passwordHashed = password_hash($password, PASSWORD_BCRYPT, ['cost' => 10]);
         }
 
         if (empty($email)) {
@@ -37,9 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-                $sql_email = "SELECT * FROM usuarios WHERE email = ?";
+                $sql_email = "SELECT * FROM usuarios WHERE email = ? AND id != ?";
                 $stmt = mysqli_prepare($conexion, $sql_email);
-                mysqli_stmt_bind_param($stmt, "s", $email);
+                mysqli_stmt_bind_param($stmt, "si", $email, $id);
                 mysqli_stmt_execute($stmt);
                 $resultado = mysqli_stmt_get_result($stmt);
 
@@ -53,16 +46,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-        $sql = "INSERT INTO usuarios (name, documento, email, phone, rol, password, createdAt, estado ) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
+        //actualizar el usuario
+        $query = "UPDATE usuarios SET documento= ?, name= ?, email= ?, phone= ?, rol = ?, updateAt = ? WHERE id = ?";
+        $stmt = mysqli_prepare($conexion, $query);
+        mysqli_stmt_bind_param($stmt, "ssssssi", $doc, $name, $email, $phone, $rol, $fecha, $id);
+        mysqli_stmt_execute($stmt);
+        $affected_rows = mysqli_stmt_affected_rows($stmt);
 
-        $stmt = mysqli_prepare($conexion, $sql);
-        mysqli_stmt_bind_param($stmt, "ssssssss", $name, $doc, $email, $phone, $rol, $passwordHashed, $fecha, $estado);
-        $success = mysqli_stmt_execute($stmt);
-
-        //El registro fue realizado con exito
-        if ($success) {
+        if ($affected_rows > 0) {
             mysqli_stmt_close($stmt);
             enviarRespuestaJSON(1);
+        }else{
+            enviarRespuestaJSON('El usuario no tiene modificaciones');
         }
     } else {
         session_destroy();

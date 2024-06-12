@@ -1,3 +1,4 @@
+//!VALIDACION DE LOS BOTONES EN LA VISTA DE MIS MOVIMIENTOS
 document.addEventListener('DOMContentLoaded', function() {
 
     const grupoCheckbox = document.querySelectorAll('.categoria');

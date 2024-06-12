@@ -1,5 +1,7 @@
 <?php
 
+//!CAMBIAR DE ESTADO A ELIMINADO USUARIOS DESDE EL PANEL ADMIN
+
 require_once('../conexion.php');
 require_once('../main.php');
 require_once('../config.php');
