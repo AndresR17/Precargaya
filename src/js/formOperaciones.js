@@ -113,6 +113,8 @@ const checkWompi = document.getElementById('wompi');
 const checkComprobante = document.getElementById('comprobante');
 const divButtonWompi = document.getElementById('divWompi');
 const divButtonSubmit = document.getElementById('btn-submit');
+const emailRecargar = document.getElementById('emailRecargar');
+
 
 
 //se agrega un evento a los check del formulario de recargas al momento de escojer el metodo de pago
@@ -181,7 +183,7 @@ async function crearBotonWompi() {
             redirectUrl: 'http://localhost/Precargaya/operaciones/recargar', // Opcional
             expirationTime: fechaExpiracion, // Opcional
             customerData: {
-                email: 'correo@correo.com', // Opcional // Aquí puedes poner un campo de entrada si lo deseas
+                email: emailRecargar.value, // Opcional // Aquí puedes poner un campo de entrada si lo deseas
                 fullName: nameRecargar.value,
                 phoneNumber: contactoRecargar.value,
                 phoneNumberPrefix: prefijoRecargar,
@@ -200,8 +202,7 @@ async function crearBotonWompi() {
 function openCheckout(parametro) {
     parametro.open(function (result) {
         const { status, id, reference, paymentMethodType } = result.transaction;
-        console.log(result);
-
+        
         if (status === 'APPROVED') {
             if(paymentMethodType === 'BANCOLOMBIA_COLLECT'){
                 Swal.fire({
@@ -256,6 +257,9 @@ function validarFormRecargar() {
     if (!validarCampo(casaApuestasRecargar, 'Selecciona una opción válida', 'resCasaApuestasRecargar')) return false;
     if (!validarCampo(valorRecargar, 'Define el valor a recargar', 'resValorRecargar')) return false;
     if (!validarNumero(valorRecargar, 'El valor no es válido', 'resValorRecargar')) return false;
+    if (!validarCampo(emailRecargar, 'Ha ocurrido un error, Recarga la pagina', 'RespSesion')) return false;
+    if (!validarCampo(tokenRecargar, 'Ha ocurrido un error, Recarga la pagina', 'RespSesion')) return false;
+    if (!validarCampo(idRecargar, 'Ha ocurrido un error, Recarga la pagina', 'RespSesion')) return false;
 
     if (valorRecargar.value < valorMinimoRecargar) {
         mostrarError('El valor mínimo debe ser de $30.000', 'resValorRecargar');
@@ -303,7 +307,7 @@ function enviarRecarga(referencia, idPago, metodoPago) {
 
 
     const datosStorage = sincronizarStorage();
-    console.log(datosStorage);
+    
     if(datosStorage){
 
         const { idJugador, casaApuestas, valor } = datosStorage;

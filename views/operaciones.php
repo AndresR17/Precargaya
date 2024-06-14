@@ -141,9 +141,11 @@ require_once(__DIR__ . '/../layouts/nav.php');
             <legend class="text-gray-200 text-base text-base border border-gray-600 px-4 py-2 rounded">
                 Completa los campos a continuación para realizar tu recarga.
             </legend>
-
+            <div class="" id="RespSesion"></div>
             <input type="hidden" id="token_recargar" value="<?= $_SESSION['csrf_token']; ?>">
             <input type="hidden" id="idRecargar" value="<?= openssl_encrypt($user['id'], AES_FRONT, KEY_FRONT);  ?>">
+            <input type="hidden" id="emailRecargar" value="<?= $user['email'];  ?>">
+            
 
             <div id="resUserRecargar" class="mb-6">
                 <label for="name-recargar" class="block mb-2 text-base font-medium text-white">Nombre completo</label>

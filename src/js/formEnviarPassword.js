@@ -46,7 +46,7 @@ function enviarNuevaPassword(datos) {
         .then(function (response) {
             const respuesta = response.data;
             Swal.close();
-            console.log(response);
+            
 
             if (respuesta == 1) {
 

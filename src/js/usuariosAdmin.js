@@ -120,7 +120,7 @@ function editarDatos(datos) {
         .then(function (response) {
 
             const respuesta = response.data;
-            console.log(response);
+            
             Swal.close();
             if (respuesta === 1) {
 
