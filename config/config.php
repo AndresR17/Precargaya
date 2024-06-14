@@ -16,12 +16,14 @@ define("TELEGRAM_ID_CHAT_RETIRO", "5550985645");
 define("KEY", "Recargaya@2024*CLAVESECRETA");
 define("AES", "AES-256-ECB");
 
-const EMAIL = 'recargaya890@gmail.com';
-CONST EMPRESA = 'RecargaYa';
+const EMAIL = 'administrador@recargayacolombia.com';
+CONST EMPRESA = 'RecargaYa Colombia';
 const USER_SMTP = '30c069b002a443';
 const PASS_SMTP = '8a4cfd4e2b027e';
 const HOST_SMTP = 'sandbox.smtp.mailtrap.io';
 const PUERTO_SMTP = 2525;
+const API_KEY_BREVO = ''; //clave api no subir al github
+//la api se esta usando con el gmail de recargaya890@gmail.com
 
 
 

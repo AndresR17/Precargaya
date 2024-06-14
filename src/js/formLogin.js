@@ -42,8 +42,6 @@ function ValidarDatos(e) {
 
 function IniciarSesion(datos) {
 
-    spinner()
-
     axios.post(BASE_URL + '/config/auth/login.php', datos, {
         headers: {
             'Content-Type': 'application/json'
@@ -52,8 +50,7 @@ function IniciarSesion(datos) {
         .then(function (response) {
             
             const  respuesta  = response.data;
-            Swal.close();
-            console.log(respuesta);
+
             if (respuesta === 'admin' || respuesta === 'Cajero') {
                 formLogin.reset();
                 window.location.href = BASE_URL + '/admin/dashboard.php';

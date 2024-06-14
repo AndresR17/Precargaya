@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $usuario = limpiar_cadena($data['user']);
         $password = limpiar_cadena($data['password']);
 
-        if(empty($usuario) || empty($password)){
+        if (empty($usuario) || empty($password)) {
             enviarRespuestaJSON('Tus datos no son aceptados en la plataforma!');
         }
 
@@ -32,6 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($check_password) {
 
+                if ($datosDB['token'] !== null) {
+                    $sqlDeleteToken = "UPDATE usuarios SET token = NULL WHERE id = ?";
+                    $stmt = $conexion->prepare($sqlDeleteToken);
+                    $stmt->bind_param("i", $datosDB['id']);
+                    $stmt->execute();
+                }
+
                 $query = "SELECT id, documento, name, email, phone, rol FROM usuarios WHERE email = ? ";
                 $stmt = mysqli_prepare($conexion, $query);
                 mysqli_stmt_bind_param($stmt, "s", $usuario);
@@ -47,13 +54,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $_SESSION['admin'] = $datosDB;
                         mysqli_stmt_close($stmt);
                         enviarRespuestaJSON($response);
-
                     } else {
                         $_SESSION['user'] = $datos;
                         mysqli_stmt_close($stmt);
                         enviarRespuestaJSON($response);
                     }
-
                 }
             } else {
                 mysqli_stmt_close($stmt);
@@ -64,12 +69,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             mysqli_stmt_close($stmt);
             enviarRespuestaJSON(2);
         }
-
-    }else{
+    } else {
         session_destroy();
         enviarRespuestaJSON('Token no valido, Recarga la pagina!');
     }
-
 } else {
     session_destroy();
     header('location:../');
