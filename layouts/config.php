@@ -1,4 +1,5 @@
 <?php
+// define('BASE_URL', 'https://www.recargayacolombia.com/');
 define('BASE_URL', 'http://localhost/Precargaya/');
 define("KEY_FRONT", "Recargaya@2024*CLAVESECRETA");
 define("AES_FRONT", "AES-256-ECB");

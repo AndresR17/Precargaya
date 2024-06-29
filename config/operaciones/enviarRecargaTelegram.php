@@ -75,11 +75,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                 // URL de la API de Telegram para enviar mensajes
-                $telegramUrl = "https://api.telegram.org/bot" . TELEGRAM_TOKEN_RECARGA . "/sendPhoto";
+                
+                // $telegramUrl = "https://api.telegram.org/bot" . TELEGRAM_TOKEN_RECARGA . "/sendPhoto"; //produccion
+                $telegramUrl = "https://api.telegram.org/bot" . TELEGRAM_TOKEN_LOCAL . "/sendPhoto"; // desarrollo
 
                 // Campos de la solicitud POST
                 $postFields = array(
-                    'chat_id' => TELEGRAM_ID_CHAT_RECARGA,
+                    // 'chat_id' => TELEGRAM_ID_CHAT_RECARGA, //produccion
+                    'chat_id' => TELEGRAM_ID_CHAT_LOCAL, // desarrollo
                     'caption' => $mensaje,
                     'photo' => new CURLFile($fileTmpPath, $fileType, $fileName), // Usa CURLFile para manejar el archivo adjunto
                 );
@@ -111,11 +114,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
             // URL de la API de Telegram para enviar mensajes
-            $telegramUrl = "https://api.telegram.org/bot" . TELEGRAM_TOKEN_RECARGA . "/sendMessage";
+            // $telegramUrl = "https://api.telegram.org/bot" . TELEGRAM_TOKEN_RECARGA . "/sendMessage"; //produccion
+            $telegramUrl = "https://api.telegram.org/bot" . TELEGRAM_TOKEN_LOCAL . "/sendPhoto"; // desarrollo
 
             // Campos de la solicitud POST
             $postFields = array(
-                'chat_id' => TELEGRAM_ID_CHAT_RECARGA,
+                // 'chat_id' => TELEGRAM_ID_CHAT_RECARGA, //produccion
+                'chat_id' => TELEGRAM_ID_CHAT_LOCAL, // desarrollo
                 'text' => $mensaje,
             );
         }

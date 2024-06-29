@@ -1,11 +1,17 @@
 <?php
 //CONSTANTES GLOBALES
+// define('BASE_URL_BACK', 'https://www.recargayacolombia.com/');
 define('BASE_URL_BACK', 'http://localhost/Precargaya/');
 
 define('DB_HOST', 'localhost');
 define('DB_USUARIO', 'root');
 define('DB_CONTRASENA', '');
 define('DB_NOMBRE', 'recargaya');
+
+// define('DB_HOST', 'localhost');
+// define('DB_USUARIO', 'u224653315_recargayaCol');
+// define('DB_CONTRASENA', 'RecargaYa+2024*CLAVESECRETA');
+// define('DB_NOMBRE', 'u224653315_recargaYa');
 
 // recargas bot produccion
 define("TELEGRAM_TOKEN_RECARGA", "7362503851:AAE-pfhRLxTU5tt0qDVsc3qffebmQZmptKU");
@@ -16,8 +22,8 @@ define("TELEGRAM_TOKEN_RETIRO", "7479310332:AAHm7Ocj6acqLJqx1LAgz6ZzJ4bjQNi2w5w"
 define("TELEGRAM_ID_CHAT_RETIRO", "5639361118");
 
 // local o ambiente de pruebas 
-// define("TELEGRAM_TOKEN_LOCAL", "6647970558:AAFlwJIlCUP6l_9qQsV4521u9OWLkSNmlMw");
-// define("TELEGRAM_ID_CHAT_LOCAL", "5550985645");
+define("TELEGRAM_TOKEN_LOCAL", "6647970558:AAFlwJIlCUP6l_9qQsV4521u9OWLkSNmlMw");
+define("TELEGRAM_ID_CHAT_LOCAL", "5550985645");
 
 define("KEY", "Recargaya@2024*CLAVESECRETA");
 define("AES", "AES-256-ECB");

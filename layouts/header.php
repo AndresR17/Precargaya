@@ -33,7 +33,7 @@
     <?php
     // if ($_SERVER["HTTPS"] != "on") {
     //     // Redirige a la versión HTTPS de la misma página
-    //     $redirect_url = "https://www.mussacafec.com/";
+    //     $redirect_url = "https://www.recargayacolombia.com/";
     //     header("Location: $redirect_url");
     //     exit();
     //     } 

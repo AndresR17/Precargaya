@@ -25,12 +25,12 @@ require_once('../config/helper.php');
     <title>RecargaYa</title>
     <link rel="shortcut icon" href="<?= BASE_URL . 'img/logo-antes.jpg'?>" type="image/x-icon">
     <?php
-    // if ($_SERVER["HTTPS"] != "on") {
-    //     // Redirige a la versión HTTPS de la misma página
-    //     $redirect_url = "https://www.mussacafec.com/";
-    //     header("Location: $redirect_url");
-    //     exit();
-    //     } 
+    if ($_SERVER["HTTPS"] != "on") {
+        // Redirige a la versión HTTPS de la misma página
+        $redirect_url = "https://www.recargayacolombia.com/";
+        header("Location: $redirect_url");
+        exit();
+        } 
     ?>
 </head>
 

@@ -2,8 +2,8 @@
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
         <a href="<?= BASE_URL; ?>" class="flex items-center space-x-2">
             <img src="<?= BASE_URL . 'img/logo-antes.jpg'; ?>" class="h-10 rounded-xl" alt="logo recargaya!" />
-            <p class="flex text-2xl font-bold whitespace-nowrap text-white flex-col">RECARGAYA
-                <!-- <span class="text-base font-normal">Tu satisfaccion es nuestro mayor objetivo</span>git  -->
+            <p class="flex text-2xl font-bold whitespace-nowrap text-white flex-col mb-0">RECARGAYA
+                <!-- <span class="text-sm font-normal">Tu satisfaccion es nuestro mayor objetivo</span> -->
             </p>
 
         </a>

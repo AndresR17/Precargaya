@@ -44,6 +44,7 @@ CREATE TABLE aliados(
     CONSTRAINT pk_aliados PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
-INSERT INTO usuarios (documento, name, email, celular, rol, password, estado, createdAt) VALUES ('9999999', 'Administrador', 'administrador@recargayacolombia.com', '999999999', 'admin', '$2y$10$nnLzH0Vo5hlnaJjXfP1q7u7gGH4wwwjQ./y0pLg4.dszETtipl8NG', 'activo', '2024-06-15')
+INSERT INTO usuarios (documento, name, email, phone, rol, password, estado, createdAt) VALUES ('9999999', 'Administrador', 'administrador@recargayacolombia.com', '999999999', 'admin', '$2y$10$nnLzH0Vo5hlnaJjXfP1q7u7gGH4wwwjQ./y0pLg4.dszETtipl8NG', 'activo', '2024-06-15')
+
 
 

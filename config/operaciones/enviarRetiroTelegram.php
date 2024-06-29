@@ -58,12 +58,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
             // URL de la API de Telegram para enviar mensajes
-            $telegramUrl = "https://api.telegram.org/bot" . TELEGRAM_TOKEN_RETIRO . "/sendMessage";
+            // $telegramUrl = "https://api.telegram.org/bot" . TELEGRAM_TOKEN_RETIRO . "/sendMessage"; //produccion
+            $telegramUrl = "https://api.telegram.org/bot" . TELEGRAM_TOKEN_LOCAL . "/sendMessage"; //desarrollo
 
 
             // Campos de la solicitud POST
             $postFields = array(
-                'chat_id' => TELEGRAM_ID_CHAT_RETIRO,
+                // 'chat_id' => TELEGRAM_ID_CHAT_RETIRO, //produccion
+                'chat_id' => TELEGRAM_ID_CHAT_LOCAL, //desarrollo
                 'text' => $mensaje,
             );
 

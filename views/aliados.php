@@ -144,7 +144,7 @@ require_once(__DIR__ . '/../layouts/nav.php');
     <div data-aos="fade-left" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
         <img src="<?= BASE_URL . 'img/aliados/fpc.jpg' ?>" class="rounded-xl w-64 " alt="Imagen aliado">
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
-            <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">Master Colombia</h3>
+            <h3 class="text-start text-center text-yellow-400 text-2xl uppercase  font-semibold">FPC FUTBOL</h3>
             <p class="text-justify text-gray-200">
                 ¡mas de 5 años de trayectoria!
                 expertos en pronósticos deportivos del Futbol profesional colombiano
@@ -153,7 +153,7 @@ require_once(__DIR__ . '/../layouts/nav.php');
             <div class="flex gap-4 md:ml-auto items-center justify-center">
                 <a href="https://t.me/+kb9DIRRpVeUxMDcx" target="_blank" class="flex text-white bg-blue-600 font-semibold py-2 px-8 rounded-lg hover:scale-110 transition">
                     Ir al chat ...
-                    <img src="<?= BASE_URL . 'img/footer/logo.png' ?>" alt="Telegram logo" class="h-7 w-7 ml-2">
+                    <img src="<?= BASE_URL . 'img/footer/logo.png'; ?>" alt="Telegram logo" class="h-7 w-7 ml-2">
                 </a>
             </div>
         </div>
@@ -170,7 +170,7 @@ require_once(__DIR__ . '/../layouts/nav.php');
             <div class="flex gap-4 md:ml-auto items-center justify-center">
                 <a href="https://t.me/+VafKow_Q8TdqsRF7" target="_blank" class="flex text-white bg-blue-600 font-semibold py-2 px-8 rounded-lg hover:scale-110 transition">
                     Ir al chat ...
-                    <img src="<?= BASE_URL . 'img/footer/logo.png' ?>" alt="Telegram logo" class="h-7 w-7 ml-2">
+                    <img src="<?= BASE_URL . 'img/footer/logo.png'; ?>" alt="Telegram logo" class="h-7 w-7 ml-2">
                 </a>
             </div>
         </div>
