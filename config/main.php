@@ -14,7 +14,7 @@ function limpiar_cadena($cadena){
     $cadena = stripcslashes($cadena);  //stripcslashes quita las barras de un string con comillas escapadas
     $cadena = str_ireplace("<script>", " " ,$cadena); //reemplaza un texto mediante una busqueda, esta version es incensible para mayusculas y minusculas
     //aqui esta reemplazando los primeros parametros por espacios vacios...Esto se usa para evitar inyeccion SQL
-    $cadena = str_ireplace("</script>", " " ,$cadena); 
+    $cadena = str_ireplace("</script>", "" ,$cadena); 
     $cadena = str_ireplace("<script src", "", $cadena);
     $cadena = str_ireplace("<script type=", "", $cadena);
     $cadena = str_ireplace("SELECT * FROM", "", $cadena);

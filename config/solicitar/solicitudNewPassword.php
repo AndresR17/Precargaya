@@ -136,14 +136,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </html>
                     '
                 ]);
-
+                
                 try {
-
                     $result = $apiInstance->sendTransacEmail($sendSmtpEmail);
                     // print_r($result);
                     $_SESSION['newPassword'] = $usuario['id'];
                     $stmt->close();
                     enviarRespuestaJSON(1);
+
                 } catch (Exception $e) {
                     // echo 'Excepción al enviar el correo: ', $e->getMessage(), "\n";
                     enviarRespuestaJSON("Error al enviar el mensaje, Por favor escribemos y describe tu problema");

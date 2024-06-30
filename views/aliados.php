@@ -123,7 +123,7 @@ require_once(__DIR__ . '/../layouts/nav.php');
 </section>
 
 <!-- ANALISTAS -->
-<section class="grid grid-cols-1 mt-16 mx-2 md:mx-[8rem] xl:mx-[16rem] p-4 space-y-20">
+<!-- <section class="grid grid-cols-1 mt-16 mx-2 md:mx-[8rem] xl:mx-[16rem] p-4 space-y-20"> -->
     <!--<div data-aos="fade-right" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">
         <img src="<?= BASE_URL . 'img/aliados/pulpolandia.jpeg' ?>" class="rounded-xl w-64" alt="Imagen aliado">
         <div class="flex flex-col p-2 lg:p-6 space-y-6 mt-4">
@@ -138,7 +138,6 @@ require_once(__DIR__ . '/../layouts/nav.php');
             </div>
         </div>
     </div> -->
-
 
 
     <div data-aos="fade-left" class="flex flex-col items-center lg:flex-row bg-gray-800 p-8 lg:py-2 rounded">

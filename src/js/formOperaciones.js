@@ -143,9 +143,10 @@ function comprobarChecks() {
         divButtonWompi.classList.toggle('hidden', !checkWompi.checked);
 
         if (!validarFormRecargar()) {
-            checkComprobante.checked = false
+            checkComprobante.checked = false;
             divButtonSubmit.classList.add('hidden');
             return
+
         } else {
             metodoComprobante = true;
             divButtonWompi.classList.toggle('hidden', !checkWompi.checked);

@@ -75,7 +75,9 @@ $datos = obtenerOperaciones($conexion, $user['id']);
                     </tr>
                 </thead>
                 <tbody>
+
                     <?php foreach ($datos as $operacion) : ?>
+                        
                         <tr class="filaDatos border-b bg-gray-800 border-gray-700 text-sm md:text-base hover:bg-gray-600">
                             <th scope="row" class="tipo px-2 md:px-6 py-3 font-medium whitespace-nowrap text-white">
                                 <?= $operacion['tipo']; ?>
@@ -112,6 +114,7 @@ $datos = obtenerOperaciones($conexion, $user['id']);
         
     </section>
 <?php endif; ?>
+
 <script type="module" src="<?= BASE_URL . 'src/js/movimientos.js' ?>"></script>
 
 <?php require_once(__DIR__ . '/../../layouts/footer.php') ?>

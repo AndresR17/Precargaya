@@ -22,6 +22,7 @@ window.addEventListener('load', () => {
 
 })
 
+//prevenir el enter en los formularios y solo funciona en los textarea
 document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Enter' && event.target.tagName === 'INPUT' && event.target.type !== 'textarea') {

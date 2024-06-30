@@ -14,7 +14,7 @@ function obtenerDatos($conexion, $tabla, $id)
     return $datos;
 }
 
-//se usa para mostrar el numero total de registros en la vista dashboard
+//se usa para mostrar el numero total de registros en la vista dashboard del panel admin
 function obtenerRegistros($conexion, $tabla, $operador, $id)
 {
     $sql = "SELECT COUNT(id) FROM $tabla WHERE id != $id AND estado = 'activo'";

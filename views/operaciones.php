@@ -2,7 +2,6 @@
 require_once('../layouts/header.php');
 require_once(__DIR__ . '/../layouts/nav.php');
 
-
 ?>
 
 <div class="splide mt-10" role="group" aria-label="Splide Basic HTML Example">
@@ -453,6 +452,7 @@ require_once(__DIR__ . '/../layouts/nav.php');
                     </li>
                 </ul>
             </div>
+
             <!-- seccion para enviar los formularios dependiendo de que metodo de pago escoja el usuario  -->
             <?php if (isset($_SESSION['user'])) : ?>
                 <div id="divWompi" class="hidden">
@@ -493,12 +493,11 @@ require_once(__DIR__ . '/../layouts/nav.php');
     if(isset($_GET['id']) && isset($_SESSION['user'])):
         $idPago = $_GET['id'];
 ?>
+
 <script type="module">
     import { enviarRecarga } from '<?= BASE_URL . 'src/js/formOperaciones.js' ?>';
         const idPagoGet = '<?php echo $idPago; ?>';
-        enviarRecarga(null, idPagoGet, null)
-
-        
+        enviarRecarga(null, idPagoGet, null);
 </script>
 <?php endif ; ?>
 

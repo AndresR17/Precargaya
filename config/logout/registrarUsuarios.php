@@ -75,7 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         enviarRespuestaJSON('Recarga la pagina y vuelve a intentarlo') ;
     }
 }else{
-
     session_destroy();
     header('location:../');
 }

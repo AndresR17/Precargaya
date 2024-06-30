@@ -5,11 +5,12 @@
             <p class="flex text-2xl font-bold whitespace-nowrap text-white flex-col mb-0">RECARGAYA
                 <!-- <span class="text-sm font-normal">Tu satisfaccion es nuestro mayor objetivo</span> -->
             </p>
-
         </a>
 
         <div class="flex items-center md:order-2 space-x-1 md:space-x-4 rtl:space-x-reverse">
+
             <?php if (!isset($_SESSION['user'])) : ?>
+
                 <span class="inline-flex overflow-hidden rounded-md">
                     <button data-modal-target="modal-login" data-modal-toggle="modal-login" class="hidden md:inline-flex md:px-2 md:text-sm  items-center px-4 py-2 text-base font-medium text-white uppercase bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
@@ -25,7 +26,9 @@
                         Registrarme
                     </button>
                 </span>
+
             <?php else : ?>
+
                 <div class="flex items-center space-x-3">
 
                     <button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation" class="hidden md:inline-flex text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-5 py-2.5 text-center items-center text-base uppercase" type="button">Bienvenido<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -66,8 +69,10 @@
                         </div>
                     </div>
                 </div>
+
             <?php endif; ?>
 
+            <!-- Celular -->
             <button data-collapse-toggle="mega-menu-icons" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-base text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-icons" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -77,7 +82,9 @@
         </div>
         <div id="mega-menu-icons" class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
             <ul class="flex flex-col mt-4 font-medium md:flex-row space-y-1 md:mt-0 md:space-x-8 rtl:space-x-reverse">
+
                 <?php if (!isset($_SESSION['user'])) : ?>
+                    
                     <li class="md:hidden">
                         <button data-modal-target="modal-login" data-modal-toggle="modal-login" class="w-full inline-flex px-3 text-base  items-center px-4 py-2 font-medium text-white border-b border-gray-400  uppercase bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br">
                             Iniciar sesion
@@ -89,6 +96,7 @@
                         </button>
                     </li>
                 <?php endif; ?>
+
                 <?php if (isset($_SESSION['user'])) : ?>
                     <div class="md:hidden bg-blue-900 border-b border-gray-400 px-4 py-3 text-base text-white">
                         <p class="uppercase text-center">Bienvenido</p>
