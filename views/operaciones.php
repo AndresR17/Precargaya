@@ -12,7 +12,9 @@ require_once(__DIR__ . '/../layouts/nav.php');
                 <div class="overlay"></div>
                 <div class="slide-content">
                     <div class="absolute top-[40%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10 text-center text-white text-4xl md:text-6xl xl:text-7xl sm:block font-bold tracking-wide uppercase">Operaciones</div>
-                    <div class="slide-description absolute top-[65%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10 leading-normal text-white text-center sm:text-base md:text-xl lg:text-2xl font-semibold"><h1>Retiros y Recargas de Dinero en <span class="font-bold text-blue-600 uppercase">1xBet</span></h1>.</div>
+                    <div class="slide-description absolute top-[65%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-10 leading-normal text-white text-center sm:text-base md:text-xl lg:text-2xl font-semibold">
+                        <h1>Retiros y Recargas de Dinero en <span class="font-bold text-blue-600 uppercase">1xBet</span></h1>.
+                    </div>
                 </div>
             </li>
         </ul>
@@ -52,7 +54,6 @@ require_once(__DIR__ . '/../layouts/nav.php');
 
 <!-- SECCION PARA RETIRAR -->
 <section id="section-retirar" data-aos="zoom-in-down" class="hidden transition flex flex-col justify-center md:space-y-6 lg:space-x-4 my-10 mx-5 md:mx-[2rem] xl:mx-[10rem] p-4">
-
     <form id="formRetirar" method="POST" autocomplete="off">
         <fieldset class="w-full border border-gray-600 p-8  rounded-lg">
             <legend class="text-gray-200 text-base text-base border border-gray-600 px-4 py-2 rounded">
@@ -96,18 +97,24 @@ require_once(__DIR__ . '/../layouts/nav.php');
                     <label for="cod-retirar" class="block mb-2 text-base font-medium text-white">Codigo de retiro</label>
                     <input type="text" id="cod-retirar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" />
                 </div>
-
+                <div class="" id="resEntRetirar">
+                    <label for="ent-retirar" class="block mb-2 text-base font-medium text-white">Entidad financiera</label>
+                    <select id="ent-retirar" class=" border text-base rounded-lg focus:ring-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+                        <option value="" selected>--Seleccione una opcion--</option>
+                        <option value="Bancolombia">Bancolombia</option>
+                        <option value="Davivienda">Davivienda</option>
+                    </select>
+                </div>
+                <div class="" id="resTipoCuenta">
+                    <label for="tipoCuenta" class="block mb-2 text-base font-medium text-white">Tipo de cuenta</label>
+                    <select id="tipoCuenta" class="border text-base rounded-lg focus:ring-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
+                        <option value="" selected>--Seleccione una opcion--</option>
+                        <option value="Ahorros">Ahorros</option>
+                        <option value="Corriente">Corriente</option>
+                    </select>
+                </div>
             </div>
-            <div class="my-6" id="resEntRetirar">
-                <label for="ent-retirar" class="block mb-2 text-base font-medium text-white">Entidad financiera</label>
-                <select id="ent-retirar" class=" border text-base rounded-lg focus:ring-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500">
-                    <option value="" selected>--Selccione una opcion--</option>
-                    <option value="Bancolombia">Bancolombia</option>
-                    <option value="Davivienda">Davivienda</option>
-                </select>
-            </div>
-
-            <div class="mb-6" id="resCuentaRetirar">
+            <div class="my-6 " id="resCuentaRetirar">
                 <label for="cuenta-retirar" class="block mb-2 text-base font-medium text-white">N° de cuenta para recibir fondos</label>
                 <input type="text" id="cuenta-retirar" class="border text-base rounded-lg focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" />
             </div>
@@ -129,7 +136,6 @@ require_once(__DIR__ . '/../layouts/nav.php');
             <?php endif; ?>
         </fieldset>
     </form>
-
 </section>
 
 <!-- SECCION PARA RECARGAR -->
@@ -144,7 +150,7 @@ require_once(__DIR__ . '/../layouts/nav.php');
             <input type="hidden" id="token_recargar" value="<?= $_SESSION['csrf_token']; ?>">
             <input type="hidden" id="idRecargar" value="<?= openssl_encrypt($user['id'], AES_FRONT, KEY_FRONT);  ?>">
             <input type="hidden" id="emailRecargar" value="<?= $user['email'];  ?>">
-            
+
 
             <div id="resUserRecargar" class="mb-6">
                 <label for="name-recargar" class="block mb-2 text-base font-medium text-white">Nombre completo</label>
@@ -474,8 +480,8 @@ require_once(__DIR__ . '/../layouts/nav.php');
                     <button type="submit" class="bg-blue-800 hover:bg-blue-700 text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:w-auto px-8 py-2.5 text-center">Realizar operacion</button>
                 </div>
             <?php endif; ?>
-                <!-- MOSTRAMOS LA RESPUESTA QUE NOS DEVUELVE WOMPI  -->
-                <div id="resWompi" class="mb-6"></div>
+            <!-- MOSTRAMOS LA RESPUESTA QUE NOS DEVUELVE WOMPI  -->
+            <div id="resWompi" class="mb-6"></div>
 
             <?php if (!isset($_SESSION['user'])) : ?>
                 <div>
@@ -489,17 +495,19 @@ require_once(__DIR__ . '/../layouts/nav.php');
     </form>
 </section>
 
-<?php 
-    if(isset($_GET['id']) && isset($_SESSION['user'])):
-        $idPago = $_GET['id'];
+<?php
+if (isset($_GET['id']) && isset($_SESSION['user'])) :
+    $idPago = $_GET['id'];
 ?>
 
-<script type="module">
-    import { enviarRecarga } from '<?= BASE_URL . 'src/js/formOperaciones.js' ?>';
+    <script type="module">
+        import {
+            enviarRecarga
+        } from '<?= BASE_URL . 'src/js/formOperaciones.js' ?>';
         const idPagoGet = '<?php echo $idPago; ?>';
         enviarRecarga(null, idPagoGet, null);
-</script>
-<?php endif ; ?>
+    </script>
+<?php endif; ?>
 
 
 

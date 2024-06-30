@@ -1,6 +1,6 @@
 <footer class="mt-16 space-y-6 flex flex-col px-8 py-8 bg-gray-800">
-    <div class="flex justify-evenly">
-        <a href="<?= BASE_URL; ?>" class="flex items-center space-x-2">
+    <div class="flex justify-center md:justify-evenly flex-col lg:flex-row items-center">
+        <a href="<?= BASE_URL; ?>" class="hidden lg:block flex items-center space-x-2">
             <!-- <img src="<?= BASE_URL . 'img/logo-antes.jpg'; ?>" class="h-10 rounded" alt="logo recargaya!" /> -->
             <p class="flex text-2xl font-bold whitespace-nowrap text-gray-200 flex-col mb-0">RECARGAYA
                 <span class="text-sm font-normal">Tu satisfaccion es nuestro mayor objetivo</span>
@@ -9,7 +9,7 @@
 
         <div class="flex flex-col">
             <p class="text-gray-200 text-center text-xl mb-6 font-bold">Síguenos en</p>
-            <div class="flex justify-evenly space-x-8">
+            <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 justify-evenly md:space-x-8">
                 <a href="https://web.facebook.com/profile.php?id=100094769269248" target="_blank" class="flex items-center space-x-1 hover:scale-110 transition">
                     <img src="<?= BASE_URL . 'img/footer/Facebook_Logo_Primary.png' ?>" class="w-8 h-8 rounded-lg">
                     <p class="text-gray-200">Facebook</p>
@@ -47,5 +47,4 @@
 <script type="module" src="<?= BASE_URL . 'src/js/formRegistro.js' ?>"></script>
 
 </body>
-
 </html>

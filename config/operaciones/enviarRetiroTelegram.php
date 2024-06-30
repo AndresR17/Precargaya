@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $casaApuestas = limpiar_cadena($data['casaApuestas']);
         $codigo = limpiar_cadena($data['codigo']);
         $entidad = limpiar_cadena($data['entidad']);
+        $tipoCuenta = limpiar_cadena($data['tipoCuenta']);
         $cuenta = (int)limpiar_cadena($data['cuenta']);
         $valor = (int)limpiar_cadena($data['valor']);
         $createdAt = limpiar_cadena($data['createdAt']);
@@ -28,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $valorMinimo = 100000;
         
-        if (empty($id) || empty($name) || empty($documento) || empty($idJugador) || empty($valor) || empty($codigo) || empty($entidad) || empty($createdAt) || !is_numeric($cuenta) || !is_numeric($documento) || !is_numeric($valor) || !is_numeric($id) ||empty($contacto) || empty($casaApuestas)) {
+        if (empty($id) || empty($name) || empty($documento) || empty($idJugador) || empty($valor) || empty($codigo) || empty($entidad) || empty($createdAt) || !is_numeric($cuenta) || !is_numeric($documento) || !is_numeric($valor) || !is_numeric($id) ||empty($contacto) || empty($casaApuestas) || empty($tipoCuenta)) {
             enviarRespuestaJSON('Tus datos son incorrectos!');
         }
 
@@ -51,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         . "\n "
         . "\n-ENTIDAD FINANCIERA: $entidad"
         . "\n-No DE CUENTA: $cuenta"
+        . "\n-TIPO DE CUENTA: $tipoCuenta"
         . "\n-VALOR A RETIRAR: $ $valorFormateado"
         . "\n "
         . "\n*********** | Gracias | ************";

@@ -306,11 +306,9 @@ function sincronizarStorage(){
 //Envio de formulario recargar
 function enviarRecarga(referencia, idPago, metodoPago) {
 
-
     const datosStorage = sincronizarStorage();
     
     if(datosStorage){
-
         const { idJugador, casaApuestas, valor } = datosStorage;
         idJugadorRecargar.value = idJugador;
         casaApuestasRecargar.value = casaApuestas;
@@ -405,6 +403,7 @@ const idJugadorRetirar = document.getElementById('idJugador-retirar');
 const casaApuestasRetirar = document.getElementById('casaApuestas-retirar');
 const codigoRetiro = document.getElementById('cod-retirar');
 const entidadRetiro = document.getElementById('ent-retirar');
+const tipoCuentaRetiro = document.getElementById('tipoCuenta');
 const cuentaRetirar = document.getElementById('cuenta-retirar');
 const valorRetirar = document.getElementById('valor-retirar');
 
@@ -420,7 +419,8 @@ function validarFormRetirar(e) {
     if (!validarCampo(casaApuestasRetirar, 'Selecciona una opcion valida!', 'resCasaApuestasRetirar')) return;
     if (!validarCampo(codigoRetiro, 'Ingresa tu codigo de retiro', 'resCodigoRetirar')) return;
     if (!validarCampo(entidadRetiro, 'Selecciona una opcion valida!', 'resEntRetirar')) return;
-    if (!validarCampo(cuentaRetirar, 'Define tu numero de cuenta', 'resEntRetirar')) return;
+    if (!validarCampo(tipoCuentaRetiro, 'Define el tipo de cuenta', 'resTipoCuenta')) return;
+    if (!validarCampo(cuentaRetirar, 'Define tu numero de cuenta', 'resCuentaRetirar')) return;
     if (!validarCampo(valorRetirar, 'Define el valor a recargar', 'resValorRetirar')) return;
     if (!validarNumero(valorRetirar, 'El valor no es valido!', 'resValorRetirar')) return;
     if (valorRetirar.value < valorMinimoRetirar) {
@@ -438,6 +438,7 @@ function validarFormRetirar(e) {
         casaApuestas: casaApuestasRetirar.value,
         codigo: codigoRetiro.value,
         entidad: entidadRetiro.value,
+        tipoCuenta: tipoCuentaRetiro.value,
         cuenta: cuentaRetirar.value,
         valor: valorRetirar.value,
         createdAt
